@@ -1092,7 +1092,7 @@ function renderEcoCompanies() {
     const inCompare = State.compareSlots.includes(co.id);
     const logoText = co.name.length <= 3 ? co.name : co.name.substring(0, 2);
     const tags = [co.ticker, co.techRoute, co.keyProduct].filter(Boolean).slice(0, 3);
-    return `<div class="eco-card ${inCompare ? "in-compare" : ""}" data-id="${co.id}" style="animation-delay:${Math.min(i*0.04,0.4)}s">
+    return `<div class="eco-card ${inCompare ? "in-compare" : ""}" data-id="${co.id}" draggable="true" style="animation-delay:${Math.min(i*0.04,0.4)}s">
       <div class="eco-card-header">
         <div class="eco-logo ${co.domain}">${logoText}</div>
         <div>
@@ -1119,6 +1119,44 @@ function bindEcoEvents() {
     State.ecoDomain = pill.dataset.domain;
     renderEcoCompanies();
   });
+
+  // Drag-and-drop for company cards into comparison slots
+  const grid = $("#ecoCompanyGrid");
+  if (grid) {
+    grid.addEventListener("dragstart", (e) => {
+      const card = e.target.closest(".eco-card");
+      if (!card) return;
+      e.dataTransfer.setData("companyId", card.dataset.id);
+      e.dataTransfer.effectAllowed = "copy";
+      card.classList.add("dragging");
+    });
+    grid.addEventListener("dragend", (e) => {
+      const card = e.target.closest(".eco-card");
+      if (card) card.classList.remove("dragging");
+    });
+  }
+
+  for (let i = 0; i < 2; i++) {
+    const slot = $(`#compareSlot${i + 1}`);
+    if (!slot) continue;
+    slot.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "copy";
+      slot.classList.add("drag-over");
+    });
+    slot.addEventListener("dragleave", () => {
+      slot.classList.remove("drag-over");
+    });
+    slot.addEventListener("drop", (e) => {
+      e.preventDefault();
+      slot.classList.remove("drag-over");
+      const companyId = e.dataTransfer.getData("companyId");
+      if (!companyId) return;
+      State.compareSlots[i] = companyId;
+      renderEcoCompanies();
+      renderCompareSlots();
+    });
+  }
 }
 
 window.toggleCompare = function(companyId) {

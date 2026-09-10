@@ -393,6 +393,9 @@ body {
 .eco-card { background: #fff; border: 1.5px solid var(--border-color); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; }
 .eco-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 .eco-card.in-compare { border-color: #6d3bea; box-shadow: 0 0 0 2px rgba(109,59,234,0.15), var(--shadow-md); }
+.eco-card[draggable="true"] { cursor: grab; }
+.eco-card[draggable="true"]:active { cursor: grabbing; }
+.eco-card.dragging { opacity: 0.5; transform: scale(0.95); }
 .eco-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .eco-logo { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; font-family: "SF Mono", "Fira Code", "Courier New", monospace; }
 .eco-logo.qc { background: #f1edff; color: #6d3bea; border: 1px solid #d4c5f9; }
