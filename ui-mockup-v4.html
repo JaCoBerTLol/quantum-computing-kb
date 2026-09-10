@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量子信息科学知识平台 v4.0 — UI模板预览</title>
+<style>
+:root {
+  --bg: #f0f4ff;
+  --bg-gradient: linear-gradient(160deg, #eef2ff 0%, #e6f0ff 30%, #ecfbff 100%);
+  --card: #ffffff;
+  --card-hover: #f8faff;
+  --border: #d9e2ef;
+  --border-hover: #b8c6e8;
+  --text: #1a2240;
+  --text-secondary: #5a6680;
+  --text-muted: #8a96b0;
+  --qc: #6d3bea;
+  --qc-light: #f1edff;
+  --qc-border: #d4c5f9;
+  --qt: #2563eb;
+  --qt-light: #e8f0ff;
+  --qt-border: #c3d4f7;
+  --qm: #0891b2;
+  --qm-light: #e0f7fb;
+  --qm-border: #b3e8f0;
+  --accent: #db2777;
+  --shadow: 0 2px 12px rgba(109,59,234,0.06);
+  --shadow-hover: 0 8px 28px rgba(109,59,234,0.10);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Cascadia Code", "Courier New", monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-gradient);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== Quantum Background Effects ===== */
+#bg-canvas {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+}
+.bg-glow {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 10%, rgba(109,59,234,0.06), transparent),
+    radial-gradient(ellipse 500px 350px at 85% 25%, rgba(37,99,235,0.05), transparent),
+    radial-gradient(ellipse 500px 300px at 50% 85%, rgba(8,145,178,0.04), transparent);
+}
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(109,59,234,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109,59,234,0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.app {
+  position: relative; z-index: 1;
+  max-width: 960px; margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ===== Preview Banner ===== */
+.preview-banner {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--accent);
+  margin-bottom: 32px;
+  letter-spacing: 0.3px;
+  box-shadow: var(--shadow);
+}
+
+/* ===== Header ===== */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #6d3bea 0%, #2563eb 50%, #0891b2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+}
+.header .subtitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.header .header-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
+.header-wave {
+  margin: 16px auto 0;
+  max-width: 360px;
+  height: 36px;
+}
+.header-wave svg { width: 100%; height: 100%; }
+.wave-path {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+.wave-path.w1 { stroke: var(--qc); animation: waveMove 4s ease-in-out infinite; }
+.wave-path.w2 { stroke: var(--qt); animation: waveMove 4s ease-in-out infinite 0.5s; opacity: 0.5; }
+.wave-path.w3 { stroke: var(--qm); animation: waveMove 4s ease-in-out infinite 1s; opacity: 0.4; }
+@keyframes waveMove {
+  0%,100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
+/* ===== Three Pillars ===== */
+.pillars-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.pillar {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.pillar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.pillar.qc::before { background: linear-gradient(90deg, transparent, var(--qc), transparent); }
+.pillar.qt::before { background: linear-gradient(90deg, transparent, var(--qt), transparent); }
+.pillar.qm::before { background: linear-gradient(90deg, transparent, var(--qm), transparent); }
+.pillar:hover { border-color: var(--border-hover); box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.pillar-name { font-size: 14px; font-weight: 700; letter-spacing: 0.3px; }
+.pillar.qc .pillar-name { color: var(--qc); }
+.pillar.qt .pillar-name { color: var(--qt); }
+.pillar.qm .pillar-name { color: var(--qm); }
+.pillar-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.pillar-new {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--accent);
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
+/* ===== Tab Bar ===== */
+.tab-bar {
+  display: flex;
+  gap: 2px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  position: relative;
+}
+.tab-btn:hover { color: var(--text); background: #f5f7ff; }
+.tab-btn.active {
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6d3bea, #5b30c9);
+  box-shadow: 0 4px 14px rgba(109,59,234,0.25);
+}
+.tab-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: absolute;
+  top: 8px; right: 12px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ===== Domain Filter ===== */
+.domain-filter {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.domain-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+.domain-pill:hover { border-color: var(--border-hover); transform: translateY(-1px); }
+.domain-pill.active { font-weight: 600; color: #fff; border-color: transparent; }
+.domain-pill.all.active { background: var(--qc); }
+.domain-pill.qc.active { background: var(--qc); }
+.domain-pill.qt.active { background: var(--qt); }
+.domain-pill.qm.active { background: var(--qm); }
+.domain-dot { width: 7px; height: 7px; border-radius: 50%; }
+.domain-dot.qc { background: var(--qc); }
+.domain-dot.qt { background: var(--qt); }
+.domain-dot.qm { background: var(--qm); }
+.domain-pill.active .domain-dot { background: #fff; }
+
+/* ===== Section ===== */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.section-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* ===== Market Cards ===== */
+.market-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.market-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.market-card.qc { border-top: 3px solid var(--qc); }
+.market-card.qt { border-top: 3px solid var(--qt); }
+.market-card.qm { border-top: 3px solid var(--qm); }
+.market-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.3px; }
+.market-value {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.market-card.qc .market-value { color: var(--qc); }
+.market-card.qt .market-value { color: var(--qt); }
+.market-card.qm .market-value { color: var(--qm); }
+.market-unit { font-size: 12px; color: var(--text-muted); font-family: var(--font-sans); font-weight: 400; }
+.market-growth { font-size: 11px; color: #059669; margin-top: 4px; font-family: var(--font-mono); font-weight: 600; }
+
+/* ===== Eco Grid ===== */
+.eco-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 14px;
+}
+.eco-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.eco-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.eco-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.eco-logo {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+}
+.eco-logo.qc { background: var(--qc-light); color: var(--qc); border: 1px solid var(--qc-border); }
+.eco-logo.qt { background: var(--qt-light); color: var(--qt); border: 1px solid var(--qt-border); }
+.eco-logo.qm { background: var(--qm-light); color: var(--qm); border: 1px solid var(--qm-border); }
+.eco-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.eco-domain { font-size: 10px; color: var(--text-muted); margin-top: 1px; letter-spacing: 0.3px; }
+.eco-info { display: flex; flex-wrap: wrap; gap: 6px; }
+.eco-tag {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f4f6fb;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.eco-desc { font-size: 12px; color: var(--text-secondary); margin-top: 10px; line-height: 1.6; }
+
+/* ===== Lab Section ===== */
+.lab-domain-section {
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.lab-domain-section.qc { border-left: 4px solid var(--qc); }
+.lab-domain-section.qt { border-left: 4px solid var(--qt); }
+.lab-domain-section.qm { border-left: 4px solid var(--qm); }
+.lab-domain-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+.dm-dot { width: 8px; height: 8px; border-radius: 50%; }
+.lab-domain-section.qc .dm-dot { background: var(--qc); }
+.lab-domain-section.qt .dm-dot { background: var(--qt); }
+.lab-domain-section.qm .dm-dot { background: var(--qm); }
+.lab-new-tag {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--accent);
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.lab-count { font-size: 11px; color: var(--text-muted); margin-left: auto; }
+.lab-models {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+.lab-model-card {
+  background: #f8faff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  text-align: center;
+  transition: var(--transition);
+}
+.lab-model-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow); transform: translateY(-2px); background: #fff; }
+.lab-model-icon {
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 8px;
+  font-size: 14px; font-weight: 700;
+  font-family: var(--font-mono);
+}
+.lab-model-card.qc .lab-model-icon { background: var(--qc-light); color: var(--qc); }
+.lab-model-card.qt .lab-model-icon { background: var(--qt-light); color: var(--qt); }
+.lab-model-card.qm .lab-model-icon { background: var(--qm-light); color: var(--qm); }
+.lab-model-name { font-size: 12px; font-weight: 600; color: var(--text); }
+.lab-model-desc { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+/* ===== KB Placeholder ===== */
+.kb-placeholder {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.kb-placeholder .ph-icon {
+  width: 48px; height: 48px;
+  margin: 0 auto 12px;
+  border-radius: 10px;
+  background: var(--qc-light);
+  display: flex; align-items: center; justify-content: center;
+}
+.kb-placeholder p { font-size: 13px; color: var(--text-secondary); }
+.kb-placeholder .ph-cats {
+  display: flex; gap: 8px; justify-content: center; margin-top: 12px; flex-wrap: wrap;
+}
+.ph-cat {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: #f8faff;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+/* ===== Path ===== */
+.path-container {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.path-step {
+  display: flex;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.path-step:last-child { border-bottom: none; padding-bottom: 0; }
+.path-step:first-child { padding-top: 0; }
+.path-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+.path-num.s1 { background: var(--qc-light); color: var(--qc); border: 1px solid var(--qc-border); }
+.path-num.s2 { background: var(--qt-light); color: var(--qt); border: 1px solid var(--qt-border); }
+.path-num.s3 { background: var(--qm-light); color: var(--qm); border: 1px solid var(--qm-border); }
+.path-content h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.path-content p { font-size: 12px; color: var(--text-secondary); }
+.path-resources { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.path-res-tag {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f4f6fb;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .pillars-row { flex-direction: column; }
+  .market-row { grid-template-columns: 1fr; }
+  .tab-btn { font-size: 10px; padding: 8px 4px; }
+  .tab-btn span { font-size: 10px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-glow"></div>
+<div class="bg-grid"></div>
+
+<div class="app">
+  <div class="preview-banner">
+    UI v4.0 模板预览 — 浅色清爽风格 · 请审阅后确认
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>量子信息科学知识平台</h1>
+    <p class="subtitle">Quantum Information Science</p>
+    <div class="header-wave">
+      <svg viewBox="0 0 360 36" preserveAspectRatio="none">
+        <path class="wave-path w1" d="M0,18 Q45,4 90,18 T180,18 T270,18 T360,18"/>
+        <path class="wave-path w2" d="M0,18 Q45,32 90,18 T180,18 T270,18 T360,18"/>
+        <path class="wave-path w3" d="M0,18 Q45,8 90,18 T180,18 T270,18 T360,18"/>
+      </svg>
+    </div>
+    <p class="header-desc">量子计算 · 量子通信 · 量子精密测量</p>
+  </header>
+
+  <!-- Three Pillars -->
+  <div class="pillars-row">
+    <div class="pillar qc">
+      <div class="pillar-name">量子计算</div>
+      <div class="pillar-desc">算法 · 硬件 · 软件栈</div>
+    </div>
+    <div class="pillar qt">
+      <div class="pillar-name">量子通信<span class="pillar-new">NEW</span></div>
+      <div class="pillar-desc">QKD · 量子网络 · 保密通信</div>
+    </div>
+    <div class="pillar qm">
+      <div class="pillar-name">量子精密测量<span class="pillar-new">NEW</span></div>
+      <div class="pillar-desc">原子钟 · 量子传感 · 重力仪</div>
+    </div>
+  </div>
+
+  <!-- Tab Bar -->
+  <nav class="tab-bar">
+    <button class="tab-btn" onclick="switchPreview('kb', this)">
+      <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      <span>量子智库</span>
+    </button>
+    <button class="tab-btn" onclick="switchPreview('lab', this)">
+      <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 2v6L4 20a2 2 0 002 2h12a2 2 0 002-2L15 8V2M9 2h6M9 14h6"/></svg>
+      <span>交互实验室</span>
+    </button>
+    <button class="tab-btn active" onclick="switchPreview('eco', this)">
+      <span class="tab-dot"></span>
+      <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
+      <span>产业生态</span>
+    </button>
+    <button class="tab-btn" onclick="switchPreview('news', this)">
+      <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0V6"/></svg>
+      <span>行业资讯</span>
+    </button>
+    <button class="tab-btn" onclick="switchPreview('path', this)">
+      <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span>学习路径</span>
+    </button>
+  </nav>
+
+  <!-- Domain Filter -->
+  <div class="domain-filter">
+    <div class="domain-pill all active" onclick="filterDomain(this)">
+      <span>全部领域</span>
+    </div>
+    <div class="domain-pill qc" onclick="filterDomain(this)">
+      <span class="domain-dot qc"></span>
+      <span>量子计算</span>
+    </div>
+    <div class="domain-pill qt" onclick="filterDomain(this)">
+      <span class="domain-dot qt"></span>
+      <span>量子通信</span>
+    </div>
+    <div class="domain-pill qm" onclick="filterDomain(this)">
+      <span class="domain-dot qm"></span>
+      <span>量子精密测量</span>
+    </div>
+  </div>
+
+  <!-- ===== 产业生态 ===== -->
+  <div id="section-eco" class="preview-section">
+    <h2 class="section-title">产业生态</h2>
+    <p class="section-subtitle">三大领域重点企业 · 市场规模 · 技术路线</p>
+
+    <div class="market-row">
+      <div class="market-card qc">
+        <div class="market-label">量子计算 · 全球</div>
+        <div class="market-value">13.9<span class="market-unit"> 亿USD</span></div>
+        <div class="market-growth">+28% YoY · 2025</div>
+      </div>
+      <div class="market-card qt">
+        <div class="market-label">量子通信 · 中国</div>
+        <div class="market-value">138.6<span class="market-unit"> 亿CNY</span></div>
+        <div class="market-growth">+24.7% YoY · 2025</div>
+      </div>
+      <div class="market-card qm">
+        <div class="market-label">量子精密测量 · 全球</div>
+        <div class="market-value">19.3<span class="market-unit"> 亿USD</span></div>
+        <div class="market-growth">+16% YoY · 2025</div>
+      </div>
+    </div>
+
+    <div class="eco-grid">
+      <div class="eco-card">
+        <div class="eco-card-header">
+          <div class="eco-logo qc">IBM</div>
+          <div>
+            <div class="eco-name">IBM Quantum</div>
+            <div class="eco-domain">量子计算 · 超导</div>
+          </div>
+        </div>
+        <div class="eco-info">
+          <span class="eco-tag">Heron 133Q</span>
+          <span class="eco-tag">云平台</span>
+          <span class="eco-tag">模块化</span>
+        </div>
+        <div class="eco-desc">量子计算行业先驱，首个推出云端量子计算平台，推进模块化架构和量子LDPC纠错。</div>
+      </div>
+
+      <div class="eco-card">
+        <div class="eco-card-header">
+          <div class="eco-logo qc">本</div>
+          <div>
+            <div class="eco-name">本源量子</div>
+            <div class="eco-domain">量子计算 · 超导</div>
+          </div>
+        </div>
+        <div class="eco-info">
+          <span class="eco-tag">悟源3.0</span>
+          <span class="eco-tag">504Q</span>
+          <span class="eco-tag">中国首个</span>
+        </div>
+        <div class="eco-desc">中国首家量子计算初创公司，推出国内首台超导量子计算机和量子计算云平台。</div>
+      </div>
+
+      <div class="eco-card">
+        <div class="eco-card-header">
+          <div class="eco-logo qt">盾</div>
+          <div>
+            <div class="eco-name">国盾量子</div>
+            <div class="eco-domain">量子通信 · QKD · 688027</div>
+          </div>
+        </div>
+        <div class="eco-info">
+          <span class="eco-tag">市占70%+</span>
+          <span class="eco-tag">京沪干线</span>
+          <span class="eco-tag">科创板</span>
+        </div>
+        <div class="eco-desc">国内量子通信设备龙头，QKD设备全球出货量第一，天地一体网络核心参与者。</div>
+      </div>
+
+      <div class="eco-card">
+        <div class="eco-card-header">
+          <div class="eco-logo qt">神</div>
+          <div>
+            <div class="eco-name">神州信息</div>
+            <div class="eco-domain">量子通信 · 金融 · 000555</div>
+          </div>
+        </div>
+        <div class="eco-info">
+          <span class="eco-tag">市占24%</span>
+          <span class="eco-tag">金融量子</span>
+          <span class="eco-tag">A股</span>
+        </div>
+        <div class="eco-desc">国内量子通信设备市场第二，聚焦金融领域量子安全应用。</div>
+      </div>
+
+      <div class="eco-card">
+        <div class="eco-card-header">
+          <div class="eco-logo qm">仪</div>
+          <div>
+            <div class="eco-name">国仪量子</div>
+            <div class="eco-domain">量子精密测量 · 688828</div>
+          </div>
+        </div>
+        <div class="eco-info">
+          <span class="eco-tag">第一股</span>
+          <span class="eco-tag">NV色心</span>
+          <span class="eco-tag">2.59亿</span>
+        </div>
+        <div class="eco-desc">2026年科创板上市，量子精密测量第一股，H1营收2.59亿元(+51%)，交付国内首台离子阱量子计算机。</div>
+      </div>
+
+      <div class="eco-card">
+        <div class="eco-card-header">
+          <div class="eco-logo qm">MQ</div>
+          <div>
+            <div class="eco-name">Muquans / Exail</div>
+            <div class="eco-domain">量子精密测量 · 法国</div>
+          </div>
+        </div>
+        <div class="eco-info">
+          <span class="eco-tag">AQG重力仪</span>
+          <span class="eco-tag">微伽级</span>
+          <span class="eco-tag">火山监测</span>
+        </div>
+        <div class="eco-desc">法国冷原子量子传感公司，绝对量子重力仪AQG已部署至火山监测和地质勘探。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 交互实验室 ===== -->
+  <div id="section-lab" class="preview-section" style="display:none">
+    <h2 class="section-title">交互实验室</h2>
+    <p class="section-subtitle">三大领域 13 个交互模型</p>
+
+    <div class="lab-domain-section qc">
+      <div class="lab-domain-title"><span class="dm-dot"></span>量子计算<span class="lab-count">7 个</span></div>
+      <div class="lab-models">
+        <div class="lab-model-card qc"><div class="lab-model-icon">Q</div><div class="lab-model-name">Bloch球</div><div class="lab-model-desc">量子态可视化</div></div>
+        <div class="lab-model-card qc"><div class="lab-model-icon">C</div><div class="lab-model-name">量子线路</div><div class="lab-model-desc">门操作构建</div></div>
+        <div class="lab-model-card qc"><div class="lab-model-icon">E</div><div class="lab-model-name">纠缠演示</div><div class="lab-model-desc">Bell态测量</div></div>
+        <div class="lab-model-card qc"><div class="lab-model-icon">W</div><div class="lab-model-name">双缝实验</div><div class="lab-model-desc">波粒二象性</div></div>
+        <div class="lab-model-card qc"><div class="lab-model-icon">K</div><div class="lab-model-name">BB84</div><div class="lab-model-desc">密钥分发</div></div>
+        <div class="lab-model-card qc"><div class="lab-model-icon">M</div><div class="lab-model-name">门矩阵</div><div class="lab-model-desc">酉变换</div></div>
+        <div class="lab-model-card qc"><div class="lab-model-icon">D</div><div class="lab-model-name">量子掷骰</div><div class="lab-model-desc">叠加态坍缩</div></div>
+      </div>
+    </div>
+
+    <div class="lab-domain-section qt">
+      <div class="lab-domain-title"><span class="dm-dot"></span>量子通信 <span class="lab-new-tag">NEW</span><span class="lab-count">3 个</span></div>
+      <div class="lab-models">
+        <div class="lab-model-card qt"><div class="lab-model-icon">R</div><div class="lab-model-name">量子中继</div><div class="lab-model-desc">纠缠交换演示</div></div>
+        <div class="lab-model-card qt"><div class="lab-model-icon">N</div><div class="lab-model-name">网络拓扑</div><div class="lab-model-desc">QKD网络结构</div></div>
+        <div class="lab-model-card qt"><div class="lab-model-icon">V</div><div class="lab-model-name">QKD vs RSA</div><div class="lab-model-desc">安全对比</div></div>
+      </div>
+    </div>
+
+    <div class="lab-domain-section qm">
+      <div class="lab-domain-title"><span class="dm-dot"></span>量子精密测量 <span class="lab-new-tag">NEW</span><span class="lab-count">3 个</span></div>
+      <div class="lab-models">
+        <div class="lab-model-card qm"><div class="lab-model-icon">A</div><div class="lab-model-name">原子钟对比</div><div class="lab-model-desc">精度量级</div></div>
+        <div class="lab-model-card qm"><div class="lab-model-icon">G</div><div class="lab-model-name">量子重力仪</div><div class="lab-model-desc">微伽级测量</div></div>
+        <div class="lab-model-card qm"><div class="lab-model-icon">NV</div><div class="lab-model-name">NV色心磁力计</div><div class="lab-model-desc">心磁脑磁</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 量子智库 ===== -->
+  <div id="section-kb" class="preview-section" style="display:none">
+    <h2 class="section-title">量子智库</h2>
+    <p class="section-subtitle">170+ 条知识条目 · 三领域分类</p>
+    <div class="kb-placeholder">
+      <div class="ph-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="#6d3bea" stroke-width="1.5" stroke-linecap="round" d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      </div>
+      <p>搜索栏 + 分类筛选 + 知识条目卡片</p>
+      <p style="font-size:12px;margin-top:4px;">保持 v3.0 交互逻辑，新增三领域分类筛选</p>
+      <div class="ph-cats">
+        <span class="ph-cat" style="color:var(--qc);border-color:var(--qc-border)">量子计算 107条</span>
+        <span class="ph-cat" style="color:var(--qt);border-color:var(--qt-border)">量子通信 35+条</span>
+        <span class="ph-cat" style="color:var(--qm);border-color:var(--qm-border)">量子精密测量 30+条</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 学习路径 ===== -->
+  <div id="section-path" class="preview-section" style="display:none">
+    <h2 class="section-title">学习路径</h2>
+    <p class="section-subtitle">从入门到进阶 · 结构化路线</p>
+    <div class="path-container">
+      <div class="path-step">
+        <div class="path-num s1">1</div>
+        <div class="path-content">
+          <h4>入门 — 建立直觉</h4>
+          <p>理解量子比特、叠加态、纠缠等基础概念。先玩 Bloch球和量子掷骰子。</p>
+          <div class="path-resources">
+            <span class="path-res-tag">量子计算第一课</span>
+            <span class="path-res-tag">Bloch球</span>
+            <span class="path-res-tag">术语表</span>
+          </div>
+        </div>
+      </div>
+      <div class="path-step">
+        <div class="path-num s2">2</div>
+        <div class="path-content">
+          <h4>进阶 — 技术路线</h4>
+          <p>超导/离子阱/光量子等硬件路线，QKD和量子传感器原理。</p>
+          <div class="path-resources">
+            <span class="path-res-tag">硬件对比</span>
+            <span class="path-res-tag">QKD原理</span>
+            <span class="path-res-tag">双缝实验</span>
+            <span class="path-res-tag">门矩阵</span>
+          </div>
+        </div>
+      </div>
+      <div class="path-step">
+        <div class="path-num s3">3</div>
+        <div class="path-content">
+          <h4>实战 — 工具与产业</h4>
+          <p>Qiskit/Cirq 编写量子算法，了解产业生态，跟踪行业动态。</p>
+          <div class="path-resources">
+            <span class="path-res-tag">Qiskit</span>
+            <span class="path-res-tag">线路模拟器</span>
+            <span class="path-res-tag">产业生态</span>
+            <span class="path-res-tag">资讯</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>量子信息科学知识平台 v4.0 · 三大领域 · 170+条 · 13个交互模型 · 40+家企业</p>
+  </footer>
+</div>
+
+<script>
+function switchPreview(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.preview-section').forEach(s => s.style.display = 'none');
+  const map = { eco:'section-eco', lab:'section-lab', kb:'section-kb', news:'section-kb', path:'section-path' };
+  const el = document.getElementById(map[tab]);
+  if (el) el.style.display = 'block';
+}
+
+function filterDomain(el) {
+  document.querySelectorAll('.domain-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ===== Animated Particle Network Background =====
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, particles;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    initParticles();
+  }
+
+  function initParticles() {
+    const count = Math.min(50, Math.floor(w / 30));
+    particles = [];
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        r: Math.random() * 1.2 + 0.4,
+        hue: Math.random() < 0.4 ? 260 : (Math.random() < 0.5 ? 215 : 190),
+        phase: Math.random() * Math.PI * 2,
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    // Connections
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dx = p.x - q.x, dy = p.y - q.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 110) {
+          const alpha = (1 - dist / 110) * 0.12;
+          ctx.strokeStyle = `hsla(${(p.hue + q.hue) / 2}, 65%, 55%, ${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Particles
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.phase += 0.02;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+      const glow = 0.4 + Math.sin(p.phase) * 0.2;
+      ctx.fillStyle = `hsla(${p.hue}, 60%, 55%, ${glow * 0.35})`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+</script>
+</body>
+</html>

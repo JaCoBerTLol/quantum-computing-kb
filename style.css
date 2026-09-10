@@ -352,3 +352,96 @@ body {
 .quantum-superpose-fill-0 { height: 100%; background: var(--accent-blue); transition: width 0.3s ease; }
 .quantum-superpose-fill-1 { height: 100%; background: var(--accent-pink); transition: width 0.3s ease; }
 .quantum-superpose-labels { display: flex; justify-content: space-between; width: 200px; font-size: 11px; color: var(--text-muted); }
+
+/* ===== Ecosystem / Company Comparison ===== */
+.eco-intro { text-align: center; margin-bottom: 28px; }
+.eco-title { font-size: 22px; font-weight: 700; background: linear-gradient(135deg, #6d3bea, #2563eb, #0891b2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
+.eco-desc { font-size: 14px; color: var(--text-secondary); }
+
+/* Domain Filter for Ecosystem */
+.eco-domain-filter { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+.eco-domain-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: #fff; border: 1.5px solid var(--border-color); border-radius: 100px; font-size: 13px; color: var(--text-secondary); cursor: pointer; transition: var(--transition); white-space: nowrap; box-shadow: var(--shadow-sm); }
+.eco-domain-pill:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-2px); }
+.eco-domain-pill.active { color: #fff; font-weight: 600; border-color: transparent; }
+.eco-domain-pill.all.active { background: #6d3bea; }
+.eco-domain-pill.qc.active { background: #6d3bea; }
+.eco-domain-pill.qt.active { background: #2563eb; }
+.eco-domain-pill.qm.active { background: #0891b2; }
+.eco-domain-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.eco-domain-dot.qc { background: #6d3bea; }
+.eco-domain-dot.qt { background: #2563eb; }
+.eco-domain-dot.qm { background: #0891b2; }
+.eco-domain-pill.active .eco-domain-dot { background: #fff; }
+
+/* Market Cards */
+.eco-market-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.eco-market-card { background: #fff; border: 1.5px solid var(--border-color); border-radius: var(--radius); padding: 18px; text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; overflow: hidden; }
+.eco-market-card.qc { border-top: 3px solid #6d3bea; }
+.eco-market-card.qt { border-top: 3px solid #2563eb; }
+.eco-market-card.qm { border-top: 3px solid #0891b2; }
+.eco-market-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.eco-market-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.3px; }
+.eco-market-value { font-family: "SF Mono", "Fira Code", "Courier New", monospace; font-size: 26px; font-weight: 700; letter-spacing: -1px; }
+.eco-market-card.qc .eco-market-value { color: #6d3bea; }
+.eco-market-card.qt .eco-market-value { color: #2563eb; }
+.eco-market-card.qm .eco-market-value { color: #0891b2; }
+.eco-market-unit { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+.eco-market-growth { font-size: 11px; color: #059669; margin-top: 4px; font-family: "SF Mono", "Fira Code", "Courier New", monospace; font-weight: 600; }
+
+/* Company Cards Grid */
+.eco-company-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 28px; }
+.eco-card { background: #fff; border: 1.5px solid var(--border-color); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; }
+.eco-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.eco-card.in-compare { border-color: #6d3bea; box-shadow: 0 0 0 2px rgba(109,59,234,0.15), var(--shadow-md); }
+.eco-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.eco-logo { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; font-family: "SF Mono", "Fira Code", "Courier New", monospace; }
+.eco-logo.qc { background: #f1edff; color: #6d3bea; border: 1px solid #d4c5f9; }
+.eco-logo.qt { background: #e8f0ff; color: #2563eb; border: 1px solid #c3d4f7; }
+.eco-logo.qm { background: #e0f7fb; color: #0891b2; border: 1px solid #b3e8f0; }
+.eco-name { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.eco-domain-tag { font-size: 10px; color: var(--text-muted); margin-top: 1px; letter-spacing: 0.3px; }
+.eco-info { display: flex; flex-wrap: wrap; gap: 6px; }
+.eco-tag { font-size: 10px; font-family: "SF Mono", "Fira Code", "Courier New", monospace; padding: 2px 8px; border-radius: 4px; background: #f4f6fb; color: var(--text-secondary); border: 1px solid var(--border-color); }
+.eco-desc { font-size: 12px; color: var(--text-secondary); margin-top: 10px; line-height: 1.6; }
+.eco-compare-btn { margin-top: 12px; width: 100%; padding: 7px 14px; background: linear-gradient(135deg, #6d3bea, #5b30c9); color: #fff; border: none; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 6px; }
+.eco-compare-btn:hover { box-shadow: 0 4px 14px rgba(109,59,234,0.25); transform: translateY(-1px); }
+.eco-compare-btn.in-compare { background: linear-gradient(135deg, #059669, #047857); }
+.eco-compare-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Comparison Module */
+.compare-section { background: #fff; border: 1.5px solid var(--border-color); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-md); margin-bottom: 20px; }
+.compare-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border-color); }
+.compare-title { font-size: 17px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+.compare-hint { font-size: 12px; color: var(--text-muted); }
+.compare-clear-btn { padding: 6px 14px; background: #fff; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 12px; color: var(--text-secondary); cursor: pointer; transition: var(--transition); }
+.compare-clear-btn:hover { border-color: #dc2626; color: #dc2626; }
+
+.compare-slots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.compare-slot { min-height: 200px; border: 2px dashed var(--border-color); border-radius: var(--radius); padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: var(--transition); position: relative; }
+.compare-slot.drag-over { border-color: #6d3bea; background: #f8f5ff; }
+.compare-slot.filled { border-style: solid; border-color: var(--border-hover); padding: 0; overflow: hidden; }
+.compare-slot-label { font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.compare-slot-label svg { opacity: 0.3; }
+.compare-slot-content { width: 100%; }
+
+/* Comparison Detail Table */
+.compare-detail { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 0; border-top: 1px solid var(--border-color); }
+.compare-detail-row { display: contents; }
+.compare-detail-cell { padding: 12px 16px; border-bottom: 1px solid var(--border-color); font-size: 13px; }
+.compare-detail-cell.label { background: #f8faff; font-weight: 600; color: var(--text-primary); }
+.compare-detail-cell.value { color: var(--text-secondary); }
+.compare-detail-row-header .compare-detail-cell { background: linear-gradient(135deg, rgba(109,59,234,0.06), rgba(37,99,235,0.06)); font-weight: 700; font-size: 15px; color: var(--text-primary); text-align: center; border-bottom: 2px solid var(--border-color); }
+.compare-domain-badge { display: inline-block; font-size: 10px; padding: 1px 8px; border-radius: 4px; margin-top: 4px; }
+.compare-domain-badge.qc { background: #f1edff; color: #6d3bea; }
+.compare-domain-badge.qt { background: #e8f0ff; color: #2563eb; }
+.compare-domain-badge.qm { background: #e0f7fb; color: #0891b2; }
+.compare-remove-btn { position: absolute; top: 8px; right: 8px; width: 24px; height: 24px; border-radius: 50%; border: none; background: rgba(0,0,0,0.05); color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); z-index: 2; }
+.compare-remove-btn:hover { background: #fee2e2; color: #dc2626; }
+
+/* Ecosystem responsive */
+@media (max-width: 640px) {
+  .eco-market-row { grid-template-columns: 1fr; }
+  .compare-slots { grid-template-columns: 1fr; }
+  .compare-detail { grid-template-columns: 80px 1fr 1fr; }
+  .compare-detail-cell { padding: 8px 10px; font-size: 12px; }
+}

@@ -13,6 +13,7 @@ const State = {
   bb84State: { bits: [], evePresent: false, stats: { sent: 0, errors: 0, matches: 0 } },
   matrixGate: "H",
   coinState: { flipping: false, totalFlips: 0, heads: 0, tails: 0 },
+  companies: [], ecoDomain: "all", compareSlots: [null, null],
 };
 
 const $ = (s) => document.querySelector(s);
@@ -141,6 +142,7 @@ async function init() {
   initBB84();
   initMatrixView();
   initQuantumCoin();
+  initEcosystem();
 }
 
 // ===== Categories =====
@@ -1045,6 +1047,188 @@ window.resetQuantumCoin = function() {
   if (result) result.textContent = "点击硬币，体验量子叠加态坍缩";
   if (stats) stats.innerHTML = `<span>总次数: <strong>0</strong></span><span>正面: <strong>0</strong></span><span>反面: <strong>0</strong></span>`;
 };
+
+// ===== Ecosystem / Company Comparison =====
+const domainMeta = {
+  qc: { name: "量子计算", color: "#6d3bea", light: "#f1edff" },
+  qt: { name: "量子通信", color: "#2563eb", light: "#e8f0ff" },
+  qm: { name: "量子精密测量", color: "#0891b2", light: "#e0f7fb" },
+};
+
+async function initEcosystem() {
+  try {
+    const res = await fetch("data/companies.json");
+    State.companies = await res.json();
+  } catch (e) {
+    State.companies = [];
+  }
+  renderEcoMarket();
+  renderEcoCompanies();
+  bindEcoEvents();
+  renderCompareSlots();
+}
+
+function renderEcoMarket() {
+  const c = $("#ecoMarketRow"); if (!c) return;
+  const markets = [
+    { domain: "qc", label: "量子计算 · 全球", value: "13.9", unit: " 亿USD", growth: "+28% YoY · 2025" },
+    { domain: "qt", label: "量子通信 · 中国", value: "138.6", unit: " 亿CNY", growth: "+24.7% YoY · 2025" },
+    { domain: "qm", label: "量子精密测量 · 全球", value: "19.3", unit: " 亿USD", growth: "+16% YoY · 2025" },
+  ];
+  c.innerHTML = markets.map(m => `
+    <div class="eco-market-card ${m.domain}">
+      <div class="eco-market-label">${m.label}</div>
+      <div class="eco-market-value">${m.value}<span class="eco-market-unit">${m.unit}</span></div>
+      <div class="eco-market-growth">${m.growth}</div>
+    </div>`).join("");
+}
+
+function renderEcoCompanies() {
+  const c = $("#ecoCompanyGrid"); if (!c) return;
+  const domain = State.ecoDomain;
+  const filtered = domain === "all" ? State.companies : State.companies.filter(c => c.domain === domain);
+  c.innerHTML = filtered.map((co, i) => {
+    const dm = domainMeta[co.domain];
+    const inCompare = State.compareSlots.includes(co.id);
+    const logoText = co.name.length <= 3 ? co.name : co.name.substring(0, 2);
+    const tags = [co.ticker, co.techRoute, co.keyProduct].filter(Boolean).slice(0, 3);
+    return `<div class="eco-card ${inCompare ? "in-compare" : ""}" data-id="${co.id}" style="animation-delay:${Math.min(i*0.04,0.4)}s">
+      <div class="eco-card-header">
+        <div class="eco-logo ${co.domain}">${logoText}</div>
+        <div>
+          <div class="eco-name">${co.name}</div>
+          <div class="eco-domain-tag">${dm.name} · ${co.country}</div>
+        </div>
+      </div>
+      <div class="eco-info">${tags.map(t => `<span class="eco-tag">${t}</span>`).join("")}</div>
+      <div class="eco-desc">${co.description}</div>
+      <button class="eco-compare-btn ${inCompare ? "in-compare" : ""}" onclick="toggleCompare('${co.id}')" ${inCompare && State.compareSlots.every(s => s) ? "disabled" : ""}>
+        ${inCompare ? "已加入对比" : "加入对比"}
+      </button>
+    </div>`;
+  }).join("");
+}
+
+function bindEcoEvents() {
+  const filter = $("#ecoDomainFilter");
+  if (filter) filter.addEventListener("click", (e) => {
+    const pill = e.target.closest(".eco-domain-pill");
+    if (!pill) return;
+    $$(".eco-domain-pill").forEach(p => p.classList.remove("active"));
+    pill.classList.add("active");
+    State.ecoDomain = pill.dataset.domain;
+    renderEcoCompanies();
+  });
+}
+
+window.toggleCompare = function(companyId) {
+  const slots = State.compareSlots;
+  const idx = slots.indexOf(companyId);
+  if (idx !== -1) {
+    slots[idx] = null;
+  } else {
+    const empty = slots.indexOf(null);
+    if (empty !== -1) {
+      slots[empty] = companyId;
+    } else {
+      slots[0] = companyId;
+    }
+  }
+  renderEcoCompanies();
+  renderCompareSlots();
+};
+
+window.clearCompare = function() {
+  State.compareSlots = [null, null];
+  renderEcoCompanies();
+  renderCompareSlots();
+};
+
+window.removeFromCompare = function(slotIdx) {
+  State.compareSlots[slotIdx] = null;
+  renderEcoCompanies();
+  renderCompareSlots();
+};
+
+function renderCompareSlots() {
+  const slots = State.compareSlots;
+  let hasBoth = true;
+  for (let i = 0; i < 2; i++) {
+    const slot = $(`#compareSlot${i + 1}`);
+    if (!slot) continue;
+    const companyId = slots[i];
+    if (companyId) {
+      const co = State.companies.find(c => c.id === companyId);
+      if (co) {
+        const dm = domainMeta[co.domain];
+        const logoText = co.name.length <= 3 ? co.name : co.name.substring(0, 2);
+        slot.classList.add("filled");
+        slot.innerHTML = `
+          <button class="compare-remove-btn" onclick="removeFromCompare(${i})">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M6 18L18 6"/></svg>
+          </button>
+          <div class="compare-slot-content" style="padding:16px;text-align:center">
+            <div class="eco-logo ${co.domain}" style="margin:0 auto 8px">${logoText}</div>
+            <div class="eco-name">${co.name}</div>
+            <span class="compare-domain-badge ${co.domain}">${dm.name}</span>
+          </div>`;
+      }
+    } else {
+      hasBoth = false;
+      slot.classList.remove("filled");
+      slot.innerHTML = `
+        <div class="compare-slot-label">
+          <svg viewBox="0 0 24 24" width="32" height="32"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+          <span>${i === 0 ? "左侧公司" : "右侧公司"}</span>
+        </div>`;
+    }
+  }
+  renderCompareDetail(hasBoth);
+}
+
+function renderCompareDetail(show) {
+  const c = $("#compareDetail");
+  if (!c) return;
+  if (!show || State.compareSlots.some(s => !s)) {
+    c.innerHTML = "";
+    return;
+  }
+  const [id1, id2] = State.compareSlots;
+  const co1 = State.companies.find(c => c.id === id1);
+  const co2 = State.companies.find(c => c.id === id2);
+  if (!co1 || !co2) { c.innerHTML = ""; return; }
+  const dm1 = domainMeta[co1.domain];
+  const dm2 = domainMeta[co2.domain];
+
+  const fields = [
+    { label: "领域", v1: dm1.name, v2: dm2.name },
+    { label: "国家/地区", v1: co1.country, v2: co2.country },
+    { label: "总部", v1: co1.hq, v2: co2.hq },
+    { label: "成立年份", v1: co1.founded, v2: co2.founded },
+    { label: "股票/融资", v1: co1.ticker, v2: co2.ticker },
+    { label: "市值/估值", v1: co1.marketCap, v2: co2.marketCap },
+    { label: "技术路线", v1: co1.techRoute, v2: co2.techRoute },
+    { label: "核心产品", v1: co1.keyProduct, v2: co2.keyProduct },
+    { label: "量子比特数", v1: co1.qubits || "—", v2: co2.qubits || "—" },
+    { label: "关键里程碑", v1: co1.milestones, v2: co2.milestones },
+    { label: "简介", v1: co1.description, v2: co2.description },
+  ];
+
+  c.innerHTML = `
+    <div class="compare-detail">
+      <div class="compare-detail-row compare-detail-row-header">
+        <div class="compare-detail-cell" style="background:#f8faff">对比项</div>
+        <div class="compare-detail-cell">${co1.name}<br><span class="compare-domain-badge ${co1.domain}">${dm1.name}</span></div>
+        <div class="compare-detail-cell">${co2.name}<br><span class="compare-domain-badge ${co2.domain}">${dm2.name}</span></div>
+      </div>
+      ${fields.map(f => `
+        <div class="compare-detail-row">
+          <div class="compare-detail-cell label">${f.label}</div>
+          <div class="compare-detail-cell value">${f.v1}</div>
+          <div class="compare-detail-cell value">${f.v2}</div>
+        </div>`).join("")}
+    </div>`;
+}
 
 // ===== Start =====
 init();

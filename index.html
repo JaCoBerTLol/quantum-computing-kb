@@ -58,7 +58,7 @@
           </defs>
         </svg>
       </div>
-      <p class="header-desc">知识库 · 交互实验室 · 行业资讯 · 发展时间线</p>
+      <p class="header-desc">知识库 · 交互实验室 · 产业生态 · 行业资讯 · 发展时间线</p>
     </header>
 
     <!-- ===== Tab Navigation ===== -->
@@ -70,6 +70,10 @@
       <button class="tab-btn" data-tab="lab">
         <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 2v6L4 20a2 2 0 002 2h12a2 2 0 002-2L15 8V2M9 2h6M9 14h6"/></svg>
         <span>交互实验室</span>
+      </button>
+      <button class="tab-btn" data-tab="ecosystem">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
+        <span>产业生态</span>
       </button>
       <button class="tab-btn" data-tab="news">
         <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0V6M18 14h.01M14 18V8M14 10l3-1M14 12l3-1"/></svg>
@@ -210,6 +214,52 @@
           </div>
           <div class="quantum-coin-section" id="quantumCoin"></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== Tab: 产业生态 ===== -->
+    <section class="tab-panel" id="panel-ecosystem">
+      <div class="eco-intro">
+        <h2 class="eco-title">产业生态</h2>
+        <p class="eco-desc">三大领域重点企业 · 市场规模 · 公司对比</p>
+      </div>
+
+      <div class="eco-market-row" id="ecoMarketRow"></div>
+
+      <div class="eco-domain-filter" id="ecoDomainFilter">
+        <button class="eco-domain-pill all active" data-domain="all"><span>全部领域</span></button>
+        <button class="eco-domain-pill qc" data-domain="qc"><span class="eco-domain-dot qc"></span><span>量子计算</span></button>
+        <button class="eco-domain-pill qt" data-domain="qt"><span class="eco-domain-dot qt"></span><span>量子通信</span></button>
+        <button class="eco-domain-pill qm" data-domain="qm"><span class="eco-domain-dot qm"></span><span>量子精密测量</span></button>
+      </div>
+
+      <div class="eco-company-grid" id="ecoCompanyGrid"></div>
+
+      <!-- Comparison Module -->
+      <div class="compare-section">
+        <div class="compare-header">
+          <div class="compare-title">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="none" stroke="#6d3bea" stroke-width="2" stroke-linecap="round" d="M9 3H5a2 2 0 00-2 2v4m0 6v4a2 2 0 002 2h4m6 0h4a2 2 0 002-2v-4m0-6V5a2 2 0 00-2-2h-4"/></svg>
+            公司对比
+          </div>
+          <button class="compare-clear-btn" id="compareClearBtn" onclick="clearCompare()">清空对比</button>
+        </div>
+        <p class="compare-hint">点击上方公司卡片中的「加入对比」按钮，选择两家公司进行横向比较</p>
+        <div class="compare-slots">
+          <div class="compare-slot" id="compareSlot1" data-slot="0">
+            <div class="compare-slot-label">
+              <svg viewBox="0 0 24 24" width="32" height="32"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              <span>左侧公司</span>
+            </div>
+          </div>
+          <div class="compare-slot" id="compareSlot2" data-slot="1">
+            <div class="compare-slot-label">
+              <svg viewBox="0 0 24 24" width="32" height="32"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              <span>右侧公司</span>
+            </div>
+          </div>
+        </div>
+        <div id="compareDetail"></div>
       </div>
     </section>
 
