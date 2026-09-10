@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>量子计算知识库 | Quantum Computing KB</title>
+  <meta name="description" content="量子计算知识库 — 涵盖基础原理、硬件技术路线、量子算法、软件工具、纠错容错、产业生态、应用场景与发展趋势">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-particles" id="particles"></div>
+
+  <div class="app">
+    <header class="header">
+      <div class="logo">
+        <svg viewBox="0 0 100 100" class="logo-icon">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="url(#g1)" stroke-width="2"/>
+          <ellipse cx="50" cy="50" rx="45" ry="18" fill="none" stroke="url(#g1)" stroke-width="1.5"/>
+          <ellipse cx="50" cy="50" rx="45" ry="18" fill="none" stroke="url(#g2)" stroke-width="1.5" transform="rotate(60 50 50)"/>
+          <ellipse cx="50" cy="50" rx="45" ry="18" fill="none" stroke="url(#g2)" stroke-width="1.5" transform="rotate(120 50 50)"/>
+          <circle cx="50" cy="50" r="6" fill="#a78bfa"/>
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#a78bfa"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#22d3ee"/>
+              <stop offset="100%" stop-color="#a78bfa"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text">
+          <h1>量子计算知识库</h1>
+          <p class="subtitle">Quantum Computing Knowledge Base</p>
+        </div>
+      </div>
+      <p class="header-desc">涵盖基础原理 · 硬件技术路线 · 量子算法 · 软件工具 · 纠错容错 · 产业生态 · 应用场景 · 发展趋势</p>
+    </header>
+
+    <section class="search-section">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22">
+          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="输入关键词搜索，如：量子比特、Shor算法、超导、纠错..." autocomplete="off">
+        <button class="clear-btn" id="clearBtn" style="display:none">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M6 18L18 6"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <nav class="categories" id="categories"></nav>
+
+    <div class="results-meta">
+      <span id="resultCount" class="result-count"></span>
+      <span class="last-updated" id="lastUpdated"></span>
+    </div>
+
+    <main class="results" id="results">
+      <div class="loading">
+        <div class="loader"></div>
+        <p>正在加载知识库...</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>量子计算知识库 · 共 <span id="totalEntries">0</span> 条知识 · 基于 HTML/CSS/JS 构建</p>
+      <p class="footer-note">可通过 GitHub Pages 免费部署，生成公开链接供任何人访问</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
