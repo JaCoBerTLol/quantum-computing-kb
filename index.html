@@ -126,6 +126,10 @@
             <span class="lab-icon">Q</span>
             <div><div class="lab-card-title">Bloch球可视化</div><div class="lab-card-sub">单量子比特态的几何表示</div></div>
           </div>
+          <div class="lab-card-desc">
+            <span class="desc-tag">核心概念</span><strong>量子态可视化</strong> — 用三维球体表示单量子比特的状态空间。<br>
+            点击 H/X/Y/Z/S 门按钮，观察态向量如何在球面上移动，直观理解量子门对状态的变换。球面顶端是 |0⟩，底端是 |1⟩，赤道上的点代表叠加态。
+          </div>
           <div class="bloch-wrapper" id="blochSphere"></div>
         </div>
 
@@ -134,6 +138,10 @@
           <div class="lab-card-header">
             <span class="lab-icon">C</span>
             <div><div class="lab-card-title">量子线路模拟器</div><div class="lab-card-sub">拖拽量子门构建线路</div></div>
+          </div>
+          <div class="lab-card-desc">
+            <span class="desc-tag">动手实验</span><strong>构建量子线路</strong> — 量子算法通过量子门序列执行。<br>
+            从左侧门库中拖拽或点击 H、X、Z、CNOT 等量子门放入线路，然后点击「运行」查看最终量子态的概率分布。这是理解量子算法工作原理的核心方式。
           </div>
           <div class="circuit-wrapper" id="circuitSim"></div>
         </div>
@@ -144,6 +152,10 @@
             <span class="lab-icon">E</span>
             <div><div class="lab-card-title">量子纠缠演示器</div><div class="lab-card-sub">Bell态测量与非局域关联</div></div>
           </div>
+          <div class="lab-card-desc">
+            <span class="desc-tag">核心概念</span><strong>量子纠缠</strong> — 爱因斯坦称之为「幽灵般的超距作用」。<br>
+            制备一对纠缠的 Bell 态后，测量其中一个量子比特会瞬间决定另一个的状态，无论它们相距多远。这是量子通信和量子计算的核心资源，也是量子力学最反直觉的特性之一。
+          </div>
           <div class="entangle-wrapper" id="entangleDemo"></div>
         </div>
 
@@ -152,6 +164,10 @@
           <div class="lab-card-header">
             <span class="lab-icon">W</span>
             <div><div class="lab-card-title">双缝实验模拟</div><div class="lab-card-sub">波粒二象性与叠加态</div></div>
+          </div>
+          <div class="lab-card-desc">
+            <span class="desc-tag">经典实验</span><strong>波粒二象性</strong> — 量子力学的核心实验，揭示了微观粒子的双重性质。<br>
+            发射粒子通过双缝，关闭「路径探测」时粒子表现出波动性形成干涉条纹；打开探测后粒子「选择」一条路径，干涉消失。这正是量子叠加态在宏观层面的直观体现。
           </div>
           <div class="slit-wrapper" id="slitExperiment"></div>
         </div>
@@ -162,6 +178,10 @@
             <span class="lab-icon">K</span>
             <div><div class="lab-card-title">BB84量子密钥分发</div><div class="lab-card-sub">量子通信安全协议演示</div></div>
           </div>
+          <div class="lab-card-desc">
+            <span class="desc-tag">应用协议</span><strong>量子密钥分发 (QKD)</strong> — 利用量子力学原理实现无条件安全的密钥交换。<br>
+            Alice 用随机基发送量子比特，Bob 用随机基测量。如果窃听者 Eve 介入，她的测量会引入可检测的错误率。这正是量子通信安全的物理基础。
+          </div>
           <div class="bb84-wrapper" id="bb84Demo"></div>
         </div>
 
@@ -171,7 +191,24 @@
             <span class="lab-icon">M</span>
             <div><div class="lab-card-title">量子门矩阵可视化</div><div class="lab-card-sub">查看门操作的数学本质</div></div>
           </div>
+          <div class="lab-card-desc">
+            <span class="desc-tag">数学本质</span><strong>酉矩阵</strong> — 量子门是作用在量子态上的酉变换，保持态向量长度不变。<br>
+            点击不同门按钮查看其矩阵表示。H 门创建叠加态，X 门翻转比特，CNOT 门实现两比特纠缠。理解矩阵是理解量子计算数学本质的关键。
+          </div>
           <div class="matrix-wrapper" id="matrixView"></div>
+        </div>
+
+        <!-- 量子掷骰子 -->
+        <div class="lab-card" id="lab-dice">
+          <div class="lab-card-header">
+            <span class="lab-icon">D</span>
+            <div><div class="lab-card-title">量子掷骰子</div><div class="lab-card-sub">趣味交互 · 叠加态坍缩</div></div>
+          </div>
+          <div class="lab-card-desc">
+            <span class="desc-tag">趣味体验</span><strong>量子随机数</strong> — 真正的随机性来自量子测量。<br>
+            点击硬币在「叠加态」和「确定态」之间切换。量子掷骰子利用量子叠加态的坍缩产生真随机数，这是量子计算最简单也最直观的应用。
+          </div>
+          <div class="quantum-coin-section" id="quantumCoin"></div>
         </div>
       </div>
     </section>

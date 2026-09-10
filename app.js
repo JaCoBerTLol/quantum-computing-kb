@@ -12,6 +12,7 @@ const State = {
   slitState: { particles: 0, detect: false, pattern: [] },
   bb84State: { bits: [], evePresent: false, stats: { sent: 0, errors: 0, matches: 0 } },
   matrixGate: "H",
+  coinState: { flipping: false, totalFlips: 0, heads: 0, tails: 0 },
 };
 
 const $ = (s) => document.querySelector(s);
@@ -139,6 +140,7 @@ async function init() {
   initSlitExperiment();
   initBB84();
   initMatrixView();
+  initQuantumCoin();
 }
 
 // ===== Categories =====
@@ -976,6 +978,73 @@ function renderTimeline() {
     </div>
   `).join("");
 }
+
+// ===== Quantum Coin (Dice) =====
+function initQuantumCoin() {
+  const c = $("#quantumCoin"); if (!c) return;
+  c.innerHTML = `
+    <div class="quantum-coin-box">
+      <div class="quantum-coin" id="coinBtn" onclick="flipQuantumCoin()" title="点击掷骰子">
+        ?
+      </div>
+      <div class="quantum-coin-result" id="coinResult">点击硬币，体验量子叠加态坍缩</div>
+      <div class="quantum-coin-stats" id="coinStats">
+        <span>总次数: <strong>0</strong></span>
+        <span>正面: <strong>0</strong></span>
+        <span>反面: <strong>0</strong></span>
+      </div>
+      <button class="gate-btn reset" onclick="resetQuantumCoin()" style="margin-top:8px">重置统计</button>
+    </div>`;
+}
+
+window.flipQuantumCoin = function() {
+  const coin = $("#coinBtn"); const result = $("#coinResult");
+  if (!coin || State.coinState.flipping) return;
+
+  State.coinState.flipping = true;
+  coin.classList.add("flipping");
+  coin.textContent = "?";
+
+  if (result) result.textContent = "叠加态中... 正在坍缩";
+
+  setTimeout(() => {
+    const isHeads = Math.random() < 0.5;
+    coin.classList.remove("flipping");
+
+    if (isHeads) {
+      coin.textContent = "正";
+      coin.style.background = "linear-gradient(135deg, #7c3aed, #6366f1)";
+      if (result) result.textContent = "测量结果：|0⟩ — 正面！量子态已坍缩";
+      State.coinState.heads++;
+    } else {
+      coin.textContent = "反";
+      coin.style.background = "linear-gradient(135deg, #0891b2, #2563eb)";
+      if (result) result.textContent = "测量结果：|1⟩ — 反面！量子态已坍缩";
+      State.coinState.tails++;
+    }
+
+    State.coinState.totalFlips++;
+    State.coinState.flipping = false;
+
+    const stats = $("#coinStats");
+    if (stats) {
+      const headsPct = State.coinState.totalFlips > 0 ? (State.coinState.heads / State.coinState.totalFlips * 100).toFixed(0) : 0;
+      stats.innerHTML = `
+        <span>总次数: <strong>${State.coinState.totalFlips}</strong></span>
+        <span>正面: <strong>${State.coinState.heads}</strong></span>
+        <span>反面: <strong>${State.coinState.tails}</strong></span>
+        <span>正面率: <strong>${headsPct}%</strong></span>`;
+    }
+  }, 600);
+};
+
+window.resetQuantumCoin = function() {
+  State.coinState = { flipping: false, totalFlips: 0, heads: 0, tails: 0 };
+  const coin = $("#coinBtn"); const result = $("#coinResult"); const stats = $("#coinStats");
+  if (coin) { coin.textContent = "?"; coin.style.background = "linear-gradient(135deg, #7c3aed, #6366f1)"; }
+  if (result) result.textContent = "点击硬币，体验量子叠加态坍缩";
+  if (stats) stats.innerHTML = `<span>总次数: <strong>0</strong></span><span>正面: <strong>0</strong></span><span>反面: <strong>0</strong></span>`;
+};
 
 // ===== Start =====
 init();
