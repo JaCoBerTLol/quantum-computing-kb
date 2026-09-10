@@ -1,0 +1,41 @@
+name: 量子计算行业资讯每日更新
+
+on:
+  schedule:
+    # 每天北京时间 8:00 执行 (UTC 0:00)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 支持手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install feedparser requests beautifulsoup4
+
+      - name: Run news scraper
+        run: python scripts/scrape_news.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add data/news-data.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: 每日量子计算行业资讯自动更新 $(date -u +%Y-%m-%d)"
+            git push
+          fi

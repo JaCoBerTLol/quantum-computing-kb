@@ -10,8 +10,10 @@
 </head>
 <body>
   <div class="bg-particles" id="particles"></div>
+  <div class="bg-grid"></div>
 
   <div class="app">
+    <!-- ===== Header ===== -->
     <header class="header">
       <div class="header-hero">
         <div class="atom-decoration">
@@ -43,7 +45,6 @@
           <p class="subtitle">Quantum Computing Knowledge Base</p>
         </div>
       </div>
-
       <div class="header-wave">
         <svg viewBox="0 0 500 30" preserveAspectRatio="none">
           <path class="wave-path" d="M0,15 Q62.5,0 125,15 T250,15 T375,15 T500,15" fill="none" stroke="url(#wave-grad)" stroke-width="2" stroke-linecap="round"/>
@@ -57,98 +58,159 @@
           </defs>
         </svg>
       </div>
-
-      <p class="header-desc">涵盖基础原理 · 硬件技术路线 · 量子算法 · 软件工具 · 纠错容错 · 产业生态 · 应用场景 · 发展趋势 · 行业热点 · 关键人物 · 术语表</p>
+      <p class="header-desc">知识库 · 交互实验室 · 行业资讯 · 发展时间线</p>
     </header>
 
-    <!-- ===== 搜索区 ===== -->
-    <section class="search-section">
-      <div class="search-box">
-        <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22">
-          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
-        <input type="text" id="searchInput" placeholder="输入关键词搜索，如：量子比特、Shor算法、龙头、超导、纠错..." autocomplete="off">
-        <button class="clear-btn" id="clearBtn" style="display:none">
-          <svg viewBox="0 0 24 24" width="18" height="18">
-            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M6 18L18 6"/>
+    <!-- ===== Tab Navigation ===== -->
+    <nav class="tab-bar" id="tabBar">
+      <button class="tab-btn active" data-tab="knowledge">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <span>知识库</span>
+      </button>
+      <button class="tab-btn" data-tab="lab">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 2v6L4 20a2 2 0 002 2h12a2 2 0 002-2L15 8V2M9 2h6M9 14h6"/></svg>
+        <span>交互实验室</span>
+      </button>
+      <button class="tab-btn" data-tab="news">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0V6M18 14h.01M14 18V8M14 10l3-1M14 12l3-1"/></svg>
+        <span>行业资讯</span>
+      </button>
+      <button class="tab-btn" data-tab="timeline">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span>发展时间线</span>
+      </button>
+      <div class="tab-indicator" id="tabIndicator"></div>
+    </nav>
+
+    <!-- ===== Tab: 知识库 ===== -->
+    <section class="tab-panel active" id="panel-knowledge">
+      <div class="search-section">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
-        </button>
-        <button class="random-btn" id="randomBtn" onclick="randomKnowledge()" title="随机推荐一条知识">
-          <svg viewBox="0 0 24 24" width="20" height="20">
-            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
-          </svg>
-        </button>
+          <input type="text" id="searchInput" placeholder="输入关键词搜索，如：量子比特、龙头、超导、纠错..." autocomplete="off">
+          <button class="clear-btn" id="clearBtn" style="display:none">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M6 18L18 6"/></svg>
+          </button>
+          <button class="random-btn" id="randomBtn" onclick="randomKnowledge()" title="随机推荐">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+          </button>
+        </div>
+        <div class="suggestions" id="suggestions" style="display:none"></div>
       </div>
-      <div class="suggestions" id="suggestions" style="display:none"></div>
+
+      <nav class="categories" id="categories"></nav>
+
+      <div class="results-meta">
+        <span id="resultCount" class="result-count"></span>
+        <span class="last-updated" id="lastUpdated"></span>
+      </div>
+
+      <main class="results" id="results">
+        <div class="loading"><div class="loader"></div><p>正在加载知识库...</p></div>
+      </main>
     </section>
 
-    <!-- ===== 热门资讯卡片 ===== -->
-    <section class="hot-news-section">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle;margin-right:6px">
-            <path fill="#ea580c" d="M12 23c0-4.5 3.5-9 8-9.5-1 6.5-4 10-8 9.5zM12 23c0-4.5-3.5-9-8-9.5 1 6.5 4 10 8 9.5zM12 23c0-6-2-11-6-14 2 5 0 9-3 11 0 3 2 5 9 3zM12 23c0-6 2-11 6-14-2 5 0 9 3 11 0 3-2 5-9 3z"/>
-          </svg>
-          行业热点
-        </h2>
-        <span class="section-subtitle">最新突破与行业动态</span>
+    <!-- ===== Tab: 交互实验室 ===== -->
+    <section class="tab-panel" id="panel-lab">
+      <div class="lab-intro">
+        <h2 class="lab-title">量子计算交互实验室</h2>
+        <p class="lab-desc">通过动手操作理解量子计算的核心理念 — 点击下方任意实验开始探索</p>
       </div>
-      <div class="hot-news-grid" id="hotNews"></div>
+
+      <div class="lab-grid">
+        <!-- Bloch球 -->
+        <div class="lab-card" id="lab-bloch">
+          <div class="lab-card-header">
+            <span class="lab-icon">Q</span>
+            <div><div class="lab-card-title">Bloch球可视化</div><div class="lab-card-sub">单量子比特态的几何表示</div></div>
+          </div>
+          <div class="bloch-wrapper" id="blochSphere"></div>
+        </div>
+
+        <!-- 量子线路模拟器 -->
+        <div class="lab-card" id="lab-circuit">
+          <div class="lab-card-header">
+            <span class="lab-icon">C</span>
+            <div><div class="lab-card-title">量子线路模拟器</div><div class="lab-card-sub">拖拽量子门构建线路</div></div>
+          </div>
+          <div class="circuit-wrapper" id="circuitSim"></div>
+        </div>
+
+        <!-- 量子纠缠演示 -->
+        <div class="lab-card" id="lab-entangle">
+          <div class="lab-card-header">
+            <span class="lab-icon">E</span>
+            <div><div class="lab-card-title">量子纠缠演示器</div><div class="lab-card-sub">Bell态测量与非局域关联</div></div>
+          </div>
+          <div class="entangle-wrapper" id="entangleDemo"></div>
+        </div>
+
+        <!-- 双缝实验 -->
+        <div class="lab-card" id="lab-slit">
+          <div class="lab-card-header">
+            <span class="lab-icon">W</span>
+            <div><div class="lab-card-title">双缝实验模拟</div><div class="lab-card-sub">波粒二象性与叠加态</div></div>
+          </div>
+          <div class="slit-wrapper" id="slitExperiment"></div>
+        </div>
+
+        <!-- BB84 QKD -->
+        <div class="lab-card" id="lab-bb84">
+          <div class="lab-card-header">
+            <span class="lab-icon">K</span>
+            <div><div class="lab-card-title">BB84量子密钥分发</div><div class="lab-card-sub">量子通信安全协议演示</div></div>
+          </div>
+          <div class="bb84-wrapper" id="bb84Demo"></div>
+        </div>
+
+        <!-- 量子门矩阵 -->
+        <div class="lab-card" id="lab-matrix">
+          <div class="lab-card-header">
+            <span class="lab-icon">M</span>
+            <div><div class="lab-card-title">量子门矩阵可视化</div><div class="lab-card-sub">查看门操作的数学本质</div></div>
+          </div>
+          <div class="matrix-wrapper" id="matrixView"></div>
+        </div>
+      </div>
     </section>
 
-    <!-- ===== 发展时间线 ===== -->
-    <section class="timeline-section">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle;margin-right:6px">
-            <path fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          量子计算发展历程
-        </h2>
+    <!-- ===== Tab: 行业资讯 ===== -->
+    <section class="tab-panel" id="panel-news">
+      <div class="news-header">
+        <div>
+          <h2 class="section-title-large">行业资讯</h2>
+          <p class="news-subtitle">量子计算最新突破与行业动态 · 每日自动更新</p>
+        </div>
+        <div class="news-update-badge" id="newsUpdateBadge">加载中...</div>
       </div>
-      <div class="timeline-nav">
-        <button class="timeline-nav-btn" id="timelinePrev">←</button>
-        <button class="timeline-nav-btn" id="timelineNext">→</button>
+
+      <div class="news-filter-bar" id="newsFilterBar">
+        <button class="news-filter-btn active" data-filter="latest">最新动态</button>
+        <button class="news-filter-btn" data-filter="breakthrough">技术突破</button>
+        <button class="news-filter-btn" data-filter="industry">产业投资</button>
+        <button class="news-filter-btn" data-filter="policy">政策战略</button>
+        <button class="news-filter-btn" data-filter="archive">重点存档</button>
       </div>
-      <div class="timeline-scroll" id="timelineScroll">
-        <div class="timeline-track" id="timeline"></div>
-      </div>
+
+      <div class="news-timeline" id="newsTimeline"></div>
     </section>
 
-    <!-- ===== Bloch球交互式可视化 ===== -->
-    <section class="bloch-section">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align:middle;margin-right:6px">
-            <circle cx="12" cy="12" r="10" fill="none" stroke="#7c3aed" stroke-width="2"/>
-            <ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#7c3aed" stroke-width="1.5" opacity="0.5"/>
-            <line x1="12" y1="2" x2="12" y2="22" stroke="#7c3aed" stroke-width="1.5" opacity="0.3"/>
-          </svg>
-          量子比特可视化 — Bloch球
-        </h2>
-        <span class="section-subtitle">点击量子门按钮观察态变化</span>
+    <!-- ===== Tab: 发展时间线 ===== -->
+    <section class="tab-panel" id="panel-timeline">
+      <div class="tl-intro">
+        <h2 class="section-title-large">量子计算发展历程</h2>
+        <p class="tl-subtitle">从理论构想到工程实现 · 1980 — 至今</p>
       </div>
-      <div class="bloch-wrapper" id="blochSphere"></div>
+      <div class="tl-era-bar" id="tlEraBar"></div>
+      <div class="tl-vertical" id="tlVertical"></div>
     </section>
 
-    <!-- ===== 分类导航 ===== -->
-    <nav class="categories" id="categories"></nav>
-
-    <div class="results-meta">
-      <span id="resultCount" class="result-count"></span>
-      <span class="last-updated" id="lastUpdated"></span>
-    </div>
-
-    <main class="results" id="results">
-      <div class="loading">
-        <div class="loader"></div>
-        <p>正在加载知识库...</p>
-      </div>
-    </main>
-
+    <!-- ===== Footer ===== -->
     <footer class="footer">
       <p>量子计算知识库 · 共 <span id="totalEntries">0</span> 条知识 · 基于 HTML/CSS/JS 构建</p>
-      <p class="footer-note">可通过 GitHub Pages 免费部署，生成公开链接供任何人访问</p>
+      <p class="footer-note">通过 GitHub Pages 免费部署 · 行业资讯由 GitHub Actions 每日自动更新</p>
     </footer>
   </div>
 

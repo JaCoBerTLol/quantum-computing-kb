@@ -1,0 +1,107 @@
+{
+  "lastUpdated": "2026-09-10",
+  "lastScraped": "",
+  "description": "量子计算行业资讯 — 每日自动更新",
+  "items": [
+    {
+      "id": "n001",
+      "title": "Google Willow芯片实现量子纠错below threshold里程碑",
+      "summary": "2024年12月Google发布105比特Willow芯片，首次证明增加量子比特数量时错误率反而下降，标志着量子纠错从理论走向工程可行。",
+      "date": "2024-12-09",
+      "category": "breakthrough",
+      "source": "Google Quantum AI",
+      "url": "https://blog.google/technology/research/google-willow-quantum-chip/",
+      "isKey": true
+    },
+    {
+      "id": "n002",
+      "title": "中国「九章四号」光量子计算系统发布",
+      "summary": "潘建伟团队发布「九章四号」光量子计算系统，在高斯玻色采样任务上持续保持国际领先，比特数和采样速率均大幅提升。",
+      "date": "2025-01-15",
+      "category": "breakthrough",
+      "source": "中国科学技术大学",
+      "url": "",
+      "isKey": true
+    },
+    {
+      "id": "n003",
+      "title": "本源量子「悟源3.0」504比特超导量子计算机上线",
+      "summary": "本源量子推出504比特超导量子计算机悟源3.0，中国首个超导量子计算云平台正式对外服务。",
+      "date": "2025-03-20",
+      "category": "industry",
+      "source": "本源量子",
+      "url": "",
+      "isKey": true
+    },
+    {
+      "id": "n004",
+      "title": "IBM发布Heron架构量子处理器与2026路线图",
+      "summary": "IBM推出新一代Heron架构量子处理器（156比特），改进纠错能力，并公布模块化扩展路线图向1000+逻辑比特迈进。",
+      "date": "2025-11-18",
+      "category": "breakthrough",
+      "source": "IBM Research",
+      "url": "https://www.ibm.com/quantum/roadmap",
+      "isKey": true
+    },
+    {
+      "id": "n005",
+      "title": "Atom Computing中性原子量子比特突破1180",
+      "summary": "Atom Computing实现1180个中性原子量子比特，创下当时量子比特数量纪录，中性原子路线受到广泛关注。",
+      "date": "2024-10-22",
+      "category": "breakthrough",
+      "source": "Atom Computing",
+      "url": "",
+      "isKey": false
+    },
+    {
+      "id": "n006",
+      "title": "中国「十五五」规划部署量子科技重大专项",
+      "summary": "中国「十五五」规划明确提出量子信息科技作为前沿领域重点部署，加大量子计算、量子通信、量子精密测量研发投入。",
+      "date": "2025-06-10",
+      "category": "policy",
+      "source": "新华社",
+      "url": "",
+      "isKey": true
+    },
+    {
+      "id": "n007",
+      "title": "NIST正式发布后量子密码标准FIPS 203/204/205",
+      "summary": "美国国家标准与技术研究院正式发布三套后量子密码标准，标志着抗量子密码正式进入商用部署阶段。",
+      "date": "2024-08-13",
+      "category": "policy",
+      "source": "NIST",
+      "url": "https://csrc.nist.gov/projects/post-quantum-cryptography",
+      "isKey": true
+    },
+    {
+      "id": "n008",
+      "title": "国盾量子设立15亿元量子科技专项基金",
+      "summary": "国盾量子宣布设立15亿元量子科技产业基金，覆盖量子计算硬件、软件、应用全产业链投资。",
+      "date": "2025-04-28",
+      "category": "industry",
+      "source": "国盾量子",
+      "url": "",
+      "isKey": false
+    },
+    {
+      "id": "n009",
+      "title": "Microsoft实现Majorana零模实验验证",
+      "summary": "微软与Quantum与学术合作团队宣布实现了拓扑量子比特的关键实验证据——Majorana零模的测量结果，为拓扑量子计算路线提供了重要支撑。",
+      "date": "2025-02-19",
+      "category": "breakthrough",
+      "source": "Microsoft Research",
+      "url": "",
+      "isKey": false
+    },
+    {
+      "id": "n010",
+      "title": "量子计算全球市场规模预计2030年突破80亿美元",
+      "summary": "多家市场研究机构上调量子计算市场预测，预计2030年全球市场规模达50-100亿美元，复合增长率约30-50%。",
+      "date": "2025-05-12",
+      "category": "industry",
+      "source": "McKinsey Quantum Computing Monitor",
+      "url": "",
+      "isKey": false
+    }
+  ]
+}

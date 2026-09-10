@@ -1,576 +1,316 @@
-// 量子计算知识库 — 搜索引擎与交互逻辑 v2.0
+// 量子计算知识库 v3.0 — 多分区交互平台
 const State = {
-  data: null,
-  entries: [],
-  categories: [],
-  activeCategory: "all",
-  activeColor: "#7c3aed",
-  query: "",
-  expandedIds: new Set(),
-  timelineScroll: 0,
+  data: null, entries: [], categories: [],
+  activeTab: "knowledge",
+  activeCategory: "all", activeColor: "#7c3aed",
+  query: "", expandedIds: new Set(),
+  newsData: null, newsFilter: "latest",
+  tlEra: "all",
+  blochState: { theta: 0, phi: 0 },
+  circuit: { qubits: 2, gates: [], cols: 8 },
+  entangleState: { prepared: false, measuredA: null, measuredB: null },
+  slitState: { particles: 0, detect: false, pattern: [] },
+  bb84State: { bits: [], evePresent: false, stats: { sent: 0, errors: 0, matches: 0 } },
+  matrixGate: "H",
 };
 
-const $ = (sel) => document.querySelector(sel);
-const $$ = (sel) => document.querySelectorAll(sel);
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
 
-// ===== 同义词映射表 =====
+// ===== 同义词映射 =====
 const synonymMap = {
-  "龙头": ["主要企业", "领先企业", "头部企业", "领军企业", "代表性企业"],
-  "老大": ["领先", "龙头", "主要", "代表"],
-  "国内": ["中国", "国产", "本土"],
-  "国际": ["全球", "海外", "世界", "国外"],
-  "区别": ["差异", "不同", "对比", "比较"],
-  "原理": ["概念", "基础", "基本", "是什么"],
-  "怎么实现": ["如何实现", "实现方式", "技术路线"],
-  "什么时候": ["时间", "预期", "路线图", "未来"],
-  "多少钱": ["投资", "成本", "融资", "市场规模"],
-  "哪家强": ["比较", "对比", "竞争", "排名"],
-  "前景": ["趋势", "未来", "展望", "发展"],
-  "用途": ["应用", "场景", "使用"],
-  "缺点": ["挑战", "瓶颈", "限制", "问题", "困难"],
-  "优点": ["优势", "好处", "特点"],
-  "入门": ["基础", "初学", "开始"],
-  "最新": ["热点", "新闻", "突破", "新进展"],
-  "进展": ["突破", "最新", "动态", "现状"],
-  "量子计算机": ["量子计算", "量子比特", "量子硬件"],
-  "速度": ["加速", "效率", "性能"],
-  "安全": ["密码", "加密", "安全"],
-  "龙头老大": ["主要企业", "领先企业", "领军企业"],
-  "商业": ["产业化", "商业化", "市场"],
-  "投资": ["融资", "市场", "规模"],
+  "龙头": ["主要企业","领先企业","头部企业","领军企业","代表性企业"],
+  "老大": ["领先","龙头","主要","代表"],
+  "国内": ["中国","国产","本土"],
+  "国际": ["全球","海外","世界","国外"],
+  "区别": ["差异","不同","对比","比较"],
+  "原理": ["概念","基础","基本","是什么"],
+  "怎么实现": ["如何实现","实现方式","技术路线"],
+  "什么时候": ["时间","预期","路线图","未来"],
+  "多少钱": ["投资","成本","融资","市场规模"],
+  "哪家强": ["比较","对比","竞争","排名"],
+  "前景": ["趋势","未来","展望","发展"],
+  "用途": ["应用","场景","使用"],
+  "缺点": ["挑战","瓶颈","限制","问题","困难"],
+  "优点": ["优势","好处","特点"],
+  "入门": ["基础","初学","开始"],
+  "最新": ["热点","新闻","突破","新进展"],
+  "进展": ["突破","最新","动态","现状"],
+  "量子计算机": ["量子计算","量子比特","量子硬件"],
+  "速度": ["加速","效率","性能"],
+  "安全": ["密码","加密","安全"],
+  "龙头老大": ["主要企业","领先企业","领军企业"],
+  "商业": ["产业化","商业化","市场"],
+  "投资": ["融资","市场","规模"],
 };
-
-// 反向映射：自动生成
 const reverseSynonymMap = {};
-for (const [key, values] of Object.entries(synonymMap)) {
-  for (const val of values) {
-    if (!reverseSynonymMap[val]) reverseSynonymMap[val] = [];
-    reverseSynonymMap[val].push(key);
-  }
-}
+for (const [k, vs] of Object.entries(synonymMap)) { for (const v of vs) { (reverseSynonymMap[v] = reverseSynonymMap[v]||[]).push(k); } }
 
-// ===== 模糊匹配：Levenshtein距离 =====
+// ===== Levenshtein =====
 function levenshtein(a, b) {
-  const m = a.length, n = b.length;
-  const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
-  for (let i = 0; i <= m; i++) dp[i][0] = i;
-  for (let j = 0; j <= n; j++) dp[0][j] = j;
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      dp[i][j] = a[i-1] === b[j-1]
-        ? dp[i-1][j-1]
-        : Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1;
-    }
-  }
+  const m=a.length, n=b.length, dp=Array(m+1).fill(0).map(()=>Array(n+1).fill(0));
+  for (let i=0;i<=m;i++) dp[i][0]=i; for (let j=0;j<=n;j++) dp[0][j]=j;
+  for (let i=1;i<=m;i++) for (let j=1;j<=n;j++) dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1;
   return dp[m][n];
 }
+function similarity(a,b) { const m=Math.max(a.length,b.length); return m===0?1:1-levenshtein(a,b)/m; }
 
-function similarity(a, b) {
-  const maxLen = Math.max(a.length, b.length);
-  if (maxLen === 0) return 1;
-  return 1 - levenshtein(a, b) / maxLen;
-}
-
-// ===== 关键词扩展 =====
 function expandKeyword(kw) {
-  const lower = kw.toLowerCase();
-  const expansions = new Set([lower]);
-
-  // 同义词映射
-  for (const [key, values] of Object.entries(synonymMap)) {
-    if (lower.includes(key) || key.includes(lower)) {
-      values.forEach(v => expansions.add(v.toLowerCase()));
-    }
-  }
-
-  // 反向映射
-  for (const [key, values] of Object.entries(reverseSynonymMap)) {
-    if (lower.includes(key) || key.includes(lower)) {
-      values.forEach(v => expansions.add(v.toLowerCase()));
-    }
-  }
-
-  // 英文常见缩写
-  const abbrMap = {
-    "qubit": ["量子比特"],
-    "量子比特": ["qubit"],
-    "qc": ["量子计算", "quantum computing"],
-    "ai": ["人工智能", "机器学习"],
-    "ml": ["机器学习"],
-    "rsa": ["rsa加密", "非对称加密"],
-    "nisq": ["噪声中等规模量子"],
-  };
-  for (const [key, values] of Object.entries(abbrMap)) {
-    if (lower === key || lower.includes(key)) {
-      values.forEach(v => expansions.add(v.toLowerCase()));
-    }
-  }
-
-  return [...expansions];
+  const l = kw.toLowerCase(); const ex = new Set([l]);
+  for (const [k,vs] of Object.entries(synonymMap)) { if (l.includes(k)||k.includes(l)) vs.forEach(v=>ex.add(v.toLowerCase())); }
+  for (const [k,vs] of Object.entries(reverseSynonymMap)) { if (l.includes(k)||k.includes(l)) vs.forEach(v=>ex.add(v.toLowerCase())); }
+  const abbr = {"qubit":["量子比特"],"量子比特":["qubit"],"qc":["量子计算"],"ai":["人工智能"],"rsa":["rsa加密"],"nisq":["噪声中等规模量子"]};
+  for (const [k,vs] of Object.entries(abbr)) { if (l===k||l.includes(k)) vs.forEach(v=>ex.add(v.toLowerCase())); }
+  return [...ex];
 }
 
-// ===== 粒子背景 =====
+// ===== 粒子 =====
 function createParticles() {
-  const container = document.getElementById("particles");
-  if (!container) return;
-  const colors = ["#7c3aed", "#2563eb", "#0891b2", "#a78bfa", "#22d3ee"];
-  for (let i = 0; i < 20; i++) {
-    const p = document.createElement("div");
-    p.className = "particle";
-    const size = Math.random() * 4 + 2;
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    p.style.cssText = `
-      width:${size}px;height:${size}px;
-      background:${color};
-      left:${Math.random() * 100}%;
-      opacity:${Math.random() * 0.15 + 0.05};
-      animation-duration:${Math.random() * 20 + 15}s;
-      animation-delay:${Math.random() * 20}s;
-    `;
-    container.appendChild(p);
+  const c = $("#particles"); if (!c) return;
+  const colors = ["#7c3aed","#2563eb","#0891b2","#a78bfa","#22d3ee"];
+  for (let i=0;i<20;i++) { const p=document.createElement("div"); p.className="particle";
+    const s=Math.random()*4+2, cl=colors[Math.floor(Math.random()*colors.length)];
+    p.style.cssText=`width:${s}px;height:${s}px;background:${cl};left:${Math.random()*100}%;opacity:${Math.random()*0.15+0.05};animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*20}s;`;
+    c.appendChild(p);
   }
 }
 
-// ===== 初始化 =====
+// ===== Tab Logic =====
+function initTabs() {
+  const tabBar = $("#tabBar"); if (!tabBar) return;
+  const indicator = $("#tabIndicator");
+  const tabs = $$(".tab-btn");
+
+  function updateIndicator() {
+    const active = $(".tab-btn.active");
+    if (!active || !indicator) return;
+    const rect = active.getBoundingClientRect();
+    const barRect = tabBar.getBoundingClientRect();
+    indicator.style.left = (rect.left - barRect.left) + "px";
+    indicator.style.width = rect.width + "px";
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      const target = tab.dataset.tab;
+      State.activeTab = target;
+      $$(".tab-panel").forEach(p => p.classList.remove("active"));
+      $("#panel-" + target).classList.add("active");
+      updateIndicator();
+    });
+  });
+
+  setTimeout(updateIndicator, 50);
+  window.addEventListener("resize", updateIndicator);
+}
+
+// ===== Init =====
 async function init() {
   createParticles();
+  initTabs();
 
   try {
     const res = await fetch("data/knowledge-base.json");
     State.data = await res.json();
     State.entries = State.data.entries;
     State.categories = State.data.categories;
-
     $("#totalEntries").textContent = State.entries.length;
     $("#lastUpdated").textContent = `最后更新：${State.data.lastUpdated}`;
-
-    renderCategories();
-    renderResults(State.entries);
-    renderTimeline();
-    renderHotNews();
-    renderBlochSphere();
-
-    bindEvents();
+    renderCategories(); renderResults(State.entries); bindEvents();
   } catch (err) {
-    $("#results").innerHTML = `
-      <div class="empty-state">
-        <p>知识库加载失败</p>
-        <p class="hint">请确保通过 HTTP 服务器访问（如 python -m http.server），直接打开 HTML 文件无法加载 JSON</p>
-      </div>`;
+    $("#results").innerHTML = `<div class="empty-state"><p>知识库加载失败</p><p class="hint">请通过 HTTP 服务器访问</p></div>`;
   }
+
+  // Load news
+  try {
+    const newsRes = await fetch("data/news-data.json");
+    State.newsData = await newsRes.json();
+    renderNews();
+  } catch (e) {
+    renderNewsFallback();
+  }
+
+  renderTimeline();
+  initBlochSphere();
+  initCircuitSim();
+  initEntangleDemo();
+  initSlitExperiment();
+  initBB84();
+  initMatrixView();
 }
 
-// ===== 分类导航 =====
+// ===== Categories =====
 function renderCategories() {
-  const container = $("#categories");
-  const allCount = State.entries.length;
-
-  let html = `
-    <button class="cat-pill active" data-cat="all" data-color="#7c3aed" style="background:#7c3aed;border-color:#7c3aed">
-      <span class="cat-dot" style="background:#fff"></span>
-      全部 <span class="cat-count">${allCount}</span>
-    </button>`;
-
+  const c = $("#categories"); if (!c) return;
+  let html = `<button class="cat-pill active" data-cat="all" data-color="#7c3aed" style="background:#7c3aed;border-color:#7c3aed"><span class="cat-dot" style="background:#fff"></span>全部 <span class="cat-count">${State.entries.length}</span></button>`;
   for (const cat of State.categories) {
-    const count = State.entries.filter((e) => e.category === cat.id).length;
-    html += `
-      <button class="cat-pill" data-cat="${cat.id}" data-color="${cat.color}">
-        <span class="cat-dot" style="background:${cat.color}"></span>
-        ${cat.name} <span class="cat-count">${count}</span>
-      </button>`;
+    const n = State.entries.filter(e=>e.category===cat.id).length;
+    html += `<button class="cat-pill" data-cat="${cat.id}" data-color="${cat.color}"><span class="cat-dot" style="background:${cat.color}"></span>${cat.name} <span class="cat-count">${n}</span></button>`;
   }
-
-  container.innerHTML = html;
+  c.innerHTML = html;
 }
 
-// ===== 搜索核心（同义词+模糊匹配） =====
+// ===== Search =====
 function search(query, entries) {
-  const keywords = query
-    .trim()
-    .split(/\s+/)
-    .filter((k) => k.length > 0);
-
-  if (keywords.length === 0) return entries;
-
-  // 展开所有关键词（含同义词）
-  const expandedKeywords = keywords.flatMap(k => expandKeyword(k));
-  const lowerExpanded = expandedKeywords.map(k => k.toLowerCase());
-
-  const scored = entries
-    .map((entry) => {
-      let score = 0;
-      const q = entry.question.toLowerCase();
-      const a = entry.answer.toLowerCase();
-      const t = (entry.tags || []).join(" ").toLowerCase();
-      const sub = (entry.subcategory || "").toLowerCase();
-
-      for (const kw of lowerExpanded) {
-        // 精确包含匹配
-        if (q.includes(kw)) score += 3;
-        if (sub.includes(kw)) score += 2;
-        if (t.includes(kw)) score += 2;
-        if (a.includes(kw)) score += 1;
-
-        // 模糊匹配（similarity > 0.7 且长度 > 2）
-        if (kw.length > 2) {
-          const words = q.split(/[\s,，。？（）()·、]+/);
-          for (const w of words) {
-            if (w.length > 1 && w !== kw && !w.includes(kw) && !kw.includes(w)) {
-              const sim = similarity(kw, w);
-              if (sim > 0.75) score += 1.5;
-            }
-          }
-        }
-      }
-      return { entry, score };
-    })
-    .filter((x) => x.score > 0)
-    .sort((a, b) => b.score - a.score);
-
-  return scored.map((x) => x.entry);
+  const kws = query.trim().split(/\s+/).filter(k=>k.length>0);
+  if (kws.length===0) return entries;
+  const expanded = kws.flatMap(k=>expandKeyword(k)).map(k=>k.toLowerCase());
+  const scored = entries.map(e => {
+    let s=0; const q=e.question.toLowerCase(), a=e.answer.toLowerCase(), t=(e.tags||[]).join(" ").toLowerCase(), sub=(e.subcategory||"").toLowerCase();
+    for (const kw of expanded) {
+      if (q.includes(kw)) s+=3; if (sub.includes(kw)) s+=2; if (t.includes(kw)) s+=2; if (a.includes(kw)) s+=1;
+      if (kw.length>2) { const ws=q.split(/[\s,，。？（）()·、]+/); for (const w of ws) { if (w.length>1&&w!==kw&&!w.includes(kw)&&!kw.includes(w)) { const sim=similarity(kw,w); if (sim>0.75) s+=1.5; } } }
+    }
+    return {entry:e, score:s};
+  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
+  return scored.map(x=>x.entry);
 }
 
-// ===== 搜索建议 =====
 function getSearchSuggestions(query) {
   if (!query.trim()) return [];
-
-  const q = query.trim().toLowerCase();
-  const suggestions = new Set();
-
-  // 从问题中提取关键词
-  for (const entry of State.entries) {
-    const questionLower = entry.question.toLowerCase();
-    // 完整问题匹配
-    if (questionLower.includes(q)) {
-      suggestions.add(entry.question);
-    }
-  }
-
-  // 同义词建议
-  for (const [key, values] of Object.entries(synonymMap)) {
-    if (key.includes(q) || q.includes(key)) {
-      values.forEach(v => {
-        // 找包含该同义词的问题
-        for (const entry of State.entries) {
-          if (entry.question.toLowerCase().includes(v.toLowerCase())) {
-            suggestions.add(entry.question);
-          }
-        }
-      });
-    }
-  }
-
-  // tag建议
-  for (const entry of State.entries) {
-    for (const tag of (entry.tags || [])) {
-      if (tag.toLowerCase().includes(q)) {
-        suggestions.add(tag);
-      }
-    }
-  }
-
-  return [...suggestions].slice(0, 6);
+  const q = query.trim().toLowerCase(); const s = new Set();
+  for (const e of State.entries) { if (e.question.toLowerCase().includes(q)) s.add(e.question); }
+  for (const [k,vs] of Object.entries(synonymMap)) { if (k.includes(q)||q.includes(k)) { vs.forEach(v=>{ for (const e of State.entries) { if (e.question.toLowerCase().includes(v.toLowerCase())) s.add(e.question); } }); } }
+  for (const e of State.entries) { for (const t of (e.tags||[])) { if (t.toLowerCase().includes(q)) s.add(t); } }
+  return [...s].slice(0,6);
 }
 
-// ===== 相关推荐 =====
-function getRelatedEntries(entry, allEntries) {
-  const entryTags = new Set((entry.tags || []).map(t => t.toLowerCase()));
-  const entryCat = entry.category;
-
-  const scored = allEntries
-    .filter(e => e.id !== entry.id)
-    .map(e => {
-      let score = 0;
-      if (e.category === entryCat) score += 2;
-      const sharedTags = (e.tags || []).filter(t => entryTags.has(t.toLowerCase()));
-      score += sharedTags.length;
-      return { entry: e, score };
-    })
-    .filter(x => x.score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3);
-
-  return scored.map(x => x.entry);
+function getRelated(entry, all) {
+  const tags = new Set((entry.tags||[]).map(t=>t.toLowerCase())); const cat = entry.category;
+  return all.filter(e=>e.id!==entry.id).map(e=>{
+    let s=0; if (e.category===cat) s+=2;
+    const shared=(e.tags||[]).filter(t=>tags.has(t.toLowerCase())); s+=shared.length;
+    return {entry:e,score:s};
+  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3).map(x=>x.entry);
 }
 
-// ===== 渲染结果 =====
+// ===== Render Results =====
 function renderResults(entries) {
-  const container = $("#results");
-
-  if (entries.length === 0) {
-    container.innerHTML = `
-      <div class="empty-state">
-        <svg viewBox="0 0 24 24" width="48" height="48" style="opacity:0.3">
-          <path fill="none" stroke="currentColor" stroke-width="1.5" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
-        <p>未找到匹配的知识条目</p>
-        <p class="hint">试试其他关键词，或选择「全部」分类查看所有内容</p>
-      </div>`;
-    return;
-  }
-
-  const kw = State.query.trim().split(/\s+/).filter((k) => k.length > 0);
-  const expandedKw = kw.length > 0 ? kw.flatMap(k => expandKeyword(k)) : [];
-
-  container.innerHTML = entries
-    .map((entry, i) => {
-      const cat = State.categories.find((c) => c.id === entry.category);
-      const catName = cat ? cat.name : "";
-      const catColor = cat ? cat.color : "#7c3aed";
-      const isExpanded = State.expandedIds.has(entry.id);
-
-      const highlightKws = expandedKw.length > 0 ? expandedKw : kw;
-      const question = highlightKws.length > 0 ? highlightText(entry.question, highlightKws) : entry.question;
-      const answer = highlightKws.length > 0 ? highlightText(entry.answer, highlightKws) : entry.answer;
-
-      const tags = (entry.tags || [])
-        .map((t) => `<span class="tag">${t}</span>`)
-        .join("");
-
-      const related = isExpanded ? getRelatedEntries(entry, State.entries) : [];
-
-      const relatedHtml = related.length > 0
-        ? `<div class="related-section">
-            <div class="related-title">相关推荐</div>
-            <div class="related-list">
-              ${related.map(r => {
-                const rCat = State.categories.find(c => c.id === r.category);
-                const rColor = rCat ? rCat.color : "#7c3aed";
-                return `<div class="related-item" onclick="jumpToEntry('${r.id}')">
-                  <span class="related-dot" style="background:${rColor}"></span>
-                  <span>${r.question}</span>
-                </div>`;
-              }).join("")}
-            </div>
-          </div>`
-        : "";
-
-      return `
-        <div class="entry-card ${isExpanded ? "expanded" : ""}" data-id="${entry.id}" style="animation-delay:${Math.min(i * 0.05, 0.5)}s">
-          <div class="entry-header" onclick="toggleEntry('${entry.id}')">
-            <span class="entry-badge" style="background:${catColor}1a;color:${catColor};border:1px solid ${catColor}33">
-              ${catName}
-            </span>
-            <div class="entry-body">
-              <div class="entry-question">${question}</div>
-              <div class="entry-subcategory">${entry.subcategory || ""}</div>
-            </div>
-            <svg class="entry-arrow" viewBox="0 0 24 24" width="20" height="20">
-              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 9l6 6 6-6"/>
-            </svg>
-          </div>
-          <div class="entry-answer">
-            <div class="entry-answer-inner">
-              ${answer}
-              <div class="entry-tags">${tags}</div>
-              ${relatedHtml}
-            </div>
-          </div>
-        </div>`;
-    })
-    .join("");
-
+  const c = $("#results"); if (!c) return;
+  if (entries.length===0) { c.innerHTML=`<div class="empty-state"><svg viewBox="0 0 24 24" width="48" height="48" style="opacity:0.3"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><p>未找到匹配的知识条目</p><p class="hint">试试其他关键词，或选择「全部」分类</p></div>`; return; }
+  const kw = State.query.trim().split(/\s+/).filter(k=>k.length>0);
+  const eKw = kw.length>0 ? kw.flatMap(k=>expandKeyword(k)) : [];
+  c.innerHTML = entries.map((e,i) => {
+    const cat = State.categories.find(c=>c.id===e.category); const cn = cat?cat.name:""; const cc = cat?cat.color:"#7c3aed";
+    const exp = State.expandedIds.has(e.id);
+    const hkw = eKw.length>0 ? eKw : kw;
+    const q = hkw.length>0 ? highlight(e.question, hkw) : e.question;
+    const a = hkw.length>0 ? highlight(e.answer, hkw) : e.answer;
+    const tags = (e.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("");
+    const rel = exp ? getRelated(e, State.entries) : [];
+    const rh = rel.length>0 ? `<div class="related-section"><div class="related-title">+ 相关推荐</div><div class="related-list">${rel.map(r=>{const rc=State.categories.find(c=>c.id===r.category);const rcc=rc?rc.color:"#7c3aed";return `<div class="related-item" onclick="jumpToEntry('${r.id}')"><span class="related-dot" style="background:${rcc}"></span><span>${r.question}</span></div>`;}).join("")}</div></div>`:"";
+    return `<div class="entry-card ${exp?"expanded":""}" data-id="${e.id}" style="animation-delay:${Math.min(i*0.05,0.5)}s"><div class="entry-header" onclick="toggleEntry('${e.id}')"><span class="entry-badge" style="background:${cc}1a;color:${cc};border:1px solid ${cc}33">${cn}</span><div class="entry-body"><div class="entry-question">${q}</div><div class="entry-subcategory">${e.subcategory||""}</div></div><svg class="entry-arrow" viewBox="0 0 24 24" width="20" height="20"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 9l6 6 6-6"/></svg></div><div class="entry-answer"><div class="entry-answer-inner">${a}<div class="entry-tags">${tags}</div>${rh}</div></div></div>`;
+  }).join("");
   $("#resultCount").innerHTML = `<strong>${entries.length}</strong> 条结果`;
 }
 
-// ===== 跳转到条目 =====
+function highlight(text, kws) {
+  let r = text; const sorted = [...new Set(kws)].sort((a,b)=>b.length-a.length);
+  for (const k of sorted) { if (k.length<1) continue; const e=k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); r=r.replace(new RegExp(`(${e})`,"gi"),'<span class="highlight">$1</span>'); }
+  return r;
+}
+
+window.toggleEntry = function(id) {
+  const card = document.querySelector(`.entry-card[data-id="${id}"]`); if (!card) return;
+  if (State.expandedIds.has(id)) { State.expandedIds.delete(id); card.classList.remove("expanded"); }
+  else { State.expandedIds.add(id); updateResults(); }
+};
+
 window.jumpToEntry = function(id) {
-  const entry = State.entries.find(e => e.id === id);
-  if (!entry) return;
-
-  // 清除搜索，切换到对应分类
-  $("#searchInput").value = "";
-  State.query = "";
-  $("#clearBtn").style.display = "none";
-
-  // 切换分类
-  document.querySelectorAll(".cat-pill").forEach((p) => {
-    p.classList.remove("active");
-    p.style.background = "";
-    p.style.borderColor = "";
-    const dot = p.querySelector(".cat-dot");
-    if (dot) dot.style.background = p.dataset.color;
-  });
-  const targetPill = document.querySelector(`.cat-pill[data-cat="${entry.category}"]`);
-  if (targetPill) {
-    targetPill.classList.add("active");
-    const color = targetPill.dataset.color || "#7c3aed";
-    targetPill.style.background = color;
-    targetPill.style.borderColor = color;
-    const dot = targetPill.querySelector(".cat-dot");
-    if (dot) dot.style.background = "#fff";
-  }
-  State.activeCategory = entry.category;
-
-  State.expandedIds.clear();
-  State.expandedIds.add(id);
-  updateResults();
-
-  setTimeout(() => {
-    const card = document.querySelector(`.entry-card[data-id="${id}"]`);
-    if (card) {
-      card.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }, 100);
+  const e = State.entries.find(x=>x.id===id); if (!e) return;
+  $("#searchInput").value=""; State.query=""; $("#clearBtn").style.display="none"; $("#suggestions").style.display="none";
+  $$(".cat-pill").forEach(p=>{p.classList.remove("active");p.style.background="";p.style.borderColor="";const d=p.querySelector(".cat-dot");if(d)d.style.background=p.dataset.color;});
+  const tp=document.querySelector(`.cat-pill[data-cat="${e.category}"]`);
+  if (tp) { tp.classList.add("active"); const c=tp.dataset.color||"#7c3aed"; tp.style.background=c; tp.style.borderColor=c; const d=tp.querySelector(".cat-dot"); if(d) d.style.background="#fff"; }
+  State.activeCategory=e.category; State.expandedIds.clear(); State.expandedIds.add(id); updateResults();
+  setTimeout(()=>{ const c=document.querySelector(`.entry-card[data-id="${id}"]`); if (c) c.scrollIntoView({behavior:"smooth",block:"center"}); },100);
 };
 
-// ===== 高亮关键词 =====
-function highlightText(text, keywords) {
-  let result = text;
-  const sorted = [...new Set(keywords)].sort((a, b) => b.length - a.length);
-  for (const kw of sorted) {
-    if (kw.length < 1) continue;
-    const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const regex = new RegExp(`(${escaped})`, "gi");
-    result = result.replace(regex, '<span class="highlight">$1</span>');
-  }
-  return result;
-}
-
-// ===== 展开/折叠 =====
-window.toggleEntry = function (id) {
-  const card = document.querySelector(`.entry-card[data-id="${id}"]`);
-  if (!card) return;
-
-  if (State.expandedIds.has(id)) {
-    State.expandedIds.delete(id);
-    card.classList.remove("expanded");
-  } else {
-    State.expandedIds.add(id);
-    card.classList.add("expanded");
-    // 重新渲染以加载相关推荐
-    updateResults();
-  }
-};
-
-// ===== 随机知识 =====
 window.randomKnowledge = function() {
-  const random = State.entries[Math.floor(Math.random() * State.entries.length)];
-
-  // 清除搜索和分类
-  $("#searchInput").value = "";
-  State.query = "";
-  $("#clearBtn").style.display = "none";
-
-  document.querySelectorAll(".cat-pill").forEach((p) => {
-    p.classList.remove("active");
-    p.style.background = "";
-    p.style.borderColor = "";
-    const dot = p.querySelector(".cat-dot");
-    if (dot) dot.style.background = p.dataset.color;
-  });
-  const allPill = document.querySelector('.cat-pill[data-cat="all"]');
-  if (allPill) {
-    allPill.classList.add("active");
-    allPill.style.background = "#7c3aed";
-    allPill.style.borderColor = "#7c3aed";
-    const dot = allPill.querySelector(".cat-dot");
-    if (dot) dot.style.background = "#fff";
-  }
-  State.activeCategory = "all";
-
-  State.expandedIds.clear();
-  State.expandedIds.add(random.id);
-
-  renderResults([random]);
-
-  setTimeout(() => {
-    const card = document.querySelector(`.entry-card[data-id="${random.id}"]`);
-    if (card) {
-      card.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }, 100);
+  const r = State.entries[Math.floor(Math.random()*State.entries.length)];
+  $("#searchInput").value=""; State.query=""; $("#clearBtn").style.display="none";
+  $$(".cat-pill").forEach(p=>{p.classList.remove("active");p.style.background="";p.style.borderColor="";const d=p.querySelector(".cat-dot");if(d)d.style.background=p.dataset.color;});
+  const ap=document.querySelector('.cat-pill[data-cat="all"]'); if(ap){ap.classList.add("active");ap.style.background="#7c3aed";ap.style.borderColor="#7c3aed";const d=ap.querySelector(".cat-dot");if(d)d.style.background="#fff";}
+  State.activeCategory="all"; State.expandedIds.clear(); State.expandedIds.add(r.id);
+  renderResults([r]);
+  setTimeout(()=>{ const c=document.querySelector(`.entry-card[data-id="${r.id}"]`); if (c) c.scrollIntoView({behavior:"smooth",block:"center"}); },100);
 };
 
-// ===== 量子计算发展时间线 =====
-function renderTimeline() {
-  const container = $("#timeline");
-  if (!container) return;
+function renderSuggestions(query) {
+  const c = $("#suggestions"); if (!c) return;
+  if (!query.trim()) { c.style.display="none"; return; }
+  const sugs = getSearchSuggestions(query);
+  if (sugs.length===0) { c.style.display="none"; return; }
+  c.innerHTML = sugs.map(s=>{const e=s.replace(/'/g,"\\'");return `<div class="suggestion-item" onclick="selectSuggestion('${e}')"><svg viewBox="0 0 24 24" width="14" height="14" style="opacity:0.4;margin-right:6px"><path fill="none" stroke="currentColor" stroke-width="2" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>${s}</div>`;}).join("");
+  c.style.display="block";
+}
+window.selectSuggestion = function(text) {
+  $("#searchInput").value=text; State.query=text; $("#suggestions").style.display="none"; $("#clearBtn").style.display="flex"; updateResults();
+};
 
-  const timelineData = [
-    { year: "1980", title: "Feynman提出量子计算构想", desc: "理查德·费曼在MIT会议上提出「用计算机模拟物理」的设想，奠定了量子计算的理论基础。", color: "#6366f1" },
-    { year: "1985", title: "Deutsch量子图灵机", desc: "David Deutsch提出通用量子图灵机模型，定义了量子计算的理论框架。", color: "#6366f1" },
-    { year: "1994", title: "Shor算法问世", desc: "Peter Shor提出大数质因数分解的量子算法，证明量子计算可破解RSA加密。", color: "#7c3aed" },
-    { year: "1996", title: "Grover算法问世", desc: "Lov Grover提出无结构数据库搜索的量子算法，提供平方级加速。", color: "#7c3aed" },
-    { year: "1998", title: "首个NMR量子计算实验", desc: "Chuang等人在NMR系统中实现2比特量子计算，首次实验验证量子算法。", color: "#0891b2" },
-    { year: "2001", title: "Shor算法实验验证", desc: "IBM Almaden用NMR量子计算机成功实现15=3×5的质因数分解。", color: "#0891b2" },
-    { year: "2007", title: "D-Wave首台量子退火机", desc: "D-Wave Systems发布首台商用量子退火计算机Orion（16比特）。", color: "#db2777" },
-    { year: "2016", title: "IBM Quantum Experience上线", desc: "IBM推出首个云端量子计算平台，让公众可以通过云访问真实量子硬件。", color: "#2563eb" },
-    { year: "2019", title: "Google宣布量子优越性", desc: "Google用53比特Sycamore芯片在随机线路采样任务上实现量子优越性，比Summit超算快亿倍。", color: "#dc2626" },
-    { year: "2020", title: "中国九章量子优越性", desc: "潘建伟团队用光量子计算系统「九章」实现高斯玻色采样量子优越性。", color: "#ea580c" },
-    { year: "2022", title: "离子阱1000比特突破", desc: "IonQ和Atom Computing分别推进离子阱和中性原子量子比特数量突破。", color: "#059669" },
-    { year: "2024", title: "Google Willow纠错突破", desc: "Google发布105比特Willow芯片，首次证明量子纠错「below threshold」——增加比特反而降低错误率。", color: "#dc2626" },
-    { year: "2025", title: "中国九章四号发布", desc: "潘建伟团队发布「九章四号」光量子计算系统，在特定任务上持续保持领先。", color: "#ea580c" },
-    { year: "2025", title: "本源悟空-180商业化", desc: "本源量子推出「悟源3.0」504比特超导量子计算机，中国首个超导量子计算云上线。", color: "#ea580c" },
-    { year: "2026", title: "IBM纠错路线图推进", desc: "IBM推进Heron架构模块化扩展和量子LDPC纠错方案，向1000+逻辑比特迈进。", color: "#2563eb" },
-  ];
-
-  container.innerHTML = timelineData.map((item, i) => `
-    <div class="timeline-item" style="--item-color:${item.color}">
-      <div class="timeline-dot" style="background:${item.color}"></div>
-      <div class="timeline-content">
-        <div class="timeline-year" style="color:${item.color}">${item.year}</div>
-        <div class="timeline-title">${item.title}</div>
-        <div class="timeline-desc">${item.desc}</div>
-      </div>
-    </div>
-  `).join("");
+function updateResults() {
+  let entries = State.entries;
+  if (State.activeCategory!=="all") entries=entries.filter(e=>e.category===State.activeCategory);
+  if (State.query.trim()) entries=search(State.query, entries);
+  renderResults(entries);
 }
 
-// ===== 热门资讯卡片 =====
-function renderHotNews() {
-  const container = $("#hotNews");
-  if (!container) return;
-
-  const newsEntries = State.entries.filter(e => e.category === "news").slice(0, 6);
-
-  container.innerHTML = newsEntries.map((entry, i) => {
-    const cat = State.categories.find(c => c.id === entry.category);
-    const color = cat ? cat.color : "#ea580c";
-    const answerPreview = entry.answer.length > 120 ? entry.answer.substring(0, 120) + "..." : entry.answer;
-
-    return `
-      <div class="news-card" onclick="jumpToEntry('${entry.id}')" style="animation-delay:${i * 0.1}s">
-        <div class="news-badge" style="background:${color}15;color:${color};border-color:${color}30">
-          ${entry.subcategory || "热点"}
-        </div>
-        <div class="news-title">${entry.question}</div>
-        <div class="news-preview">${answerPreview}</div>
-        <div class="news-footer">
-          <span style="color:${color}">阅读详情 →</span>
-        </div>
-      </div>
-    `;
-  }).join("");
+// ===== Event Binding =====
+function bindEvents() {
+  const input = $("#searchInput"); const clearBtn = $("#clearBtn");
+  let dt;
+  if (input) {
+    input.addEventListener("input", (e) => {
+      const v=e.target.value; clearBtn.style.display=v?"flex":"none";
+      renderSuggestions(v);
+      clearTimeout(dt); dt=setTimeout(()=>{State.query=v;updateResults();},200);
+    });
+    document.addEventListener("click",(e)=>{ if(!e.target.closest(".search-box")&&!e.target.closest("#suggestions")) {const s=$("#suggestions");if(s)s.style.display="none";} });
+    clearBtn.addEventListener("click",()=>{ input.value="";State.query="";clearBtn.style.display="none";$("#suggestions").style.display="none";updateResults();input.focus(); });
+    $("#categories").addEventListener("click",(e)=>{
+      const p=e.target.closest(".cat-pill"); if(!p) return;
+      $$(".cat-pill").forEach(p2=>{p2.classList.remove("active");p2.style.background="";p2.style.borderColor="";const d=p2.querySelector(".cat-dot");if(d)d.style.background=p2.dataset.color;});
+      p.classList.add("active"); const c=p.dataset.color||"#7c3aed"; p.style.background=c; p.style.borderColor=c; const d=p.querySelector(".cat-dot"); if(d) d.style.background="#fff";
+      State.activeCategory=p.dataset.cat; State.activeColor=c; updateResults();
+    });
+    document.addEventListener("keydown",(e)=>{
+      if(e.key==="/"&&document.activeElement!==input){e.preventDefault();input.focus();}
+      if(e.key==="Escape"){input.value="";State.query="";clearBtn.style.display="none";$("#suggestions").style.display="none";updateResults();}
+    });
+  }
+  // News filter
+  const nfb = $("#newsFilterBar");
+  if (nfb) nfb.addEventListener("click",(e)=>{
+    const b=e.target.closest(".news-filter-btn"); if(!b) return;
+    $$(".news-filter-btn").forEach(b2=>b2.classList.remove("active")); b.classList.add("active");
+    State.newsFilter=b.dataset.filter; renderNews();
+  });
+  // Timeline era
+  const teb = $("#tlEraBar");
+  if (teb) teb.addEventListener("click",(e)=>{
+    const p=e.target.closest(".tl-era-pill"); if(!p) return;
+    $$(".tl-era-pill").forEach(p2=>p2.classList.remove("active")); p.classList.add("active");
+    State.tlEra=p.dataset.era; renderTimeline();
+  });
 }
 
-// ===== Bloch球可视化 =====
-function renderBlochSphere() {
-  const container = $("#blochSphere");
-  if (!container) return;
-
-  container.innerHTML = `
+// ===== Bloch Sphere =====
+function initBlochSphere() {
+  const c = $("#blochSphere"); if (!c) return;
+  c.innerHTML = `
     <div class="bloch-container">
-      <svg viewBox="-110 -110 220 220" width="240" height="240" id="blochSvg">
-        <!-- 球面 -->
+      <svg viewBox="-110 -110 220 220" width="220" height="220" id="blochSvg">
         <ellipse cx="0" cy="0" rx="80" ry="80" fill="rgba(124,58,237,0.05)" stroke="#7c3aed" stroke-width="1" opacity="0.4"/>
         <ellipse cx="0" cy="0" rx="80" ry="30" fill="none" stroke="#7c3aed" stroke-width="0.8" opacity="0.25"/>
         <ellipse cx="0" cy="0" rx="30" ry="80" fill="none" stroke="#7c3aed" stroke-width="0.8" opacity="0.25"/>
         <line x1="-80" y1="0" x2="80" y2="0" stroke="#94a3b8" stroke-width="0.8" opacity="0.3" stroke-dasharray="3,3"/>
         <line x1="0" y1="-80" x2="0" y2="80" stroke="#94a3b8" stroke-width="0.8" opacity="0.3" stroke-dasharray="3,3"/>
-
-        <!-- 轴标签 -->
         <text x="0" y="-88" text-anchor="middle" font-size="11" fill="#6366f1" font-weight="600">|0⟩</text>
         <text x="0" y="93" text-anchor="middle" font-size="11" fill="#db2777" font-weight="600">|1⟩</text>
-        <text x="88" y="4" text-anchor="middle" font-size="10" fill="#059669" font-weight="500">x</text>
-        <text x="-88" y="4" text-anchor="middle" font-size="10" fill="#059669" font-weight="500">y</text>
-
-        <!-- 状态向量 -->
         <line x1="0" y1="0" x2="0" y2="-70" stroke="#7c3aed" stroke-width="2.5" id="blochVector" stroke-linecap="round"/>
         <circle cx="0" cy="-70" r="5" fill="#7c3aed" id="blochPoint"/>
-
-        <!-- |0⟩标签 -->
-        <text x="8" y="-72" font-size="9" fill="#7c3aed" opacity="0.6">|ψ⟩</text>
       </svg>
       <div class="bloch-controls">
         <div class="bloch-state-label" id="blochStateLabel">|0⟩</div>
@@ -584,246 +324,658 @@ function renderBlochSphere() {
         </div>
         <div class="bloch-info" id="blochInfo">应用H门创建叠加态<br>应用X门翻转量子比特</div>
       </div>
+    </div>`;
+  updateBloch();
+}
+window.applyGate = function(g) {
+  const s = State.blochState;
+  switch(g) {
+    case 'H': s.theta=Math.PI/2; s.phi=0; break;
+    case 'X': s.theta=Math.PI-s.theta; break;
+    case 'Y': s.theta=Math.PI-s.theta; s.phi+=Math.PI; break;
+    case 'Z': s.phi+=Math.PI; break;
+    case 'S': s.phi+=Math.PI/2; break;
+  }
+  updateBloch();
+  const info={"H":"Hadamard门：创建叠加态 |+⟩=(|0⟩+|1⟩)/√2","X":"Pauli-X门：比特翻转（量子NOT门）","Y":"Pauli-Y门：Y轴旋转+相位翻转","Z":"Pauli-Z门：相位翻转","S":"S门：相位门，π/2旋转"};
+  const el=$("#blochInfo"); if(el) el.innerHTML=info[g]||"";
+};
+window.resetBloch = function() { State.blochState={theta:0,phi:0}; updateBloch(); $("#blochInfo").innerHTML="应用H门创建叠加态<br>应用X门翻转量子比特"; };
+function updateBloch() {
+  const s=State.blochState, r=70;
+  const x=r*Math.sin(s.theta)*Math.cos(s.phi), z=r*Math.cos(s.theta);
+  const v=$("#blochVector"),p=$("#blochPoint");
+  if(v){v.setAttribute("x2",x.toFixed(1));v.setAttribute("y2",(-z).toFixed(1));}
+  if(p){p.setAttribute("cx",x.toFixed(1));p.setAttribute("cy",(-z).toFixed(1));}
+  const l=$("#blochStateLabel"); if(l) {
+    let st;
+    if(Math.abs(s.theta)<0.01) st="|0⟩";
+    else if(Math.abs(s.theta-Math.PI)<0.01) st="|1⟩";
+    else if(Math.abs(s.theta-Math.PI/2)<0.01&&Math.abs(s.phi%(2*Math.PI))<0.01) st="|+⟩=(|0⟩+|1⟩)/√2";
+    else if(Math.abs(s.theta-Math.PI/2)<0.01&&Math.abs((s.phi-Math.PI)%(2*Math.PI))<0.01) st="|-⟩=(|0⟩-|1⟩)/√2";
+    else st=`cos(θ/2)|0⟩+e^(iφ)sin(θ/2)|1⟩`;
+    l.textContent=st;
+  }
+}
+
+// ===== Quantum Circuit Simulator =====
+function initCircuitSim() {
+  const c = $("#circuitSim"); if (!c) return;
+  const gates = ["H","X","Y","Z","S","T","CNOT"];
+  c.innerHTML = `
+    <div class="circuit-gate-palette">
+      ${gates.map(g=>`<div class="circuit-gate-option" draggable="true" data-gate="${g}">${g}</div>`).join("")}
+      <span style="font-size:12px;color:var(--text-muted);align-self:center">拖拽或点击放置门</span>
     </div>
-  `;
+    <div class="circuit-board" id="circuitBoard"></div>
+    <div class="circuit-controls">
+      <button class="gate-btn reset" onclick="clearCircuit()">清空</button>
+      <button class="gate-btn" onclick="runCircuit()">运行</button>
+    </div>
+    <div class="circuit-prob" id="circuitProb" style="display:none">
+      <div class="circuit-prob-title">测量概率分布</div>
+      <div id="probBars"></div>
+    </div>`;
 
-  // 初始化Bloch球状态
-  window.blochState = { theta: 0, phi: 0 };
-  updateBlochSphere();
+  renderCircuitBoard();
+
+  // Gate palette interactions
+  let selectedGate = null;
+  $$(".circuit-gate-option").forEach(opt => {
+    opt.addEventListener("click", () => { selectedGate = opt.dataset.gate; $$(".circuit-gate-option").forEach(o=>o.style.background=""); opt.style.background="var(--accent-purple)"; opt.style.color="#fff"; });
+    opt.addEventListener("dragstart", (e)=>{ e.dataTransfer.setData("gate", opt.dataset.gate); });
+  });
+
+  const board = $("#circuitBoard");
+  board.addEventListener("click", (e) => {
+    const slot = e.target.closest(".circuit-slot");
+    if (!slot || !selectedGate) return;
+    const row = parseInt(slot.dataset.row), col = parseInt(slot.dataset.col);
+    State.circuit.gates = State.circuit.gates.filter(g => !(g.row===row && g.col===col));
+    State.circuit.gates.push({ gate: selectedGate, row, col });
+    renderCircuitBoard();
+  });
+  board.addEventListener("dragover", (e)=>{ e.preventDefault(); });
+  board.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const slot = e.target.closest(".circuit-slot"); if (!slot) return;
+    const g = e.dataTransfer.getData("gate"); if (!g) return;
+    const row=parseInt(slot.dataset.row),col=parseInt(slot.dataset.col);
+    State.circuit.gates = State.circuit.gates.filter(g2=>!(g2.row===row&&g2.col===col));
+    State.circuit.gates.push({gate:g,row,col});
+    renderCircuitBoard();
+  });
 }
 
-window.applyGate = function(gate) {
-  const s = window.blochState;
-
-  switch(gate) {
-    case 'H':
-      // Hadamard: |0⟩ → |+⟩ (theta=π/2, phi=0)
-      s.theta = Math.PI / 2;
-      s.phi = 0;
-      break;
-    case 'X':
-      // Pauli-X: 翻转 (theta → π - theta, phi不变)
-      s.theta = Math.PI - s.theta;
-      break;
-    case 'Y':
-      // Pauli-Y: (theta → π - theta, phi → phi + π)
-      s.theta = Math.PI - s.theta;
-      s.phi = s.phi + Math.PI;
-      break;
-    case 'Z':
-      // Pauli-Z: (phi → phi + π)
-      s.phi = s.phi + Math.PI;
-      break;
-    case 'S':
-      // S gate: (phi → phi + π/2)
-      s.phi = s.phi + Math.PI / 2;
-      break;
-  }
-
-  updateBlochSphere();
-
-  const gateInfo = {
-    'H': 'Hadamard门：创建叠加态 |+⟩ = (|0⟩+|1⟩)/√2',
-    'X': 'Pauli-X门：比特翻转（量子NOT门）',
-    'Y': 'Pauli-Y门：Y轴旋转+相位翻转',
-    'Z': 'Pauli-Z门：相位翻转',
-    'S': 'S门：相位门，P=π/2旋转',
-  };
-  $("#blochInfo").innerHTML = gateInfo[gate] || '';
-};
-
-window.resetBloch = function() {
-  window.blochState = { theta: 0, phi: 0 };
-  updateBlochSphere();
-  $("#blochInfo").innerHTML = '应用H门创建叠加态<br>应用X门翻转量子比特';
-};
-
-function updateBlochSphere() {
-  const s = window.blochState;
-  const r = 70;
-  const x = r * Math.sin(s.theta) * Math.cos(s.phi);
-  const z = r * Math.cos(s.theta);
-  const y = r * Math.sin(s.theta) * Math.sin(s.phi);
-
-  const vec = document.getElementById("blochVector");
-  const pt = document.getElementById("blochPoint");
-  if (vec) {
-    vec.setAttribute("x2", x.toFixed(1));
-    vec.setAttribute("y2", (-z).toFixed(1));
-  }
-  if (pt) {
-    pt.setAttribute("cx", x.toFixed(1));
-    pt.setAttribute("cy", (-z).toFixed(1));
-  }
-
-  // 状态标签
-  const label = $("#blochStateLabel");
-  if (label) {
-    const cosT = Math.cos(s.theta / 2);
-    const sinT = Math.sin(s.theta / 2);
-    const phiDeg = (s.phi * 180 / Math.PI) % 360;
-    let stateStr;
-    if (Math.abs(s.theta) < 0.01) {
-      stateStr = "|0⟩";
-    } else if (Math.abs(s.theta - Math.PI) < 0.01) {
-      stateStr = "|1⟩";
-    } else if (Math.abs(s.theta - Math.PI/2) < 0.01 && Math.abs(s.phi % (2*Math.PI)) < 0.01) {
-      stateStr = "|+⟩ = (|0⟩+|1⟩)/√2";
-    } else if (Math.abs(s.theta - Math.PI/2) < 0.01 && Math.abs((s.phi - Math.PI) % (2*Math.PI)) < 0.01) {
-      stateStr = "|-⟩ = (|0⟩-|1⟩)/√2";
-    } else {
-      stateStr = `cos(θ/2)|0⟩ + e^(iφ)sin(θ/2)|1⟩`;
+function renderCircuitBoard() {
+  const board = $("#circuitBoard"); if (!board) return;
+  const {qubits, gates, cols} = State.circuit;
+  let html = "";
+  for (let q=0; q<qubits; q++) {
+    html += `<div class="circuit-row"><span class="circuit-qubit-label">q${q}⟩</span>`;
+    for (let c=0; c<cols; c++) {
+      const g = gates.find(g2=>g2.row===q&&g2.col===c);
+      html += g ? `<div class="circuit-slot has-gate" data-row="${q}" data-col="${c}">${g.gate}</div>` : `<div class="circuit-slot" data-row="${q}" data-col="${c}"></div>`;
+      if (c<cols-1) html += `<div class="circuit-wire"></div>`;
     }
-    label.textContent = stateStr;
+    html += `</div>`;
+  }
+  board.innerHTML = html;
+}
+
+window.clearCircuit = function() { State.circuit.gates=[]; renderCircuitBoard(); $("#circuitProb").style.display="none"; };
+
+window.runCircuit = function() {
+  const {qubits, gates} = State.circuit;
+  // Quantum state vector: 2^qubits amplitudes
+  const dim = 1 << qubits;
+  let state = new Array(dim).fill(0); state[0] = 1;
+
+  // Sort gates by column
+  const sorted = [...gates].sort((a,b)=>a.col-b.col);
+
+  for (const g of sorted) {
+    const gate = g.gate;
+    if (gate==="H") state = applySingleGate(state, g.row, [[1/Math.SQRT2,1/Math.SQRT2],[1/Math.SQRT2,-1/Math.SQRT2]], qubits);
+    else if (gate==="X") state = applySingleGate(state, g.row, [[0,1],[1,0]], qubits);
+    else if (gate==="Y") state = applySingleGate(state, g.row, [[0,-1],[1,0]], qubits);
+    else if (gate==="Z") state = applySingleGate(state, g.row, [[1,0],[0,-1]], qubits);
+    else if (gate==="S") state = applySingleGate(state, g.row, [[1,0],[0,0]], qubits);
+    else if (gate==="T") state = applySingleGate(state, g.row, [[1,0],[0,0.7]], qubits);
+    else if (gate==="CNOT") {
+      // Control = g.row, Target = 1-g.row (for 2 qubits)
+      const target = 1 - g.row;
+      state = applyCNOT(state, g.row, target, qubits);
+    }
+  }
+
+  // Calculate probabilities
+  const probs = state.map((amp) => {
+    const val = typeof amp === "number" ? amp : (amp.re || 0);
+    return Math.abs(val * val);
+  });
+
+  // Render
+  const pb = $("#circuitProb"); const bars = $("#probBars");
+  if (pb && bars) {
+    pb.style.display = "block";
+    bars.innerHTML = probs.map((p, i) => {
+      const bits = i.toString(2).padStart(qubits, "0");
+      const pct = (p * 100).toFixed(1);
+      return `<div class="prob-bar-row"><span class="prob-bar-label">|${bits}⟩</span><div class="prob-bar-track"><div class="prob-bar-fill" style="width:${pct}%"></div></div><span class="prob-bar-value">${pct}%</span></div>`;
+    }).join("");
+  }
+};
+
+function applySingleGate(state, qubit, matrix, n) {
+  const dim = 1 << n;
+  const newState = new Array(dim).fill(0);
+  for (let i = 0; i < dim; i++) {
+    const bit = (i >> qubit) & 1;
+    const i0 = i & ~(1 << qubit);
+    const i1 = i0 | (1 << qubit);
+    const a0 = state[i0] || 0, a1 = state[i1] || 0;
+    const m00 = matrix[0][0], m01 = matrix[0][1];
+    const m10 = matrix[1][0], m11 = matrix[1][1];
+    if (bit === 0) {
+      newState[i] = m00 * a0 + m01 * a1;
+    } else {
+      newState[i] = m10 * a0 + m11 * a1;
+    }
+  }
+  return newState;
+}
+
+function applyCNOT(state, control, target, n) {
+  const dim = 1 << n;
+  const newState = [...state];
+  for (let i = 0; i < dim; i++) {
+    if ((i >> control) & 1) { // control is 1
+      const j = i ^ (1 << target); // flip target
+      newState[i] = state[j];
+      newState[j] = state[i];
+    }
+  }
+  return newState;
+}
+
+// ===== Entanglement Demo =====
+function initEntangleDemo() {
+  const c = $("#entangleDemo"); if (!c) return;
+  c.innerHTML = `
+    <div class="entangle-stage">
+      <div class="entangle-qubit">
+        <div class="entangle-circle" id="entQA" onclick="measureEntangle(0)">?</div>
+        <div class="entangle-label">量子比特 A</div>
+      </div>
+      <div class="entangle-link">
+        <div class="entangle-link-icon">⟨ψ|ψ⟩</div>
+        <div class="entangle-line"></div>
+        <div class="entangle-label" style="text-align:center;font-size:11px">纠缠链接</div>
+      </div>
+      <div class="entangle-qubit">
+        <div class="entangle-circle" id="entQB" onclick="measureEntangle(1)">?</div>
+        <div class="entangle-label">量子比特 B</div>
+      </div>
+    </div>
+    <div class="entangle-actions">
+      <button class="gate-btn" onclick="prepareBell()">制备 Bell 态</button>
+      <button class="gate-btn reset" onclick="resetEntangle()">重置</button>
+    </div>
+    <div class="entangle-result" id="entResult"></div>`;
+}
+
+window.prepareBell = function() {
+  State.entangleState = {prepared:true, measuredA:null, measuredB:null};
+  const a=$("#entQA"),b=$("#entQB"),r=$("#entResult");
+  if(a){a.textContent="?";a.classList.remove("measured");}
+  if(b){b.textContent="?";b.classList.remove("measured");}
+  if(r){r.classList.remove("show");r.textContent="";}
+  if(r){r.textContent="Bell态已制备：|Φ+⟩ = (|00⟩+|11⟩)/√2 — 点击任意量子比特测量";r.classList.add("show");}
+};
+
+window.measureEntangle = function(which) {
+  if (!State.entangleState.prepared) return;
+  if (which===0 && State.entangleState.measuredA!==null) return;
+  if (which===1 && State.entangleState.measuredB!==null) return;
+
+  const val = Math.random() < 0.5 ? 0 : 1;
+  const otherVal = val; // Perfectly correlated in Bell state |Φ+⟩
+
+  if (which===0) {
+    State.entangleState.measuredA = val;
+    State.entangleState.measuredB = otherVal;
+    const a=$("#entQA"),b=$("#entQB");
+    if(a){a.textContent=val;a.classList.add("measured");}
+    if(b){b.textContent=otherVal;b.classList.add("measured");}
+    const r=$("#entResult");
+    if(r){r.textContent=`测量A=${val} → B瞬间坍缩为${otherVal}！这就是"幽灵般的超距作用"`;r.classList.add("show");}
+  } else {
+    State.entangleState.measuredB = val;
+    State.entangleState.measuredA = otherVal;
+    const a=$("#entQA"),b=$("#entQB");
+    if(a){a.textContent=otherVal;a.classList.add("measured");}
+    if(b){b.textContent=val;b.classList.add("measured");}
+    const r=$("#entResult");
+    if(r){r.textContent=`测量B=${val} → A瞬间坍缩为${otherVal}！量子纠缠的非局域关联`;r.classList.add("show");}
+  }
+};
+
+window.resetEntangle = function() {
+  State.entangleState={prepared:false,measuredA:null,measuredB:null};
+  const a=$("#entQA"),b=$("#entQB"),r=$("#entResult");
+  if(a){a.textContent="?";a.classList.remove("measured");}
+  if(b){b.textContent="?";b.classList.remove("measured");}
+  if(r){r.classList.remove("show");r.textContent="";}
+};
+
+// ===== Double-Slit Experiment =====
+function initSlitExperiment() {
+  const c = $("#slitExperiment"); if (!c) return;
+  c.innerHTML = `
+    <canvas class="slit-canvas" id="slitCanvas" width="600" height="280"></canvas>
+    <div class="slit-controls">
+      <button class="gate-btn" onclick="fireSlitParticle()">发射粒子</button>
+      <button class="gate-btn" onclick="fireSlitBurst()">连续发射20个</button>
+      <button class="gate-btn reset" onclick="clearSlit()">清空</button>
+      <div class="slit-toggle">
+        <span>路径探测</span>
+        <div class="slit-switch" id="slitSwitch" onclick="toggleSlitDetect()"></div>
+      </div>
+      <div class="slit-counter" id="slitCounter">粒子数: 0</div>
+    </div>`;
+  drawSlitBase();
+}
+
+function drawSlitBase() {
+  const canvas = $("#slitCanvas"); if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#0f172a"; ctx.fillRect(0,0,canvas.width,canvas.height);
+  // Source
+  ctx.fillStyle = "#7c3aed"; ctx.beginPath(); ctx.arc(30,140,8,0,Math.PI*2); ctx.fill();
+  ctx.font = "11px sans-serif"; ctx.fillStyle = "#94a3b8"; ctx.fillText("源", 20, 165);
+  // Barrier with two slits
+  ctx.fillStyle = "#475569"; ctx.fillRect(200,0,8,110); ctx.fillRect(200,170,8,280);
+  ctx.fillRect(200,130,8,20); // slit gap 1 (around y=120)
+  ctx.fillRect(200,0,8,0); // top wall
+  // Actually: wall from 0 to 120, gap 120-140, wall 140-160, gap 160-180, wall 180 to 280
+  ctx.fillStyle = "#0f172a"; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#475569";
+  ctx.fillRect(200,0,6,115); // top wall
+  ctx.fillRect(200,145,6,25); // middle wall
+  ctx.fillRect(200,180,6,100); // bottom wall
+  // source
+  ctx.fillStyle = "#7c3aed"; ctx.beginPath(); ctx.arc(30,140,6,0,Math.PI*2); ctx.fill();
+  ctx.font = "10px sans-serif"; ctx.fillStyle = "#94a3b8"; ctx.fillText("源",22,160);
+  // screen
+  ctx.fillStyle = "#1e293b"; ctx.fillRect(560,0,4,280);
+  ctx.fillStyle = "#94a3b8"; ctx.fillText("探测屏",545,270);
+  // Slit labels
+  ctx.fillStyle = "#0891b2"; ctx.fillText("缝1",205,135); ctx.fillText("缝2",205,170);
+  // Existing pattern
+  drawSlitPattern(ctx);
+}
+
+function drawSlitPattern(ctx) {
+  if (!ctx) { const canvas=$("#slitCanvas"); if(!canvas) return; ctx=canvas.getContext("2d"); }
+  for (const p of State.slitState.pattern) {
+    ctx.fillStyle = p.color || "#7c3aed";
+    ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI*2); ctx.fill();
   }
 }
 
-// ===== 搜索建议渲染 =====
-function renderSuggestions(query) {
-  const container = $("#suggestions");
-  if (!container) return;
+window.fireSlitParticle = function() {
+  const canvas = $("#slitCanvas"); if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const detect = State.slitState.detect;
+  // Particle goes through slit 1 or 2
+  const slit = Math.random() < 0.5 ? 1 : 2;
+  const slitY = slit === 1 ? 130 : 165;
+  // If detecting: particle behaves like a particle, lands near slit projection
+  // If not detecting: interference pattern
+  let screenY;
+  if (detect) {
+    // Gaussian around slit position
+    screenY = slitY + (Math.random()-0.5)*60;
+  } else {
+    // Interference pattern
+    const x = Math.random();
+    const interference = Math.cos(x * Math.PI * 4) * 0.4 + 0.5;
+    if (Math.random() > interference) {
+      screenY = 20 + Math.random()*240; // uniform background
+    } else {
+      screenY = 140 + (x-0.5)*200 + (Math.random()-0.5)*15; // interference bands
+    }
+  }
+  screenY = Math.max(10, Math.min(270, screenY));
 
-  if (!query.trim()) {
-    container.style.display = "none";
-    return;
+  // Animate particle path
+  let progress = 0;
+  const animate = () => {
+    progress += 0.04;
+    if (progress >= 1) { drawSlitBase(); return; }
+    drawSlitBase();
+    const px = 36 + progress * 520;
+    const py = 140 + progress * (screenY - 140);
+    ctx.fillStyle = detect ? "#ef4444" : "#22d3ee";
+    ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI*2); ctx.fill();
+    // Show which slit if detecting
+    if (detect && progress > 0.3 && progress < 0.5) {
+      ctx.fillStyle = "#ef4444"; ctx.font="10px sans-serif";
+      ctx.fillText(`缝${slit}`, 210, slitY-5);
+    }
+    requestAnimationFrame(animate);
+  };
+  animate();
+
+  State.slitState.particles++;
+  State.slitState.pattern.push({x:562, y:screenY, color: detect?"#ef4444":"#22d3ee"});
+  $("#slitCounter").textContent = `粒子数: ${State.slitState.particles}`;
+};
+
+window.fireSlitBurst = function() {
+  let n = 0;
+  const interval = setInterval(() => {
+    window.fireSlitParticle();
+    n++;
+    if (n >= 20) clearInterval(interval);
+  }, 200);
+};
+
+window.clearSlit = function() { State.slitState={particles:0,detect:State.slitState.detect,pattern:[]}; drawSlitBase(); $("#slitCounter").textContent="粒子数: 0"; };
+window.toggleSlitDetect = function() {
+  const sw = $("#slitSwitch");
+  State.slitState.detect = !State.slitState.detect;
+  if (sw) sw.classList.toggle("on", State.slitState.detect);
+  // Clear pattern when switching mode
+  State.slitState.pattern = [];
+  drawSlitBase();
+  $("#slitCounter").textContent = `粒子数: 0`;
+  State.slitState.particles = 0;
+};
+
+// ===== BB84 QKD =====
+function initBB84() {
+  const c = $("#bb84Demo"); if (!c) return;
+  c.innerHTML = `
+    <div class="bb84-controls">
+      <button class="gate-btn" onclick="runBB84Round()">执行一轮传输</button>
+      <button class="gate-btn" onclick="runBB8Batch()">批量传输10轮</button>
+      <div class="slit-toggle">
+        <span>Eve 窃听</span>
+        <div class="slit-switch" id="bb84EveSwitch" onclick="toggleBB84Eve()"></div>
+      </div>
+      <button class="gate-btn reset" onclick="resetBB84()">重置</button>
+    </div>
+    <div class="bb84-stage" id="bb84Stage">
+      <div style="text-align:center;font-size:13px;color:var(--text-muted);padding:20px">点击「执行一轮传输」开始演示</div>
+    </div>
+    <div class="bb84-stats" id="bb84Stats" style="display:none">
+      <div class="bb84-stat"><div class="bb84-stat-value" id="bb84Sent">0</div><div class="bb84-stat-label">发送比特</div></div>
+      <div class="bb84-stat"><div class="bb84-stat-value" id="bb84Match">0</div><div class="bb84-stat-label">基匹配</div></div>
+      <div class="bb84-stat"><div class="bb84-stat-value" id="bb84Error">0</div><div class="bb84-stat-label">错误率</div></div>
+    </div>`;
+}
+
+window.toggleBB84Eve = function() {
+  State.bb84State.evePresent = !State.bb84State.evePresent;
+  const sw = $("#bb84EveSwitch"); if (sw) sw.classList.toggle("on", State.bb84State.evePresent);
+};
+
+function runBB84Single() {
+  // Alice sends: random bit (0/1) + random basis (rectilinear/diagonal)
+  const bit = Math.random() < 0.5 ? 0 : 1;
+  const aliceBasis = Math.random() < 0.5 ? "R" : "D"; // Rectilinear or Diagonal
+  // Eve (if present): random basis
+  const eveBasis = Math.random() < 0.5 ? "R" : "D";
+  // Bob: random basis
+  const bobBasis = Math.random() < 0.5 ? "R" : "D";
+
+  // Eve's measurement
+  let eveBit = null;
+  if (State.bb84State.evePresent) {
+    eveBit = (eveBasis === aliceBasis) ? bit : (Math.random() < 0.5 ? 0 : 1);
   }
 
-  const suggestions = getSearchSuggestions(query);
-  if (suggestions.length === 0) {
-    container.style.display = "none";
-    return;
+  // Bob's measurement
+  const effectiveBit = State.bb84State.evePresent ? eveBit : bit;
+  let bobBit;
+  if (bobBasis === aliceBasis) {
+    bobBit = State.bb84State.evePresent ? eveBit : bit;
+  } else {
+    bobBit = Math.random() < 0.5 ? 0 : 1;
   }
 
-  container.innerHTML = suggestions.map(s => {
-    const escaped = s.replace(/'/g, "\\'");
-    return `<div class="suggestion-item" onclick="selectSuggestion('${escaped}')">
-      <svg viewBox="0 0 24 24" width="14" height="14" style="opacity:0.4;margin-right:6px">
-        <path fill="none" stroke="currentColor" stroke-width="2" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-      </svg>
-      ${s}
+  const basisMatch = bobBasis === aliceBasis;
+  const hasError = basisMatch && bobBit !== bit;
+
+  State.bb84State.bits.push({alice:{bit,basis:aliceBasis},eve:{bit:eveBit,basis:eveBasis},bob:{bit:bobBit,basis:bobBasis},basisMatch,hasError});
+  State.bb84State.stats.sent++;
+  if (basisMatch) State.bb84State.stats.matches++;
+  if (hasError) State.bb84State.stats.errors++;
+
+  return {alice:{bit,basis:aliceBasis},eve:{bit:eveBit,basis:eveBasis},bob:{bit:bobBit,basis:bobBasis},basisMatch,hasError};
+}
+
+window.runBB84Round = function() {
+  const r = runBB84Single();
+  const stage = $("#bb84Stage"); if (!stage) return;
+  const bC = (v) => v ? "#db2777" : "#2563eb"; // bit color
+  const basisLabel = (b) => b==="R"?"⊥":"↗";
+
+  stage.innerHTML = `
+    <div class="bb84-step"><div class="bb84-step-label">Alice 比特</div><div class="bb84-bit-box alice">${r.alice.bit}</div></div>
+    <div class="bb84-step"><div class="bb84-step-label">Alice 基</div><div class="bb84-bit-box alice">${basisLabel(r.alice.basis)}</div></div>
+    ${State.bb84State.evePresent ? `<div class="bb84-arrow">→</div><div class="bb84-step"><div class="bb84-step-label">Eve 窃听</div><div class="bb84-bit-box eve">${r.eve.bit!==null?r.eve.bit:"?"}</div></div>`:""}
+    <div class="bb84-arrow">→</div>
+    <div class="bb84-step"><div class="bb84-step-label">Bob 基</div><div class="bb84-bit-box bob">${basisLabel(r.bob.basis)}</div></div>
+    <div class="bb84-step"><div class="bb84-step-label">Bob 比特</div><div class="bb84-bit-box ${r.basisMatch?(r.hasError?"mismatch":"match"):"bob"}">${r.bob.bit}</div></div>`;
+  updateBB84Stats();
+};
+
+window.runBB8Batch = function() {
+  for (let i=0; i<10; i++) runBB84Single();
+  renderBB84Batch();
+};
+
+function renderBB84Batch() {
+  const stage = $("#bb84Stage"); if (!stage) return;
+  const bits = State.bb84State.bits.slice(-15);
+  stage.innerHTML = bits.map((b, i) => {
+    return `<div class="bb84-step"><div class="bb84-step-label">#${State.bb84State.bits.length-15+i+1}</div><div class="bb84-bit-box ${b.basisMatch?(b.hasError?"mismatch":"match"):"bob"}">${b.bob.bit}</div></div>`;
+  }).join("");
+  updateBB84Stats();
+}
+
+function updateBB84Stats() {
+  const s = State.bb84State.stats;
+  $("#bb84Stats").style.display = "flex";
+  $("#bb84Sent").textContent = s.sent;
+  $("#bb84Match").textContent = s.matches;
+  const errRate = s.matches > 0 ? (s.errors / s.matches * 100).toFixed(0) + "%" : "0%";
+  $("#bb84Error").textContent = errRate;
+}
+
+window.resetBB84 = function() {
+  State.bb84State = {bits:[],evePresent:State.bb84State.evePresent,stats:{sent:0,errors:0,matches:0}};
+  const stage=$("#bb84Stage"); if(stage) stage.innerHTML=`<div style="text-align:center;font-size:13px;color:var(--text-muted);padding:20px">点击「执行一轮传输」开始演示</div>`;
+  $("#bb84Stats").style.display="none";
+};
+
+// ===== Matrix View =====
+function initMatrixView() {
+  const c = $("#matrixView"); if (!c) return;
+  const gates = ["H","X","Y","Z","S","T","CNOT"];
+  const matrixData = {
+    "H": { matrix: [["1/√2","1/√2"],["1/√2","-1/√2"]], desc: "Hadamard门：创建叠加态，将|0⟩变为(|0⟩+|1⟩)/√2，|1⟩变为(|0⟩-|1⟩)/√2", size: "2×2" },
+    "X": { matrix: [["0","1"],["1","0"]], desc: "Pauli-X门：量子NOT门，翻转|0⟩↔|1⟩", size: "2×2" },
+    "Y": { matrix: [["0","-i"],["i","0"]], desc: "Pauli-Y门：Y轴旋转π+相位翻转", size: "2×2" },
+    "Z": { matrix: [["1","0"],["0","-1"]], desc: "Pauli-Z门：|0⟩不变，|1⟩→-|1⟩（相位翻转）", size: "2×2" },
+    "S": { matrix: [["1","0"],["0","i"]], desc: "S门（相位门）：|1⟩→i|1⟩，旋转π/2", size: "2×2" },
+    "T": { matrix: [["1","0"],["0","e^(iπ/4)"]], desc: "T门：|1⟩相位旋转π/4，与H/S构成通用门集", size: "2×2" },
+    "CNOT": { matrix: [["1","0","0","0"],["0","1","0","0"],["0","0","0","1"],["0","0","1","0"]], desc: "CNOT门：控制-非门，control=1时翻转target。4×4矩阵，双量子比特门", size: "4×4" },
+  };
+  c.innerHTML = `
+    <div class="matrix-gate-selector">
+      ${gates.map(g=>`<button class="gate-btn ${g===State.matrixGate?'':''}" data-gate="${g}" onclick="selectMatrixGate('${g}')">${g}</button>`).join("")}
+    </div>
+    <div class="matrix-display" id="matrixDisplay"></div>
+    <div class="matrix-info" id="matrixInfo"></div>`;
+  window._matrixData = matrixData;
+  renderMatrix();
+}
+
+window.selectMatrixGate = function(g) {
+  State.matrixGate = g;
+  $$(".matrix-gate-selector .gate-btn").forEach(b => { b.style.background = b.dataset.gate===g ? "var(--accent-purple)" : ""; b.style.color = b.dataset.gate===g ? "#fff" : ""; });
+  renderMatrix();
+};
+
+function renderMatrix() {
+  const d = window._matrixData[State.matrixGate]; if (!d) return;
+  const md = $("#matrixDisplay"); const mi = $("#matrixInfo");
+  if (md) {
+    const rows = d.matrix.map(row => `<div class="matrix-row">${row.map(c=>`<span class="matrix-cell">${c}</span>`).join("")}</div>`).join("");
+    md.innerHTML = `<div style="display:flex;align-items:center;gap:4px"><span class="matrix-bracket">[</span><div>${rows}</div><span class="matrix-bracket">]</span></div><div style="font-size:12px;color:var(--text-muted);margin-top:8px;text-align:center">${d.size}</div>`;
+  }
+  if (mi) mi.textContent = d.desc;
+}
+
+// ===== News Rendering =====
+function renderNews() {
+  const c = $("#newsTimeline"); if (!c) return;
+  const data = State.newsData;
+  if (!data || !data.items) { renderNewsFallback(); return; }
+
+  const badge = $("#newsUpdateBadge");
+  if (badge) badge.textContent = `更新于 ${data.lastUpdated}`;
+
+  let items = data.items || [];
+  const filter = State.newsFilter;
+
+  if (filter === "archive") {
+    items = items.filter(i => i.isKey === true);
+  } else if (filter !== "latest") {
+    items = items.filter(i => i.category === filter);
+  }
+
+  // Sort by date desc
+  items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // Split into latest and archive
+  const keyItems = items.filter(i => i.isKey);
+  const regularItems = items.filter(i => !i.isKey);
+
+  let html = "";
+
+  if (filter === "latest" || filter === "archive") {
+    if (filter === "archive") {
+      html += items.map((item, i) => renderNewsItem(item, i)).join("");
+    } else {
+      html += regularItems.map((item, i) => renderNewsItem(item, i)).join("");
+      if (keyItems.length > 0) {
+        html += `<div class="news-archive-divider">— 重点新闻存档 —</div>`;
+        html += keyItems.map((item, i) => renderNewsItem(item, i)).join("");
+      }
+    }
+  } else {
+    html += items.map((item, i) => renderNewsItem(item, i)).join("");
+  }
+
+  if (items.length === 0) {
+    html = `<div class="empty-state"><p>暂无该分类的新闻</p></div>`;
+  }
+
+  c.innerHTML = html;
+}
+
+function renderNewsItem(item, i) {
+  const catColors = { breakthrough: "#dc2626", industry: "#059669", policy: "#2563eb" };
+  const catLabels = { breakthrough: "技术突破", industry: "产业投资", policy: "政策战略" };
+  const color = catColors[item.category] || "#ea580c";
+  const label = catLabels[item.category] || item.category || "资讯";
+  const date = item.date || "";
+  const source = item.source ? ` · 来源: ${item.url ? `<a href="${item.url}" target="_blank">${item.source}</a>` : item.source}` : "";
+
+  return `<div class="news-item cat-${item.category||'latest'}" style="animation-delay:${i*0.05}s">
+    <div class="news-item-date">
+      <span class="news-item-cat" style="background:${color}15;color:${color}">${label}</span>
+      ${date}
+      ${item.isKey ? '<span style="color:#7c3aed;font-size:11px">★ 重点</span>' : ''}
+    </div>
+    <div class="news-item-title">${item.title}</div>
+    <div class="news-item-summary">${item.summary || item.summary || ""}</div>
+    <div class="news-item-source">${source}</div>
+  </div>`;
+}
+
+function renderNewsFallback() {
+  const c = $("#newsTimeline"); if (!c) return;
+  const badge = $("#newsUpdateBadge");
+  if (badge) badge.textContent = "使用知识库内置资讯";
+
+  const newsEntries = State.entries.filter(e => e.category === "news");
+  c.innerHTML = newsEntries.map((e, i) => {
+    const cat = State.categories.find(c2 => c2.id === e.category);
+    const color = cat ? cat.color : "#ea580c";
+    const preview = e.answer.length > 150 ? e.answer.substring(0, 150) + "..." : e.answer;
+    return `<div class="news-item cat-breakthrough" style="animation-delay:${i*0.05}s">
+      <div class="news-item-date"><span class="news-item-cat" style="background:${color}15;color:${color}">${e.subcategory || "热点"}</span></div>
+      <div class="news-item-title">${e.question}</div>
+      <div class="news-item-summary">${preview}</div>
+      <div class="news-item-source">来源: 知识库内置</div>
     </div>`;
   }).join("");
-
-  container.style.display = "block";
 }
 
-window.selectSuggestion = function(text) {
-  $("#searchInput").value = text;
-  State.query = text;
-  $("#suggestions").style.display = "none";
-  $("#clearBtn").style.display = "flex";
-  updateResults();
-};
+// ===== Timeline =====
+function renderTimeline() {
+  const eraBar = $("#tlEraBar"); if (!eraBar) return;
+  const vertical = $("#tlVertical"); if (!vertical) return;
 
-// ===== 事件绑定 =====
-function bindEvents() {
-  const input = $("#searchInput");
-  const clearBtn = $("#clearBtn");
+  const eras = [
+    { id: "all", label: "全部" },
+    { id: "1980s", label: "1980s 理论奠基" },
+    { id: "1990s", label: "1990s 算法突破" },
+    { id: "2000s", label: "2000s 实验验证" },
+    { id: "2010s", label: "2010s 工程化" },
+    { id: "2020s", label: "2020s 量子优越" },
+  ];
 
-  // 搜索（防抖）+ 建议
-  let debounceTimer;
-  input.addEventListener("input", (e) => {
-    const val = e.target.value;
-    clearBtn.style.display = val ? "flex" : "none";
+  eraBar.innerHTML = eras.map(e => `<button class="tl-era-pill ${e.id===State.tlEra?"active":""}" data-era="${e.id}">${e.label}</button>`).join("");
 
-    // 实时建议
-    renderSuggestions(val);
+  const data = [
+    { year: "1980", title: "Feynman提出量子计算构想", desc: "理查德·费曼在MIT会议上提出「用计算机模拟物理」的设想，奠定了量子计算的理论基础。", color: "#6366f1", era: "1980s", tags: ["Feynman","理论"] },
+    { year: "1985", title: "Deutsch量子图灵机", desc: "David Deutsch提出通用量子图灵机模型，定义了量子计算的理论框架。", color: "#6366f1", era: "1980s", tags: ["Deutsch","理论"] },
+    { year: "1994", title: "Shor算法问世", desc: "Peter Shor提出大数质因数分解的量子算法，证明量子计算可破解RSA加密。", color: "#7c3aed", era: "1990s", tags: ["Shor","算法","RSA"] },
+    { year: "1996", title: "Grover算法问世", desc: "Lov Grover提出无结构数据库搜索的量子算法，提供平方级加速。", color: "#7c3aed", era: "1990s", tags: ["Grover","搜索"] },
+    { year: "1998", title: "首个NMR量子计算实验", desc: "Chuang等人在NMR系统中实现2比特量子计算，首次实验验证量子算法。", color: "#0891b2", era: "1990s", tags: ["NMR","实验"] },
+    { year: "2001", title: "Shor算法实验验证", desc: "IBM Almaden用NMR量子计算机成功实现15=3×5的质因数分解。", color: "#0891b2", era: "2000s", tags: ["IBM","Shor","实验"] },
+    { year: "2007", title: "D-Wave首台量子退火机", desc: "D-Wave Systems发布首台商用量子退火计算机Orion（16比特）。", color: "#db2777", era: "2000s", tags: ["D-Wave","退火"] },
+    { year: "2016", title: "IBM Quantum Experience上线", desc: "IBM推出首个云端量子计算平台，让公众可以通过云访问真实量子硬件。", color: "#2563eb", era: "2010s", tags: ["IBM","云平台"] },
+    { year: "2019", title: "Google宣布量子优越性", desc: "Google用53比特Sycamore芯片在随机线路采样任务上实现量子优越性，比Summit超算快亿倍。", color: "#dc2626", era: "2010s", tags: ["Google","Sycamore","优越性"] },
+    { year: "2020", title: "中国九章量子优越性", desc: "潘建伟团队用光量子计算系统「九章」实现高斯玻色采样量子优越性。", color: "#ea580c", era: "2020s", tags: ["九章","潘建伟","优越性"] },
+    { year: "2022", title: "离子阱1000比特突破", desc: "IonQ和Atom Computing分别推进离子阱和中性原子量子比特数量突破。", color: "#059669", era: "2020s", tags: ["IonQ","Atom"] },
+    { year: "2024", title: "Google Willow纠错突破", desc: "Google发布105比特Willow芯片，首次证明量子纠错「below threshold」——增加比特反而降低错误率。", color: "#dc2626", era: "2020s", tags: ["Google","Willow","纠错"] },
+    { year: "2025", title: "中国九章四号发布", desc: "潘建伟团队发布「九章四号」光量子计算系统，在特定任务上持续保持领先。", color: "#ea580c", era: "2020s", tags: ["九章四号","潘建伟"] },
+    { year: "2025", title: "本源悟空-180商业化", desc: "本源量子推出「悟源3.0」504比特超导量子计算机，中国首个超导量子计算云上线。", color: "#ea580c", era: "2020s", tags: ["本源","悟源","超导"] },
+    { year: "2026", title: "IBM纠错路线图推进", desc: "IBM推进Heron架构模块化扩展和量子LDPC纠错方案，向1000+逻辑比特迈进。", color: "#2563eb", era: "2020s", tags: ["IBM","Heron","LDPC"] },
+  ];
 
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => {
-      State.query = val;
-      updateResults();
-    }, 200);
-  });
+  const filtered = State.tlEra === "all" ? data : data.filter(d => d.era === State.tlEra);
 
-  // 建议点击外部消失
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".search-box") && !e.target.closest("#suggestions")) {
-      const sug = $("#suggestions");
-      if (sug) sug.style.display = "none";
-    }
-  });
-
-  // 清除搜索
-  clearBtn.addEventListener("click", () => {
-    input.value = "";
-    State.query = "";
-    clearBtn.style.display = "none";
-    $("#suggestions").style.display = "none";
-    updateResults();
-    input.focus();
-  });
-
-  // 分类筛选
-  $("#categories").addEventListener("click", (e) => {
-    const pill = e.target.closest(".cat-pill");
-    if (!pill) return;
-
-    document.querySelectorAll(".cat-pill").forEach((p) => {
-      p.classList.remove("active");
-      p.style.background = "";
-      p.style.borderColor = "";
-      const dot = p.querySelector(".cat-dot");
-      if (dot) dot.style.background = p.dataset.color;
-    });
-
-    pill.classList.add("active");
-    const color = pill.dataset.color || "#7c3aed";
-    pill.style.background = color;
-    pill.style.borderColor = color;
-    const dot = pill.querySelector(".cat-dot");
-    if (dot) dot.style.background = "#fff";
-
-    State.activeCategory = pill.dataset.cat;
-    State.activeColor = color;
-    updateResults();
-  });
-
-  // 时间线滚动
-  const timelineScroll = $("#timelineScroll");
-  if (timelineScroll) {
-    const prevBtn = $("#timelinePrev");
-    const nextBtn = $("#timelineNext");
-    const scrollAmount = 280;
-
-    if (prevBtn) prevBtn.addEventListener("click", () => {
-      timelineScroll.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    });
-    if (nextBtn) nextBtn.addEventListener("click", () => {
-      timelineScroll.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    });
-  }
-
-  // 键盘快捷键
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "/" && document.activeElement !== input) {
-      e.preventDefault();
-      input.focus();
-    }
-    if (e.key === "Escape") {
-      input.value = "";
-      State.query = "";
-      clearBtn.style.display = "none";
-      $("#suggestions").style.display = "none";
-      updateResults();
-    }
-  });
+  vertical.innerHTML = filtered.map((e, i) => `
+    <div class="tl-event" style="animation-delay:${i*0.06}s">
+      <div class="tl-event-dot" style="background:${e.color};color:${e.color}"></div>
+      <div class="tl-event-card">
+        <div class="tl-event-year" style="color:${e.color}">${e.year}</div>
+        <div class="tl-event-title">${e.title}</div>
+        <div class="tl-event-desc">${e.desc}</div>
+        <div class="tl-event-tags">${e.tags.map(t=>`<span class="tl-event-tag">${t}</span>`).join("")}</div>
+      </div>
+    </div>
+  `).join("");
 }
 
-// ===== 更新结果 =====
-function updateResults() {
-  let entries = State.entries;
-
-  if (State.activeCategory !== "all") {
-    entries = entries.filter((e) => e.category === State.activeCategory);
-  }
-
-  if (State.query.trim()) {
-    entries = search(State.query, entries);
-  }
-
-  renderResults(entries);
-}
-
-// ===== 启动 =====
+// ===== Start =====
 init();
