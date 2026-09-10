@@ -4,14 +4,38 @@ const State = {
   entries: [],
   categories: [],
   activeCategory: "all",
+  activeColor: "#7c3aed",
   query: "",
   expandedIds: new Set(),
 };
 
 const $ = (sel) => document.querySelector(sel);
 
+// ===== 粒子背景 =====
+function createParticles() {
+  const container = document.getElementById("particles");
+  const colors = ["#7c3aed", "#2563eb", "#0891b2", "#a78bfa", "#22d3ee"];
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+    const size = Math.random() * 4 + 2;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    p.style.cssText = `
+      width:${size}px;height:${size}px;
+      background:${color};
+      left:${Math.random() * 100}%;
+      opacity:${Math.random() * 0.15 + 0.05};
+      animation-duration:${Math.random() * 20 + 15}s;
+      animation-delay:${Math.random() * 20}s;
+    `;
+    container.appendChild(p);
+  }
+}
+
 // ===== 初始化 =====
 async function init() {
+  createParticles();
+
   try {
     const res = await fetch("data/knowledge-base.json");
     State.data = await res.json();
@@ -40,15 +64,15 @@ function renderCategories() {
   const allCount = State.entries.length;
 
   let html = `
-    <button class="cat-pill active" data-cat="all">
-      <span class="cat-dot" style="background:#94a3b8"></span>
+    <button class="cat-pill active" data-cat="all" data-color="#7c3aed" style="background:#7c3aed;border-color:#7c3aed">
+      <span class="cat-dot" style="background:#fff"></span>
       全部 <span class="cat-count">${allCount}</span>
     </button>`;
 
   for (const cat of State.categories) {
     const count = State.entries.filter((e) => e.category === cat.id).length;
     html += `
-      <button class="cat-pill" data-cat="${cat.id}">
+      <button class="cat-pill" data-cat="${cat.id}" data-color="${cat.color}">
         <span class="cat-dot" style="background:${cat.color}"></span>
         ${cat.name} <span class="cat-count">${count}</span>
       </button>`;
@@ -112,7 +136,7 @@ function renderResults(entries) {
     .map((entry, i) => {
       const cat = State.categories.find((c) => c.id === entry.category);
       const catName = cat ? cat.name : "";
-      const catColor = cat ? cat.color : "#6366f1";
+      const catColor = cat ? cat.color : "#7c3aed";
       const isExpanded = State.expandedIds.has(entry.id);
 
       const question = kw.length > 0 ? highlightText(entry.question, kw) : entry.question;
@@ -125,7 +149,7 @@ function renderResults(entries) {
       return `
         <div class="entry-card ${isExpanded ? "expanded" : ""}" data-id="${entry.id}" style="animation-delay:${i * 0.05}s">
           <div class="entry-header" onclick="toggleEntry('${entry.id}')">
-            <span class="entry-badge" style="background:${catColor}22;color:${catColor};border:1px solid ${catColor}44">
+            <span class="entry-badge" style="background:${catColor}1a;color:${catColor};border:1px solid ${catColor}33">
               ${catName}
             </span>
             <div class="entry-body">
@@ -206,10 +230,25 @@ function bindEvents() {
     const pill = e.target.closest(".cat-pill");
     if (!pill) return;
 
-    document.querySelectorAll(".cat-pill").forEach((p) => p.classList.remove("active"));
+    // 重置所有按钮
+    document.querySelectorAll(".cat-pill").forEach((p) => {
+      p.classList.remove("active");
+      p.style.background = "";
+      p.style.borderColor = "";
+      const dot = p.querySelector(".cat-dot");
+      if (dot) dot.style.background = p.dataset.color;
+    });
+
+    // 激活当前按钮
     pill.classList.add("active");
+    const color = pill.dataset.color || "#7c3aed";
+    pill.style.background = color;
+    pill.style.borderColor = color;
+    const dot = pill.querySelector(".cat-dot");
+    if (dot) dot.style.background = "#fff";
 
     State.activeCategory = pill.dataset.cat;
+    State.activeColor = color;
     updateResults();
   });
 
