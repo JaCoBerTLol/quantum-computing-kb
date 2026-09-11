@@ -1,8 +1,238 @@
 {
-  "lastUpdated": "2026-09-10",
-  "lastScraped": "",
-  "description": "量子计算行业资讯 — 每日自动更新",
+  "lastUpdated": "2026-09-11",
+  "lastScraped": "2026-09-11",
+  "description": "量子行业资讯 — 每3天自动更新（量子计算/通信/精密测量）",
   "items": [
+    {
+      "id": "n2026-01",
+      "title": "Quantinuum完成IPO，募资约16.8亿美元，纳斯达克挂牌QNT",
+      "summary": "Quantinuum以每股60美元发行2800万股A类普通股，募资约16.8亿美元，是量子计算领域规模最大的IPO。上市后估值约157亿美元，离子阱路线领军企业正式进入公开市场。",
+      "date": "2026-06-04",
+      "category": "industry",
+      "source": "Quantinuum / NASDAQ",
+      "url": "https://www.quantinuum.com/press-releases/quantinuum-announces-closing-of-upsized-initial-public-offering",
+      "isKey": true
+    },
+    {
+      "id": "n2026-02",
+      "title": "IonQ Q2营收8010万美元同比增长287%，全年指引上调至4.5-4.6亿美元",
+      "summary": "IonQ第二季度营收8010万美元创历史新高，同比增长287%。完成SkyWater半导体工厂收购后，全年营收指引从2.8亿-2.9亿上调至4.5亿-4.6亿美元。",
+      "date": "2026-09-08",
+      "category": "industry",
+      "source": "IonQ",
+      "url": "https://www.ionq.com/news/ionq-announces-increased-full-year-2026-financial-outlook-following-skywater-acquisition",
+      "isKey": true
+    },
+    {
+      "id": "n2026-03",
+      "title": "IonQ向剑桥大学交付第六代256量子比特系统，首售量子存储节点",
+      "summary": "IonQ第一季度向剑桥大学交付第六代芯片式256量子比特系统，扩展波兰国家量子通信网络部署，并完成美国中大西洋区域量子互联网量子存储节点的首次商用销售。",
+      "date": "2026-04-15",
+      "category": "industry",
+      "source": "IonQ",
+      "url": "https://www.ionq.com/news/ionq-announces-first-quarter-2026-financial-results",
+      "isKey": false
+    },
+    {
+      "id": "n2026-04",
+      "title": "中国「星汉二号」量子中继网络实现14.5公里物质纠缠",
+      "summary": "中国科学技术大学科研团队在合肥建成「星汉二号」多模式量子中继网络，实现相距14.5公里的物质纠缠，有望成为未来量子网络的根本性技术路线。",
+      "date": "2026-05-07",
+      "category": "breakthrough",
+      "source": "中国科学院",
+      "url": "http://www.cas.cn/cm/202605/t20260507_5108879.shtml",
+      "isKey": true
+    },
+    {
+      "id": "n2026-05",
+      "title": "PsiQuantum完成15亿美元融资，估值达105亿美元",
+      "summary": "PsiQuantum在2026年5月完成15亿美元融资轮，估值达到105亿美元。主要投资者包括BlackRock、Temasek、Baillie Gifford和Nvidia，光子量子计算路线持续获得资本青睐。",
+      "date": "2026-05-20",
+      "category": "industry",
+      "source": "Sacra",
+      "url": "https://sacra.com/c/psiquantum/",
+      "isKey": true
+    },
+    {
+      "id": "n2026-06",
+      "title": "D-Wave Q1订单创纪录3340万美元，同比增近2000%",
+      "summary": "D-Wave在2026年第一季度实现创纪录订单3340万美元，同比增长近2000%，季末现金达5.88亿美元。转板首日大涨20%，机构Benchmark首次覆盖给予买入评级。",
+      "date": "2026-05-12",
+      "category": "industry",
+      "source": "D-Wave Quantum",
+      "url": "https://cloud.tencent.com/developer/news/4338831",
+      "isKey": false
+    },
+    {
+      "id": "n2026-07",
+      "title": "D-Wave与AT&T签署协议，量子退火将网络优化从1小时降至15秒",
+      "summary": "AT&T签署协议扩展使用D-Wave量子计算技术，计划在网络运营中应用量子退火解决复杂优化问题。早期应用中D-Wave技术将网络优化工作负载处理时间从约1小时降至不到15秒。",
+      "date": "2026-07-27",
+      "category": "industry",
+      "source": "D-Wave",
+      "url": "https://www.dwavequantum.com/company/newsroom/press-release/at-t-signs-agreement-to-expand-use-of-d-wave-s-quantum-computing-technology/",
+      "isKey": true
+    },
+    {
+      "id": "n2026-08",
+      "title": "DARPA采购125台Evergreen-05光学原子钟，量子授时设备首次批量生产",
+      "summary": "DARPA采购125台Evergreen-05光学原子钟，IISS视为量子授时设备首次进入批量生产阶段。英国海军同期利用Aquark技术公司冷原子钟开展海上试验。",
+      "date": "2026-08-06",
+      "category": "breakthrough",
+      "source": "IISS",
+      "url": "https://www.iiss.org/ja-JP/online-analysis/military-balance/2026/09/from-sea-trials-to-series-production-the-uneven-rise-of-military-quantum-sensing/",
+      "isKey": true
+    },
+    {
+      "id": "n2026-09",
+      "title": "中国九章系列光量子原型机迭代至3050个光子，首次完成真实化学分子模拟",
+      "summary": "我国「九章」系列光量子计算原型机持续迭代至3050个光子，并首次完成对真实化学分子系统的模拟计算，标志着光量子计算向实用化迈出重要一步。",
+      "date": "2026-03-25",
+      "category": "breakthrough",
+      "source": "上海证券报",
+      "url": "http://paper.cnstock.com/html/2026-03/25/content_2191806.htm",
+      "isKey": true
+    },
+    {
+      "id": "n2026-10",
+      "title": "本源量子「悟空」商用72比特计算机，全球163国完成80余万次计算",
+      "summary": "本源量子推出搭载72位自主超导芯片的「本源悟空」计算机，已稳定运行超两年，为全球163个国家和地区完成80余万次计算任务，成为中国量子计算云平台代表。",
+      "date": "2026-06-10",
+      "category": "industry",
+      "source": "新浪新闻",
+      "url": "https://k.sina.com.cn/article_1708265521_65d21031019028wxm.html",
+      "isKey": false
+    },
+    {
+      "id": "n2026-11",
+      "title": "国盾量子设立15亿元量子产业专项基金，覆盖量子通信与量子计算",
+      "summary": "国盾量子联合关联方设立15亿元量子产业专项基金，为年内国内规模最大的量子专项基金，资金重点投向量子通信、量子计算两大核心赛道。",
+      "date": "2026-06-18",
+      "category": "industry",
+      "source": "证券时报",
+      "url": "https://egs.stcn.com/quotation/stock-info/sh688027.html",
+      "isKey": false
+    },
+    {
+      "id": "n2026-12",
+      "title": "国盾量子完成6台超导整机交付，天衍-287完成项目验收",
+      "summary": "国盾量子已交付6台超导量子计算整机，其中天衍-287搭载祖冲之三号同款系列芯片，已完成项目验收，标志国内量子计算整机商业化交付能力成熟。",
+      "date": "2026-09-05",
+      "category": "industry",
+      "source": "东方财富网",
+      "url": "https://guba.eastmoney.com/news,gssz,1769460718.html",
+      "isKey": false
+    },
+    {
+      "id": "n2026-13",
+      "title": "国仪量子IPO注册申请获证监会批复，量子精密测量第一股将至",
+      "summary": "证监会已批复同意国仪量子技术（合肥）股份有限公司IPO注册申请，A股量子上市企业再添一员，国仪量子源自中科大杜江峰院士实验室。",
+      "date": "2026-07-15",
+      "category": "industry",
+      "source": "证券时报",
+      "url": "https://egs.stcn.com/quotation/stock-info/sh688027.html",
+      "isKey": true
+    },
+    {
+      "id": "n2026-14",
+      "title": "深圳大学团队突破纠缠增强原子钟性能瓶颈",
+      "summary": "深圳大学李朝红教授团队联合中山大学提出基于可信区间的自适应贝叶斯量子频率估计方案，有效解决纠缠增强量子传感器在高精度与高动态范围之间难以兼顾的难题。",
+      "date": "2026-04-29",
+      "category": "breakthrough",
+      "source": "深圳大学",
+      "url": "https://ods.szu.edu.cn/info/1011/2978.htm",
+      "isKey": false
+    },
+    {
+      "id": "n2026-15",
+      "title": "国产MEMS量子传感器实现全链条自主突破",
+      "summary": "昆泰时空团队围绕芯片级原子钟开展技术攻关，实现MEMS量子传感器件的技术突破与规模化工程落地，完成全链条自主创新突破。",
+      "date": "2026-07-20",
+      "category": "breakthrough",
+      "source": "北京日报",
+      "url": "https://peking.bjd.com.cn/content/s6a93ccb8e4b03fa51a839264.html",
+      "isKey": false
+    },
+    {
+      "id": "n2026-16",
+      "title": "Google Quantum AI扩展硬件路线，引入中性原子量子比特",
+      "summary": "Google在2026年将中性原子量子比特纳入其硬件计划，作为超导路线之外的第二种量子比特模式，显示多路线并行策略。",
+      "date": "2026-03-15",
+      "category": "breakthrough",
+      "source": "Jared Watkins Research",
+      "url": "https://www.jaredwatkins.com/research/quantum-computing/google-quantum-ai/",
+      "isKey": false
+    },
+    {
+      "id": "n2026-17",
+      "title": "D-Wave实现99.9%量子门保真度，从退火向通用门模型扩展",
+      "summary": "D-Wave在保持量子退火优势的同时，实现99.9%量子门保真度，计划从退火向可扩展门模型量子计算系统扩展，H1订单额达3550万美元同比增长1120%。",
+      "date": "2026-06-25",
+      "category": "breakthrough",
+      "source": "AI2.work",
+      "url": "https://ai2.work/blog/d-wave-s-99-9-gate-fidelity-signals-a-pivot-beyond-annealing",
+      "isKey": true
+    },
+    {
+      "id": "n2026-18",
+      "title": "全球量子技术累计投资约420亿美元，中国为最大投资方",
+      "summary": "McKinsey估算全球量子技术投资累计达420亿美元，中国为最大投资方，其次是欧盟、德国和英国。投资覆盖硬件、软件、应用全产业链。",
+      "date": "2026-06-30",
+      "category": "policy",
+      "source": "McKinsey & Company",
+      "url": "https://inspireptronmagazine.com/news/news-technology-news-2/psiquantum-darpa-125-million-quantum-deal/",
+      "isKey": true
+    },
+    {
+      "id": "n2026-19",
+      "title": "IBM推进Heron架构模块化扩展，Starling容错超算2029年目标",
+      "summary": "IBM路线图显示Heron处理器已实现133量子比特、5000门操作；Condor(1121量子比特)计划2025年Q4交付；Flamingo(5000量子比特)计划2027年Q4；Starling模块化容错量子超算目标2029年。",
+      "date": "2026-09-01",
+      "category": "breakthrough",
+      "source": "IBM Quantum",
+      "url": "https://www.ibm.com/roadmaps/quantum.pdf",
+      "isKey": true
+    },
+    {
+      "id": "n2026-20",
+      "title": "问天量子完成6亿元B轮融资，布局量子AI融合方向",
+      "summary": "问天量子2026年完成6亿元B轮融资，布局量子密码和量子AI融合方向，推出抗量子机密计算安全平台。",
+      "date": "2026-08-10",
+      "category": "industry",
+      "source": "公开信息",
+      "url": "",
+      "isKey": false
+    },
+    {
+      "id": "n004",
+      "title": "IBM发布Heron架构量子处理器与2026路线图",
+      "summary": "IBM推出新一代Heron架构量子处理器（156比特），改进纠错能力，并公布模块化扩展路线图向1000+逻辑比特迈进。",
+      "date": "2025-11-18",
+      "category": "breakthrough",
+      "source": "IBM Research",
+      "url": "https://www.ibm.com/quantum/roadmap",
+      "isKey": true
+    },
+    {
+      "id": "n006",
+      "title": "中国「十五五」规划部署量子科技重大专项",
+      "summary": "中国「十五五」规划明确提出量子信息科技作为前沿领域重点部署，加大量子计算、量子通信、量子精密测量研发投入。",
+      "date": "2025-06-10",
+      "category": "policy",
+      "source": "新华社",
+      "url": "",
+      "isKey": true
+    },
+    {
+      "id": "n007",
+      "title": "NIST正式发布后量子密码标准FIPS 203/204/205",
+      "summary": "美国国家标准与技术研究院正式发布三套后量子密码标准，标志着抗量子密码正式进入商用部署阶段。",
+      "date": "2024-08-13",
+      "category": "policy",
+      "source": "NIST",
+      "url": "https://csrc.nist.gov/projects/post-quantum-cryptography",
+      "isKey": true
+    },
     {
       "id": "n001",
       "title": "Google Willow芯片实现量子纠错below threshold里程碑",
@@ -34,72 +264,12 @@
       "isKey": true
     },
     {
-      "id": "n004",
-      "title": "IBM发布Heron架构量子处理器与2026路线图",
-      "summary": "IBM推出新一代Heron架构量子处理器（156比特），改进纠错能力，并公布模块化扩展路线图向1000+逻辑比特迈进。",
-      "date": "2025-11-18",
-      "category": "breakthrough",
-      "source": "IBM Research",
-      "url": "https://www.ibm.com/quantum/roadmap",
-      "isKey": true
-    },
-    {
       "id": "n005",
       "title": "Atom Computing中性原子量子比特突破1180",
       "summary": "Atom Computing实现1180个中性原子量子比特，创下当时量子比特数量纪录，中性原子路线受到广泛关注。",
       "date": "2024-10-22",
       "category": "breakthrough",
       "source": "Atom Computing",
-      "url": "",
-      "isKey": false
-    },
-    {
-      "id": "n006",
-      "title": "中国「十五五」规划部署量子科技重大专项",
-      "summary": "中国「十五五」规划明确提出量子信息科技作为前沿领域重点部署，加大量子计算、量子通信、量子精密测量研发投入。",
-      "date": "2025-06-10",
-      "category": "policy",
-      "source": "新华社",
-      "url": "",
-      "isKey": true
-    },
-    {
-      "id": "n007",
-      "title": "NIST正式发布后量子密码标准FIPS 203/204/205",
-      "summary": "美国国家标准与技术研究院正式发布三套后量子密码标准，标志着抗量子密码正式进入商用部署阶段。",
-      "date": "2024-08-13",
-      "category": "policy",
-      "source": "NIST",
-      "url": "https://csrc.nist.gov/projects/post-quantum-cryptography",
-      "isKey": true
-    },
-    {
-      "id": "n008",
-      "title": "国盾量子设立15亿元量子科技专项基金",
-      "summary": "国盾量子宣布设立15亿元量子科技产业基金，覆盖量子计算硬件、软件、应用全产业链投资。",
-      "date": "2025-04-28",
-      "category": "industry",
-      "source": "国盾量子",
-      "url": "",
-      "isKey": false
-    },
-    {
-      "id": "n009",
-      "title": "Microsoft实现Majorana零模实验验证",
-      "summary": "微软与Quantum与学术合作团队宣布实现了拓扑量子比特的关键实验证据——Majorana零模的测量结果，为拓扑量子计算路线提供了重要支撑。",
-      "date": "2025-02-19",
-      "category": "breakthrough",
-      "source": "Microsoft Research",
-      "url": "",
-      "isKey": false
-    },
-    {
-      "id": "n010",
-      "title": "量子计算全球市场规模预计2030年突破80亿美元",
-      "summary": "多家市场研究机构上调量子计算市场预测，预计2030年全球市场规模达50-100亿美元，复合增长率约30-50%。",
-      "date": "2025-05-12",
-      "category": "industry",
-      "source": "McKinsey Quantum Computing Monitor",
       "url": "",
       "isKey": false
     }

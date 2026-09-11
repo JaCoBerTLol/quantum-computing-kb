@@ -1,9 +1,10 @@
-name: 量子计算行业资讯每日更新
+name: 量子行业资讯每3天更新
 
 on:
   schedule:
-    # 每天北京时间 8:00 执行 (UTC 0:00)
-    - cron: '0 0 * * *'
+    # 每3天北京时间 8:00 执行 (UTC 0:00)
+    # 1日、4日、7日、10日、13日、16日、19日、22日、25日、28日
+    - cron: '0 0 1,4,7,10,13,16,19,22,25,28 * *'
   workflow_dispatch: # 支持手动触发
 
 permissions:
@@ -36,6 +37,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: 每日量子计算行业资讯自动更新 $(date -u +%Y-%m-%d)"
+            git commit -m "chore: 量子行业资讯每3天自动更新 $(date -u +%Y-%m-%d)"
             git push
           fi
