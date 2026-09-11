@@ -1628,36 +1628,40 @@ function renderGlossary() {
 
 // ===== Quantum Map =====
 const MAP_LOCATIONS=[
-  {name:"IBM",country:"美国",city:"New York",domain:"qc",x:225,y:155,desc:"超导量子计算领导者"},
-  {name:"Google",country:"美国",city:"California",domain:"qc",x:210,y:170,desc:"Sycamore处理器"},
-  {name:"Microsoft",country:"美国",city:"Washington",domain:"qc",x:200,y:140,desc:"拓扑量子计算"},
-  {name:"IonQ",country:"美国",city:"Maryland",domain:"qc",x:230,y:165,desc:"离子阱量子计算"},
-  {name:"Quantinuum",country:"美国/英国",city:"Colorado",domain:"qc",x:215,y:150,desc:"离子阱+量子软件"},
-  {name:"PsiQuantum",country:"美国",city:"California",domain:"qc",x:205,y:175,desc:"光量子计算"},
-  {name:"D-Wave",country:"加拿大",city:"Vancouver",domain:"qc",x:180,y:130,desc:"量子退火"},
-  {name:"Rigetti",country:"美国",city:"California",domain:"qc",x:208,y:172,desc:"超导量子云"},
-  {name:"中国科学技术大学",country:"中国",city:"合肥",domain:"qc",x:690,y:185,desc:"九章/祖冲之"},
-  {name:"本源量子",country:"中国",city:"合肥",domain:"qc",x:692,y:183,desc:"超导量子计算"},
-  {name:"百度量子",country:"中国",city:"北京",domain:"qc",x:695,y:165,desc:"量子云平台"},
-  {name:"图灵量子",country:"中国",city:"上海",domain:"qc",x:698,y:185,desc:"光量子计算"},
-  {name:"ID Quantique",country:"瑞士",city:"Geneva",domain:"qt",x:490,y:160,desc:"商用QKD"},
-  {name:"国盾量子",country:"中国",city:"合肥",domain:"qt",x:690,y:184,desc:"量子通信设备"},
-  {name:"量子CTek",country:"中国",city:"济南",domain:"qt",x:700,y:180,desc:"CV-QKD"},
-  {name:"Toshiba",country:"日本",city:"Tokyo",domain:"qt",x:740,y:160,desc:"TF-QKD"},
-  {name:"东芝欧洲",country:"英国",city:"Cambridge",domain:"qt",x:470,y:145,desc:"QKD研究"},
-  {name:"中科大(量子通信)",country:"中国",city:"合肥",domain:"qt",x:691,y:186,desc:"墨子号/京沪干线"},
-  {name:"Microchip",country:"美国",city:"Northeast",domain:"qm",x:235,y:150,desc:"原子钟市场"},
-  {name:"国仪量子",country:"中国",city:"合肥",domain:"qm",x:693,y:182,desc:"NV色心传感"},
-  {name:"Exail",country:"法国",city:"Paris",domain:"qm",x:485,y:150,desc:"冷原子传感"},
-  {name:"AOSense",country:"美国",city:"California",domain:"qm",x:207,y:173,desc:"冷原子重力仪"},
-  {name:"QuSpin",country:"美国",city:"Colorado",domain:"qm",x:214,y:152,desc:"OPM磁力仪"},
-  {name:"成都天奥",country:"中国",city:"成都",domain:"qm",x:685,y:175,desc:"原子钟"},
-  {name:"PTB",country:"德国",city:"Braunschweig",domain:"qm",x:495,y:145,desc:"国家计量院"},
-  {name:"NIST",country:"美国",city:"Boulder",domain:"qm",x:212,y:155,desc:"光钟研究"},
-  {name:"NTT",country:"日本",city:"Tokyo",domain:"qt",x:742,y:162,desc:"量子网络"},
-  {name:"CSTEC",country:"中国",city:"北京",domain:"qt",x:696,y:166,desc:"量子通信标准化"},
-  {name:"电子科技集团",country:"中国",city:"北京",domain:"qm",x:694,y:168,desc:"量子雷达/原子钟"},
-  {name:"Qnami",country:"瑞士",city:"Lausanne",domain:"qm",x:488,y:162,desc:"NV扫描探针"},
+  // QC - North America
+  {name:"IBM",country:"美国",city:"New York",domain:"qc",x:250,y:120,desc:"超导量子计算领导者"},
+  {name:"Google",country:"美国",city:"California",domain:"qc",x:185,y:135,desc:"Sycamore处理器"},
+  {name:"Microsoft",country:"美国",city:"Washington",domain:"qc",x:170,y:110,desc:"拓扑量子计算"},
+  {name:"IonQ",country:"美国",city:"Maryland",domain:"qc",x:260,y:125,desc:"离子阱量子计算"},
+  {name:"Quantinuum",country:"美国/英国",city:"Colorado",domain:"qc",x:225,y:120,desc:"离子阱+量子软件"},
+  {name:"PsiQuantum",country:"美国",city:"California",domain:"qc",x:180,y:145,desc:"光量子计算"},
+  {name:"D-Wave",country:"加拿大",city:"Vancouver",domain:"qc",x:165,y:100,desc:"量子退火"},
+  {name:"Rigetti",country:"美国",city:"California",domain:"qc",x:178,y:148,desc:"超导量子云"},
+  // QC - China
+  {name:"中科大",country:"中国",city:"合肥",domain:"qc",x:730,y:165,desc:"九章/祖冲之"},
+  {name:"本源量子",country:"中国",city:"合肥",domain:"qc",x:732,y:170,desc:"超导量子计算"},
+  {name:"百度量子",country:"中国",city:"北京",domain:"qc",x:720,y:145,desc:"量子云平台"},
+  {name:"图灵量子",country:"中国",city:"上海",domain:"qc",x:755,y:170,desc:"光量子计算"},
+  // QT
+  {name:"ID Quantique",country:"瑞士",city:"Geneva",domain:"qt",x:505,y:125,desc:"商用QKD"},
+  {name:"国盾量子",country:"中国",city:"合肥",domain:"qt",x:730,y:168,desc:"量子通信设备"},
+  {name:"量子CTek",country:"中国",city:"济南",domain:"qt",x:735,y:160,desc:"CV-QKD"},
+  {name:"Toshiba",country:"日本",city:"Tokyo",domain:"qt",x:830,y:155,desc:"TF-QKD"},
+  {name:"东芝欧洲",country:"英国",city:"Cambridge",domain:"qt",x:465,y:115,desc:"QKD研究"},
+  {name:"中科大量子通信",country:"中国",city:"合肥",domain:"qt",x:728,y:172,desc:"墨子号/京沪干线"},
+  {name:"NTT",country:"日本",city:"Tokyo",domain:"qt",x:832,y:160,desc:"量子网络"},
+  {name:"CSTEC",country:"中国",city:"北京",domain:"qt",x:722,y:148,desc:"量子通信标准化"},
+  // QM
+  {name:"Microchip",country:"美国",city:"Northeast",domain:"qm",x:255,y:115,desc:"原子钟市场"},
+  {name:"国仪量子",country:"中国",city:"合肥",domain:"qm",x:731,y:167,desc:"NV色心传感"},
+  {name:"Exail",country:"法国",city:"Paris",domain:"qm",x:505,y:130,desc:"冷原子传感"},
+  {name:"AOSense",country:"美国",city:"California",domain:"qm",x:182,y:142,desc:"冷原子重力仪"},
+  {name:"QuSpin",country:"美国",city:"Colorado",domain:"qm",x:220,y:125,desc:"OPM磁力仪"},
+  {name:"成都天奥",country:"中国",city:"成都",domain:"qm",x:710,y:175,desc:"原子钟"},
+  {name:"PTB",country:"德国",city:"Braunschweig",domain:"qm",x:525,y:115,desc:"国家计量院"},
+  {name:"NIST",country:"美国",city:"Boulder",domain:"qm",x:218,y:130,desc:"光钟研究"},
+  {name:"电子科技集团",country:"中国",city:"北京",domain:"qm",x:718,y:152,desc:"量子雷达/原子钟"},
+  {name:"Qnami",country:"瑞士",city:"Lausanne",domain:"qm",x:500,y:128,desc:"NV扫描探针"},
 ];
 
 function initQuantumMap() {
@@ -1673,25 +1677,72 @@ function initQuantumMap() {
 function renderQuantumMap() {
   const c=$("#mapContainer"); if(!c) return;
   const locs=State.mapDomain==="all"?MAP_LOCATIONS:MAP_LOCATIONS.filter(l=>l.domain===State.mapDomain);
+  // World map SVG paths (simplified but recognizable continents)
+  const worldMapPath = `
+      <defs>
+        <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0a0e1a"/>
+          <stop offset="100%" stop-color="#0d1520"/>
+        </linearGradient>
+        <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1e293b"/>
+          <stop offset="100%" stop-color="#1a2333"/>
+        </linearGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="1000" height="500" fill="url(#oceanGrad)" rx="12"/>
+      <!-- Grid lines -->
+      <g stroke="#1a2535" stroke-width="0.5" opacity="0.3">
+        <line x1="0" y1="125" x2="1000" y2="125"/><line x1="0" y1="250" x2="1000" y2="250"/><line x1="0" y1="375" x2="1000" y2="375"/>
+        <line x1="200" y1="0" x2="200" y2="500"/><line x1="400" y1="0" x2="400" y2="500"/><line x1="500" y1="0" x2="500" y2="500" stroke-dasharray="4,4"/><line x1="600" y1="0" x2="600" y2="500"/><line x1="800" y1="0" x2="800" y2="500"/>
+      </g>
+      <!-- North America -->
+      <path d="M120,80 C140,70 180,65 220,70 L280,75 C310,80 320,100 310,130 L290,160 C280,180 250,190 220,185 L190,175 C170,170 150,155 140,140 L120,120 C115,105 112,90 120,80 Z M180,195 C200,190 215,200 220,220 L210,250 C200,265 185,265 175,250 L170,230 C168,215 172,200 180,195 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Greenland -->
+      <path d="M330,55 C350,50 370,55 375,70 L370,90 C365,100 350,105 340,100 L328,85 C323,72 325,60 330,55 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- South America -->
+      <path d="M240,270 C260,265 285,270 295,290 L305,330 C310,360 300,390 285,410 L270,425 C255,420 245,400 240,380 L235,340 C233,310 235,285 240,270 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Europe -->
+      <path d="M470,100 C490,95 520,95 540,100 L560,110 C565,120 560,135 550,145 L530,155 C510,160 485,155 475,145 L465,130 C462,115 465,105 470,100 Z M460,90 L475,85 L482,95 L470,98 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Africa -->
+      <path d="M490,180 C510,175 540,175 555,190 L570,220 C575,250 565,280 550,300 L530,320 C515,315 500,300 495,280 L485,250 C482,220 484,195 490,180 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Middle East -->
+      <path d="M560,160 C575,155 590,160 595,175 L590,190 C580,195 568,190 562,180 L558,170 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Russia / Northern Asia -->
+      <path d="M560,85 C600,75 680,70 750,75 L820,80 C840,85 845,100 835,115 L800,130 C760,135 700,130 640,125 L580,120 C565,115 555,100 560,85 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- China / East Asia -->
+      <path d="M680,130 C710,125 740,130 760,145 L775,165 C780,180 770,195 755,200 L720,205 C695,200 680,190 672,175 L665,155 C663,140 670,133 680,130 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Japan -->
+      <path d="M820,140 C830,135 840,140 842,152 L838,168 C833,175 825,175 822,168 L818,155 C816,145 817,140 820,140 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Korea -->
+      <path d="M795,150 L805,148 L808,162 L800,168 L793,160 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- India / South Asia -->
+      <path d="M670,180 C685,175 700,180 705,195 L700,215 C690,225 678,222 672,212 L665,200 C662,188 665,182 670,180 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Southeast Asia -->
+      <path d="M730,200 C745,195 760,200 765,215 L755,230 C745,235 735,230 730,220 L725,210 Z M770,210 L785,205 L790,220 L780,230 L772,225 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Australia -->
+      <path d="M780,290 C800,285 830,285 845,295 L860,310 C865,325 855,340 840,345 L810,350 C795,345 785,335 782,322 L778,305 C777,295 778,290 780,290 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- New Zealand -->
+      <path d="M900,360 L912,355 L915,370 L905,378 L898,370 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- UK / Ireland -->
+      <path d="M455,108 L468,105 L472,118 L460,122 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+      <!-- Scandinavia -->
+      <path d="M500,75 L525,70 L530,95 L510,100 Z" fill="url(#landGrad)" stroke="#374151" stroke-width="1"/>
+  `;
   c.innerHTML=`
-    <svg viewBox="0 0 900 380" class="quantum-map-svg">
-      <!-- Simplified world map -->
-      <rect width="900" height="380" fill="#0d1117" rx="12"/>
-      <!-- Continents (simplified shapes) -->
-      <path d="M150,100 Q180,80 250,100 L280,120 Q300,140 280,180 L250,220 Q200,240 170,220 L140,180 Q120,140 150,100Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
-      <path d="M180,230 Q200,250 230,280 L220,330 Q200,350 180,330 L170,290 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
-      <path d="M420,100 Q470,85 530,100 L560,130 Q580,160 550,190 L500,210 Q450,215 420,190 L400,150 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
-      <path d="M460,220 Q490,215 520,230 L530,280 Q510,320 480,310 L460,270 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
-      <path d="M640,120 Q680,100 740,110 L770,140 Q780,170 760,200 L720,210 Q680,205 650,180 L630,150 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
-      <path d="M680,220 Q700,215 720,230 L730,280 Q710,310 690,290 L670,250 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
-      <path d="M350,180 Q380,175 420,185 L430,220 Q400,240 370,230 L350,200 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
+    <svg viewBox="0 0 1000 500" class="quantum-map-svg">
+      ${worldMapPath}
       <!-- Location pins -->
       ${locs.map(l=>`<g class="map-pin" data-domain="${l.domain}" onclick="showMapInfo('${l.name}')" style="cursor:pointer">
-        <circle cx="${l.x}" cy="${l.y}" r="5" fill="${DOMAIN_COLORS[l.domain]}" opacity="0.8">
-          <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/>
+        <circle cx="${l.x}" cy="${l.y}" r="6" fill="${DOMAIN_COLORS[l.domain]}" opacity="0.3" filter="url(#glow)">
+          <animate attributeName="r" values="6;12;6" dur="2.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.3;0.05;0.3" dur="2.5s" repeatCount="indefinite"/>
         </circle>
-        <circle cx="${l.x}" cy="${l.y}" r="2.5" fill="#fff"/>
-        <text x="${l.x+8}" y="${l.y+3}" fill="${DOMAIN_COLORS[l.domain]}" font-size="9" opacity="0.7">${l.name}</text>
+        <circle cx="${l.x}" cy="${l.y}" r="4" fill="${DOMAIN_COLORS[l.domain]}">
+          <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="${l.x}" cy="${l.y}" r="2" fill="#fff"/>
+        <text x="${l.x+10}" y="${l.y+4}" fill="${DOMAIN_COLORS[l.domain]}" font-size="10" font-weight="500" opacity="0.8" style="text-shadow:0 0 4px #000">${l.name}</text>
       </g>`).join("")}
     </svg>`;
   const lg=$("#mapLegend"); if(lg) lg.innerHTML=`
