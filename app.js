@@ -1715,21 +1715,32 @@ async function renderQuantumMap() {
     p.setAttribute('stroke-width', '0.5');
   });
 
-  // Add defs for glow filter
-  const defs = doc.createElementNS('http://www.w3.org/2000/svg', 'defs');
-  defs.innerHTML = '<filter id="glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
+  // Add defs for glow filter (use createElementNS for cross-browser compatibility)
+  const ns = 'http://www.w3.org/2000/svg';
+  const defs = doc.createElementNS(ns, 'defs');
+  const filter = doc.createElementNS(ns, 'filter');
+  filter.setAttribute('id', 'glow');
+  const feBlur = doc.createElementNS(ns, 'feGaussianBlur');
+  feBlur.setAttribute('stdDeviation', '2.5'); feBlur.setAttribute('result', 'b');
+  const feMerge = doc.createElementNS(ns, 'feMerge');
+  const feMerge1 = doc.createElementNS(ns, 'feMergeNode');
+  feMerge1.setAttribute('in', 'b');
+  const feMerge2 = doc.createElementNS(ns, 'feMergeNode');
+  feMerge2.setAttribute('in', 'SourceGraphic');
+  feMerge.appendChild(feMerge1); feMerge.appendChild(feMerge2);
+  filter.appendChild(feBlur); filter.appendChild(feMerge);
+  defs.appendChild(filter);
   svgEl.insertBefore(defs, svgEl.firstChild);
 
   // Add pin groups for each location
   for (const l of locs) {
     const {x, y} = lonLatToXY(l.lon, l.lat);
     const color = DOMAIN_COLORS[l.domain];
-    const ns = 'http://www.w3.org/2000/svg';
     const g = doc.createElementNS(ns, 'g');
     g.setAttribute('class', 'map-pin');
     g.setAttribute('data-domain', l.domain);
+    g.setAttribute('data-name', l.name);
     g.setAttribute('style', 'cursor:pointer');
-    g.setAttribute('onclick', `showMapInfo('${l.name}')`);
 
     // Outer pulse circle
     const c1 = doc.createElementNS(ns, 'circle');
@@ -1773,9 +1784,16 @@ async function renderQuantumMap() {
     svgEl.appendChild(g);
   }
 
-  // Serialize and inject
-  c.innerHTML = '';
-  c.appendChild(svgEl);
+  // Serialize and inject as string (more reliable than appendChild cross-document)
+  const serializer = new XMLSerializer();
+  const svgString = serializer.serializeToString(svgEl);
+  c.innerHTML = svgString;
+
+  // Attach click handlers after DOM insertion
+  c.querySelectorAll('.map-pin').forEach(pin => {
+    const name = pin.getAttribute('data-name');
+    if (name) pin.addEventListener('click', () => showMapInfo(name));
+  });
 
   const lg=$("#mapLegend"); if(lg) lg.innerHTML=`
     <div class="map-legend-item"><span class="map-legend-dot" style="background:${DOMAIN_COLORS.qc}"></span>量子计算 (${MAP_LOCATIONS.filter(l=>l.domain==="qc").length})</div>
