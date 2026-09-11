@@ -1627,10 +1627,10 @@ function renderGlossary() {
 }
 
 // ===== Quantum Map =====
-// 经纬度 → SVG坐标投影 (Equirectangular projection, 匹配world-map.svg viewBox: 30.767 241.591 784.077 458.627)
+// 经纬度 → SVG坐标投影 (校准自SVG路径数据: Iceland≈(366,340)@(-19,65), Japan≈(709,426)@(138,36), Australia≈(673,609)@(133,-25), UK≈(401,368)@(-2,54))
 function lonLatToXY(lon, lat) {
-  const x = 30.767 + (lon + 180) * (784.077 / 360);
-  const y = 241.591 + (90 - lat) * (458.627 / 180);
+  const x = 413.8 + lon * 2.227;
+  const y = 538.0 - lat * 3.010;
   return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
 }
 
@@ -1708,15 +1708,40 @@ async function renderQuantumMap() {
   svgEl.setAttribute('height', '100%');
 
   // Style all country paths
+  const ns = 'http://www.w3.org/2000/svg';
   const paths = svgEl.querySelectorAll('path');
   paths.forEach(p => {
-    p.setAttribute('fill', '#1e2a3a');
-    p.setAttribute('stroke', '#3a4a5e');
+    p.setAttribute('fill', '#e8edf2');
+    p.setAttribute('stroke', '#cbd5e1');
     p.setAttribute('stroke-width', '0.5');
   });
 
-  // Add defs for glow filter (use createElementNS for cross-browser compatibility)
-  const ns = 'http://www.w3.org/2000/svg';
+  // Add country labels for regions with companies
+  const COUNTRY_LABELS = [
+    {label:"美国", lon:-98, lat:39},
+    {label:"加拿大", lon:-95, lat:50},
+    {label:"中国", lon:104, lat:36},
+    {label:"日本", lon:138, lat:36},
+    {label:"瑞士", lon:8, lat:46.5},
+    {label:"英国", lon:-1.5, lat:52.5},
+    {label:"法国", lon:2.3, lat:46.5},
+    {label:"德国", lon:10, lat:51},
+  ];
+  for (const cl of COUNTRY_LABELS) {
+    const {x, y} = lonLatToXY(cl.lon, cl.lat);
+    const labelText = doc.createElementNS(ns, 'text');
+    labelText.setAttribute('x', x);
+    labelText.setAttribute('y', y);
+    labelText.setAttribute('text-anchor', 'middle');
+    labelText.setAttribute('fill', '#94a3b8');
+    labelText.setAttribute('font-size', '12');
+    labelText.setAttribute('font-weight', '600');
+    labelText.setAttribute('style', 'pointer-events:none;text-transform:uppercase;letter-spacing:1px');
+    labelText.textContent = cl.label;
+    svgEl.appendChild(labelText);
+  }
+
+  // Add defs for glow filter
   const defs = doc.createElementNS(ns, 'defs');
   const filter = doc.createElementNS(ns, 'filter');
   filter.setAttribute('id', 'glow');
@@ -1777,7 +1802,7 @@ async function renderQuantumMap() {
     text.setAttribute('x', x + 10); text.setAttribute('y', y + 4);
     text.setAttribute('fill', color); text.setAttribute('font-size', '10');
     text.setAttribute('font-weight', '500'); text.setAttribute('opacity', '0.85');
-    text.setAttribute('style', 'text-shadow:0 0 4px #000;pointer-events:none');
+    text.setAttribute('style', 'text-shadow:0 0 3px #fff,0 1px 2px rgba(0,0,0,0.2);pointer-events:none');
     text.textContent = l.name;
     g.appendChild(text);
 
@@ -1807,7 +1832,7 @@ window.showMapInfo=function(name) {
   const info=c.querySelector(".map-info-box")||document.createElement("div");
   info.className="map-info-box";
   info.innerHTML=`<strong>${loc.name}</strong> — ${loc.city}, ${loc.country}<br><span style="color:${DOMAIN_COLORS[loc.domain]}">${DOMAIN_NAMES[loc.domain]}</span><br>${loc.desc}`;
-  info.style.cssText="position:absolute;top:10px;right:10px;background:rgba(30,30,50,0.95);padding:10px 14px;border-radius:8px;font-size:12px;border:1px solid "+DOMAIN_COLORS[loc.domain]+"44;max-width:200px;z-index:10";
+  info.style.cssText="position:absolute;top:10px;right:10px;background:rgba(255,255,255,0.95);padding:10px 14px;border-radius:8px;font-size:12px;border:1px solid "+DOMAIN_COLORS[loc.domain]+"44;max-width:200px;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.1)";
   if(!c.querySelector(".map-info-box")) c.appendChild(info);
   info.onclick=()=>info.remove();
 };
