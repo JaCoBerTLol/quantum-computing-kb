@@ -557,8 +557,10 @@ body {
 .map-filter-btn { padding: 6px 16px; border-radius: 18px; border: 1.5px solid var(--border-color); background: var(--bg-card); font-size: 12px; cursor: pointer; color: var(--text-secondary); transition: var(--transition); box-shadow: var(--shadow-sm); }
 .map-filter-btn:hover { border-color: var(--border-hover); transform: translateY(-1px); }
 .map-filter-btn.active { background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)); color: #fff; border-color: transparent; box-shadow: 0 3px 10px rgba(124,58,237,0.3); }
-.map-svg-container { position: relative; max-width: 1000px; margin: 0 auto; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); }
+.map-svg-container { position: relative; max-width: 1000px; margin: 0 auto; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); background: #0a0e1a; }
 .quantum-map-svg { width: 100%; height: auto; display: block; }
+.quantum-map-svg path { transition: fill 0.3s; }
+.quantum-map-svg path:hover { fill: #2a3a4e !important; }
 .map-pin { transition: transform 0.2s; transform-origin: center; }
 .map-pin:hover { transform: scale(1.3); }
 .map-pin:hover circle { opacity: 1; }
