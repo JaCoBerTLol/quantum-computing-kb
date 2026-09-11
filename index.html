@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>量子计算知识库 | Quantum Computing KB</title>
-  <meta name="description" content="量子计算知识库 — 涵盖基础原理、硬件技术路线、量子算法、软件工具、纠错容错、产业生态、应用场景与发展趋势">
+  <title>量子知识库 | Quantum Knowledge Base</title>
+  <meta name="description" content="量子知识库 — 涵盖量子计算、量子通信、量子精密测量三大量子领域，知识库 · 交互实验室 · 产业生态 · 行业资讯 · 学习路径 · 工具箱 · 术语词典 · 全球地图">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -41,8 +41,8 @@
           </svg>
         </div>
         <div class="logo-text">
-          <h1>量子计算知识库</h1>
-          <p class="subtitle">Quantum Computing Knowledge Base</p>
+          <h1>量子知识库</h1>
+          <p class="subtitle">Quantum Knowledge Base · 计算 · 通信 · 精密测量</p>
         </div>
       </div>
       <div class="header-wave">
@@ -58,7 +58,7 @@
           </defs>
         </svg>
       </div>
-      <p class="header-desc">知识库 · 交互实验室 · 产业生态 · 行业资讯 · 发展时间线</p>
+      <p class="header-desc">知识库 · 交互实验室 · 产业生态 · 行业资讯 · 发展时间线 · 学习路径 · 工具箱 · 术语词典 · 全球地图</p>
     </header>
 
     <!-- ===== Tab Navigation ===== -->
@@ -83,11 +83,33 @@
         <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         <span>发展时间线</span>
       </button>
+      <button class="tab-btn" data-tab="learning">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 6.5L5 3v14l7 3.5 7-3.5V3l-7 3.5zM12 6.5V21M5 7l7 3.5L19 7"/></svg>
+        <span>学习路径</span>
+      </button>
+      <button class="tab-btn" data-tab="toolbox">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <span>工具箱</span>
+      </button>
+      <button class="tab-btn" data-tab="glossary">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2zM9 7h7M9 11h5"/></svg>
+        <span>术语词典</span>
+      </button>
+      <button class="tab-btn" data-tab="map">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0zM12 13a3 3 0 100-6 3 3 0 000 6z"/></svg>
+        <span>全球地图</span>
+      </button>
       <div class="tab-indicator" id="tabIndicator"></div>
     </nav>
 
     <!-- ===== Tab: 知识库 ===== -->
     <section class="tab-panel active" id="panel-knowledge">
+      <div class="kb-domain-filter" id="kbDomainFilter">
+        <button class="kb-domain-pill all active" data-domain="all">全部领域</button>
+        <button class="kb-domain-pill qc" data-domain="qc"><span class="kb-domain-dot qc"></span>量子计算</button>
+        <button class="kb-domain-pill qt" data-domain="qt"><span class="kb-domain-dot qt"></span>量子通信</button>
+        <button class="kb-domain-pill qm" data-domain="qm"><span class="kb-domain-dot qm"></span>量子精密测量</button>
+      </div>
       <div class="search-section">
         <div class="search-box">
           <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22">
@@ -294,10 +316,133 @@
       <div class="tl-vertical" id="tlVertical"></div>
     </section>
 
+    <!-- ===== Tab: 学习路径 ===== -->
+    <section class="tab-panel" id="panel-learning">
+      <div class="lp-intro">
+        <h2 class="section-title-large">量子学习路径</h2>
+        <p class="lp-subtitle">从零基础到量子开发者 · 选择适合你的起点，追踪学习进度</p>
+      </div>
+      <div class="lp-level-bar" id="lpLevelBar">
+        <button class="lp-level-btn active" data-level="beginner">
+          <span class="lp-level-icon">L1</span>
+          <div><div class="lp-level-name">入门</div><div class="lp-level-desc">零基础 · 4周</div></div>
+        </button>
+        <button class="lp-level-btn" data-level="intermediate">
+          <span class="lp-level-icon">L2</span>
+          <div><div class="lp-level-name">进阶</div><div class="lp-level-desc">有理工科背景 · 8周</div></div>
+        </button>
+        <button class="lp-level-btn" data-level="expert">
+          <span class="lp-level-icon">L3</span>
+          <div><div class="lp-level-name">专家</div><div class="lp-level-desc">物理/CS专业 · 12周</div></div>
+        </button>
+        <div class="lp-progress-box">
+          <div class="lp-progress-label">总体进度</div>
+          <div class="lp-progress-bar"><div class="lp-progress-fill" id="lpProgressFill"></div></div>
+          <div class="lp-progress-text" id="lpProgressText">0%</div>
+        </div>
+      </div>
+      <div class="lp-track" id="lpTrack"></div>
+    </section>
+
+    <!-- ===== Tab: 工具箱 ===== -->
+    <section class="tab-panel" id="panel-toolbox">
+      <div class="tb-intro">
+        <h2 class="section-title-large">量子工具箱</h2>
+        <p class="tb-subtitle">实用量子计算工具 · 在线计算与可视化</p>
+      </div>
+      <div class="tb-grid" id="tbGrid">
+        <!-- State Vector Calculator -->
+        <div class="tb-card" id="tb-statevector">
+          <div class="tb-card-header">
+            <span class="tb-icon">|ψ⟩</span>
+            <div><div class="tb-card-title">态矢量计算器</div><div class="tb-card-sub">单量子比特态可视化</div></div>
+          </div>
+          <div class="tb-card-body" id="tbStateVector"></div>
+        </div>
+        <!-- Fidelity Calculator -->
+        <div class="tb-card" id="tb-fidelity">
+          <div class="tb-card-header">
+            <span class="tb-icon">F</span>
+            <div><div class="tb-card-title">量子保真度计算器</div><div class="tb-card-sub">F(ρ,σ) 态重叠度计算</div></div>
+          </div>
+          <div class="tb-card-body" id="tbFidelity"></div>
+        </div>
+        <!-- Qubit Converter -->
+        <div class="tb-card" id="tb-converter">
+          <div class="tb-card-header">
+            <span class="tb-icon">⇄</span>
+            <div><div class="tb-card-title">量子比特转换器</div><div class="tb-card-sub">Bloch坐标 ↔ 态矢量 ↔ 测量概率</div></div>
+          </div>
+          <div class="tb-card-body" id="tbConverter"></div>
+        </div>
+        <!-- Gate Calculator -->
+        <div class="tb-card" id="tb-gate">
+          <div class="tb-card-header">
+            <span class="tb-icon">U</span>
+            <div><div class="tb-card-title">量子门矩阵计算器</div><div class="tb-card-sub">单/双比特门矩阵运算</div></div>
+          </div>
+          <div class="tb-card-body" id="tbGate"></div>
+        </div>
+        <!-- Decibit Calculator -->
+        <div class="tb-card" id="tb-decibit">
+          <div class="tb-card-header">
+            <span class="tb-icon">2ⁿ</span>
+            <div><div class="tb-card-title">量子比特规模计算器</div><div class="tb-card-sub">量子比特 vs 经典内存对比</div></div>
+          </div>
+          <div class="tb-card-body" id="tbDecibit"></div>
+        </div>
+        <!-- Bell State Generator -->
+        <div class="tb-card" id="tb-bell">
+          <div class="tb-card-header">
+            <span class="tb-icon">Φ⁺</span>
+            <div><div class="tb-card-title">Bell态生成器</div><div class="tb-card-sub">四种最大纠缠态可视化</div></div>
+          </div>
+          <div class="tb-card-body" id="tbBell"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Tab: 术语词典 ===== -->
+    <section class="tab-panel" id="panel-glossary">
+      <div class="gl-intro">
+        <h2 class="section-title-large">量子术语词典</h2>
+        <p class="gl-subtitle">中英对照 · 可搜索 · 覆盖量子计算/通信/精密测量</p>
+      </div>
+      <div class="gl-search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20">
+          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input type="text" id="glSearchInput" placeholder="输入中文或英文搜索术语..." autocomplete="off">
+      </div>
+      <div class="gl-filter-bar" id="glFilterBar">
+        <button class="gl-filter-btn active" data-filter="all">全部</button>
+        <button class="gl-filter-btn" data-filter="qc">量子计算</button>
+        <button class="gl-filter-btn" data-filter="qt">量子通信</button>
+        <button class="gl-filter-btn" data-filter="qm">精密测量</button>
+      </div>
+      <div class="gl-results" id="glResults"></div>
+    </section>
+
+    <!-- ===== Tab: 全球地图 ===== -->
+    <section class="tab-panel" id="panel-map">
+      <div class="map-intro">
+        <h2 class="section-title-large">量子全球地图</h2>
+        <p class="map-subtitle">全球量子企业与科研机构分布 · 按领域标注</p>
+      </div>
+      <div class="map-filter-bar" id="mapFilterBar">
+        <button class="map-filter-btn active" data-domain="all">全部领域</button>
+        <button class="map-filter-btn" data-domain="qc">量子计算</button>
+        <button class="map-filter-btn" data-domain="qt">量子通信</button>
+        <button class="map-filter-btn" data-domain="qm">精密测量</button>
+      </div>
+      <div class="map-svg-container" id="mapContainer"></div>
+      <div class="map-legend" id="mapLegend"></div>
+    </section>
+
     <!-- ===== Footer ===== -->
     <footer class="footer">
-      <p>量子计算知识库 · 共 <span id="totalEntries">0</span> 条知识 · 基于 HTML/CSS/JS 构建</p>
-      <p class="footer-note">通过 GitHub Pages 免费部署 · 行业资讯由 GitHub Actions 每日自动更新</p>
+      <p>量子知识库 · 共 <span id="totalEntries">0</span> 条知识 · 三大量子领域 · 基于 HTML/CSS/JS 构建</p>
+      <p class="footer-note">通过 GitHub Pages 免费部署 · 行业资讯由 GitHub Actions 每3天自动更新</p>
     </footer>
   </div>
 

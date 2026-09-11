@@ -1,8 +1,8 @@
-// 量子计算知识库 v3.0 — 多分区交互平台
+// 量子知识库 v4.0 — 三大量子领域多分区交互平台
 const State = {
   data: null, entries: [], categories: [],
   activeTab: "knowledge",
-  activeCategory: "all", activeColor: "#7c3aed",
+  activeDomain: "all", activeCategory: "all", activeColor: "#7c3aed",
   query: "", expandedIds: new Set(),
   newsData: null, newsFilter: "latest",
   tlEra: "all",
@@ -14,6 +14,16 @@ const State = {
   matrixGate: "H",
   coinState: { flipping: false, totalFlips: 0, heads: 0, tails: 0 },
   companies: [], ecoDomain: "all", compareSlots: [null, null],
+  lpLevel: "beginner", lpProgress: {},
+  glFilter: "all",
+  mapDomain: "all",
+};
+
+const DOMAIN_COLORS = {
+  qc: "#7c3aed", qt: "#2563eb", qm: "#0891b2"
+};
+const DOMAIN_NAMES = {
+  qc: "量子计算", qt: "量子通信", qm: "量子精密测量"
 };
 
 const $ = (s) => document.querySelector(s);
@@ -143,15 +153,21 @@ async function init() {
   initMatrixView();
   initQuantumCoin();
   initEcosystem();
+  initLearningPath();
+  initToolbox();
+  initGlossary();
+  initQuantumMap();
 }
 
 // ===== Categories =====
 function renderCategories() {
   const c = $("#categories"); if (!c) return;
+  const domains = State.data.domains || [{id:"qc",name:"量子计算"},{id:"qt",name:"量子通信"},{id:"qm",name:"量子精密测量"}];
   let html = `<button class="cat-pill active" data-cat="all" data-color="#7c3aed" style="background:#7c3aed;border-color:#7c3aed"><span class="cat-dot" style="background:#fff"></span>全部 <span class="cat-count">${State.entries.length}</span></button>`;
   for (const cat of State.categories) {
     const n = State.entries.filter(e=>e.category===cat.id).length;
-    html += `<button class="cat-pill" data-cat="${cat.id}" data-color="${cat.color}"><span class="cat-dot" style="background:${cat.color}"></span>${cat.name} <span class="cat-count">${n}</span></button>`;
+    const color = cat.color || DOMAIN_COLORS[cat.domain] || "#7c3aed";
+    html += `<button class="cat-pill" data-cat="${cat.id}" data-color="${color}" data-domain="${cat.domain||'qc'}"><span class="cat-dot" style="background:${color}"></span>${cat.name} <span class="cat-count">${n}</span></button>`;
   }
   c.innerHTML = html;
 }
@@ -197,14 +213,14 @@ function renderResults(entries) {
   const kw = State.query.trim().split(/\s+/).filter(k=>k.length>0);
   const eKw = kw.length>0 ? kw.flatMap(k=>expandKeyword(k)) : [];
   c.innerHTML = entries.map((e,i) => {
-    const cat = State.categories.find(c=>c.id===e.category); const cn = cat?cat.name:""; const cc = cat?cat.color:"#7c3aed";
+    const cat = State.categories.find(c=>c.id===e.category); const cn = cat?cat.name:""; const cc = cat?(cat.color||DOMAIN_COLORS[cat.domain]||"#7c3aed"):"#7c3aed";
     const exp = State.expandedIds.has(e.id);
     const hkw = eKw.length>0 ? eKw : kw;
     const q = hkw.length>0 ? highlight(e.question, hkw) : e.question;
     const a = hkw.length>0 ? highlight(e.answer, hkw) : e.answer;
     const tags = (e.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("");
     const rel = exp ? getRelated(e, State.entries) : [];
-    const rh = rel.length>0 ? `<div class="related-section"><div class="related-title">+ 相关推荐</div><div class="related-list">${rel.map(r=>{const rc=State.categories.find(c=>c.id===r.category);const rcc=rc?rc.color:"#7c3aed";return `<div class="related-item" onclick="jumpToEntry('${r.id}')"><span class="related-dot" style="background:${rcc}"></span><span>${r.question}</span></div>`;}).join("")}</div></div>`:"";
+    const rh = rel.length>0 ? `<div class="related-section"><div class="related-title">+ 相关推荐</div><div class="related-list">${rel.map(r=>{const rc=State.categories.find(c=>c.id===r.category);const rcc=rc?(rc.color||DOMAIN_COLORS[rc.domain]||"#7c3aed"):"#7c3aed";return `<div class="related-item" onclick="jumpToEntry('${r.id}')"><span class="related-dot" style="background:${rcc}"></span><span>${r.question}</span></div>`;}).join("")}</div></div>`:"";
     return `<div class="entry-card ${exp?"expanded":""}" data-id="${e.id}" style="animation-delay:${Math.min(i*0.05,0.5)}s"><div class="entry-header" onclick="toggleEntry('${e.id}')"><span class="entry-badge" style="background:${cc}1a;color:${cc};border:1px solid ${cc}33">${cn}</span><div class="entry-body"><div class="entry-question">${q}</div><div class="entry-subcategory">${e.subcategory||""}</div></div><svg class="entry-arrow" viewBox="0 0 24 24" width="20" height="20"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 9l6 6 6-6"/></svg></div><div class="entry-answer"><div class="entry-answer-inner">${a}<div class="entry-tags">${tags}</div>${rh}</div></div></div>`;
   }).join("");
   $("#resultCount").innerHTML = `<strong>${entries.length}</strong> 条结果`;
@@ -225,6 +241,11 @@ window.toggleEntry = function(id) {
 window.jumpToEntry = function(id) {
   const e = State.entries.find(x=>x.id===id); if (!e) return;
   $("#searchInput").value=""; State.query=""; $("#clearBtn").style.display="none"; $("#suggestions").style.display="none";
+  const ed=e.domain||"qc";
+  $$(".kb-domain-pill").forEach(p=>p.classList.remove("active"));
+  const dp=document.querySelector(`.kb-domain-pill[data-domain="${ed}"]`);
+  if(dp) dp.classList.add("active"); else document.querySelector('.kb-domain-pill[data-domain="all"]')?.classList.add("active");
+  State.activeDomain=ed;
   $$(".cat-pill").forEach(p=>{p.classList.remove("active");p.style.background="";p.style.borderColor="";const d=p.querySelector(".cat-dot");if(d)d.style.background=p.dataset.color;});
   const tp=document.querySelector(`.cat-pill[data-cat="${e.category}"]`);
   if (tp) { tp.classList.add("active"); const c=tp.dataset.color||"#7c3aed"; tp.style.background=c; tp.style.borderColor=c; const d=tp.querySelector(".cat-dot"); if(d) d.style.background="#fff"; }
@@ -235,6 +256,11 @@ window.jumpToEntry = function(id) {
 window.randomKnowledge = function() {
   const r = State.entries[Math.floor(Math.random()*State.entries.length)];
   $("#searchInput").value=""; State.query=""; $("#clearBtn").style.display="none";
+  const rd=r.domain||"qc";
+  $$(".kb-domain-pill").forEach(p=>p.classList.remove("active"));
+  const dp=document.querySelector(`.kb-domain-pill[data-domain="${rd}"]`);
+  if(dp) dp.classList.add("active"); else document.querySelector('.kb-domain-pill[data-domain="all"]')?.classList.add("active");
+  State.activeDomain=rd;
   $$(".cat-pill").forEach(p=>{p.classList.remove("active");p.style.background="";p.style.borderColor="";const d=p.querySelector(".cat-dot");if(d)d.style.background=p.dataset.color;});
   const ap=document.querySelector('.cat-pill[data-cat="all"]'); if(ap){ap.classList.add("active");ap.style.background="#7c3aed";ap.style.borderColor="#7c3aed";const d=ap.querySelector(".cat-dot");if(d)d.style.background="#fff";}
   State.activeCategory="all"; State.expandedIds.clear(); State.expandedIds.add(r.id);
@@ -256,6 +282,7 @@ window.selectSuggestion = function(text) {
 
 function updateResults() {
   let entries = State.entries;
+  if (State.activeDomain!=="all") entries=entries.filter(e=>e.domain===State.activeDomain);
   if (State.activeCategory!=="all") entries=entries.filter(e=>e.category===State.activeCategory);
   if (State.query.trim()) entries=search(State.query, entries);
   renderResults(entries);
@@ -284,6 +311,16 @@ function bindEvents() {
       if(e.key==="Escape"){input.value="";State.query="";clearBtn.style.display="none";$("#suggestions").style.display="none";updateResults();}
     });
   }
+  // Knowledge base domain filter
+  const kbdf = $("#kbDomainFilter");
+  if (kbdf) kbdf.addEventListener("click",(e)=>{
+    const p=e.target.closest(".kb-domain-pill"); if(!p) return;
+    $$(".kb-domain-pill").forEach(p2=>p2.classList.remove("active")); p.classList.add("active");
+    State.activeDomain=p.dataset.domain; State.activeCategory="all";
+    $$(".cat-pill").forEach(p2=>{p2.classList.remove("active");p2.style.background="";p2.style.borderColor="";const d=p2.querySelector(".cat-dot");if(d)d.style.background=p2.dataset.color;});
+    const ap=document.querySelector('.cat-pill[data-cat="all"]'); if(ap){ap.classList.add("active");ap.style.background="#7c3aed";ap.style.borderColor="#7c3aed";const d=ap.querySelector(".cat-dot");if(d)d.style.background="#fff";}
+    updateResults();
+  });
   // News filter
   const nfb = $("#newsFilterBar");
   if (nfb) nfb.addEventListener("click",(e)=>{
@@ -1267,6 +1304,412 @@ function renderCompareDetail(show) {
         </div>`).join("")}
     </div>`;
 }
+
+// ===== Learning Path =====
+const LEARNING_PATHS = {
+  beginner: [
+    {id:"b1",title:"量子力学基本概念",desc:"理解波粒二象性、叠加态、测量坍缩",icon:"W",domain:"qc",items:["量子比特(qubit)是什么？","什么是量子叠加？","量子测量与坍缩","波粒二象性双缝实验"]},
+    {id:"b2",title:"量子比特与经典比特",desc:"从0/1到|0⟩+|1⟩的飞跃",icon:"Q",domain:"qc",items:["量子比特与经典比特的区别","Bloch球表示","单比特操作：X/Y/Z门"]},
+    {id:"b3",title:"量子门与线路",desc:"H门、CNOT门与量子线路",icon:"C",domain:"qc",items:["Hadamard门创建叠加","CNOT门创建纠缠","量子线路的基本结构"]},
+    {id:"b4",title:"量子通信初探",desc:"QKD原理与BB84协议",icon:"K",domain:"qt",items:["量子密钥分发(QKD)的基本原理","BB84协议的详细工作流程","量子通信的安全性保证"]},
+    {id:"b5",title:"量子精密测量入门",desc:"量子传感器与原子钟",icon:"S",domain:"qm",items:["量子传感器的基本概念","原子钟：时间的量子标准","NV色心磁力仪"]},
+    {id:"b6",title:"产业概览与未来展望",desc:"了解量子产业生态",icon:"I",domain:"qc",items:["全球量子计算市场规模","中国量子通信网络建设","量子精密测量产业现状"]},
+  ],
+  intermediate: [
+    {id:"i1",title:"量子算法核心",desc:"Shor、Grover、VQE算法原理",icon:"A",domain:"qc",items:["Shor算法：量子因数分解","Grover算法：量子搜索","变分量子本征求解(VQE)"]},
+    {id:"i2",title:"量子纠错码",desc:"Shor码、Steane码与表面码",icon:"E",domain:"qc",items:["量子纠错的必要性","Shor码与Steane码","表面码(Surface Code)"]},
+    {id:"i3",title:"硬件技术路线",desc:"超导、离子阱、光量子等路线对比",icon:"H",domain:"qc",items:["超导量子比特(Transmon)","离子阱量子计算","光量子计算路线","半导体量子点","中性原子阵列"]},
+    {id:"i4",title:"量子通信进阶",desc:"MDI-QKD、TF-QKD、量子中继",icon:"K",domain:"qt",items:["MDI-QKD：测量器件无关","TF-QKD：双场长距离","量子中继原理","DV-QKD与CV-QKD的区别"]},
+    {id:"i5",title:"量子精密测量进阶",desc:"SQUID、冷原子、量子雷达",icon:"S",domain:"qm",items:["SQUID超导磁力仪","冷原子干涉仪与重力仪","量子雷达：单光子与鬼成像","光抽运磁力仪(OPM)"]},
+    {id:"i6",title:"量子网络与互联网",desc:"量子网络架构与协议栈",icon:"N",domain:"qt",items:["量子网络的基本架构","量子隐形传态","纠缠分发与量子中继网络"]},
+    {id:"i7",title:"NISQ与后量子密码",desc:"含噪量子计算与PQC",icon:"P",domain:"qc",items:["NISQ时代的特点与限制","后量子密码(PQC)标准","量子退火与组合优化"]},
+    {id:"i8",title:"量子软件栈",desc:"Qiskit、Cirq、PennyLane",icon:"S",domain:"qc",items:["Qiskit框架入门","量子编程模型","量子算法库与工具链"]},
+  ],
+  expert: [
+    {id:"e1",title:"容错量子计算",desc:"容错阈值与magic state distillation",icon:"F",domain:"qc",items:["容错量子计算的理论基础","magic state distillation","颜色码与拓扑纠错"]},
+    {id:"e2",title:"量子复杂度理论",desc:"BQP、QMA与量子优势",icon:"C",domain:"qc",items:["BQP与经典复杂度类","QMA：量子证明验证","量子优势的理论边界"]},
+    {id:"e3",title:"量子机器学习",desc:"量子增强学习算法",icon:"M",domain:"qc",items:["量子变分算法(VQA)","量子支持向量机","量子神经网络","量子梯度估计"]},
+    {id:"e4",title:"量子热力学与开放系统",desc:"退相干与量子主方程",icon:"T",domain:"qc",items:["退相干理论(Lindblad)","量子主方程","环境诱导退相干"]},
+    {id:"e5",title:"DI-QKD与量子密钥安全",desc:"设备无关安全证明",icon:"K",domain:"qt",items:["DI-QKD：设备无关安全","Bell不等式验证","测量器件无关(MDI)安全证明"]},
+    {id:"e6",title:"量子传感极限",desc:"标准量子极限与海森堡极限",icon:"S",domain:"qm",items:["标准量子极限(SQL)","海森堡极限与纠缠增强","量子Fisher信息","自旋压缩与原子干涉"]},
+    {id:"e7",title:"光钟与频率计量",desc:"光晶格钟与光钟比对",icon:"O",domain:"qm",items:["光晶格钟原理","Sr/Yb光钟","光钟比对与秒重新定义"]},
+    {id:"e8",title:"量子模拟与多体物理",desc:"量子模拟器与凝聚态应用",icon:"Q",domain:"qc",items:["量子模拟器架构","拓扑物态模拟","Hubbard模型量子模拟"]},
+    {id:"e9",title:"量子网络协议",desc:"量子互联网协议栈",icon:"N",domain:"qt",items:["量子网络层协议","纠缠交换网络","量子中继架构设计"]},
+    {id:"e10",title:"量子计量学前沿",desc:"引力波探测与暗物质搜索",icon:"G",domain:"qm",items:["量子增强引力波探测","量子暗物质搜索","宏观量子叠加态"]},
+  ],
+};
+
+function initLearningPath() {
+  const lp = $("#lpLevelBar"); if (!lp) return;
+  lp.addEventListener("click",(e)=>{
+    const b=e.target.closest(".lp-level-btn"); if(!b) return;
+    $$(".lp-level-btn").forEach(b2=>b2.classList.remove("active")); b.classList.add("active");
+    State.lpLevel=b.dataset.level; renderLearningPath();
+  });
+  State.lpProgress = JSON.parse(localStorage.getItem("lpProgress")||"{}");
+  renderLearningPath();
+}
+
+function renderLearningPath() {
+  const c=$("#lpTrack"); if(!c) return;
+  const path=LEARNING_PATHS[State.lpLevel]||[];
+  const dc=DOMAIN_COLORS.qc;
+  c.innerHTML=path.map((step,i)=>{
+    const done=State.lpProgress[step.id]||false;
+    const pct=Math.round(Object.values(State.lpProgress).filter(Boolean).length/path.length*100);
+    $("#lpProgressFill").style.width=pct+"%"; $("#lpProgressText").textContent=pct+"%";
+    return `<div class="lp-step ${done?"done":""}" data-step="${step.id}" style="--step-color:${DOMAIN_COLORS[step.domain]||dc}">
+      <div class="lp-step-num">${i+1}</div>
+      <div class="lp-step-body">
+        <div class="lp-step-header" onclick="toggleLpStep('${step.id}')">
+          <span class="lp-step-domain" style="background:${(DOMAIN_COLORS[step.domain]||dc)+"1a"};color:${DOMAIN_COLORS[step.domain]||dc}">${DOMAIN_NAMES[step.domain]||"量子计算"}</span>
+          <div class="lp-step-title">${step.title}</div>
+          <div class="lp-step-desc">${step.desc}</div>
+          <div class="lp-step-check ${done?"checked":""}">${done?"✓":"○"}</div>
+        </div>
+        <div class="lp-step-items" id="lpItems-${step.id}" style="display:none">
+          ${step.items.map((item,j)=>`<div class="lp-item"><span class="lp-item-num">${j+1}</span><span>${item}</span></div>`).join("")}
+          <button class="lp-complete-btn" onclick="completeLpStep('${step.id}')">${done?"重新学习":"标记完成"}</button>
+        </div>
+      </div>
+      ${i<path.length-1?'<div class="lp-step-connector"></div>':""}
+    </div>`;
+  }).join("");
+}
+
+window.toggleLpStep=function(id) {
+  const el=$("#lpItems-"+id); if(el) el.style.display=el.style.display==="none"?"block":"none";
+};
+window.completeLpStep=function(id) {
+  State.lpProgress[id]=!State.lpProgress[id];
+  localStorage.setItem("lpProgress",JSON.stringify(State.lpProgress));
+  renderLearningPath();
+};
+
+// ===== Toolbox =====
+function initToolbox() {
+  initStateVectorTool();
+  initFidelityTool();
+  initConverterTool();
+  initGateTool();
+  initDecibitTool();
+  initBellTool();
+}
+
+function initStateVectorTool() {
+  const c=$("#tbStateVector"); if(!c) return;
+  c.innerHTML=`
+    <div class="tb-controls">
+      <label>θ: <input type="range" id="svTheta" min="0" max="180" value="0" oninput="updateStateVector()"></label>
+      <label>φ: <input type="range" id="svPhi" min="0" max="360" value="0" oninput="updateStateVector()"></label>
+    </div>
+    <div class="tb-output" id="svOutput"></div>`;
+  window.updateStateVector=function(){
+    const theta=parseFloat($("#svTheta").value)*Math.PI/180;
+    const phi=parseFloat($("#svPhi").value)*Math.PI/180;
+    const a=Math.cos(theta/2), b=Math.sin(theta/2)*Math.cos(phi), b2=Math.sin(theta/2)*Math.sin(phi);
+    const p0=Math.abs(a)**2, p1=Math.abs(b)**2+b2*b2;
+    $("#svOutput").innerHTML=`
+      <div class="tb-vector">|ψ⟩ = ${a.toFixed(3)}|0⟩ + (${b.toFixed(3)}${b2>=0?"+":""}${b2.toFixed(3)}i)|1⟩</div>
+      <div class="tb-prob">P(|0⟩) = ${p0.toFixed(4)} (${(p0*100).toFixed(1)}%)</div>
+      <div class="tb-prob">P(|1⟩) = ${p1.toFixed(4)} (${(p1*100).toFixed(1)}%)</div>
+      <div class="tb-bar"><div class="tb-bar-0" style="width:${p0*100}%"></div><div class="tb-bar-1" style="width:${p1*100}%"></div></div>`;
+  };
+  updateStateVector();
+}
+
+function initFidelityTool() {
+  const c=$("#tbFidelity"); if(!c) return;
+  c.innerHTML=`
+    <div class="tb-controls">
+      <div>态 |ψ⟩: θ₁=<input type="range" id="fTheta1" min="0" max="180" value="0" oninput="updateFidelity()"> φ₁=<input type="range" id="fPhi1" min="0" max="360" value="0" oninput="updateFidelity()"></div>
+      <div>态 |φ⟩: θ₂=<input type="range" id="fTheta2" min="0" max="180" value="90" oninput="updateFidelity()"> φ₂=<input type="range" id="fPhi2" min="0" max="360" value="0" oninput="updateFidelity()"></div>
+    </div>
+    <div class="tb-output" id="fOutput"></div>`;
+  window.updateFidelity=function(){
+    const t1=parseFloat($("#fTheta1").value)*Math.PI/180, p1=parseFloat($("#fPhi1").value)*Math.PI/180;
+    const t2=parseFloat($("#fTheta2").value)*Math.PI/180, p2=parseFloat($("#fPhi2").value)*Math.PI/180;
+    const a1=Math.cos(t1/2),b1r=Math.sin(t1/2)*Math.cos(p1),b1i=Math.sin(t1/2)*Math.sin(p1);
+    const a2=Math.cos(t2/2),b2r=Math.sin(t2/2)*Math.cos(p2),b2i=Math.sin(t2/2)*Math.sin(p2);
+    const dot=a1*a2+b1r*b2r+b1i*b2i;
+    const F=dot*dot;
+    $("#fOutput").innerHTML=`<div class="tb-result">保真度 F = ${F.toFixed(4)} (${(F*100).toFixed(1)}%)</div><div class="tb-bar"><div class="tb-bar-fid" style="width:${F*100}%;background:linear-gradient(90deg,#7c3aed,#2563eb)"></div></div>`;
+  };
+  updateFidelity();
+}
+
+function initConverterTool() {
+  const c=$("#tbConverter"); if(!c) return;
+  c.innerHTML=`
+    <div class="tb-controls">
+      <label>θ: <input type="range" id="cvTheta" min="0" max="180" value="45" oninput="updateConverter()"></label>
+      <label>φ: <input type="range" id="cvPhi" min="0" max="360" value="0" oninput="updateConverter()"></label>
+    </div>
+    <div class="tb-output" id="cvOutput"></div>`;
+  window.updateConverter=function(){
+    const theta=parseFloat($("#cvTheta").value)*Math.PI/180;
+    const phi=parseFloat($("#cvPhi").value)*Math.PI/180;
+    const a=Math.cos(theta/2);
+    const br=Math.sin(theta/2)*Math.cos(phi), bi=Math.sin(theta/2)*Math.sin(phi);
+    const p0=a*a, p1=br*br+bi*bi;
+    $("#cvOutput").innerHTML=`
+      <div class="tb-section"><strong>Bloch坐标</strong><br>θ=${(theta*180/Math.PI).toFixed(1)}°, φ=${(phi*180/Math.PI).toFixed(1)}°<br>x=${(br*2).toFixed(3)}, y=${(-bi*2).toFixed(3)}, z=${(a*a-p1).toFixed(3)}</div>
+      <div class="tb-section"><strong>态矢量</strong><br>|ψ⟩ = ${a.toFixed(3)}|0⟩ + (${br.toFixed(3)}${bi>=0?"+":""}${bi.toFixed(3)}i)|1⟩</div>
+      <div class="tb-section"><strong>测量概率</strong><br>P(|0⟩) = ${(p0*100).toFixed(1)}%<br>P(|1⟩) = ${(p1*100).toFixed(1)}%</div>`;
+  };
+  updateConverter();
+}
+
+function initGateTool() {
+  const c=$("#tbGate"); if(!c) return;
+  const gates={H:[["1/√2","1/√2"],["1/√2","-1/√2"]],X:[["0","1"],["1","0"]],Y:[["0","-i"],["i","0"]],Z:[["1","0"],["0","-1"]],S:[["1","0"],["0","i"]],T:[["1","0"],["0","e^(iπ/4)"]]};
+  c.innerHTML=`
+    <div class="tb-controls">
+      ${Object.keys(gates).map(g=>`<button class="tb-gate-btn" data-gate="${g}" onclick="selectGate('${g}')">${g}</button>`).join("")}
+    </div>
+    <div class="tb-output" id="gateOutput"></div>`;
+  window.selectGate=function(g){
+    $$(".tb-gate-btn").forEach(b=>b.classList.remove("active"));
+    document.querySelector(`.tb-gate-btn[data-gate="${g}"]`).classList.add("active");
+    const m=gates[g];
+    $("#gateOutput").innerHTML=`
+      <div class="tb-matrix-label">${g}门矩阵：</div>
+      <div class="tb-matrix">
+        <div class="tb-matrix-row"><span>${m[0][0]}</span><span>${m[0][1]}</span></div>
+        <div class="tb-matrix-row"><span>${m[1][0]}</span><span>${m[1][1]}</span></div>
+      </div>
+      <div class="tb-gate-desc">${g==="H"?"Hadamard门：创建叠加态":g==="X"?"Pauli-X门：比特翻转":g==="Y"?"Pauli-Y门":g==="Z"?"Pauli-Z门：相位翻转":g==="S"?"S门：π/2相位":g==="T"?"T门：π/4相位":""}</div>`;
+  };
+  selectGate("H");
+}
+
+function initDecibitTool() {
+  const c=$("#tbDecibit"); if(!c) return;
+  c.innerHTML=`
+    <div class="tb-controls">
+      <label>量子比特数 n: <input type="range" id="dbN" min="1" max="40" value="20" oninput="updateDecibit()"></label>
+    </div>
+    <div class="tb-output" id="dbOutput"></div>`;
+  window.updateDecibit=function(){
+    const n=parseInt($("#dbN").value);
+    const states=Math.pow(2,n);
+    const bytes=states*16;
+    const KB=bytes/1024,MB=KB/1024,GB=MB/1024,TB=GB/1024,PB=TB/1024,EB=PB/1024;
+    let sizeStr;
+    if(EB>=1) sizeStr=`${EB.toExponential(2)} EB`; else if(PB>=1) sizeStr=`${PB.toFixed(1)} PB`; else if(TB>=1) sizeStr=`${TB.toFixed(1)} TB`; else if(GB>=1) sizeStr=`${GB.toFixed(1)} GB`; else if(MB>=1) sizeStr=`${MB.toFixed(1)} MB`; else sizeStr=`${KB.toFixed(1)} KB`;
+    $("#dbOutput").innerHTML=`
+      <div class="tb-section"><strong>${n} 量子比特</strong></div>
+      <div class="tb-stat">状态空间维度: <strong>${states.toExponential(3)}</strong></div>
+      <div class="tb-stat">存储完整态矢量: <strong>${sizeStr}</strong></div>
+      <div class="tb-stat">经典模拟极限: ${n<=30?"桌面可模拟":n<=40?"超算勉强":"不可能模拟"}</div>
+      <div class="tb-bar"><div class="tb-bar-scale" style="width:${Math.min(n/40*100,100)}%;background:linear-gradient(90deg,#0891b2,#7c3aed)"></div></div>`;
+  };
+  updateDecibit();
+}
+
+function initBellTool() {
+  const c=$("#tbBell"); if(!c) return;
+  const bellStates=[
+    {name:"|Φ⁺⟩",expr:"( |00⟩ + |11⟩ ) / √2",desc:"最大纠缠，测量结果完全关联"},
+    {name:"|Φ⁻⟩",expr:"( |00⟩ - |11⟩ ) / √2",desc:"最大纠缠，测量结果完全反关联"},
+    {name:"|Ψ⁺⟩",expr:"( |01⟩ + |10⟩ ) / √2",desc:"最大纠缠，反关联态"},
+    {name:"|Ψ⁻⟩",expr:"( |01⟩ - |10⟩ ) / √2",desc:"最大纠缠，Bell基之一"}
+  ];
+  c.innerHTML=bellStates.map((s,i)=>`
+    <div class="tb-bell-state ${i===0?"active":""}" onclick="selectBellState(${i})">
+      <div class="tb-bell-name">${s.name}</div>
+      <div class="tb-bell-expr">${s.expr}</div>
+      <div class="tb-bell-desc">${s.desc}</div>
+    </div>`).join("");
+  window.selectBellState=function(idx){
+    $$(".tb-bell-state").forEach((el,i)=>el.classList.toggle("active",i===idx));
+  };
+}
+
+// ===== Glossary =====
+const GLOSSARY_DATA=[
+  // QC
+  {cn:"量子比特",en:"Qubit",domain:"qc",desc:"量子信息的基本单元，可同时处于0和1的叠加态"},
+  {cn:"叠加态",en:"Superposition",domain:"qc",desc:"量子系统同时处于多个本征态的线性组合状态"},
+  {cn:"量子纠缠",en:"Quantum Entanglement",domain:"qc",desc:"两个或多个量子系统间的非经典关联，测量一个即时影响另一个"},
+  {cn:"量子门",en:"Quantum Gate",domain:"qc",desc:"对量子比特执行的酉变换操作"},
+  {cn:"Hadamard门",en:"Hadamard Gate (H)",domain:"qc",desc:"创建叠加态的单比特量子门"},
+  {cn:"CNOT门",en:"CNOT Gate",domain:"qc",desc:"两比特受控非门，创建纠缠的核心门"},
+  {cn:"Pauli门",en:"Pauli Gates (X/Y/Z)",domain:"qc",desc:"三个基本单比特量子门，对应自旋旋转"},
+  {cn:"Bloch球",en:"Bloch Sphere",domain:"qc",desc:"单量子比特态的几何表示，球面上每点对应一个纯态"},
+  {cn:"量子线路",en:"Quantum Circuit",domain:"qc",desc:"量子门序列组成的计算模型"},
+  {cn:"酉变换",en:"Unitary Transform",domain:"qc",desc:"保持范数不变的线性变换，所有量子演化都是酉的"},
+  {cn:"量子测量",en:"Quantum Measurement",domain:"qc",desc:"量子态投影到本征态的随机过程，导致波函数坍缩"},
+  {cn:"退相干",en:"Decoherence",domain:"qc",desc:"量子系统与环境耦合导致叠加态丧失的过程"},
+  {cn:"量子纠错",en:"Quantum Error Correction (QEC)",domain:"qc",desc:"利用冗余编码保护量子信息免受噪声影响"},
+  {cn:"表面码",en:"Surface Code",domain:"qc",desc:"在二维格点上实现的拓扑量子纠错码"},
+  {cn:"容错量子计算",en:"Fault-Tolerant QC",domain:"qc",desc:"在元件有噪情况下仍能正确执行的量子计算架构"},
+  {cn:"NISQ",en:"Noisy Intermediate-Scale Quantum",domain:"qc",desc:"含噪中等规模量子计算时代，100-1000比特无纠错"},
+  {cn:"量子优势",en:"Quantum Advantage",domain:"qc",desc:"量子计算机在特定问题上超越经典计算机的能力"},
+  {cn:"Shor算法",en:"Shor's Algorithm",domain:"qc",desc:"量子因数分解算法，指数级加速大数分解"},
+  {cn:"Grover算法",en:"Grover's Algorithm",domain:"qc",desc:"量子搜索算法，提供√N加速"},
+  {cn:"变分量子本征求解",en:"VQE",domain:"qc",desc:"混合量子-经典算法，用于化学分子基态计算"},
+  {cn:"超导量子比特",en:"Superconducting Qubit",domain:"qc",desc:"基于超导电路的量子比特，代表路线为Transmon"},
+  {cn:"离子阱",en:"Ion Trap",domain:"qc",desc:"利用电磁场囚禁离子的量子计算方案"},
+  {cn:"光量子计算",en:"Photonic QC",domain:"qc",desc:"以光子为量子比特的计算路线"},
+  {cn:"中性原子",en:"Neutral Atom",domain:"qc",desc:"用光镊囚禁中性原子的量子计算方案"},
+  {cn:"量子退火",en:"Quantum Annealing",domain:"qc",desc:"利用量子隧穿效应求解组合优化问题"},
+  {cn:"拓扑量子比特",en:"Topological Qubit",domain:"qc",desc:"基于马约拉纳费米子的拓扑保护比特"},
+  {cn:"量子体积",en:"Quantum Volume",domain:"qc",desc:"衡量量子计算机综合性能的指标"},
+  // QT
+  {cn:"量子通信",en:"Quantum Communication",domain:"qt",desc:"利用量子力学原理实现安全信息传输"},
+  {cn:"量子密钥分发",en:"QKD (Quantum Key Distribution)",domain:"qt",desc:"利用量子态实现无条件安全的密钥分发"},
+  {cn:"BB84协议",en:"BB84 Protocol",domain:"qt",desc:"最早的QKD协议，由Bennett和Brassard提出"},
+  {cn:"量子隐形传态",en:"Quantum Teleportation",domain:"qt",desc:"利用纠缠对和经典通信传输量子态"},
+  {cn:"量子中继",en:"Quantum Repeater",domain:"qt",desc:"扩展量子通信距离的核心设备"},
+  {cn:"量子网络",en:"Quantum Network",domain:"qt",desc:"连接量子节点的通信网络"},
+  {cn:"量子互联网",en:"Quantum Internet",domain:"qt",desc:"全球量子网络互联的远景概念"},
+  {cn:"纠缠交换",en:"Entanglement Swapping",domain:"qt",desc:"通过测量连接两个独立纠缠对"},
+  {cn:"MDI-QKD",en:"Measurement-Device-Independent QKD",domain:"qt",desc:"免疫探测器侧信道攻击的QKD协议"},
+  {cn:"TF-QKD",en:"Twin-Field QKD",domain:"qt",desc:"实现最长安全距离的QKD协议"},
+  {cn:"DV-QKD",en:"Discrete-Variable QKD",domain:"qt",desc:"基于离散变量(偏振)编码的QKD"},
+  {cn:"CV-QKD",en:"Continuous-Variable QKD",domain:"qt",desc:"基于连续变量(振幅/相位)编码的QKD"},
+  {cn:"诱骗态",en:"Decoy State",domain:"qt",desc:"抵御光子数分裂攻击的QKD增强方法"},
+  {cn:"后量子密码",en:"Post-Quantum Cryptography (PQC)",domain:"qt",desc:"抗量子计算机攻击的经典密码方案"},
+  {cn:"量子存储",en:"Quantum Memory",domain:"qt",desc:"存储量子态的设备，量子中继的核心组件"},
+  {cn:"光子数分裂攻击",en:"Photon Number Splitting Attack",domain:"qt",desc:"针对弱相干脉冲光源的QKD攻击"},
+  {cn:"量子信道",en:"Quantum Channel",domain:"qt",desc:"传输量子信号的物理通道(如光纤)"},
+  {cn:"量子比特错误率",en:"QBER",domain:"qt",desc:"量子密钥分发中的误码率指标"},
+  // QM
+  {cn:"量子传感",en:"Quantum Sensing",domain:"qm",desc:"利用量子相干性实现超高灵敏度测量"},
+  {cn:"原子钟",en:"Atomic Clock",domain:"qm",desc:"利用原子跃迁定义时间标准的量子设备"},
+  {cn:"NV色心",en:"NV Center",domain:"qm",desc:"金刚石中氮-空位缺陷，量子传感核心平台"},
+  {cn:"冷原子",en:"Cold Atom",domain:"qm",desc:"激光冷却至微开尔文的原子，用于精密测量"},
+  {cn:"量子雷达",en:"Quantum Radar",domain:"qm",desc:"利用量子效应提升探测性能的雷达技术"},
+  {cn:"SQUID",en:"Superconducting Quantum Interference Device",domain:"qm",desc:"超导量子干涉器件，最灵敏磁力仪"},
+  {cn:"光抽运磁力仪",en:"OPM (Optically Pumped Magnetometer)",domain:"qm",desc:"利用光抽运极化原子蒸汽的磁力仪"},
+  {cn:"标准量子极限",en:"Standard Quantum Limit (SQL)",domain:"qm",desc:"由投影噪声决定的测量灵敏度极限"},
+  {cn:"海森堡极限",en:"Heisenberg Limit",domain:"qm",desc:"量子力学允许的最高测量精度"},
+  {cn:"光晶格钟",en:"Optical Lattice Clock",domain:"qm",desc:"用光频跃迁定义的精密原子钟"},
+  {cn:"量子重力仪",en:"Quantum Gravimeter",domain:"qm",desc:"用冷原子干涉仪测量重力加速度"},
+  {cn:"拉姆齐干涉",en:"Ramsey Interferometry",domain:"qm",desc:"原子钟的核心测量技术"},
+  {cn:"自旋回声",en:"Spin Echo",domain:"qm",desc:"消除低频噪声延长相干时间的脉冲技术"},
+  {cn:"ODMR",en:"Optically Detected Magnetic Resonance",domain:"qm",desc:"光学检测磁共振，NV色心核心方法"},
+  {cn:"动态解耦",en:"Dynamic Decoupling",domain:"qm",desc:"脉冲序列延长量子传感器相干时间"},
+  {cn:"投影噪声",en:"Quantum Projection Noise",domain:"qm",desc:"量子测量统计随机性产生的噪声"},
+  {cn:"量子Fisher信息",en:"Quantum Fisher Information",domain:"qm",desc:"量子计量学中衡量传感精度的核心量"},
+  {cn:"Allan偏差",en:"Allan Deviation",domain:"qm",desc:"评估频率稳定度的统计方法"},
+];
+
+function initGlossary() {
+  const gl=$("#glSearchInput");
+  const fb=$("#glFilterBar");
+  if(gl) gl.addEventListener("input",()=>renderGlossary());
+  if(fb) fb.addEventListener("click",(e)=>{
+    const b=e.target.closest(".gl-filter-btn"); if(!b) return;
+    $$(".gl-filter-btn").forEach(b2=>b2.classList.remove("active")); b.classList.add("active");
+    State.glFilter=b.dataset.filter; renderGlossary();
+  });
+  renderGlossary();
+}
+
+function renderGlossary() {
+  const c=$("#glResults"); if(!c) return;
+  const q=($("#glSearchInput")?.value||"").trim().toLowerCase();
+  let items=GLOSSARY_DATA;
+  if(State.glFilter!=="all") items=items.filter(t=>t.domain===State.glFilter);
+  if(q) items=items.filter(t=>t.cn.toLowerCase().includes(q)||t.en.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q));
+  if(items.length===0){c.innerHTML=`<div class="gl-empty">未找到匹配术语</div>`;return;}
+  c.innerHTML=items.map(t=>`
+    <div class="gl-item" data-domain="${t.domain}">
+      <div class="gl-item-domain" style="background:${DOMAIN_COLORS[t.domain]}1a;color:${DOMAIN_COLORS[t.domain]}">${DOMAIN_NAMES[t.domain]}</div>
+      <div class="gl-item-content">
+        <div class="gl-item-cn">${t.cn}</div>
+        <div class="gl-item-en">${t.en}</div>
+        <div class="gl-item-desc">${t.desc}</div>
+      </div>
+    </div>`).join("");
+}
+
+// ===== Quantum Map =====
+const MAP_LOCATIONS=[
+  {name:"IBM",country:"美国",city:"New York",domain:"qc",x:225,y:155,desc:"超导量子计算领导者"},
+  {name:"Google",country:"美国",city:"California",domain:"qc",x:210,y:170,desc:"Sycamore处理器"},
+  {name:"Microsoft",country:"美国",city:"Washington",domain:"qc",x:200,y:140,desc:"拓扑量子计算"},
+  {name:"IonQ",country:"美国",city:"Maryland",domain:"qc",x:230,y:165,desc:"离子阱量子计算"},
+  {name:"Quantinuum",country:"美国/英国",city:"Colorado",domain:"qc",x:215,y:150,desc:"离子阱+量子软件"},
+  {name:"PsiQuantum",country:"美国",city:"California",domain:"qc",x:205,y:175,desc:"光量子计算"},
+  {name:"D-Wave",country:"加拿大",city:"Vancouver",domain:"qc",x:180,y:130,desc:"量子退火"},
+  {name:"Rigetti",country:"美国",city:"California",domain:"qc",x:208,y:172,desc:"超导量子云"},
+  {name:"中国科学技术大学",country:"中国",city:"合肥",domain:"qc",x:690,y:185,desc:"九章/祖冲之"},
+  {name:"本源量子",country:"中国",city:"合肥",domain:"qc",x:692,y:183,desc:"超导量子计算"},
+  {name:"百度量子",country:"中国",city:"北京",domain:"qc",x:695,y:165,desc:"量子云平台"},
+  {name:"图灵量子",country:"中国",city:"上海",domain:"qc",x:698,y:185,desc:"光量子计算"},
+  {name:"ID Quantique",country:"瑞士",city:"Geneva",domain:"qt",x:490,y:160,desc:"商用QKD"},
+  {name:"国盾量子",country:"中国",city:"合肥",domain:"qt",x:690,y:184,desc:"量子通信设备"},
+  {name:"量子CTek",country:"中国",city:"济南",domain:"qt",x:700,y:180,desc:"CV-QKD"},
+  {name:"Toshiba",country:"日本",city:"Tokyo",domain:"qt",x:740,y:160,desc:"TF-QKD"},
+  {name:"东芝欧洲",country:"英国",city:"Cambridge",domain:"qt",x:470,y:145,desc:"QKD研究"},
+  {name:"中科大(量子通信)",country:"中国",city:"合肥",domain:"qt",x:691,y:186,desc:"墨子号/京沪干线"},
+  {name:"Microchip",country:"美国",city:"Northeast",domain:"qm",x:235,y:150,desc:"原子钟市场"},
+  {name:"国仪量子",country:"中国",city:"合肥",domain:"qm",x:693,y:182,desc:"NV色心传感"},
+  {name:"Exail",country:"法国",city:"Paris",domain:"qm",x:485,y:150,desc:"冷原子传感"},
+  {name:"AOSense",country:"美国",city:"California",domain:"qm",x:207,y:173,desc:"冷原子重力仪"},
+  {name:"QuSpin",country:"美国",city:"Colorado",domain:"qm",x:214,y:152,desc:"OPM磁力仪"},
+  {name:"成都天奥",country:"中国",city:"成都",domain:"qm",x:685,y:175,desc:"原子钟"},
+  {name:"PTB",country:"德国",city:"Braunschweig",domain:"qm",x:495,y:145,desc:"国家计量院"},
+  {name:"NIST",country:"美国",city:"Boulder",domain:"qm",x:212,y:155,desc:"光钟研究"},
+  {name:"NTT",country:"日本",city:"Tokyo",domain:"qt",x:742,y:162,desc:"量子网络"},
+  {name:"CSTEC",country:"中国",city:"北京",domain:"qt",x:696,y:166,desc:"量子通信标准化"},
+  {name:"电子科技集团",country:"中国",city:"北京",domain:"qm",x:694,y:168,desc:"量子雷达/原子钟"},
+  {name:"Qnami",country:"瑞士",city:"Lausanne",domain:"qm",x:488,y:162,desc:"NV扫描探针"},
+];
+
+function initQuantumMap() {
+  const fb=$("#mapFilterBar");
+  if(fb) fb.addEventListener("click",(e)=>{
+    const b=e.target.closest(".map-filter-btn"); if(!b) return;
+    $$(".map-filter-btn").forEach(b2=>b2.classList.remove("active")); b.classList.add("active");
+    State.mapDomain=b.dataset.domain; renderQuantumMap();
+  });
+  renderQuantumMap();
+}
+
+function renderQuantumMap() {
+  const c=$("#mapContainer"); if(!c) return;
+  const locs=State.mapDomain==="all"?MAP_LOCATIONS:MAP_LOCATIONS.filter(l=>l.domain===State.mapDomain);
+  c.innerHTML=`
+    <svg viewBox="0 0 900 380" class="quantum-map-svg">
+      <!-- Simplified world map -->
+      <rect width="900" height="380" fill="#0d1117" rx="12"/>
+      <!-- Continents (simplified shapes) -->
+      <path d="M150,100 Q180,80 250,100 L280,120 Q300,140 280,180 L250,220 Q200,240 170,220 L140,180 Q120,140 150,100Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
+      <path d="M180,230 Q200,250 230,280 L220,330 Q200,350 180,330 L170,290 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
+      <path d="M420,100 Q470,85 530,100 L560,130 Q580,160 550,190 L500,210 Q450,215 420,190 L400,150 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
+      <path d="M460,220 Q490,215 520,230 L530,280 Q510,320 480,310 L460,270 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
+      <path d="M640,120 Q680,100 740,110 L770,140 Q780,170 760,200 L720,210 Q680,205 650,180 L630,150 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
+      <path d="M680,220 Q700,215 720,230 L730,280 Q710,310 690,290 L670,250 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
+      <path d="M350,180 Q380,175 420,185 L430,220 Q400,240 370,230 L350,200 Z" fill="#1a1a2e" stroke="#30305a" stroke-width="1"/>
+      <!-- Location pins -->
+      ${locs.map(l=>`<g class="map-pin" data-domain="${l.domain}" onclick="showMapInfo('${l.name}')" style="cursor:pointer">
+        <circle cx="${l.x}" cy="${l.y}" r="5" fill="${DOMAIN_COLORS[l.domain]}" opacity="0.8">
+          <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="${l.x}" cy="${l.y}" r="2.5" fill="#fff"/>
+        <text x="${l.x+8}" y="${l.y+3}" fill="${DOMAIN_COLORS[l.domain]}" font-size="9" opacity="0.7">${l.name}</text>
+      </g>`).join("")}
+    </svg>`;
+  const lg=$("#mapLegend"); if(lg) lg.innerHTML=`
+    <div class="map-legend-item"><span class="map-legend-dot" style="background:${DOMAIN_COLORS.qc}"></span>量子计算 (${MAP_LOCATIONS.filter(l=>l.domain==="qc").length})</div>
+    <div class="map-legend-item"><span class="map-legend-dot" style="background:${DOMAIN_COLORS.qt}"></span>量子通信 (${MAP_LOCATIONS.filter(l=>l.domain==="qt").length})</div>
+    <div class="map-legend-item"><span class="map-legend-dot" style="background:${DOMAIN_COLORS.qm}"></span>量子精密测量 (${MAP_LOCATIONS.filter(l=>l.domain==="qm").length})</div>`;
+}
+
+window.showMapInfo=function(name) {
+  const loc=MAP_LOCATIONS.find(l=>l.name===name); if(!loc) return;
+  const c=$("#mapContainer"); if(!c) return;
+  const info=c.querySelector(".map-info-box")||document.createElement("div");
+  info.className="map-info-box";
+  info.innerHTML=`<strong>${loc.name}</strong> — ${loc.city}, ${loc.country}<br><span style="color:${DOMAIN_COLORS[loc.domain]}">${DOMAIN_NAMES[loc.domain]}</span><br>${loc.desc}`;
+  info.style.cssText="position:absolute;top:10px;right:10px;background:rgba(30,30,50,0.95);padding:10px 14px;border-radius:8px;font-size:12px;border:1px solid "+DOMAIN_COLORS[loc.domain]+"44;max-width:200px;z-index:10";
+  if(!c.querySelector(".map-info-box")) c.appendChild(info);
+  info.onclick=()=>info.remove();
+};
 
 // ===== Start =====
 init();
