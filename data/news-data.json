@@ -1,8 +1,1798 @@
 {
-  "lastUpdated": "2026-09-16",
-  "lastScraped": "2026-09-16 02:07:57",
+  "lastUpdated": "2026-09-19",
+  "lastScraped": "2026-09-19 02:02:59",
   "description": "量子行业资讯 — 每3天自动更新（量子计算/通信/精密测量）",
   "items": [
+    {
+      "id": "ne577f0",
+      "title": "Qupertino: Pure MLX Array Kernels versus Hand-Tuned Metal Shaders for Quantum Circuit Simulation on Apple Silicon",
+      "summary": "arXiv:2609.19147v1 Announce Type: new Abstract: We present Qupertino, an open-source quantum circuit simulator for Apple Silicon, and use it to ask how far a simulator written purely in MLX array operations can go and what remains for hand-tuned Metal shaders. The framework ships two measured tiers.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19147",
+      "isKey": true
+    },
+    {
+      "id": "n7055a8",
+      "title": "AlchemQ: Proof-Carrying Quantum Circuit Optimization with Per-Result Equivalence Certificates",
+      "summary": "arXiv:2609.19160v1 Announce Type: new Abstract: We present AlchemQ v0.5, a proof-of-concept system that couples an untrusted beam-search optimizer with a machine-checkable per-result certification layer and a versioned certificate protocol (0.2.0), so that every optimized circuit ships with a verifi",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19160",
+      "isKey": true
+    },
+    {
+      "id": "n987958",
+      "title": "Holomorphic Quantum Error Correction Codes",
+      "summary": "arXiv:2609.19162v1 Announce Type: new Abstract: We develop a holomorphic representation of quantum error correction codes (QECCs) within the Segal--Bargmann space. By encoding qubits into Schwinger boson modes $(z_{a_j}, z_{b_j})$ subject to a degree-one homogeneity constraint, we derive closed-form",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19162",
+      "isKey": true
+    },
+    {
+      "id": "n8dc732",
+      "title": "Suzuki-Trotter Decompositions and other Methods for Quantum Time Evolution",
+      "summary": "arXiv:2609.19184v1 Announce Type: new Abstract: (Suzuki-)Trotter decompositions, splitting methods, (Lie) product formulae... The most common numerical methods for the time evolution of quantum systems come with many names. And they are used practically everywhere with applications ranging from the ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19184",
+      "isKey": true
+    },
+    {
+      "id": "n643e8e",
+      "title": "Enhanced Emission and Two-Photon Interference of Lead-Vacancy Centers in Diamond Solid Immersion Lenses",
+      "summary": "arXiv:2609.19220v1 Announce Type: new Abstract: A negatively charged lead-vacancy (PbV-) center in diamond is a novel quantum system which can be operated at a high temperature above 4 K owing to its large ground state splitting. To unlock the quantum properties of the PbV- center, the enhancement o",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19220",
+      "isKey": true
+    },
+    {
+      "id": "n6cb533",
+      "title": "Lazy training of quantum physics informed neural networks",
+      "summary": "arXiv:2609.19239v1 Announce Type: new Abstract: We study the gradient-flow training dynamics of quantum physics-informed neural networks (QPINNs) for the solution of second-order elliptic partial differential equations with Dirichlet boundary conditions. We consider parameterized quantum circuits as",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19239",
+      "isKey": true
+    },
+    {
+      "id": "nd20a77",
+      "title": "Achieving the limits of automorphism gates",
+      "summary": "arXiv:2609.19250v1 Announce Type: new Abstract: Universal fault-tolerant quantum computing combines versatile but expensive operations with specialized but cheap ones. Its efficiency depends on how much computation can be pushed onto the cheap operations and on the size of the code needed to do so. ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19250",
+      "isKey": true
+    },
+    {
+      "id": "n0e2c87",
+      "title": "Theory of post-selected entanglement transitions in monitored bosons",
+      "summary": "arXiv:2609.19251v1 Announce Type: new Abstract: Entanglement phase transitions driven by quantum measurements have emerged as a central paradigm in open quantum many-body physics. Such phase transitions are well established for systems with finite local Hilbert-space dimensions, such as qubits and f",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19251",
+      "isKey": true
+    },
+    {
+      "id": "nb329f0",
+      "title": "Emergent classicality and wavefunction branching in an isolated quantum many-body system",
+      "summary": "arXiv:2609.19254v1 Announce Type: new Abstract: Decoherence in quantum systems is conventionally modeled as the effect of interactions with an external environment. However, such a prescription excludes isolated many-body systems, which are also expected to display classical behavior at macroscopic ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19254",
+      "isKey": true
+    },
+    {
+      "id": "nbadf6e",
+      "title": "A Square-Root Barrier to Quantum Gate Speed under Linear Coupling",
+      "summary": "arXiv:2609.19280v1 Announce Type: new Abstract: Faster quantum gates can suppress the decoherence accumulated during a computation, but in superconducting processors stronger microwave pulses can also increase leakage, off-resonant excitation, stray-field errors, and crosstalk. This creates a centra",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19280",
+      "isKey": true
+    },
+    {
+      "id": "n776752",
+      "title": "Temporal information processing on a 4,500-qubit quantum annealer",
+      "summary": "arXiv:2609.19308v1 Announce Type: new Abstract: Quantum machine learning could uncover statistical structure beyond the reach of classical models, but this requires quantum models large and expressive enough to be useful and cheap enough to read out. Most approaches optimize many quantum parameters ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19308",
+      "isKey": true
+    },
+    {
+      "id": "n6938ab",
+      "title": "Quantum tree networks: complete semidefinite hierarchies and the source-transfer model",
+      "summary": "arXiv:2609.19310v1 Announce Type: new Abstract: Understanding the capabilities and limits of quantum systems is central to quantum information processing. This includes determining which correlations can arise in networks of quantum systems distributed by independent sources. Yet for general quantum",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19310",
+      "isKey": true
+    },
+    {
+      "id": "ncb4e90",
+      "title": "Transformers as Intrinsic Optimizers for Quantum Approximate Optimization Algorithm",
+      "summary": "arXiv:2609.19392v1 Announce Type: new Abstract: The Quantum Approximate Optimization Algorithm (QAOA) is a leading variational framework for combinatorial optimization on noisy intermediate-scale quantum hardware, but its practical performance depends strongly on the classical optimizer used to trai",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19392",
+      "isKey": true
+    },
+    {
+      "id": "n7c038a",
+      "title": "Scalable Simulation of Quantum Dynamics on Topological Quantum Hardware",
+      "summary": "arXiv:2609.19484v1 Announce Type: new Abstract: Quantum computers offer a significant advantage in simulating quantum systems compared to classical computers for certain problems, although most current applications are limited to calculating static molecular properties using hybrid quantum-classical",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19484",
+      "isKey": true
+    },
+    {
+      "id": "n0366f3",
+      "title": "Efficiently estimating failure rates of fault-tolerant logical non-Clifford blocks",
+      "summary": "arXiv:2609.19485v1 Announce Type: new Abstract: Useful quantum computation requires the fault-tolerant implementations of a universal gate set which are generically not efficiently simulable. We devise an algebraic framework that allows for efficient sampling from the measurement distribution of fau",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19485",
+      "isKey": true
+    },
+    {
+      "id": "n1980d8",
+      "title": "Engineering and Probing a One-Dimensional Dipolar Spin Ensemble in Diamond",
+      "summary": "arXiv:2609.19496v1 Announce Type: new Abstract: Dimensionality plays a central role in determining the collective behavior of interacting quantum systems. Engineering strongly interacting ensembles of solid-state spin defects in reduced dimensions remains a significant challenge at the interface bet",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19496",
+      "isKey": true
+    },
+    {
+      "id": "nc88679",
+      "title": "A Bi-Objective Routing Framework for Hybrid Terrestrial-Satellite Quantum Networks",
+      "summary": "arXiv:2609.19561v1 Announce Type: new Abstract: Hybrid terrestrial-satellite quantum networks combine terrestrial fiber infrastructure with free-space links to enable long-distance entanglement distribution. Entanglement can be routed over different combinations of terrestrial and satellite links, r",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19561",
+      "isKey": true
+    },
+    {
+      "id": "n8cacac",
+      "title": "Vehicle-Routing Clustering by Sparse Quantum Relaxation",
+      "summary": "arXiv:2609.19575v1 Announce Type: new Abstract: This paper studies the cluster-assignment layer of a cluster-first-route-second decomposition for the capacitated pickup-and-delivery problem with time windows (CPDPTW), instead of a direct route-ordering quadratic unconstrained binary optimization (QU",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19575",
+      "isKey": true
+    },
+    {
+      "id": "nf2e1d4",
+      "title": "Experimental certification of the nonlocal advantages of quantum imaginarity",
+      "summary": "arXiv:2609.19625v1 Announce Type: new Abstract: Quantum imaginarity is a distinct resource in quantum information theory, yet its nonlocal properties have not been fully explored. Here, we report an experimental study of the nonlocal advantage of quantum imaginarity (NAQI), in which local measuremen",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19625",
+      "isKey": true
+    },
+    {
+      "id": "ncd4aa6",
+      "title": "Quantum computers will not be that different: A blueprint for quantum computer architecture at scale",
+      "summary": "arXiv:2609.19639v1 Announce Type: new Abstract: Quantum computers are technologically novel and unusual, but at system scale they should be engineered using many of the same principles that govern classical heterogeneous accelerators. This paper argues that utility-scale quantum architecture is prim",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19639",
+      "isKey": true
+    },
+    {
+      "id": "n65b5db",
+      "title": "Improving Sample Efficiency in Peptide-HLA Binding Prediction with Hybrid Quantum-Classical Neural Networks",
+      "summary": "arXiv:2609.19642v1 Announce Type: new Abstract: Peptide-HLA binding prediction is a critical step in neoantigen identification for personalized cancer immunotherapy and holds significant clinical value. However, the training data available for many HLA alleles are extremely limited, which severely c",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19642",
+      "isKey": true
+    },
+    {
+      "id": "n65e9d3",
+      "title": "Linear combination of Schr\\\"odingerization for quantum linear systems with optimal matrix-query complexity",
+      "summary": "arXiv:2609.19676v1 Announce Type: new Abstract: Quantum linear systems algorithms (QLSAs) aim to solve linear systems $A\\bb{x}=\\bb{b}$ exponentially faster than classical methods under certain conditions. In this work, we develop quantum algorithms for solving linear algebraic equations from an ODE-",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19676",
+      "isKey": true
+    },
+    {
+      "id": "n1428e1",
+      "title": "Scalable entanglement distribution using encoded hybrid repeater chains",
+      "summary": "arXiv:2609.19783v1 Announce Type: new Abstract: Long-distance entanglement distribution requires error correction protocols to compensate for qubit decoherence in quantum memories and noise introduced during entanglement swapping. We argue that repeater chains with error-correction capabilities shou",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19783",
+      "isKey": true
+    },
+    {
+      "id": "n7d75da",
+      "title": "Transduction-Enabled Superconducting Quantum Repeater: Toward Deterministic Entanglement Distribution with High-Fidelity Gates",
+      "summary": "arXiv:2609.19784v1 Announce Type: new Abstract: Long-distance entanglement distribution is hindered by photon loss in optical fibers and the nocloning theorem. Optical quantum repeater (QR) protocols rely on Bell state measurements (BSMs), they are intrinsically limited to probabilistic photon opera",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19784",
+      "isKey": true
+    },
+    {
+      "id": "nd7fcad",
+      "title": "Automated search for highly contextual Kochen-Specker proofs",
+      "summary": "arXiv:2609.19862v1 Announce Type: new Abstract: Observable-based Kochen-Specker proofs are configurations of multi-qubit Pauli observables grouped into contexts whose products are plus or minus the indentity. Their robustness as state-independent contextuality tests can be measured by the tolerated ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19862",
+      "isKey": true
+    },
+    {
+      "id": "n0845db",
+      "title": "Quantum WalkScore: Benchmarking Quantum Computers on the Graph Nodefinding Problem",
+      "summary": "arXiv:2609.19931v1 Announce Type: new Abstract: Recent advances in quantum computing hardware toward fault-tolerance have increased interest in evaluating near-term quantum platforms on application-relevant quantum algorithms. In this work, we introduce Quantum WalkScore (QWS), a scalable applicatio",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19931",
+      "isKey": true
+    },
+    {
+      "id": "n9a7ba5",
+      "title": "Quantum Graph Convolutional Networks: Implementation and Trainability Analysis",
+      "summary": "arXiv:2609.19983v1 Announce Type: new Abstract: Graph Neural Networks (GNNs) achieve state-of-the-art performance on graph-structured data, but training and inference on large graphs are often bottlenecked by memory constraints and sparse linear-algebra workloads. Quantum computing offers an alterna",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19983",
+      "isKey": true
+    },
+    {
+      "id": "n979812",
+      "title": "Private communication from Pauli channels with no privacy",
+      "summary": "arXiv:2609.20133v1 Announce Type: new Abstract: A channel capacity quantifies the communication capability of a noisy physical process. In contrast to communication channels in the classical world, quantum theory makes this capability contextual. We show that two Pauli two-qubit channels, each with ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20133",
+      "isKey": true
+    },
+    {
+      "id": "nc80327",
+      "title": "Electrostatic Stabilization of Near-Surface Quantum Sensors via Dielectric Interface Engineering",
+      "summary": "arXiv:2609.20137v1 Announce Type: new Abstract: Control of charge-state stability in near-surface quantum defects is critical for nanoscale sensing, yet remains particularly challenging under ultra-high vacuum (UHV), where surface-induced band bending destabilizes the metrologically relevant charge-",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20137",
+      "isKey": true
+    },
+    {
+      "id": "nf934e0",
+      "title": "Rydberg quantum antennas for chip-interfaced single-photon source array",
+      "summary": "arXiv:2609.20172v1 Announce Type: new Abstract: We propose a Rydberg quantum antenna, consisting of a one-dimensional chain of neutral atoms trapped in a standing-wave optical tweezer, as a chip-interfaced single-photon source. Rydberg blockade induces a single collective excitation in the atomic ch",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20172",
+      "isKey": true
+    },
+    {
+      "id": "n187fca",
+      "title": "QECirc: A Community-Driven, FAIR Library of Quantum Error Correction Circuits",
+      "summary": "arXiv:2609.20182v1 Announce Type: new Abstract: Quantum error correction (QEC) underpins fault-tolerant quantum computing, but the circuits that realize QEC codes (encoders, logical state-preparation and gate routines, and syndrome-extraction schedules) are scattered across papers and one-off reposi",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20182",
+      "isKey": true
+    },
+    {
+      "id": "n5460b0",
+      "title": "Fast Unitary Preparation of Surface-Code Logical States on Neutral-Atom Hardware",
+      "summary": "arXiv:2609.20183v1 Announce Type: new Abstract: Preparing logical states is a constantly recurring primitive at the start of any surface-code-based quantum computation. The standard measurement-based protocol is expensive on neutral atoms, since measurements are orders of magnitude slower than gates",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20183",
+      "isKey": true
+    },
+    {
+      "id": "n74ddfd",
+      "title": "Transformer fault diagnosis using an efficient simulation-driven variational quantum classifier with domain-aware feature encoding",
+      "summary": "arXiv:2609.20214v1 Announce Type: new Abstract: Early transformer fault diagnosis is challenged by nonlinear dissolved-gas interactions, overlapping fault signatures, and limited labeled data, while practical deployment further requires reliable performance under realistic computational constraints.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20214",
+      "isKey": true
+    },
+    {
+      "id": "nce597f",
+      "title": "Verification Meets Calibration: Bounds and Secret-Independent State Preparation with an NV-Center as a Case Study",
+      "summary": "arXiv:2609.20219v1 Announce Type: new Abstract: Verification protocols provide cryptographic guarantees that the outcome of a delegated quantum computation is correct, a key requirement for scalable and trustworthy quantum computing. A central assumption underlying these protocols is secret independ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20219",
+      "isKey": true
+    },
+    {
+      "id": "nd73d09",
+      "title": "Bandwidth-Tunable Quantum Light Source at 1.5 $\\mu$m",
+      "summary": "arXiv:2609.20251v1 Announce Type: new Abstract: Quantum light sources constitute a crucial physical resource for the construction of quantum networks. Despite remarkable recent progress, there remains a lack of systematic investigation into the bandwidth tunability of quantum light sources under fix",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20251",
+      "isKey": true
+    },
+    {
+      "id": "nb3a859",
+      "title": "Quantum Speedups for Log-Concave Sampling from Local Structure",
+      "summary": "arXiv:2609.20253v1 Announce Type: new Abstract: For a convex function $f \\colon \\mathbb{R}^d \\to \\mathbb{R}$, the problem of sampling from a distribution proportional to $e^{-f(x)}$ is called log-concave sampling. In many practical scenarios, the function $f(x)$ turns out to admit a local decomposit",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20253",
+      "isKey": true
+    },
+    {
+      "id": "n428128",
+      "title": "Multiparameter sensing of axion dark matter with superconducting-qubit networks",
+      "summary": "arXiv:2609.20254v1 Announce Type: new Abstract: We propose a quantum sensor network for direct detection of quantum chromodynamics (QCD) axion dark matter using entangled superconducting qubits. In the presence of a static magnetic field, the oscillating axion field induces a coherent qubit rotation",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20254",
+      "isKey": true
+    },
+    {
+      "id": "ne32edf",
+      "title": "A Protocol-Guided LLM Agent for Quantum Program Synthesis and Execution",
+      "summary": "arXiv:2609.20258v1 Announce Type: new Abstract: This study evaluates a protocol-guided large language model (LLM) agent workflow for quantum program synthesis and execution. A versioned YAML protocol specifies interface and quantum-semantic requirements while leaving circuit design to the model. The",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20258",
+      "isKey": true
+    },
+    {
+      "id": "n49636d",
+      "title": "QEncodeBench: Can Large Language Models Encode Classical Problems into Verified Quantum Oracles?",
+      "summary": "arXiv:2609.20319v1 Announce Type: new Abstract: Grover search, amplitude amplification, and quantum counting all rely on the same reusable subroutine, a phase oracle, whose construction the algorithms literature takes as given: the classical predicate is assumed to be already encoded as a correct, r",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20319",
+      "isKey": true
+    },
+    {
+      "id": "n136646",
+      "title": "The effects of shot noise on the quantum computation of NMR spectra",
+      "summary": "arXiv:2609.20406v1 Announce Type: new Abstract: Recent advances in the field of quantum computing hardware motivate the search for applications which demonstrate so-called quantum advantage. One promising use case that has been identified is the simulation of quantum many-body systems. The computati",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20406",
+      "isKey": true
+    },
+    {
+      "id": "n2f4210",
+      "title": "State-Selective Floquet Memory in Degenerate Manifolds",
+      "summary": "arXiv:2609.20428v1 Announce Type: new Abstract: In order to understand which initial states retain memory under periodic driving, it is necessary to depart from the ideal limit giving rise to invariant structures and work inside near-degenerate manifolds. We show that degeneracy itself is not conclu",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20428",
+      "isKey": true
+    },
+    {
+      "id": "n99fcbf",
+      "title": "VQE Validation on the Mononuclear T1 (Blue-Copper) Site: A Stepping Stone to the Multi-Copper Laccase Cluster",
+      "summary": "arXiv:2609.20439v1 Announce Type: new Abstract: Validating variational quantum eigensolver (VQE) pipelines on realistic chemical systems is a critical stepping stone toward tackling classically intractable molecules. In this work, we report emulator-based validation of the VQE workflow proposed for ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20439",
+      "isKey": true
+    },
+    {
+      "id": "ndbe11c",
+      "title": "Neutral atom quantum computing for materials science and quantum chemistry",
+      "summary": "arXiv:2609.20464v1 Announce Type: new Abstract: Neutral atom arrays have emerged as versatile platforms for performing both digital and analogue quantum computing and simulation, with demonstrations ranging from large-scale programmable Hamiltonians realising topological phases or weighted graph opt",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20464",
+      "isKey": true
+    },
+    {
+      "id": "n7681b5",
+      "title": "Noise-Robust Quantum State Characterization for Remote State Preparation with Deep Learning",
+      "summary": "arXiv:2609.20523v1 Announce Type: new Abstract: Quantum communication underpins secure information processing and scalable quantum networks. In particular, remote state preparation (RSP) enables efficient quantum state transfer, but accurately estimating target states under complex noise remains cha",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20523",
+      "isKey": true
+    },
+    {
+      "id": "n34b496",
+      "title": "Technical Report OFDM-Assisted Simultaneous Quantum and Classical THz Communications",
+      "summary": "arXiv:2609.20542v1 Announce Type: new Abstract: The feasibility of cost-effective simultaneous quantum and classical communication (SQCC) transmitting both the quantum key and classical information via a superimposed coherent state is investigated both in optical and Terahertz (THz) bands. Since the",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20542",
+      "isKey": true
+    },
+    {
+      "id": "n2f9113",
+      "title": "Scalable logical qubits",
+      "summary": "arXiv:2609.20549v1 Announce Type: new Abstract: Utility-scale quantum computing will require executing long, complex algorithms with end-to-end error rates far below what physical qubits can support directly. Error-corrected logical qubits are needed to achieve this goal. To make the progress on log",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20549",
+      "isKey": true
+    },
+    {
+      "id": "n4e779f",
+      "title": "FT-Weave: Real-Time Compilation Framework for Reconfigurable Fault-Tolerant Quantum Architectures",
+      "summary": "arXiv:2609.20573v1 Announce Type: new Abstract: Fault-tolerant quantum computing (FTQC) is essential for large-scale quantum computation, but realizing useful application throughput requires coordinating resource preparation, assignment, routing, and logical execution under strict hardware and timin",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20573",
+      "isKey": true
+    },
+    {
+      "id": "n66cd4a",
+      "title": "Experimental demonstration of finite-size general security via discrete-modulated CVQKD with real time postprocessing",
+      "summary": "arXiv:2609.20596v1 Announce Type: new Abstract: Continuous-variable quantum key distribution (CVQKD) is compatible with telecommunication infrastructure, but implementing composable security with experimentally practical resources has remained challenging, particularly for discrete-modulated (DM) pr",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20596",
+      "isKey": true
+    },
+    {
+      "id": "n92c2bf",
+      "title": "Proof of Shor's conjecture on the accessible information of quantum dichotomies",
+      "summary": "arXiv:2609.20600v1 Announce Type: new Abstract: The accessible information of any given quantum ensemble quantifies the maximum amount of Shannon information that can be extracted from the ensemble by any quantum measurement. Almost three decades ago, Shor conjectured that the accessible information",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20600",
+      "isKey": true
+    },
+    {
+      "id": "n26b72f",
+      "title": "Hardness of Pathfinding in a Welded Tree",
+      "summary": "arXiv:2609.20651v1 Announce Type: new Abstract: Starting from the entrance of a welded tree, a quantum walk algorithm can find its exit vertex exponentially faster than any classical algorithm. However, it has been an open question whether any quantum algorithm is able to efficiently find a path fro",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20651",
+      "isKey": true
+    },
+    {
+      "id": "n11fc47",
+      "title": "Proof of a positive coherent-error threshold for topological quantum codes",
+      "summary": "arXiv:2609.20708v1 Announce Type: new Abstract: Threshold analyses of quantum error-correcting codes are well established for stochastic error models, in which errors occur randomly with given probabilities. However, errors in actual devices can also be coherent, such as unwanted $Z$ rotations due t",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20708",
+      "isKey": true
+    },
+    {
+      "id": "n9cd29b",
+      "title": "Quantum Simulation of Dissipative Non-Markovian Coupled Classical Oscillators",
+      "summary": "arXiv:2609.20721v1 Announce Type: new Abstract: We present a quantum algorithm for simulating classical oscillator networks characterized by non-Markovian dissipation and time-varying material properties, extending recent speedups for undamped harmonic systems to viscoacoustic and viscoelastic media",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20721",
+      "isKey": true
+    },
+    {
+      "id": "n17de66",
+      "title": "Blind Quantum Computation with a Small Quantum Server",
+      "summary": "arXiv:2609.20729v1 Announce Type: new Abstract: Blind quantum computation (BQC) allows low-resource clients to securely delegate computations to a quantum server, but server resource costs scale with the computation size, posing a bottleneck for implementations. By leveraging Pauli-based computation",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20729",
+      "isKey": true
+    },
+    {
+      "id": "na65a47",
+      "title": "Analytic leakage suppression with a single control field: fast two-qubit gates with tunable couplers",
+      "summary": "arXiv:2609.20766v1 Announce Type: new Abstract: Simple analytic pulse-shaping techniques are of great practical utility in quantum control, with prime examples being the DRAG method for suppressing leakage in superconducting microwave gates and the transitionless-driving approach to shortcuts-to-adi",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20766",
+      "isKey": true
+    },
+    {
+      "id": "nb33547",
+      "title": "All causally separable quantum processes are quantum circuits with classical control of causal order",
+      "summary": "arXiv:2609.20774v1 Announce Type: new Abstract: The concept of causal (non)separability describes whether the causal order between parties that perform local quantum operations is well-defined or indefinite. Causal (non)separability in the general multipartite setting was introduced and studied in [",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20774",
+      "isKey": true
+    },
+    {
+      "id": "nb280d6",
+      "title": "Asymptotically Good Quantum Locally Testable Codes",
+      "summary": "arXiv:2609.20780v1 Announce Type: new Abstract: We construct explicit families of asymptotically good quantum locally testable codes over qubits. More precseily, we construct explicit quantum LDPC CSS codes over qubits having constant rate, constant relative distance and constant weight local tester",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20780",
+      "isKey": true
+    },
+    {
+      "id": "n5020cf",
+      "title": "Locally optimized variational evolution for quantum many-body systems",
+      "summary": "arXiv:2609.20802v1 Announce Type: new Abstract: Conventional quantum advantage in many-body dynamics is based on avoiding the simulation cost on a classical computer that arises from the extensive exponential complexity of the global wavefunction. Local observables, however, do not inherit this exte",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20802",
+      "isKey": true
+    },
+    {
+      "id": "nc4cc6b",
+      "title": "Environment Alignment and Redundant Record Formation in Imperfect-CNOT Quantum Darwinism",
+      "summary": "arXiv:2609.20823v1 Announce Type: new Abstract: Quantum Darwinism explains objective information through redundant environmental records. Earlier work established that imperfect records can be amplified and that environment self-evolution can enhance or suppress their formation. We investigate how p",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20823",
+      "isKey": true
+    },
+    {
+      "id": "n17b417",
+      "title": "Deterministic Hypergraph SYK: Melonic Dominance and Maximal Chaos Without Disorder Averaging",
+      "summary": "arXiv:2609.19255v1 Announce Type: cross Abstract: We show that SYK-like melonic solvability and maximal chaos survive in a sparse deterministic model, without disorder averaging. Our deterministic hypergraph SYK model (hSYK) consists of $N$ Majorana fermions on a $q$-uniform, $d$-regular interaction",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19255",
+      "isKey": true
+    },
+    {
+      "id": "n740005",
+      "title": "Radial dam breaks in a two-dimensional droplet bearing environment",
+      "summary": "arXiv:2609.19508v1 Announce Type: cross Abstract: The controlled dynamical generation of radial dam break flows (DBFs) is demonstrated in two-dimensional droplet environments. These ultracold mixtures feature competing mean-field and quantum fluctuation effects and are initialized on a disk-shaped u",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19508",
+      "isKey": true
+    },
+    {
+      "id": "n52db85",
+      "title": "Observation of multiphoton entanglement in resonance fluoresce",
+      "summary": "arXiv:2609.19808v1 Announce Type: cross Abstract: Resonance fluorescence, the process in which a single two-level quantum emitter interacts with a near-resonant coherent light, is a cornerstone of quantum optics as a paradigmatic light-matter interaction. Quantum phenomena in resonance fluorescence ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.19808",
+      "isKey": true
+    },
+    {
+      "id": "n468e24",
+      "title": "Highly uniform first-electron position in qubit arrays fabricated on dedicated QSOI(R) 300mm commercial platform",
+      "summary": "arXiv:2609.20043v1 Announce Type: cross Abstract: We report progress toward the development of a quantum silicon-on-insulator (QSOI(R)) technology compatible with 300mm CMOS fabrication and adapted from the 28nm Fully-Depleted SOI (28nm FD-SOI) platform for scalable quantum computing. We compare qua",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20043",
+      "isKey": true
+    },
+    {
+      "id": "n73e287",
+      "title": "State-Space-Based FIR Filtering on a Quantum Computer",
+      "summary": "arXiv:2609.20331v1 Announce Type: cross Abstract: Many signal processing tasks require intensive computations. Quantum computing promises to accelerate certain tasks, but algorithms must be designed around the limitations of quantum mechanics. This paper provides a quantum implementation of finite i",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20331",
+      "isKey": true
+    },
+    {
+      "id": "n8adcf9",
+      "title": "Particle Physics Driven by Quantum Technology - Quantum Simulations and Quantum Sensing",
+      "summary": "arXiv:2609.20500v1 Announce Type: cross Abstract: We review recent advances in particle physics enabled and motivated by the rapid progress of quantum technologies. The continued development of quantum computing toward large-scale, fault-tolerant systems has the potential to address dynamical proble",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20500",
+      "isKey": true
+    },
+    {
+      "id": "n26566c",
+      "title": "A quantum representation of $\\pi$ fragmentation functions through variational quantum circuits",
+      "summary": "arXiv:2609.20557v1 Announce Type: cross Abstract: We present a variational quantum-circuit model for fragmentation functions (FFs). Isospin and charge-conjugation symmetries are imposed to construct an independent six-flavor basis describing charged and neutral pion production, while physics-inspire",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20557",
+      "isKey": true
+    },
+    {
+      "id": "nbc9829",
+      "title": "Coherent and ultra-low-power EDSR with a flopping-mode spin qubit in germanium",
+      "summary": "arXiv:2609.20775v1 Announce Type: cross Abstract: Hole spin qubits in semiconductor quantum dots (QDs) enable high-fidelity all-electric control, but conventional electric dipole spin resonance (EDSR) can require substantial rf drive power at the low magnetic fields that are favorable for qubit cohe",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.20775",
+      "isKey": true
+    },
+    {
+      "id": "n234a9d",
+      "title": "Efficient Quantum Voting with Information-Theoretic Security",
+      "summary": "arXiv:2112.14242v2 Announce Type: replace Abstract: Ensuring security and integrity of elections constitutes an important challenge with wide-ranging societal implications. Classically, security guarantees can be ensured based on computational complexity, which may be challenged by quantum computers",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2112.14242",
+      "isKey": true
+    },
+    {
+      "id": "n356f17",
+      "title": "Interactive proofs for verifying (quantum) learning and testing",
+      "summary": "arXiv:2410.23969v3 Announce Type: replace Abstract: We consider the problem of testing and learning from data in the presence of resource constraints, such as limited memory or weak data access, which place limitations on the efficiency and feasibility of testing or learning. In particular, we ask t",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2410.23969",
+      "isKey": true
+    },
+    {
+      "id": "n1d3185",
+      "title": "Distributed Quantum Simulation",
+      "summary": "arXiv:2411.02881v2 Announce Type: replace Abstract: Quantum simulation is a promising pathway toward practical quantum advantage by simulating large-scale quantum systems. In this work, we propose communication-efficient distributed quantum simulation protocols by exploring three quantum simulation ",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2411.02881",
+      "isKey": true
+    },
+    {
+      "id": "n0e4ecf",
+      "title": "Optimal observables for (non-)equilibrium quantum metrology from the master equation",
+      "summary": "arXiv:2506.23600v3 Announce Type: replace Abstract: We demonstrate how observables with optimal sensitivity to environmental properties can be constructed explicitly from the master equation of an open quantum system. Our approach does not rely on the explicit solution of the master equation and ins",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2506.23600",
+      "isKey": true
+    },
+    {
+      "id": "n1e0e19",
+      "title": "Microwave-to-Optical Quantum Transduction of Photons for Quantum Interconnects",
+      "summary": "arXiv:2509.26349v3 Announce Type: replace Abstract: The quantum transduction, or equivalently quantum frequency conversion, is vital for the realization of, e.g., quantum networks, distributed quantum computing, and quantum repeaters. The microwave-to-optical quantum transduction is of particular in",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2509.26349",
+      "isKey": true
+    },
+    {
+      "id": "n28af7b",
+      "title": "The power of quantum catalytic local operations",
+      "summary": "arXiv:2510.08320v2 Announce Type: replace Abstract: A key result in entanglement theory is that the addition of a catalyst dramatically enlarges the set of possible state transformations via local operations and classical communication (LOCC). However, it remains unclear what is the interplay betwee",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2510.08320",
+      "isKey": true
+    },
+    {
+      "id": "n2b3408",
+      "title": "Weak-measurement assisted quantum teleportation fidelity enhancement under noise",
+      "summary": "arXiv:2511.05155v2 Announce Type: replace Abstract: This study presents an improved quantum teleportation protocol designed to enhance fidelity in noisy environments by combining weak measurements (WMs) with flip and reversal operations. In our scheme, Alice prepares a four-qubit entangled state and",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2511.05155",
+      "isKey": true
+    },
+    {
+      "id": "nae918f",
+      "title": "Large-scale Lindblad learning from time-series data",
+      "summary": "arXiv:2512.08165v2 Announce Type: replace Abstract: Learned open-quantum-system models have broad applications in device characterization, device calibration, realistic noise model construction, and bounding observable estimates in quantum simulation. To this end, we develop a highly scalable Lindbl",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2512.08165",
+      "isKey": true
+    },
+    {
+      "id": "nc161d2",
+      "title": "Optomagnonic generation of entangled travelling fields with different polarizations",
+      "summary": "arXiv:2512.10338v2 Announce Type: replace Abstract: The optomagnonic coupling between magnons and optical photons is an essential component for building remote quantum networks based on magnonics. Here we show that such a coupling, manifested as the magnon-induced Brillouin light scattering, can be ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2512.10338",
+      "isKey": true
+    },
+    {
+      "id": "n267471",
+      "title": "Atom-light hybrid interferometer for atomic sensing with quantum memory",
+      "summary": "arXiv:2601.18373v2 Announce Type: replace Abstract: Quantum memories feature a reversible conversion of optical fields into long-lived atomic spin waves, and are therefore ideal for operating as sensitive atomic sensors. However, up to now, atom-light interferometers have lacked an efficient approac",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2601.18373",
+      "isKey": true
+    },
+    {
+      "id": "n2501bc",
+      "title": "Adversarial Information Gain in Non-ideal Quantum Measurements",
+      "summary": "arXiv:2602.20941v2 Announce Type: replace Abstract: Performing a quantum measurement yields two different results: a classical outcome drawn from a probability distribution, according to Born's rule, and a quantum outcome corresponding to the post-measurement state. Quantum devices that provide both",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2602.20941",
+      "isKey": true
+    },
+    {
+      "id": "n8e8194",
+      "title": "Quantum Koopman Algorithms",
+      "summary": "arXiv:2605.19054v2 Announce Type: replace Abstract: Solving high-dimensional dynamical systems by encoding their state in the amplitudes of a quantum state is expected to be a core application of fault-tolerant quantum computers. However, the conditions under which this paradigm yields quantum advan",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2605.19054",
+      "isKey": true
+    },
+    {
+      "id": "n0015e4",
+      "title": "Floquet analysis of coherence in periodically driven diamond NV ensemble systems",
+      "summary": "arXiv:2606.10452v2 Announce Type: replace Abstract: High-density nitrogen-vacancy (NV) ensembles are promising platforms for solid-state quantum sensing, but their performance is limited by dipolar interactions and inhomogeneous dephasing. Periodic decoupling sequences such as Waugh-Huber-Haeberlen ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2606.10452",
+      "isKey": true
+    },
+    {
+      "id": "n7ed578",
+      "title": "The Pauli Probability Spectrum Carries the Pure-State Quantum Fisher Metric",
+      "summary": "arXiv:2608.21437v3 Announce Type: replace Abstract: How a quantum state responds to small parameter changes underlies state distinguishability, many-body response, and metrological sensitivity. The Pauli probability spectrum provides a natural description of many-body quantum states, but it is not e",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2608.21437",
+      "isKey": true
+    },
+    {
+      "id": "na371fd",
+      "title": "Photon-efficient quantum repeater chains via hyperentanglement-assisted purification",
+      "summary": "arXiv:2608.30786v2 Announce Type: replace Abstract: Linear quantum repeater chains based on Werner-state purification (the BBPSSW protocol) and entanglement swapping (the BDCZ scheme) are fundamental to entanglement distribution in quantum networks. However, they operate under a stringent operation ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2608.30786",
+      "isKey": true
+    },
+    {
+      "id": "n48f96a",
+      "title": "New directions in dynamical expectation estimation",
+      "summary": "arXiv:2609.18246v2 Announce Type: replace Abstract: Computing dynamical expectation values typically relies on approximations optimized for the state or observable separately, without accounting for how their errors combine in the final expression. This work explores an alternative approach in which",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.18246",
+      "isKey": true
+    },
+    {
+      "id": "n98825e",
+      "title": "Programmable Hong--Ou--Mandel interference in a giant-atom beam splitter",
+      "summary": "arXiv:2609.18530v2 Announce Type: replace Abstract: The Hong--Ou--Mandel (HOM) effect is a hallmark of two-photon quantum interference, in which two indistinguishable photons impinging on a balanced beam splitter bunch into the same output port. Here, we show that a giant atom (GA), coupled to two w",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.18530",
+      "isKey": true
+    },
+    {
+      "id": "nfcf5eb",
+      "title": "Tailored coupled cluster method with sample-based quantum diagonalization: Application to titanium-based metallocene catalytic reactions for 1-hexene production",
+      "summary": "arXiv:2609.16558v2 Announce Type: replace-cross Abstract: Sample-based quantum diagonalization (SQD) is a hybrid quantum-classical method for electronic-structure calculations. We applied SQD to a titanium-based metallocene catalyst system for 1-hexene production, where free-energy differences must ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.16558",
+      "isKey": true
+    },
+    {
+      "id": "n6a3a3b",
+      "title": "Quiz of the week: how long could a lunar city survive?",
+      "summary": "Have you been keeping up to date with physics news? Try our short quiz to find out The post Quiz of the week: how long could a lunar city survive? appeared first on Physics World.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Physics World",
+      "url": "https://physicsworld.com/a/quiz-of-the-week-how-long-could-a-lunar-city-survive/",
+      "isKey": true
+    },
+    {
+      "id": "n2c2804",
+      "title": "EPB Launches IonQ Forte Enterprise Quantum Computer in Chattanooga",
+      "summary": "Insider Brief PRESS RELEASE &#8212; EPB today launched the IonQ Forte Enterprise quantum computer at EPB Quantum CenterSM, bringing commercial quantum computing and networking together in one facility for the first time. The milestone further positions Chattanooga as the most comprehensive resource ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/18/epb-launches-ionq-forte-enterprise-quantum-computer-chattanooga/",
+      "isKey": true
+    },
+    {
+      "id": "n56753f",
+      "title": "This Roblox Game’s Levels Are Generated by a Real Quantum Computer",
+      "summary": "Insider Brief Video games and quantum computing don&#8217;t usually share a sentence, let alone a screen. But in the latest episode of The Quantum Kid, 10-year-old Kai discovered a game where quantum computer game levels aren&#8217;t just a concept — they&#8217;re real, generated live by actual quan",
+      "date": "2026-09-18",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/18/this-roblox-games-levels-are-generated-by-a-real-quantum-computer/",
+      "isKey": true
+    },
+    {
+      "id": "n63bf7e",
+      "title": "Quantum Simulation Explained: Applications, Methods and Challenges",
+      "summary": "Insider Brief A molecule with fifty interacting particles needs more numbers to describe its full quantum state than a classical supercomputer can store. That&#8217;s the wall classical chemistry keeps hitting, and it&#8217;s why physicist Richard Feynman proposed the idea that if you want to simula",
+      "date": "2026-09-18",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/18/what-is-quantum-simulation-how-does-it-work/",
+      "isKey": true
+    },
+    {
+      "id": "n790016",
+      "title": "ICTK and Jiran Security Partner on Post-Quantum Cryptography Migration",
+      "summary": "Insider Brief South Korean quantum security company ICTK (KOSDAQ: 456010) has signed a memorandum of understanding (MoU) with information security firm Jiran Security to jointly work on post-quantum cryptography migration and cryptographic asset discovery, Business Korea reported. Jiran Security off",
+      "date": "2026-09-18",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/18/ictk-jiran-security-post-quantum-cryptography-migration/",
+      "isKey": true
+    },
+    {
+      "id": "n55d1d3",
+      "title": "DOE Launches $215 Million Quantum Genesis Q Competition",
+      "summary": "Insider Brief PRESS RELEASE &#8212; The U.S. Department of Energy (DOE) today announced the Quantum Genesis Q Competition, an initiative with up to $215 million in planned funding to demonstrate the world’s first fault-tolerant scientifically relevant quantum computers (SRQCs). Applicants are invite",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/18/doe-215-million-quantum-genesis-q-competition/",
+      "isKey": true
+    },
+    {
+      "id": "nc714bc",
+      "title": "EigenQ and Silicon Valley Acquisition Corp. Secure $45M Committed Convertible Financing Ahead of $3B SPAC Merger",
+      "summary": "EigenQ and Silicon Valley Acquisition Corp. have secured $45 million in convertible note financing, providing $22.5 million upfront and the remainder upon closing their $3 billion SPAC merger. This funding will accelerate EigenQ's quantum-safe security commercialization, expand delivery, and support",
+      "date": "2026-09-18",
+      "category": "industry",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/eigenq-and-silicon-valley-acquisition-corp-secure-45m-committed-convertible-financing-ahead-of-3b-spac-merger/",
+      "isKey": true
+    },
+    {
+      "id": "n2f2325",
+      "title": "ICTK and Jiran Security Partner on ‘Q-BRIDGE’ to Commercialize End-to-End PQC Migration Frameworks",
+      "summary": "ICTK and Jiran Security have partnered to launch Q-BRIDGE, an initiative offering end-to-end Post-Quantum Cryptography (PQC) migration for enterprises, governments, and financial sectors. Jiran Security will handle diagnostic auditing, risk assessment, and migration planning, while ICTK will provide",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/ictk-and-jiran-security-partner-on-q-bridge-to-commercialize-end-to-end-pqc-migration-frameworks/",
+      "isKey": true
+    },
+    {
+      "id": "n6e8a45",
+      "title": "Q-SAFE Solutions Unveils EU-27 Carrier-Grade Quantum-Safe Network Platform",
+      "summary": "Q-SAFE Solutions GmbH has launched a carrier-grade quantum-safe network platform in the EU-27, integrating Quantum Key Distribution (QKD) and Post-Quantum Cryptography (PQC) with centralized hybrid key management. This system operates over existing fiber-optic infrastructure, eliminating the need fo",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/q-safe-solutions-unveils-eu-27-carrier-grade-quantum-safe-network-platform/",
+      "isKey": true
+    },
+    {
+      "id": "n415e3f",
+      "title": "USC and Quantum Elements Demonstrate Surface Code Scaling on IBM Heavy-Hex Processors",
+      "summary": "USC and Quantum Elements successfully demonstrated subthreshold surface code scaling on IBM Heavy-Hex processors, overcoming connectivity challenges with a \"fold-unfold\" SWAP embedding and robust dynamical decoupling. This work, published in Nature Communications, validates that physical quantum pro",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/usc-and-quantum-elements-demonstrate-surface-code-scaling-on-ibm-heavy-hex-processors/",
+      "isKey": true
+    },
+    {
+      "id": "n827c20",
+      "title": "Riverlane Establishes U.S. Headquarters in Maryland’s Discovery District to Scale Real-Time QEC Deployments",
+      "summary": "Riverlane has established its U.S. headquarters in Maryland's Discovery District to expand its quantum error correction (QEC) technology in North America, fostering collaborations with academic and government partners. This new facility, located near the University of Maryland, will house executive ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/riverlane-establishes-u-s-headquarters-in-marylands-discovery-district-to-scale-real-time-qec-deployments/",
+      "isKey": true
+    },
+    {
+      "id": "n11c4cb",
+      "title": "Oxford Quantum Circuits Releases Erado: An Open-Source Qiskit Simulator for Erasure Noise and Post-Selection",
+      "summary": "Oxford Quantum Circuits (OQC) has launched Erado, an open-source Qiskit simulator for erasure noise and post-selection, integrated into their QCaaS SDK. This tool allows researchers to simulate erasure-aware noise models and evaluate quantum error mitigation techniques, with accompanying research sh",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/oxford-quantum-circuits-releases-erado-an-open-source-qiskit-simulator-for-erasure-noise-and-post-selection/",
+      "isKey": true
+    },
+    {
+      "id": "n7f3977",
+      "title": "Patenting Quantum Computing Innovations – Part 2: Implementing a Pauli Z Gate",
+      "summary": "By Sinan Utku Example 1: Implementing a Pauli Z Gate Quantum computing inventions come in a variety of forms. They include hardware and hardware-related inventions that are directed to components of a quantum computer or processes carried out by the hardware to carry out quantum computing processing",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/patenting-quantum-computing-innovations-part-2/",
+      "isKey": true
+    },
+    {
+      "id": "nfbfad1",
+      "title": "Alice & Bob Partners with CEA to Integrate Cat Qubit Software into HPC Infrastructure",
+      "summary": "Alice &amp; Bob is partnering with CEA to integrate its cat qubit software into High-Performance Computing (HPC) environments, aiming to develop hybrid supercomputing workflows and algorithms for Fault-Tolerant Quantum Computing by 2030. This collaboration will see Alice &amp; Bob's software integra",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/alice-bob-partners-with-cea-to-integrate-cat-qubit-software-into-hpc-infrastructure/",
+      "isKey": true
+    },
+    {
+      "id": "n58ab03",
+      "title": "News",
+      "summary": "Recent news items published within the last 6 months on quantum computing developments are listed below. Click on the hyperlinked item to go to the press release or news article for more details. For older news items published in 2025 click here, for 2024 click here, for 2023 click here, for 2022 cl",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/news/",
+      "isKey": true
+    },
+    {
+      "id": "na47931",
+      "title": "IQM Expands to South America with On-Premises QPU Sale to Brazil’s Eldorado Research Institute",
+      "summary": "IQM Quantum Computers is expanding into South America by selling an on-premises IQM Spark system to Brazil's Eldorado Research Institute, set for deployment in Q1 2027. This marks the first quantum computer acquisition by a private research institution in Brazil. The system, combined with cloud acce",
+      "date": "2026-09-18",
+      "category": "industry",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/iqm-expands-to-south-america-with-on-premises-qpu-sale-to-brazils-eldorado-research-institute/",
+      "isKey": true
+    },
+    {
+      "id": "ne0eb89",
+      "title": "Researchers Extend Quantum Codes to Realise Multiple Rotations with Added Qubits",
+      "summary": "Extending existing quantum error correction codes now requires adding only n’’ physical qubits to an initial [[n’,k’]] structure, creating an [[n,k]] code where n = n’+n’’. This “appending construction” circumvents previous limitations restricting transversal Z-rotations to single-qubit and controll",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-codes-multiple-rotations-added-qubits/",
+      "isKey": true
+    },
+    {
+      "id": "ne7f5a7",
+      "title": "Naples Team Cuts CNOT Gates in Clifford Circuits",
+      "summary": "Despite utilising a restricted gate set, AlphaClifford consistently reduces total and two-qubit (CNOT) gate counts compared with established circuit creation methods. This new reinforcement learning framework also surpasses other similar systems when adapting circuits for specific quantum computer a",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/clifford-circuits-cnot-gates-synthesis-reduction-performance/",
+      "isKey": true
+    },
+    {
+      "id": "ne096f6",
+      "title": "Graph neural network predicts qubit routing costs",
+      "summary": "A new reinforcement-learning framework uses a graph neural network to predict ancilla-qubit cost for logical qubit allocation, improving fault-tolerant quantum architectures.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/henan-key-graph-prediction-qubit-neural/",
+      "isKey": true
+    },
+    {
+      "id": "nd93e72",
+      "title": "Uppsala University Implements Qudit Control Via Geometric Phases",
+      "summary": "Both single- and two-qutrit holonomic gates can now be realised needing no more than two control loops formed from just three applied pulses. This represents a reduction in complexity compared with previous methods limited to controlling qubits alone. Exploiting this ‘d-pod’ configuration extends no",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qudit-control-geometric-phases-holonomic-computation/",
+      "isKey": true
+    },
+    {
+      "id": "n2bbf39",
+      "title": "Researchers Survey Compilation Designs for Reliable Quantum Computation",
+      "summary": "With IBM now fielding a 1121-qubit processor and neutral atom arrays exceeding 6100 qubits, scaling quantum computers has begun to outpace our ability to reliably control them. Achieving dependable results demands sophisticated new compilers that manage errors across both software and hardware layer",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-compilation-fault-tolerance-error-correction-survey/",
+      "isKey": true
+    },
+    {
+      "id": "n7de035",
+      "title": "Researchers Secure Healthcare Data Using Quantum Networks over Fibre",
+      "summary": "For twenty-two consecutive days, secure data flowed between a German hospital and rural clinic using only existing fibre optic cables, a feat previously hampered by unstable connections and complex key management. This network uniquely combines quantum encryption with standard VPN technology, bypass",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-networks-fibre-healthcare-data-security/",
+      "isKey": true
+    },
+    {
+      "id": "n68dea7",
+      "title": "Austin Team Cuts Quantum Error Rates by Nineteen Per Cent",
+      "summary": "Computation previously taking 1. 2 days now completes in just 3. 1 minutes when optimising the BB72 quantum error correction code.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-error-correction-clifford-deformation-logical-error-rate/",
+      "isKey": true
+    },
+    {
+      "id": "n744640",
+      "title": "Researchers Optimise Quantum Simulations with Engineered Interference",
+      "summary": "Previously, simulating complex physical systems on quantum computers demanded ever greater computational resources to maintain accuracy during state preparations. Now, by manipulating the distribution of energy used in calculations, researchers have reshaped sampling distributions to reduce Hamilton",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-simulations-engineered-interference-imaginary-time-evolution/",
+      "isKey": true
+    },
+    {
+      "id": "n4961ae",
+      "title": "$4M NIST grant funds quantum researchers at EPB Quantum Center",
+      "summary": "EPB today launched the IonQ Forte Enterprise quantum computer at EPB Quantum Center, bringing commercial quantum computing and networking together in one facility for the first time. Funded by a $4 million grant from the National Institute of Standards and Technology (NIST), the initiative has broug",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/epb-quantum-center-nist-grant-4m/",
+      "isKey": true
+    },
+    {
+      "id": "n2766ca",
+      "title": "QCi tackles quantum security hurdles at ECOC 2026 exhibition",
+      "summary": "QCi will exhibit at ECOC 2026, September 21–23, showcasing a platform addressing limitations of traditional Quantum Key Distribution systems, like scalability and cost.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-security-hurdles-qci-tackles/",
+      "isKey": true
+    },
+    {
+      "id": "n5a0318",
+      "title": "No manual tuning needed, Qualibrate calibrates qubits from cold start",
+      "summary": "At Fermilab’s SQMS Center, researchers are using Quantum Machines’ Qualibrate framework to automatically calibrate qubits—specifically, cavity-qubit bring-up—from a cold start, eliminating manual tuning.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-machines-qualibrate-calibrates-qubits-manual/",
+      "isKey": true
+    },
+    {
+      "id": "n002360",
+      "title": "Bristol and NQCC launch intensive quantum computing courses",
+      "summary": "The NQCC and University of Bristol offer two intensive, six-week online programs in quantum information and computation, ideal for STEM professionals.",
+      "date": "2026-09-18",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-computing-courses-bristol-nqcc/",
+      "isKey": true
+    },
+    {
+      "id": "na3021b",
+      "title": "Researchers Boost Sensor Accuracy by Fifteen Per Cent",
+      "summary": "Magnetic field classification is now more accurate thanks to a new technique that embeds computation directly within a single superconducting qubit. This approach improves upon existing methods, achieving up to 20 percentage point gains in classifying oscillating magnetic field amplitudes versus opt",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-sensor-accuracy-fifteen-percent-enhancement/",
+      "isKey": true
+    },
+    {
+      "id": "nfc893b",
+      "title": "Researchers Prepare Logarithmic-Qubit States with Efficient Circuits",
+      "summary": "Previously, constructing any logarithmic-qubit state demanded resources that grew at a rate doubling with each added qubit. Now, every O(log n)-qubit state can be prepared exactly using circuits requiring only polynomially more ancilla qubits, a fundamental shift in efficiency. This advance eliminat",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/logarithmic-qubits-efficient-circuit-preparation-qac0-class/",
+      "isKey": true
+    },
+    {
+      "id": "nef1656",
+      "title": "Researchers Build Software for Networked Quantum Computers",
+      "summary": "Optimal strategies for compiling quantum programs now depend heavily on both circuit design *and* how multiple processors are connected. Previously, such approaches treated hardware layout as secondary to algorithmic optimisation. This work presents an open-source software platform enabling explorat",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/distributed-quantum-computers-networked-software-development/",
+      "isKey": true
+    },
+    {
+      "id": "n77cd59",
+      "title": "PQC predicts quantum computing could reshape manufacturing by 2030",
+      "summary": "By 2030, widely available quantum computing will reshape manufacturing, according to a recent study by Gładysz &#038; van Erp.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/utimaco-pqc-computing-2030/",
+      "isKey": true
+    },
+    {
+      "id": "ncd82dd",
+      "title": "A 4n/3 T-gate count beats the old 3n/2 barrier for quantum ops",
+      "summary": "Xinyu Tan’s algorithm achieves a 4n/3 T-gate count for arbitrary n-qubit unitaries, surpassing the previous 3n/2 barrier set by Lowet et al. in 2024.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/american-physical-t-gate-count-beats/",
+      "isKey": true
+    },
+    {
+      "id": "n46fcb7",
+      "title": "Adaptive Sensing Improves Rabi Signal Detection with Root-N Scaling",
+      "summary": "Achieving detection sensitivities scaling as *n*^(−1/2) now surpasses established quantum sensing methods utilising fixed measurement schemes. This advance stems from an adaptive Bayesian policy for Rabi sensing that intelligently prioritises subsequent readouts based on prior data within a limited ",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/rabi-sensing-adaptive-detection-root-n-scaling/",
+      "isKey": true
+    },
+    {
+      "id": "n176e6b",
+      "title": "Researchers Map Transient Behaviour of Quantum Clocks",
+      "summary": "Until now, atomic clock precision has been limited by analysing systems only after they’ve settled into stable operation. This work reveals what happens at the very beginning, when fewer than one quanta of energy are present, unlocking access to temporal information previously hidden within fleeting",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-clocks-transient-behaviour-mapping-analysis/",
+      "isKey": true
+    },
+    {
+      "id": "na01a70",
+      "title": "Researchers Gain 4.5 dB Signal Boost Via Quantum Error Correction",
+      "summary": "Impact of a CSS quantum error correction code in underwater quantum key distribution A 4. 5 dB signal boost, enough to faintly hear a whisper across a crowded room, is now achievable in challenging underwater communications thanks to newly modelled quantum corrections. These codes overcome photon lo",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-key-distribution-underwater-signal-boost-correction/",
+      "isKey": true
+    },
+    {
+      "id": "n54e3cf",
+      "title": "University of Waterloo builds on prepare-and-measure QKD",
+      "summary": "Security proofs for quantum communication now account for devices functioning *imperfectly* and uncertainty about how they do so, unlike previous methods limited to perfectly characterised equipment. This advance establishes a new framework combining ‘source’ and ‘squashing’ maps to secure prepare-a",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-key-distribution-flawed-device-security/",
+      "isKey": true
+    },
+    {
+      "id": "n6cd942",
+      "title": "WEF urges energy sector to prepare for quantum threats",
+      "summary": "The World Economic Forum warns the energy sector faces growing cybersecurity risks, particularly from vulnerabilities exposed by post-quantum cryptography advances.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/white-house-quantum-threats-wef-urges/",
+      "isKey": true
+    },
+    {
+      "id": "n333057",
+      "title": "SCAC to guide quantum research with new national roadmap",
+      "summary": "The U.S. Department of Energy, led by Under Secretary Darío Gil, is developing a “Quantum Inflection Point” plan to chart a science-first path for national quantum computing efforts.",
+      "date": "2026-09-18",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-research-roadmap-scac-guide/",
+      "isKey": true
+    },
+    {
+      "id": "n0c6954",
+      "title": "BTQ Technologies builds a quantum key that vanishes after one use",
+      "summary": "BTQ Technologies recently detailed a quantum algorithm for one-shot signatures, a new cryptographic primitive with single-use security.",
+      "date": "2026-09-18",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/btq-technologies-quantum-key-vanishes/",
+      "isKey": true
+    },
+    {
+      "id": "nabc124",
+      "title": "Quantum computing is like a superhero, but",
+      "summary": "Conor Johnston of Seer posted that AI is like a supervillain that&#8217;s going to end the world, while quantum computing is like the superhero that&#8217;s going to save it. But let&#8217;s not forget that long before we see life-saving drugs and novel materials, we&#8217;re being forced to migr...",
+      "date": "2026-09-17",
+      "category": "industry",
+      "source": "Inside Quantum Technology",
+      "url": "https://www.insidequantumtechnology.com/news-archive/quantum-computing-is-like-a-superhero-but/",
+      "isKey": true
+    },
+    {
+      "id": "n9148a0",
+      "title": "DOE Puts Up $215 Million Competition to Build Fault-Tolerant Quantum Computers",
+      "summary": "Department of Energy (DOE) today announced the Quantum Genesis Q Competition, an initiative with up to $215 million in planned funding to demonstrate the world’s first fault-tolerant scientifically relevant quantum computers (SRQCs). Applicants are invited to submit proposals to deploy quantum compu",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/energy-fault-tolerant-quantum-215-million/",
+      "isKey": true
+    },
+    {
+      "id": "n119819",
+      "title": "Riven’s lab and Pasqal’s quantum computers aid USA Rare Earth",
+      "summary": "USA Rare Earth, Riven Systems &#038; Pasqal are partnering to advance rare earth separation tech, leveraging Pasqal’s neutral-atom computing power.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/usa-pasqal-quantum-computers-rivens-lab/",
+      "isKey": true
+    },
+    {
+      "id": "nf63819",
+      "title": "Neutral-atom quantum firm Pasqal Will Ring Closing Bell On Pasqal on 17th September",
+      "summary": "Pasqal (NASDAQ: PSQL), a global leader in quantum computing using a unique neutral-atom approach, celebrated its public listing by ringing the Nasdaq Closing Bell on September 17, 2026.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/neutral-atom-quantum-firm-pasqal-goes/",
+      "isKey": true
+    },
+    {
+      "id": "n985d6c",
+      "title": "QSE warns stored satellite data could be decrypted by future quantum computers",
+      "summary": "Quantum Secure Encryption Corp. (QSE) highlights that data captured from today’s satellites could be decrypted, as current encryption won’t last their 2040s lifecycles.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qse-warns-stored-satellite-data/",
+      "isKey": true
+    },
+    {
+      "id": "n14cdc7",
+      "title": "LSEG and Microsoft Quantum test new data analysis with Quantum Development Kit",
+      "summary": "LSEG and Microsoft are evaluating the Microsoft Quantum Development Kit (QDK) for analytics, a new library of quantum algorithms and tools designed for advanced data analysis, focusing first on Quantum TensorPrincipal Component Analysis (Quantum Tensor PCA). This approach helps identify weak signals",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/microsoft-quantum-development-kit-lseg/",
+      "isKey": true
+    },
+    {
+      "id": "nd35336",
+      "title": "Oracle’s Java 27 unlocks quantum performance with nine JDK enhancements",
+      "summary": "Oracle’s Java 27 release delivers nine JDK enhancements, boosting performance and strengthening post-quantum cryptography with TLS 1.3.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/oracles-java-unlocks-quantum-performance/",
+      "isKey": true
+    },
+    {
+      "id": "n2c8f82",
+      "title": "Quantum Secure Encryption Corp. poised for growth as encryption shifts",
+      "summary": "Governments are setting deadlines to migrate from current encryption, vulnerable to advances in quantum computing, to post-quantum cryptography (PQC).",
+      "date": "2026-09-17",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-encryption-corp-poised-growth/",
+      "isKey": true
+    },
+    {
+      "id": "n3f77b0",
+      "title": "TU/e PhD work explores quantum encryption beyond key creation",
+      "summary": "Arpan Ray’s TU/e PhD work expands quantum cryptography beyond secure key exchange, utilizing continuous-variable quantum systems for practical applications.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/mathematics-computer-quantum-encryption-beyond-key/",
+      "isKey": true
+    },
+    {
+      "id": "ne680f7",
+      "title": "Researchers Review Quantum Computing’s Role in Smart Grids",
+      "summary": "Can existing optimisation algorithms adequately manage increasingly complex power grids burdened by fluctuating renewable energy sources? Quantum algorithms such as HHL and QAOA now offer potential solutions for large systems of linear equations and combinatorial optimization problems respectively, ",
+      "date": "2026-09-17",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-computing-optimisation-of-smart-grids/",
+      "isKey": true
+    },
+    {
+      "id": "nb84739",
+      "title": "Riverlane opens U.S. headquarters in Maryland for quantum work",
+      "summary": "Riverlane establishes its U.S. headquarters in Discovery District, Maryland, expanding its commitment to quantum error correction.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/riverlane-headquarters-maryland-quantum-work/",
+      "isKey": true
+    },
+    {
+      "id": "nc62880",
+      "title": "D-Wave brings quantum user conference, Qubits Asia, to Seoul",
+      "summary": "D-Wave Quantum Inc. will host Qubits Asia 2026, a quantum computing user conference on October 28, 2026, in Seoul. Focused on the Asia-Pacific region, the event will showcase production applications and advancements in D-Wave’s annealing and gate-model quantum computing technologies.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/d-wave-qubits-asia-quantum-user/",
+      "isKey": true
+    },
+    {
+      "id": "n822fd0",
+      "title": "Bristol Chip Uses Entangled Light to Beat Shot-Noise Limit for Compact Sensors",
+      "summary": "A measurement improvement of over 0. 15 decibels beneath conventional limits has been achieved using light, a difference comparable to discerning whispers in a crowded room. This advance stems from distributing quantum entanglement across a single silicon chip, overcoming limitations imposed by trad",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-sensing-squeezed-states-phase-enhancement-technique/",
+      "isKey": true
+    },
+    {
+      "id": "nf9b76c",
+      "title": "Researchers Build Nonlocal Links with Rydberg Atom Bus",
+      "summary": "A chain of Rydberg atoms now mediates connections between qubits without requiring physical movement or direct links. This establishes ‘quasi-all-to-all’ coupling within neutral atom systems, overcoming limitations imposed by spatially restricted native interactions. The method effectively transform",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/rydberg-atom-chain-nonlocal-quantum-bus-architecture/",
+      "isKey": true
+    },
+    {
+      "id": "ne1ca9d",
+      "title": "Researchers Cut Control Needs by 41% in Quantum Network Simulation",
+      "summary": "A six-edge network now maintains 99. 83% of excitation transfer enhancement previously needing complete coupling control. Reducing controllable connections, this method also lowers required control energy, pulse fluence, by 41.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-networks-coherent-control-edge-ranking-strategy/",
+      "isKey": true
+    },
+    {
+      "id": "nc28dc1",
+      "title": "Researchers Swap Entanglement across 40km Fibre with Live Data",
+      "summary": "Can entanglement be reliably swapped across multiple nodes within an existing fibre network already carrying live data traffic? It now has been, with researchers demonstrating successful entanglement swapping across a five-node relay, an improvement on previous three-node systems, while concurrently",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-entanglement-swapping-fibre-optic-link-demonstration/",
+      "isKey": true
+    },
+    {
+      "id": "ne3634f",
+      "title": "IQM engineer moves from qubits to a working quantum computer",
+      "summary": "Tyler Jones, an IQM engineer, moved from Brisbane to Munich to help build working quantum computers.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/iqm-engineer-moves-qubits-working/",
+      "isKey": true
+    },
+    {
+      "id": "n79e5bf",
+      "title": "CEA will test Alice & Bob’s quantum software on its supercomputers",
+      "summary": "The CEA will integrate Alice &#038; Bob’s cat qubits software, streamlining access to quantum resources via Bull Qaptiva.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/cea-test-alice-bobs-quantum/",
+      "isKey": true
+    },
+    {
+      "id": "nf862b6",
+      "title": "IQM sends its first quantum computer to Brazil’s Eldorado Institute",
+      "summary": "IQM Quantum Computers will deploy its IQM Spark quantum computer in Brazil, at the Eldorado Research Institute’s Campinas headquarters in 2027.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-computer-brazil-iqm-sends/",
+      "isKey": true
+    },
+    {
+      "id": "n75deb7",
+      "title": "Researchers Review Progress in Optical Quantum Computing",
+      "summary": "Can complex calculations now be completed by light alone, bypassing traditional electronic processors? Experimental photonic quantum processors have demonstrated computational advantage beyond universal devices, extending into methods like boson sampling and variational algorithms. This review conso",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/optical-quantum-computing-review-progress-implementations-challenges/",
+      "isKey": true
+    },
+    {
+      "id": "nddf709",
+      "title": "QShield ran for 72 hours with post-quantum encryption, zero failures",
+      "summary": "QShield completed a 72-hour run with software-only, asymmetric cryptography, recording zero failures.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/post-quantum-encryption-qshield-ran-hours/",
+      "isKey": true
+    },
+    {
+      "id": "n71d248",
+      "title": "USC and Quantum Elements scale surface code on IBM Heron chips",
+      "summary": "Quantum Elements and the University of Southern California (USC) published a Nature Communications paper demonstrating that the surface code can improve error protection on IBM Heron processors, even when the processor layout does not match the code. The authors achieved below-threshold performance ",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-elements-surface-code-ibm-heron/",
+      "isKey": true
+    },
+    {
+      "id": "n2e8451",
+      "title": "Researchers Extend Silicon Qubit Coherence to 67 Microseconds",
+      "summary": "A silicon spin qubit operating near an optimised location exhibited coherence lasting 67s, over twelve times longer than its neighbour’s 5. 2s. This dramatic improvement stems from minimising how electrical interference impacts the qubit's delicate quantum state.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/silicon-qubits-coherence-extension-to-sixty-seven-microseconds/",
+      "isKey": true
+    },
+    {
+      "id": "n8a646d",
+      "title": "Mitsubishi Electric’s Quantum R&D to Advance Post-5G Computing",
+      "summary": "Mitsubishi Electric received NEDO support for two projects advancing quantum computing, focusing on scaling up systems for post-5G applications.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-rd-computing-mitsubishi-electrics/",
+      "isKey": true
+    },
+    {
+      "id": "n8494b6",
+      "title": "Defects Generate Structures Linked to Chaos in Quantum Systems Now",
+      "summary": "Designs without disorder are now possible; until recently, creating dependable quantum simulations demanded either fully chaotic systems or extensive disruption to natural order. A single localised imperfection within an otherwise perfectly balanced quantum system is enough to generate complex behav",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/xxz-spin-chains-defects-unitary-k-designs-generation/",
+      "isKey": true
+    },
+    {
+      "id": "n761646",
+      "title": "Researchers Simulate Fermions with Improved Qubit Mapping",
+      "summary": "Previously intractable simulations are now within reach thanks to a new approach which dramatically reduces computational demands. By minimising operator ‘nonlocality’, the spread of interactions across qubits, this method overcomes limitations inherent in conventional qubit encoding schemes like Jo",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/dk-fermion-mapping-variational-quantum-simulation/",
+      "isKey": true
+    },
+    {
+      "id": "nbd3e8f",
+      "title": "Researchers Build Pump-Free Source of Entangled Photon Pairs",
+      "summary": "Until now, linking quantum computers relied on techniques introducing unwanted noise that degraded signals during transmission. A new approach bypasses these limitations by generating entangled photon pairs at kilohertz rates without any external optical pumping. This shift promises more efficient c",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/pump-free-entangled-photon-pair-source-transduction/",
+      "isKey": true
+    },
+    {
+      "id": "n499c10",
+      "title": "New framework classifies Matrix Product Quantum Channels",
+      "summary": "The researchers develop a framework for Matrix Product Quantum Channels, a one-dimensional tensor-network description of completely positive, trace-preserving maps. We focus on translation-invariant channels, generated by a single repeated tensor, that admit a local purification, and show their puri",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/hmpqc-matrix-product-quantum-channels-framework/",
+      "isKey": true
+    },
+    {
+      "id": "nbec443",
+      "title": "Researchers Generate Entanglement with Continuous Measurements",
+      "summary": "Entanglement and ‘quantum magic’ appear where none existed before when observing decaying qubits with continuous measurement. This generation arises not from passively watching quantum behaviour but actively creating it via simultaneous detection of electromagnetic fields. Tuning these newly formed ",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/continuous-measurements-generate-qubit-entanglement/",
+      "isKey": true
+    },
+    {
+      "id": "n4637e7",
+      "title": "IQM Quantum delivers 54-qubit quantum system to Brazil’s Eldorado Institute",
+      "summary": "IQM Quantum Computers will deliver its first quantum computer to South America, a 54-qubit device, to Brazil’s Eldorado Institute in 2027.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qubit-quantum-system-iqm-54-qubit/",
+      "isKey": true
+    },
+    {
+      "id": "n2261e2",
+      "title": "Quantum States Imply One-Way Functions, Blocking Route to Microcrypt Security",
+      "summary": "Instantiating Microcrypt once seemed possible without relying on conventional computational hardness, a potential shortcut around established cryptographic foundations. However, this work demonstrates that Hamiltonian Phase State assumptions necessitate the existence of one-way functions, effectivel",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/hamiltonian-phase-states-imply-one-way-functions/",
+      "isKey": true
+    },
+    {
+      "id": "na4e397",
+      "title": "Researchers Build Quantum Circuits Costing 10⁵ T Gates",
+      "summary": "Achieving an estimated circuit complexity of approximately 10⁵ T gates for a ten by ten lattice places accurate simulation of strongly correlated materials closer than ever before. Incorporating Schrieffer-Wolff generated charge fluctuations substantially improves fidelity compared with simply using",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-circuits-hubbard-model-t-gates-fidelity/",
+      "isKey": true
+    },
+    {
+      "id": "na8ea8d",
+      "title": "Researchers Map Qubit Behaviour under Varying Exchange Interactions",
+      "summary": "An unexpected interplay between qubit controls has been revealed through detailed characterisation of simultaneously driven spins with an observed exchange coupling frequency of approximately 160kHz. Previous investigations either minimised or obscured residual exchange interactions via techniques l",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/spin-qubits-exchange-interactions-microwave-drive-mapping/",
+      "isKey": true
+    },
+    {
+      "id": "n9676f4",
+      "title": "Researchers Automate Creation of Entangled Photonic Circuits",
+      "summary": "Algorithmic generation of bespoke optical circuits is now possible, moving beyond designs tailored to individual entanglement targets. Previously limited to specific states or applications, this method delivers schemes for hypergraph magic states, quantum error-correcting codes, alongside versatile ",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/photonic-circuits-automated-design-multipartite-entanglement/",
+      "isKey": true
+    },
+    {
+      "id": "n6c199d",
+      "title": "Johns Hopkins APL Sensor Could Broaden Threat Detection for Warfighters",
+      "summary": "Johns Hopkins APL scientists are developing a portable quantum sensor using nuclear magnetic resonance, potentially identifying chemical &#038; biological threats for warfighters.",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/johns-hopkins-apl-quantum-sensor-threat-detection-warfighters/",
+      "isKey": true
+    },
+    {
+      "id": "ne19db8",
+      "title": "Quantum Communication Surpasses Classical Limits with Root-N Advantage",
+      "summary": "Could a computational task require exponentially more randomised communication than its quantum counterpart? New work demonstrates polylogarithmic quantum communication against an eΩ(√n) lower bound for randomised communication using just two messages, a marked improvement over the previous separati",
+      "date": "2026-09-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-communication-root-n-advantage-separation-bound/",
+      "isKey": true
+    },
+    {
+      "id": "n060cea",
+      "title": "Researchers Bound Quantum Communication to Polylogarithmic Complexity",
+      "summary": "For one specific computational task, the ‘Cheat-Shapen’ function, quantum systems now achieve communication costs of O(log³ Nn log log Nn), defying classical limits. Every randomised protocol for the same function demands polynomial communication regardless of how many interactive rounds are permitt",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-communication-polylogarithmic-complexity-two-message-protocol/",
+      "isKey": true
+    },
+    {
+      "id": "nf0ba46",
+      "title": "Researchers Propose Atom Interferometer for Dark Matter Search",
+      "summary": "Technical Proposal for the Atom Interferometer CERN Experiment (AICE) Facility Scaling existing strontium gradiometer architectures to a roughly 100-metre baseline, this facility proposes a new approach to detecting ultralight dark matter and exploring gravitational waves between 0. 03, 3Hz. Located",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/atom-interferometer-dark-matter-search-experiment-proposal/",
+      "isKey": true
+    },
+    {
+      "id": "nb0e200",
+      "title": "Researchers Link Hadamard Matrices to Simpler Quantum Algorithms",
+      "summary": "Hadamard matrices now amplify probability amplitudes without manual adjustment, a feat previously requiring careful calibration akin to Grover’s operator. Applying these real or complex transformations to combined quantum states yields differing probabilities, while corresponding topological structu",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/hadamard-matrices-simpler-quantum-algorithms-phase-transformation/",
+      "isKey": true
+    },
+    {
+      "id": "nd44896",
+      "title": "Sandia Labs maps a path to faster spin qubit tuning",
+      "summary": "Tuning gate-defined quantum dots for qubit operation is often frustrating and time-consuming in spin qubit research, due to device variability and complex interactions. Computer-automated and machine learning techniques are being explored to accelerate this process, but need to become faster and mor",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/sandia-spin-qubit-tuning-labs/",
+      "isKey": true
+    },
+    {
+      "id": "n41a2b6",
+      "title": "Researchers Build Secure Quantum Sensor Network",
+      "summary": "Private measurement across spatially separated sensors is now achievable without compromising sensitive data. This advancement delivers certified privacy bounds alongside accurate global function estimation, a feat previously hampered by noise and complex sampling requirements. Employing a high-fide",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-sensor-networks-secure-entanglement-demonstration/",
+      "isKey": true
+    },
+    {
+      "id": "n092bab",
+      "title": "Glasgow Team Finds 600 Nuclei Limit Spin Coherence",
+      "summary": "Six nuclear spins within a molecule dictate coherence at low fields, yet this number swells to approximately six hundred under higher field conditions. This distinction, revealed through detailed modelling of pentacene coupled with para-terphenyl, illuminates previously obscured mechanisms driving s",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/molecular-spins-optical-readout-coherence-limit-six-hundred-nuclei/",
+      "isKey": true
+    },
+    {
+      "id": "n6498b1",
+      "title": "Researchers Build Grid States for Enhanced Atomic Clocks",
+      "summary": "Beyond fifty atoms, conventional entanglement methods falter when measuring time with atomic clocks due to signal degradation from spontaneous emission. Spin grid states now offer improved precision compared to spin squeezed states and outperform GHZ-like states under these conditions, unlocking adv",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/atomic-clocks-grid-states-enhanced-precision-estimation/",
+      "isKey": true
+    },
+    {
+      "id": "nd8fa2d",
+      "title": "Researchers Bound Superdense Coding with Classical Error Correction",
+      "summary": "Under identical limitations on error rates, this new protocol surpasses established theoretical limits for conventional superdense coding regarding both data transmission speed and energy consumption. By intelligently combining classical error correction with entangled qubit placement, a demonstrabl",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/superdense-coding-classical-error-correction-integration/",
+      "isKey": true
+    },
+    {
+      "id": "nb3d077",
+      "title": "Saarlandes Team Simulates Calcium Ion Photon Indistinguishability",
+      "summary": "Previously linking atomic decay to photon interference relied on limited experimental observation. Now, detailed numerical modelling expands this understanding by probing a wider parameter region and explicitly addressing optimisation regarding both photon generation rate and how closely matched pho",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/calcium-ion-photon-indistinguishability-raman-scattering-simulation/",
+      "isKey": true
+    },
+    {
+      "id": "nbde010",
+      "title": "Geneva Team Distils Magic States with Qubit Recycling",
+      "summary": "Constant sized support state distillation with qubit recycling Previously, building dependable quantum computers demanded ever-increasing numbers of qubits to correct errors during complex calculations. New protocols now achieve diagonal states within the Clifford hierarchy using a fixed quantity of",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qubit-recycling-magic-state-distillation-fidelity-improvement/",
+      "isKey": true
+    },
+    {
+      "id": "nc93f34",
+      "title": "Researchers Achieve 99% Qubit Fidelity with Rapid Cooler",
+      "summary": "A complete cooldown cycle for superconducting qubits now takes just 1. 2 hours, a dramatic reduction from the day or more previously required. This ultracompact refrigerator achieves this speed while maintaining competitive qubit performance, reaching single-qubit gate fidelities of up to 99% at com",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/superconducting-qubit-rapid-cooler-99-percent-fidelity/",
+      "isKey": true
+    },
+    {
+      "id": "n0200f3",
+      "title": "Planckian selected among 13 firms for EuroHPC’s quantum computing push",
+      "summary": "Planckian, the only Italian firm, was selected as one of 13 companies for the EuroHPC Quantum Grand Challenge, receiving EUR 300,000 to scale its quantum computing architecture.",
+      "date": "2026-09-16",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/planckian-selection-quantum-among-firms/",
+      "isKey": true
+    },
+    {
+      "id": "n3a7dc8",
+      "title": "Researchers Cut Quantum Error Correction Latency with New Method",
+      "summary": "Reducing decoding latency allows work on correcting errors to begin *before* complete syndrome extraction, a shift from waiting until cycle end. This new method processes information sequentially as it becomes available, diminishing the backlog problem hindering fault-tolerant computation. Simulatio",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-error-correction-low-latency-decoding-method/",
+      "isKey": true
+    },
+    {
+      "id": "n98e81e",
+      "title": "D-Wave shows off both quantum computing approaches at Congress",
+      "summary": "D-Wave Quantum Inc., the only dual-platform quantum computing company providing both annealing and gate-model systems, software and services, will participate as a platinum sponsor of Quantum World Congress 2026, taking place September 23-25 in College Park, Maryland. D-Wave will demonstrate that th",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/d-wave-quantum-computing-off-approaches/",
+      "isKey": true
+    },
+    {
+      "id": "n22cd75",
+      "title": "Researchers Propose Robust Control Boosting Cat-Qubit Fidelity",
+      "summary": "Engineering dissipation and control pulses for high-fidelity fault-tolerance quantum computing Until now, maintaining coherence in leading qubit designs has meant choosing between fast operation or resilience to error. New protocols achieve both simultaneously within cat-state qubits via engineered ",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/cat-qubit-fidelity-robust-control-protocol/",
+      "isKey": true
+    },
+    {
+      "id": "nfc39ce",
+      "title": "Researchers Find Quantum Circuit Structure Predicts Rare Events",
+      "summary": "Peak-selected quantum circuits exhibit between two and seven times more favourable outcomes compared to standard random designs at depths eight through fourteen. This enrichment suggests an underlying structure within these normally chaotic systems persists even when computational pathways diverge u",
+      "date": "2026-09-16",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-circuits-rare-event-prediction-structure/",
+      "isKey": true
+    },
+    {
+      "id": "n64c775",
+      "title": "Researchers Link Boson Entanglement to Geometric Measurement",
+      "summary": "Geometric measurements now quantify entanglement for multi-partite boson systems beyond simple two-level particles. Previously limited to qubits, an incompatibility quantifier has been generalised to describe higher-dimensional bosonic states using Fubini, Study angles. This allows characterisation ",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/boson-entanglement-geometric-measurement-incompatibility-quantifier/",
+      "isKey": true
+    },
+    {
+      "id": "n9f8c86",
+      "title": "IBM Research Team Bounds Quantum Circuit Complexity Growth",
+      "summary": "One gate at a time: complexity growth in random quantum circuits Until now, quantifying how quickly simulating quantum computations becomes classically intractable relied upon approximations yielding polynomial improvements only. New calculations demonstrate that computational resources required for",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-circuit-complexity-growth-linear-bound/",
+      "isKey": true
+    },
+    {
+      "id": "nc3709b",
+      "title": "Duke University Derives Qubit Conversion Rate Bound",
+      "summary": "For over twenty five years, qubit distillation focused on creating single perfect copies from many imperfect ones. Now, protocols exist to linearly convert qubit purity, both concentrating *and* diluting it, at a rate dictated by eigenvalues of the right-logarithmic-derivative Fisher Information Mat",
+      "date": "2026-09-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qubit-conversion-rate-purity-interconversion-bound/",
+      "isKey": true
+    },
     {
       "id": "n54bfae",
       "title": "Structured Quantum Kernels for Chaotic Forecasting",
