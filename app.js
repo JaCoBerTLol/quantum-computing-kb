@@ -1278,6 +1278,9 @@ window.closeCompareOverlay = function() {
   if (!overlay) return;
   overlay.classList.remove("active");
   document.body.style.overflow = "";
+  State.compareSlots = [null, null];
+  renderEcoCompanies();
+  renderCompareSlots();
 };
 
 document.addEventListener("keydown", (e) => {
