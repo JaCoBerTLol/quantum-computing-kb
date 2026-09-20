@@ -1192,6 +1192,7 @@ function bindEcoEvents() {
       State.compareSlots[i] = companyId;
       renderEcoCompanies();
       renderCompareSlots();
+      if (State.compareSlots[0] && State.compareSlots[1]) showCompareOverlay();
     });
   }
 }
@@ -1211,19 +1212,77 @@ window.toggleCompare = function(companyId) {
   }
   renderEcoCompanies();
   renderCompareSlots();
+  if (slots[0] && slots[1]) showCompareOverlay();
 };
 
 window.clearCompare = function() {
   State.compareSlots = [null, null];
   renderEcoCompanies();
   renderCompareSlots();
+  closeCompareOverlay();
 };
 
 window.removeFromCompare = function(slotIdx) {
   State.compareSlots[slotIdx] = null;
   renderEcoCompanies();
   renderCompareSlots();
+  closeCompareOverlay();
 };
+
+function showCompareOverlay() {
+  const overlay = $("#compareOverlay");
+  const content = $("#compareOverlayContent");
+  if (!overlay || !content) return;
+  if (State.compareSlots.some(s => !s)) return;
+  const [id1, id2] = State.compareSlots;
+  const co1 = State.companies.find(c => c.id === id1);
+  const co2 = State.companies.find(c => c.id === id2);
+  if (!co1 || !co2) return;
+  const dm1 = domainMeta[co1.domain];
+  const dm2 = domainMeta[co2.domain];
+
+  const fields = [
+    { label: "领域", v1: dm1.name, v2: dm2.name },
+    { label: "国家/地区", v1: co1.country, v2: co2.country },
+    { label: "总部", v1: co1.hq, v2: co2.hq },
+    { label: "成立年份", v1: co1.founded, v2: co2.founded },
+    { label: "股票/融资", v1: co1.ticker, v2: co2.ticker },
+    { label: "市值/估值", v1: co1.marketCap, v2: co2.marketCap },
+    { label: "技术路线", v1: co1.techRoute, v2: co2.techRoute },
+    { label: "核心产品", v1: co1.keyProduct, v2: co2.keyProduct },
+    { label: "量子比特数", v1: co1.qubits || "—", v2: co2.qubits || "—" },
+    { label: "关键里程碑", v1: co1.milestones, v2: co2.milestones },
+    { label: "简介", v1: co1.description, v2: co2.description },
+  ];
+
+  content.innerHTML = `
+    <div class="compare-detail">
+      <div class="compare-detail-row compare-detail-row-header">
+        <div class="compare-detail-cell" style="background:#f8faff">对比项</div>
+        <div class="compare-detail-cell">${co1.name}<br><span class="compare-domain-badge ${co1.domain}">${dm1.name}</span></div>
+        <div class="compare-detail-cell">${co2.name}<br><span class="compare-domain-badge ${co2.domain}">${dm2.name}</span></div>
+      </div>
+      ${fields.map(f => `
+        <div class="compare-detail-row">
+          <div class="compare-detail-cell label">${f.label}</div>
+          <div class="compare-detail-cell value">${f.v1}</div>
+          <div class="compare-detail-cell value">${f.v2}</div>
+        </div>`).join("")}
+    </div>`;
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+window.closeCompareOverlay = function() {
+  const overlay = $("#compareOverlay");
+  if (!overlay) return;
+  overlay.classList.remove("active");
+  document.body.style.overflow = "";
+};
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeCompareOverlay();
+});
 
 function renderCompareSlots() {
   const slots = State.compareSlots;

@@ -285,6 +285,23 @@
       </div>
     </section>
 
+    <!-- ===== Compare Overlay Modal ===== -->
+    <div class="compare-overlay" id="compareOverlay">
+      <div class="compare-overlay-backdrop" onclick="closeCompareOverlay()"></div>
+      <div class="compare-overlay-modal" id="compareOverlayModal">
+        <div class="compare-overlay-header">
+          <div class="compare-overlay-title">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="#6d3bea" stroke-width="2" stroke-linecap="round" d="M9 3H5a2 2 0 00-2 2v4m0 6v4a2 2 0 002 2h4m6 0h4a2 2 0 002-2v-4m0-6V5a2 2 0 00-2-2h-4"/></svg>
+            公司对比详情
+          </div>
+          <button class="compare-overlay-close" id="compareOverlayClose" onclick="closeCompareOverlay()">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M6 18L18 6"/></svg>
+          </button>
+        </div>
+        <div id="compareOverlayContent"></div>
+      </div>
+    </div>
+
     <!-- ===== Tab: 行业资讯 ===== -->
     <section class="tab-panel" id="panel-news">
       <div class="news-header">
