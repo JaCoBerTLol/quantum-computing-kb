@@ -6,11 +6,17 @@
   <title>量子知识库 | Quantum Knowledge Base</title>
   <meta name="description" content="量子知识库 — 涵盖量子计算、量子通信、量子精密测量三大量子领域，知识库 · 交互实验室 · 产业生态 · 行业资讯 · 学习路径 · 工具箱 · 术语词典 · 全球地图">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260920">
 </head>
 <body>
   <div class="bg-particles" id="particles"></div>
   <div class="bg-grid"></div>
+
+  <!-- Floating Clear Compare Button -->
+  <button class="compare-float-clear" id="compareFloatClear" onclick="clearCompare()">
+    <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+    <span>清空对比</span>
+  </button>
 
   <div class="app">
     <!-- ===== Header ===== -->
@@ -463,6 +469,6 @@
     </footer>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20260920"></script>
 </body>
 </html>

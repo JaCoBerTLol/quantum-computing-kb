@@ -441,6 +441,12 @@ body {
 .compare-remove-btn { position: absolute; top: 8px; right: 8px; width: 24px; height: 24px; border-radius: 50%; border: none; background: rgba(0,0,0,0.05); color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); z-index: 2; }
 .compare-remove-btn:hover { background: #fee2e2; color: #dc2626; }
 
+/* ===== Floating Clear Compare Button ===== */
+.compare-float-clear { position: fixed; bottom: 28px; right: 28px; z-index: 800; display: none; align-items: center; gap: 7px; padding: 11px 20px; background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; border: none; border-radius: 28px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 6px 24px rgba(239,68,68,0.35); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.compare-float-clear:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(239,68,68,0.45); }
+.compare-float-clear.visible { display: flex; animation: floatClearIn 0.3s cubic-bezier(0.22,1,0.36,1); }
+@keyframes floatClearIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
 /* ===== Compare Overlay Modal ===== */
 .compare-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
 .compare-overlay.active { opacity: 1; visibility: visible; }

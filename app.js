@@ -111,6 +111,7 @@ function initTabs() {
       $$(".tab-panel").forEach(p => p.classList.remove("active"));
       $("#panel-" + target).classList.add("active");
       updateIndicator();
+      updateFloatClearBtn();
     });
   });
 
@@ -1192,6 +1193,7 @@ function bindEcoEvents() {
       State.compareSlots[i] = companyId;
       renderEcoCompanies();
       renderCompareSlots();
+      updateFloatClearBtn();
       if (State.compareSlots[0] && State.compareSlots[1]) showCompareOverlay();
     });
   }
@@ -1212,6 +1214,7 @@ window.toggleCompare = function(companyId) {
   }
   renderEcoCompanies();
   renderCompareSlots();
+  updateFloatClearBtn();
   if (slots[0] && slots[1]) showCompareOverlay();
 };
 
@@ -1220,6 +1223,7 @@ window.clearCompare = function() {
   renderEcoCompanies();
   renderCompareSlots();
   closeCompareOverlay();
+  updateFloatClearBtn();
 };
 
 window.removeFromCompare = function(slotIdx) {
@@ -1227,6 +1231,7 @@ window.removeFromCompare = function(slotIdx) {
   renderEcoCompanies();
   renderCompareSlots();
   closeCompareOverlay();
+  updateFloatClearBtn();
 };
 
 function showCompareOverlay() {
@@ -1286,6 +1291,13 @@ window.closeCompareOverlay = function() {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeCompareOverlay();
 });
+
+function updateFloatClearBtn() {
+  const btn = $("#compareFloatClear");
+  if (!btn) return;
+  const active = State.activeTab === "ecosystem" && State.compareSlots.some(s => s);
+  btn.classList.toggle("visible", active);
+}
 
 function renderCompareSlots() {
   const slots = State.compareSlots;
