@@ -1,8 +1,448 @@
 {
-  "lastUpdated": "2026-09-25",
-  "lastScraped": "2026-09-25 02:16:59",
+  "lastUpdated": "2026-09-28",
+  "lastScraped": "2026-09-28 02:21:56",
   "description": "量子行业资讯 — 每3天自动更新（量子计算/通信/精密测量）",
   "items": [
+    {
+      "id": "nd393c4",
+      "title": "Quantum-safe algorithms may fail faster with powerful AI tools From SIKE",
+      "summary": "The SIKE algorithm, a contender for post-quantum cryptography, rapidly collapsed after mathematicians linked it to a 1997 theorem.",
+      "date": "2026-09-27",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qrypt-quantum-safe-algorithms-fail-faster/",
+      "isKey": true
+    },
+    {
+      "id": "nab16d3",
+      "title": "A 0.11 threshold defines secure quantum data for learning",
+      "summary": "This research defines a threshold—η_(BB84)≃0.11—for admissible quantum data paths, establishing a budget for secure learning, even with data exfiltration risks.",
+      "date": "2026-09-27",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-science-data-threshold-defines-learning/",
+      "isKey": true
+    },
+    {
+      "id": "n2e9913",
+      "title": "Nanjing University boosts quantum key rates for three-user networks",
+      "summary": "Nanjing University researchers boosted secure communication, demonstrating a three-user quantum network with improved key generation.",
+      "date": "2026-09-27",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/nanjing-quantum-key-rates-university/",
+      "isKey": true
+    },
+    {
+      "id": "nc3f954",
+      "title": "Quantum algorithms gain from filtered-state preparation",
+      "summary": "Filtered quantum phase estimation improves performance of quantum algorithms, specifically showing a 10x reduction in state preparation errors.",
+      "date": "2026-09-27",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-science-algorithms-gain-filtered-state/",
+      "isKey": true
+    },
+    {
+      "id": "n0d5796",
+      "title": "Sebastian Hassinger (The New Quantum Era): why neutral atoms lead the qubit race for now",
+      "summary": "Yuval Boger interviews Sebastian Hassinger, host of The New Quantum Era podcast, and author of a new book by the same name. Sebastian and I have many things in common beyond our jobs in quantum. We are both podcasters, neither of us has a PhD, and we are both authors of new books &#8211; Sebastian’s",
+      "date": "2026-09-26",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/26/sebastian-hassinger-the-new-quantum-era-why-neutral-atoms-lead-the-qubit-race-for-now/",
+      "isKey": true
+    },
+    {
+      "id": "n2294ca",
+      "title": "Only one month to go?!?!?",
+      "summary": "September is drawing to a close, and all of these articles, podcasts, and newsletters need to be scheduled in advance, so I peeked ahead on my handy dandy QuEra 2026 Wall Calendar and there&#8217;s Q+AI and PQC+IQT just one month away. Where does the time go when you&#8217;re busy caring for an a...",
+      "date": "2026-09-26",
+      "category": "industry",
+      "source": "Inside Quantum Technology",
+      "url": "https://www.insidequantumtechnology.com/news-archive/only-one-month-to-go/",
+      "isKey": true
+    },
+    {
+      "id": "ndda63f",
+      "title": "IonQ and SDT team up to bring quantum tech to Asia-Pacific",
+      "summary": "IonQ and SDT announced a partnership to expand quantum computing and networking access in the Asia-Pacific region, starting with the Superion 256 system in South Korea.",
+      "date": "2026-09-26",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/ionq-sdt-quantum-tech-asia-pacific/",
+      "isKey": true
+    },
+    {
+      "id": "n904fb9",
+      "title": "D-Wave shows both annealing and gate-model quantum systems at Congress",
+      "summary": "D-Wave Quantum Inc. (NASDAQ: QBTS) announced its participation as a platinum sponsor of Quantum World Congress 2026, taking place September 23-25 in College Park, Maryland. The company, the only dual-platform quantum computing company providing both annealing and gate-model systems, will demonstrate",
+      "date": "2026-09-26",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/d-wave-gate-quantum-annealing-systems/",
+      "isKey": true
+    },
+    {
+      "id": "n9fd21b",
+      "title": "CGI Federal to research AI and quantum for Defense Logistics",
+      "summary": "CGI Federal enters into an applied research agreement with the Defense Logistics Agency and the University of Tennessee, Knoxville to examine how agentic artificial intelligence (AI) and quantum computing can support advanced warehouse management and bolster supply chain and logistics resilience. Th",
+      "date": "2026-09-26",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/cgi-federal-research-quantum-defense/",
+      "isKey": true
+    },
+    {
+      "id": "n357790",
+      "title": "DRDO and startup build 20 mK refrigerator for quantum computers",
+      "summary": "DRDO signed its first high-value deep tech project agreement with Zero mK India Private Limited, under the Technology Development Fund (TDF) scheme, for the indigenous development of a 20 mK Dilution Refrigerator for Quantum Applications. The agreement, taking place in New Delhi, is the first under ",
+      "date": "2026-09-26",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/mk-refrigerator-drdo-startup-20-mk/",
+      "isKey": true
+    },
+    {
+      "id": "nbf1d2d",
+      "title": "Quantum Computer Arrives in Public Education, Fairfax County Schools Leads Way",
+      "summary": "Fairfax County Public Schools is hosting the world’s first K-12 quantum computer at Skyview High School, offering students hands-on experience with the emerging technology.",
+      "date": "2026-09-26",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/fcps-quantum-computer-arrives-public-education/",
+      "isKey": true
+    },
+    {
+      "id": "nfa263f",
+      "title": "Germany invests in better quantum sensors and communication",
+      "summary": "Germany is investing six million Euro in the DETEQT project, coordinated by the University of Paderborn, to advance quantum sensors and communication via photonics.",
+      "date": "2026-09-26",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/bundesministerium-forschung-germany-investment-quantum/",
+      "isKey": true
+    },
+    {
+      "id": "n7bfbcd",
+      "title": "Department of Energy SCAC report charts path to error-corrected quantum computers",
+      "summary": "A DOE roadmap, led by the quantum subcommittee of the Office of Science Advisory Committee (SCAC), details steps to achieve a scientifically useful quantum computer by 2028, focusing on mitigating errors for reliable results.",
+      "date": "2026-09-26",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/energy-department-advisers-error-corrected-quantum-computers-roadmap/",
+      "isKey": true
+    },
+    {
+      "id": "n67774c",
+      "title": "QC Design’s Meridian AI designs quantum circuits better than experts",
+      "summary": "QC Design’s Meridian, a purpose-built AI, achieved lower logical error rates than existing methods across 100+ fault-tolerance tasks.",
+      "date": "2026-09-26",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qc-design-meridian-ai-designs-quantum/",
+      "isKey": true
+    },
+    {
+      "id": "n2631b6",
+      "title": "QuEra Computing says useful quantum computers arrive in two years",
+      "summary": "QuEra Computing’s Yuval Boger predicts quantum computers will tackle serious problems within two years, despite current limitations.",
+      "date": "2026-09-26",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quera-computing-useful-quantum-computers/",
+      "isKey": true
+    },
+    {
+      "id": "nbd6733",
+      "title": "Quiz of the week: which site has been rejected for the Thirty Meter Telescope?",
+      "summary": "Have you been keeping up to date with physics news? Try our short quiz to find out The post Quiz of the week: which site has been rejected for the Thirty Meter Telescope? appeared first on Physics World.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Physics World",
+      "url": "https://physicsworld.com/a/quiz-of-the-week-which-site-has-been-rejected-for-the-thirty-meter-telescope/",
+      "isKey": true
+    },
+    {
+      "id": "ndd3146",
+      "title": "Fairfax County Schools Plans Quantum Computer Program at High School",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Fairfax County Public Schools (FCPS) is making history through a groundbreaking partnership with Connected DMV and the Fairfax County Economic Development Authority (FCEDA) that will bring an operational quantum computer directly to students at Skyview High School",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/25/fairfax-county-schools-quantum-computer-high-school/",
+      "isKey": true
+    },
+    {
+      "id": "n16b31b",
+      "title": "Creotech Quantum Prepares QKD System for Commercialization",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Creotech Quantum S.A., a Warsaw Stock Exchange-listed company developing and commercializing quantum technologies, announced that the European Commission has approved the results of the eCAUSIS project &#8211; “European, Certifiable, Affordable, User-oriented, Sec",
+      "date": "2026-09-25",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/25/creotech-quantum-qkd-system-commercialization/",
+      "isKey": true
+    },
+    {
+      "id": "n437e85",
+      "title": "Guest Post: Quantum Investment May Start With Post-Quantum Security",
+      "summary": "Guest Post By Courtney Olujobi, Principal at Moon Pursuit Capital. From an investment perspective, one of the first significant markets created by quantum computing may have very little to do with buying access to quantum computers themselves. It may come from the amount of capital businesses will n",
+      "date": "2026-09-25",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/25/quantum-investment-post-quantum-security/",
+      "isKey": true
+    },
+    {
+      "id": "n19090b",
+      "title": "CGI Federal, DLA and UT Knoxville Study Quantum Computing for Logistics",
+      "summary": "Insider Brief PRESS RELEASE &#8212; CGI Federal Inc. (CGI Federal), a leading provider of technology and professional services for the U.S. government, today announced that it has entered into an agreement with the U.S. Defense Logistics Agency (DLA) and the University of Tennessee, Knoxville (UT) t",
+      "date": "2026-09-25",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/25/dla-ut-knoxville-applied-research-agreement/",
+      "isKey": true
+    },
+    {
+      "id": "nad76e4",
+      "title": "Chinese Scientists Say Compact Quantum Magnetometer Tracks Hidden Targets in Field Tests",
+      "summary": "Insider Brief Chinese researchers developed a compact quantum magnetometer that detected underground train activity, located a buried magnet and monitored a geomagnetic storm in field tests. The instrument uses a small sensing probe &#8212; about the the size of two dice placed side by side &#8212; ",
+      "date": "2026-09-25",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/25/chinese-scientists-say-compact-quantum-magnetometer-tracks-hidden-targets-in-field-tests/",
+      "isKey": true
+    },
+    {
+      "id": "ned9e8b",
+      "title": "Mphasis and Copa Airlines Host Quantum Computing Challenge for Airline Optimization",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Mphasis, (BSE: 526299; NSE: MPHASIS), a global AI-led, platform-driven technology solutions provider, in partnership with Copa Airlines, recently hosted a Quantum Computing Challenge, an international innovation contest. The challenge brought together teams from v",
+      "date": "2026-09-25",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/09/25/mphasis-copa-airlines-quantum-computing-challenge/",
+      "isKey": true
+    },
+    {
+      "id": "n2d5d28",
+      "title": "Qot Labs Restores VQE Convergence with Error Mitigation",
+      "summary": "A combination of dynamical decoupling, zero noise extrapolation, and Pauli twirling now restores reliable operation within adaptive variational algorithms where depolarizing noise previously caused failure. Earlier attempts at improving resilience, using TETRIS layering, proved effective against amp",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/variational-quantum-eigensolver-error-mitigation-convergence/",
+      "isKey": true
+    },
+    {
+      "id": "ne9cd7e",
+      "title": "DecaQ achieves 2.045-second median for complex quantum workload",
+      "summary": "DecaQ achieved a 2.045-second full-pipeline median for a 108-qubit FeMoco-derived quantum phase estimation workload, using its DecaQuasar BB3 architecture.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/femoco-decaq-2045-second-median-complex/",
+      "isKey": true
+    },
+    {
+      "id": "ne13827",
+      "title": "Splendor Labs launches blockchain built to withstand quantum attacks",
+      "summary": "Splendor Labs SA today announced the launch and live operation of Splendor Quantum Chain, a purpose-built Layer-1 blockchain designed around the security requirements of the next generation of digital systems. Splendor Quantum Chain is the world’s first live Layer-1 to combine native ML-DSA-65 signa",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/splendor-labs-quantum-blockchain-withstand/",
+      "isKey": true
+    },
+    {
+      "id": "nf686d2",
+      "title": "Mphasis and Copa Airlines Seek Quantum Boost to Airline Efficiency",
+      "summary": "Mphasis and Copa Airlines hosted a Quantum Computing Challenge, an international innovation contest, bringing together teams from Indian Institutes of Technology (IITs) and the University of Calgary, and the University of Lethbridge. The challenge focused on using next-generation quantum computing t",
+      "date": "2026-09-25",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/mphasis-copa-airlines-seek-quantum/",
+      "isKey": true
+    },
+    {
+      "id": "nc4eeda",
+      "title": "Utimaco says quantum crypto dependency knowledge is step one",
+      "summary": "Don’t wait for a quantum computer—assess your organization’s RSA &#038; elliptic-curve cryptography replacement time now.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-crypto-dependency-utimaco-knowledge/",
+      "isKey": true
+    },
+    {
+      "id": "n3c9293",
+      "title": "enQase Details 6 Steps to Bridge Encryption and Quantum Threats",
+      "summary": "Hybrid encryption models, as detailed by enQase, combine classical &#038; Post-Quantum Cryptography for a secure transition—protecting data today &#038; against future quantum threats.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/enqase-details-steps-bridge-encryption/",
+      "isKey": true
+    },
+    {
+      "id": "nca7908",
+      "title": "Infleqtion Entangles 30 Logical Qubits on Sqale Computer",
+      "summary": "Infleqtion achieved 30 entangled logical qubits on its Sqale quantum computer, making it the first neutral-atom quantum computing company to reach this milestone on a commercial system. This breakthrough combines hardware and software co-design, validating the core architecture on its roadmap to del",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/infleqtion-qubit-entangles-30-qubits/",
+      "isKey": true
+    },
+    {
+      "id": "nbc05a7",
+      "title": "Gradiant to showcase quantum develops at New Space España",
+      "summary": "Gradiant will present its vision for quantum technologies at New Space España, September 24-25, focusing on secure communications, precision sensing, and advanced quantum computing.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-gradiant-showcase-space-espana/",
+      "isKey": true
+    },
+    {
+      "id": "n80bc8a",
+      "title": "Nasdaq-listed Pasqal honored for scaling European quantum tech",
+      "summary": "Pasqal, a global leader in quantum computing and now publicly traded on Nasdaq (PSQL), received an EIC Fund Award at the 2026 TechEU Equity Summit.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/nasdaq-listed-pasqal-honored-scaling-european/",
+      "isKey": true
+    },
+    {
+      "id": "n13b4ab",
+      "title": "Tantalum thin films offer new options for quantum circuits",
+      "summary": "Tantalum, as an emerging material for next-generation quantum circuits, has attracted considerable attention after demonstrating breakthrough performance in both superconducting microwave resonators and qubits. This interest is further stimulated by tantalum thin films polymorphism, resulting in a v",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/tantalum-thin-quantum-circuits-films/",
+      "isKey": true
+    },
+    {
+      "id": "n6657c9",
+      "title": "Optica Foundation honors Harvard’s Aaron Young with quantum prize money",
+      "summary": "Harvard’s Aaron Young wins the 2026 Theodor W. Hänsch Prize in Quantum Optics, receiving $20,000 to further his research on cold atoms.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-prize-money-optica-foundation/",
+      "isKey": true
+    },
+    {
+      "id": "n3cfdac",
+      "title": "WISeKey expands its Quantum Root Key to protect AI",
+      "summary": "WISeKey and OISTE.ORG are extending their Post-Quantum Root Key initiative, addressing AI security &#038; the threat of quantum computing.",
+      "date": "2026-09-25",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/wisekey-quantum-root-key-protect/",
+      "isKey": true
+    },
+    {
+      "id": "n2e9aaf",
+      "title": "QuantWare says scaling quantum power hinges on efficiency, not just qubits",
+      "summary": "QuantWare asserts that scaling quantum computing isn’t just about qubit count, but compute per watt—critical for achieving useful quantum power.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-power-hinges-quantware-scaling/",
+      "isKey": true
+    },
+    {
+      "id": "nd518d0",
+      "title": "Diraq says quantum computers could cut AI’s energy use for data training",
+      "summary": "AI’s energy use is soaring—data centers may reach 1,000 TWh by 2030.",
+      "date": "2026-09-25",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-computers-cut-diraq-ais/",
+      "isKey": true
+    },
+    {
+      "id": "n6878d0",
+      "title": "Cariri Team Controls Quantum Relaxation Via Initial State Setup",
+      "summary": "A system heated to a higher temperature can sometimes cool faster than one starting colder, an effect now demonstrated with surprising precision in a nanoscale material. Bare Gibbs initialisation of a graphene nanotorus qubit yielded broad regions of strong anomalous relaxation, approaching an integ",
+      "date": "2026-09-24",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/graphene-nanotorus-qubit-initial-state-control-relaxation/",
+      "isKey": true
+    },
+    {
+      "id": "n2d2c5e",
+      "title": "memQ shares open-source tools for linking quantum computers",
+      "summary": "memQ released its distributed quantum compiler (DQC) as a publicly available, open-source tool on GitHub.",
+      "date": "2026-09-24",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/memq-shares-source-tools-linking/",
+      "isKey": true
+    },
+    {
+      "id": "n39814e",
+      "title": "Quantum sensors offer a GPS alternative as battlefield jamming rises",
+      "summary": "As GPS signals face rising battlefield jamming, quantum-based sensors provide a critical alternative, measuring position without satellites.",
+      "date": "2026-09-24",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/zenatech-quantum-sensors-offer-gps-alternative/",
+      "isKey": true
+    },
+    {
+      "id": "nfb92b9",
+      "title": "Classiq designs circuits to track auxiliary qubit return to zero",
+      "summary": "Classiq’s approach uses auxiliary qubits—temporary workspace qubits designed to return to &#124;0⟩—to identify errors during quantum calculations.",
+      "date": "2026-09-24",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/circuits-track-auxiliary-qubit-classiq/",
+      "isKey": true
+    },
+    {
+      "id": "nbe20cb",
+      "title": "Truncation errors in quantum simulations now more predictable",
+      "summary": "New research offers more predictable estimates of discretization errors in quantum simulations of lattice gauge theories, addressing a key challenge for accurate results.",
+      "date": "2026-09-24",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/lawrence-berkeley-truncation-errors-quantum-simulations/",
+      "isKey": true
+    },
+    {
+      "id": "n2eb98f",
+      "title": "NUS and partners launch a Quantum × AI conference with 300 experts",
+      "summary": "NUS and the Society of Algorithmic Intelligence host IntelligenceX 2026, a conference exploring the intersection of quantum computing and AI.",
+      "date": "2026-09-24",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/nus-partnership-quantum-conference-experts/",
+      "isKey": true
+    },
+    {
+      "id": "n7a8cb9",
+      "title": "Florida International University to get IonQ’s 256-qubit computer by late 2027",
+      "summary": "Florida International University will gain access to the IonQ Superion system, a 256-qubit quantum computer, by late 2027.",
+      "date": "2026-09-24",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/ionq-256-qubit-computer-florida-international/",
+      "isKey": true
+    },
+    {
+      "id": "n6d6b01",
+      "title": "SEALSQ chip’s quantum-resistant security passes tough NIST test for systems",
+      "summary": "SEALSQ’s VaultIC408 secure element received FIPS 140-3 Level 3 validation from NIST, bolstering its position in post-quantum hardware security programs.",
+      "date": "2026-09-24",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/sealsq-chips-quantum-resistant-security-passes/",
+      "isKey": true
+    },
     {
       "id": "ncbeb65",
       "title": "Structured Variational Key Concentration for a Reduced AES Cipher",
