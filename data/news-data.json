@@ -1,8 +1,478 @@
 {
-  "lastUpdated": "2026-10-04",
-  "lastScraped": "2026-10-04 03:14:00",
+  "lastUpdated": "2026-10-07",
+  "lastScraped": "2026-10-07 03:06:31",
   "description": "量子行业资讯 — 每3天自动更新（量子计算/通信/精密测量）",
   "items": [
+    {
+      "id": "ne0b3f2",
+      "title": "Zapata Quantum Joins IBM Quantum Network for Application Development",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Zapata Quantum (OTCQB: ZPTA) (“Zapata” or the “Company”) today announced it has joined the IBM Quantum Network with plans to use IBM’s world-class quantum computers with Zapata’s deep expertise in use-case discovery and application development. The Company’s effor",
+      "date": "2026-10-06",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/06/zapata-ibm-quantum-network-application-development/",
+      "isKey": true
+    },
+    {
+      "id": "nc030a9",
+      "title": "SEALSQ Leads $10 Million PIPE Investment in WISeSat.Space",
+      "summary": "Insider Brief PRESS RELEASE &#8212; SEALSQ Corp (NASDAQ: LAES) (&#8220;SEALSQ&#8221; or &#8220;Company&#8221;), a company that focuses on developing and selling Semiconductors, PKI, and Post-Quantum technology hardware and software products, today announced that it led a $10 million private investme",
+      "date": "2026-10-06",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/06/sealsq-10-million-pipe-wisesat-space-cybersecurity/",
+      "isKey": true
+    },
+    {
+      "id": "nf8bee0",
+      "title": "FAU Receives $200,000 NIST Award for Quantum Cybersecurity Workforce",
+      "summary": "Insider Brief PRESS RELEASE &#8212; As quantum computing advances, it is creating new cybersecurity challenges that will require a workforce trained to protect critical systems and infrastructure. Yet few workforce development programs provide hands-on training that integrates quantum computing, cyb",
+      "date": "2026-10-06",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/06/fau-nist-grant-quantum-cybersecurity-workforce/",
+      "isKey": true
+    },
+    {
+      "id": "ndc2c53",
+      "title": "Pasqal Leads €50 Million Q-PLANET Project for Neutral-Atom Quantum Technology",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Pasqal (NASDAQ: PSQL), a global leader in neutral-atom quantum computing, is coordinating the implementation of Q-PLANET (Quantum Pilot Line for production of Advanced chips for Neutral atom European Technologies), co-funded by the EU Chips Joint Undertaking (Chip",
+      "date": "2026-10-06",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/06/pasqal-50-million-q-planet-neutral-atom-quantum/",
+      "isKey": true
+    },
+    {
+      "id": "ne08ab9",
+      "title": "Infleqtion, Honeywell and UCSB Develop Chip-Scale Optical Cavity",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Infleqtion (NYSE: INFQ), a global leader in quantum computing and quantum sensing powered by neutral atom technology, in collaboration with Honeywell Aerospace and Distinguished Professor Daniel J. Blumenthal of UC Santa Barbara (UCSB), announced development of a ",
+      "date": "2026-10-06",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/06/infleqtion-honeywell-ucsb-quantum-hardware-miniaturization/",
+      "isKey": true
+    },
+    {
+      "id": "nc53109",
+      "title": "QuantumGate and NEC GCC Partner on Post-Quantum Security in the UAE",
+      "summary": "Insider Brief QuantumGate, a quantum-safe cybersecurity firm based in Abu Dhabi and a subsidiary of VentureOne, has entered a strategic collaboration with NEC Corporation&#8217;s GCC branch, the companies announced. The partnership is focused on accelerating the rollout of post-quantum security, sov",
+      "date": "2026-10-06",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/06/quantumgate-nec-gcc-post-quantum-security-cyber-resilience/",
+      "isKey": true
+    },
+    {
+      "id": "n7651cd",
+      "title": "Xanadu and GlobalFoundries Partner on Photonic Quantum Manufacturing",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Xanadu Quantum Technologies Limited (&#8220;Xanadu&#8220;; NASDAQ/TSX: XNDU), a leading photonic quantum computing company, today announced a strategic multi-year partnership with GlobalFoundries (GF), a leading semiconductor manufacturer, to address the high-volu",
+      "date": "2026-10-06",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/06/xanadu-globalfoundries-photonic-quantum-manufacturing/",
+      "isKey": true
+    },
+    {
+      "id": "n1e83d4",
+      "title": "PQShield Appoints New Commercial and Sovereign Security Leaders",
+      "summary": "Insider Brief PRESS RELEASE &#8212; PQShield, a global leader in post-quantum cryptography (PQC), is strengthening its leadership team with two major hires, as demand for quantum-safe security accelerates across governments, critical infrastructure and major technology providers. Hal Conklin, joins ",
+      "date": "2026-10-06",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/06/pqshield-commercial-sovereign-security-leaders/",
+      "isKey": true
+    },
+    {
+      "id": "n23c8cf",
+      "title": "Energy Dome and its carbon dioxide batteries",
+      "summary": "There’s a growing need for long-duration storage to meet energy demand and balance out renewables on the grid. Energy Dome uses compressed carbon dioxide gas in its massive grid batteries, which can deliver power for up to 24 hours.&#160; As the world races to meet growing electricity demand, solar ",
+      "date": "2026-10-06",
+      "category": "industry",
+      "source": "MIT Technology Review",
+      "url": "https://www.technologyreview.com/2026/10/06/1145032/2026-climate-tech-companies-to-watch-energy-dome-carbon-dioxide-batteries/",
+      "isKey": true
+    },
+    {
+      "id": "n182262",
+      "title": "Leibniz University Hannover Launches €5.8 Million ($6.53 Million USD) HybriQCS Project to Develop Hybrid Molecule-Rydberg Quantum Systems",
+      "summary": "The HybriQCS project, led by Dr. Kai Voges at Leibniz University Hannover, has secured €5.8 million to develop hybrid quantum computing architectures. This 5-year project, running until February 2031, aims to combine ultracold polar molecules for quantum memory with Rydberg atoms for fast multi-qubi",
+      "date": "2026-10-06",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/leibniz-university-hannover-launches-e5-8-million-6-53-million-usd-hybriqcs-project-to-develop-hybrid-molecule-rydberg-quantum-systems/",
+      "isKey": true
+    },
+    {
+      "id": "n7e64a3",
+      "title": "DecaQ Launches Cloud Beta 2 Platform Featuring 400 Logical Digital Qubits and Oracle Execution Engine",
+      "summary": "DecaQ LTD has launched DecaQ Cloud Beta 2, a deterministic digital quantum computing platform that operates without physical qubits and can handle up to 400 logical digital qubits. The platform utilizes a proprietary Digital Quantum Oracle and a deterministic execution engine for noise-free quantum ",
+      "date": "2026-10-06",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/decaq-launches-cloud-beta-2-platform-featuring-400-logical-digital-qubits-and-oracle-execution-engine/",
+      "isKey": true
+    },
+    {
+      "id": "n7062bb",
+      "title": "QuantumGate and NEC GCC Partner to Deploy Sovereign Post-Quantum Cybersecurity Across UAE Critical Infrastructure",
+      "summary": "QuantumGate and NEC GCC are partnering to implement sovereign post-quantum cybersecurity solutions across critical infrastructure and telecommunications in the UAE. The collaboration will deploy QuantumGate's cryptographic software, including QSphere, with NEC GCC leading systems integration. This i",
+      "date": "2026-10-06",
+      "category": "policy",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/quantumgate-and-nec-gcc-partner-to-deploy-sovereign-post-quantum-cybersecurity-across-uae-critical-infrastructure/",
+      "isKey": true
+    },
+    {
+      "id": "n73ad89",
+      "title": "KIST Connects South Korean Quantum Startups to Midwest Ecosystem Across Wisconsin and Chicago",
+      "summary": "Four South Korean quantum startups, as part of the KIST Global Bridge Program, expanded their U.S. commercial strategy across Wisconsin and Illinois after Quantum World Congress 2026. The delegation engaged with various organizations to foster cross-border technology partnerships and market entry. T",
+      "date": "2026-10-06",
+      "category": "industry",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/kist-connects-south-korean-quantum-startups-to-midwest-ecosystem-across-wisconsin-and-chicago/",
+      "isKey": true
+    },
+    {
+      "id": "n633a22",
+      "title": "Pasqal Transitions €50 Million Q-PLANET Pilot Line into Execution Phase for European Neutral-Atom Chips",
+      "summary": "Pasqal has launched the operational phase of Q-PLANET, a €50 million initiative to develop a European supply chain for neutral-atom quantum computing chips. Leading a 28-partner consortium, Pasqal aims to industrialize chip-scale components, including integrated laser sources and atom chips, over th",
+      "date": "2026-10-06",
+      "category": "policy",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/pasqal-transitions-e50-million-q-planet-pilot-line-into-execution-phase-for-european-neutral-atom-chips/",
+      "isKey": true
+    },
+    {
+      "id": "n69b7be",
+      "title": "Infleqtion, Honeywell Aerospace, and UC Santa Barbara Develop Chip-Scale Silicon Nitride Optical Cavity for Handheld Quantum Hardware",
+      "summary": "Infleqtion, in partnership with Honeywell Aerospace and UC Santa Barbara, has developed a chip-scale silicon nitride optical cavity. This prototype aims to miniaturize lasers and optical stabilization systems for quantum hardware. This innovation enables volume manufacturing and paves the way for fi",
+      "date": "2026-10-06",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/infleqtion-honeywell-aerospace-and-uc-santa-barbara-develop-chip-scale-silicon-nitride-optical-cavity-for-handheld-quantum-hardware/",
+      "isKey": true
+    },
+    {
+      "id": "n7b922a",
+      "title": "Florida Atlantic University Receives NIST Grant to Build South Florida Quantum Cybersecurity Workforce Ecosystem",
+      "summary": "Florida Atlantic University (FAU) received a $200,000 NIST grant to establish a quantum cybersecurity workforce consortium in South Florida. This initiative, in collaboration with D-Wave Quantum Inc., will focus on integrating quantum computing, cybersecurity, and critical energy infrastructure prot",
+      "date": "2026-10-06",
+      "category": "policy",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/florida-atlantic-university-receives-nist-grant-to-build-south-florida-quantum-cybersecurity-workforce-ecosystem/",
+      "isKey": true
+    },
+    {
+      "id": "nb6a593",
+      "title": "Xanadu Partners with GlobalFoundries to Scale Photonic Quantum Component Manufacturing on 300 mm Semiconductor Lines",
+      "summary": "Xanadu and GlobalFoundries have partnered to mass-produce photonic quantum computing components. This collaboration will transition Xanadu's designs for ultra-low loss Silicon Nitride optical circuits and Superconducting Nanowire Single-Photon Detectors (SNSPDs) to GlobalFoundries' 300 mm commercial",
+      "date": "2026-10-06",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/xanadu-partners-with-globalfoundries-to-scale-photonic-quantum-component-manufacturing-on-300-mm-semiconductor-lines/",
+      "isKey": true
+    },
+    {
+      "id": "n44e664",
+      "title": "RapidFort and SpaceWERX Enter CRADA to Secure U.S. Space Force Systems Against AI Vulnerabilities and Post-Quantum Cryptographic Risks",
+      "summary": "RapidFort and SpaceWERX have partnered to secure U.S. Space Force systems against AI vulnerabilities and post-quantum cryptographic risks through a Cooperative Research and Development Agreement (CRADA). This collaboration will focus on mitigating AI software risks, accelerating Authority to Operate",
+      "date": "2026-10-06",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/rapidfort-and-spacewerx-enter-crada-to-secure-u-s-space-force-systems-against-ai-vulnerabilities-and-post-quantum-cryptographic-risks/",
+      "isKey": true
+    },
+    {
+      "id": "nc3b05e",
+      "title": "Théau Peronnin, The Physicist Betting Everything on the Cat Qubit",
+      "summary": "Theau Peronnin co-founded Alice and Bob in February 2020 to build cat qubits, which suppress bit-flip errors in the circuit so the error-correcting code has only phase flips to catch. The company says its Helium system encodes one logical qubit in eighteen physical cat qubits, and its 2030 target fo",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/theau-peronnin/",
+      "isKey": true
+    },
+    {
+      "id": "nc018ae",
+      "title": "IBM Quantum Compute Service, 4 Benefits of Directed Execution for Users",
+      "summary": "Directed execution is a new, lower-level execution model in IBM Quantum Compute Service that runs circuits exactly as directed, giving users an explicit and composable way to express how circuits run and a transparent view into what happens on IBM Quantum hardware. Crucially, this visibility and con",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/directed-execution-ibm-quantum-compute/",
+      "isKey": true
+    },
+    {
+      "id": "n561161",
+      "title": "A recap of the Quantum Software Lab’s Quantum Fringe in Edinburgh",
+      "summary": "The Quantum Software Lab (QSL) at the University of Edinburgh has become a globally recognized hub for creating software solutions, and with its strategic partnership with the UK’s National Quantum Computing Centre (NQCC), now has more than 70 researchers. In three years, the QSL is poised to lead a",
+      "date": "2026-10-05",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qsl-quantum-software-lab-research-exceeds/",
+      "isKey": true
+    },
+    {
+      "id": "na86d21",
+      "title": "NCSC urges firms to build quantum-safe resilience with PQC migration",
+      "summary": "The NCSC recognizes the need for firms to begin planning for post-quantum cryptography (PQC) migration, setting key target dates—like 2026 for discovery—to address future quantum computing threats.",
+      "date": "2026-10-05",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/ncsc-urges-firms-quantum-safe-resilience/",
+      "isKey": true
+    },
+    {
+      "id": "n14b1ab",
+      "title": "Exail supports European space quantum communication missions",
+      "summary": "Exail advances photonics for space science, including technologies for secure quantum key distribution.",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/space-quantum-communication-exail-supports/",
+      "isKey": true
+    },
+    {
+      "id": "n292035",
+      "title": "Researchers Map Electronic Structure with Krylov Diagonalization",
+      "summary": "Spectral functions, essential for understanding how electrons behave within materials, are now accurately calculated across metallic and insulating states without requiring complex analytical continuation techniques. This advance extends an established quantum diagonalization technique to calculate ",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/krylov-diagonalization-greens-functions-electronic-structure-mapping/",
+      "isKey": true
+    },
+    {
+      "id": "nf003b9",
+      "title": "AI Lab says quantum threat is now two years away, not twenty",
+      "summary": "The AI Lab reports AI has accelerated the timeline for a potential quantum computing breach from 20 to just 2 years, prompting release of its Trust Identity Protocol (TIP).",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/ai-lab-quantum-threat-two-years/",
+      "isKey": true
+    },
+    {
+      "id": "n180bfd",
+      "title": "Science Applications International Corp Adds Post-Quantum Security with ISC Deal",
+      "summary": "SAIC acquired Information Security Corporation, bolstering capabilities in zero trust and transitioning to cryptography resilient against quantum computing threats.",
+      "date": "2026-10-05",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/isc-post-quantum-security-science-applications/",
+      "isKey": true
+    },
+    {
+      "id": "n59c101",
+      "title": "Xiphera’s new chip builds a secure foundation with post-quantum crypto",
+      "summary": "Xiphera announces the launch of nQrux Root of Trust, the latest addition to its nQrux product family, providing a hardware-based foundation of trust for secure hardware systems. Developed as part of an ESA General Support Technology Programme (GSTP) project, the technology features Post-Quantum Cryp",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/post-quantum-crypto-xipheras-chip-foundation/",
+      "isKey": true
+    },
+    {
+      "id": "nda08f6",
+      "title": "Device Raises Photon Interference to 90%",
+      "summary": "A new semiconductor boosts photon interference to 90%, edging quantum dots closer to practical quantum communication.",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/ruhr-bochum-device-funding-90-percent/",
+      "isKey": true
+    },
+    {
+      "id": "n266679",
+      "title": "Sam M. Walton College & D-Wave study quantum supply chains",
+      "summary": "D-Wave Quantum Inc. &#038; the Sam M. Walton College are researching how quantum computing can optimize complex supply chain issues—spanning retail, transportation, and defense.",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/d-wave-quantum-supply-chains-sam/",
+      "isKey": true
+    },
+    {
+      "id": "n773301",
+      "title": "Quantinuum and UWA Partner to Advance Australia’s Quantum Capability",
+      "summary": "The University of Western Australia (UWA) and Quantinuum signed an MOU, expanding access to Quantinuum’s Helios quantum computer.",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantinuum-uwa-partnership-advance-australias/",
+      "isKey": true
+    },
+    {
+      "id": "n492cb9",
+      "title": "QNu Labs and partners send quantum keys 5.56km through the air",
+      "summary": "QNu Labs, BISAG-N, and IIT Gandhinagar achieved India’s first 5.56km free-space quantum key distribution (QKD) link, integrating quantum security with BISAG-N’s Vedic Kavach platform.",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/bisag-n-qnu-partnership-quantum-labs/",
+      "isKey": true
+    },
+    {
+      "id": "n15d13b",
+      "title": "QuantumCT, UConn, and Yale convene leaders to launch a sensing RFP phase.",
+      "summary": "QuantumCT, UConn, and Yale launch the Phase 3 Pilot Collaboration RFP, focused on quantum sensing, October 16th in New Haven.",
+      "date": "2026-10-05",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/sensing-rfp-phase-quantumct-uconn/",
+      "isKey": true
+    },
+    {
+      "id": "n1f2002",
+      "title": "Quantum Zeitgeist Digest October 2026",
+      "summary": "Error handling ran through much of this week’s news. Pasqal won French backing to lead a fault-tolerance programme, D-Wave opened a simulator for testing error-aware code, and Classiq released a tool that estimates the physical-qubit cost of fault-tolerant programs. IBM and Harvard showed they could",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-zeitgeist-digest-october-3/",
+      "isKey": true
+    },
+    {
+      "id": "n4919c8",
+      "title": "6 Guidelines for Governing AI",
+      "summary": "For the first 10 years of my career, I worked in product management and data analytics by myself. I wrote database queries that pulled numbers out of corporate systems, built statistical models to predict what customers would buy, and shipped data pipelines that moved information between business sy",
+      "date": "2026-10-05",
+      "category": "breakthrough",
+      "source": "IEEE Spectrum",
+      "url": "https://spectrum.ieee.org/6-guidelines-governing-ai",
+      "isKey": true
+    },
+    {
+      "id": "n5ae8ca",
+      "title": "Researchers Find Limits to Reliable Quantum Communication",
+      "summary": "Universality, the ability to communicate without knowing specific transmission details, can incur a strict loss in reliability when moving from purely classical to classical-quantum channels. Converse bounds on reliability using unitary-invariant decoders are now shown to be strictly smaller than th",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-communication-universal-coding-reliability-limits/",
+      "isKey": true
+    },
+    {
+      "id": "n4c68b2",
+      "title": "Researchers Propose Efficient Quantum Control Via Open Systems",
+      "summary": "Can universal quantum computation truly be achieved without exponentially increasing computational demands? It now appears so, as techniques utilising a small Lie group in just (n+3) qubits, rather than the entire unitary group in *n* qubits, have been demonstrated for both state approximation and c",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-control-open-systems-lie-group-preparation/",
+      "isKey": true
+    },
+    {
+      "id": "n402b96",
+      "title": "Researchers Boost Eavesdropping Success to 0.348 with Learnt Attacks",
+      "summary": "Under bilateral depolarising noise, a reinforcement learning attacker now achieves 98% of the theoretical limit for eavesdropping on device-independent E91 protocols, raising Holevo information from 0. 135 to 0. 348.",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-key-distribution-learnt-attack-eavesdropping-success/",
+      "isKey": true
+    },
+    {
+      "id": "n251278",
+      "title": "Researchers Verify Quantum Coherence with Experiment",
+      "summary": "Can multiple quantum states share a single measure of connectedness beyond simple superposition? Experiments now demonstrate this is possible, quantifying ‘set coherence’, a unified property applicable to groups of entangled particles rather than individuals. This advance enables precise analysis of",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-coherence-basis-independent-experimental-verification/",
+      "isKey": true
+    },
+    {
+      "id": "na9af43",
+      "title": "Shahid Beheshti Team Cuts Quantum Errors to 4·8 Per Cent Via Vector Beams",
+      "summary": "Can secure communication via light ever truly overcome atmospheric distortion? Vector vortex beams now reduce quantum bit error rates from 42. 0% to just 4.",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/orbital-angular-momentum-vector-beam-error-reduction/",
+      "isKey": true
+    },
+    {
+      "id": "n45282d",
+      "title": "Researchers Limit Quantum Noise Loss to Three Percentage Points",
+      "summary": "A four-qubit classifier employing amplitude damping retains nearly noiseless accuracy, falling within 1. 5 percentage points, whereas its Pauli twirled counterpart loses up to 33 points with just 10³ measurement shots per image. This demonstrates that, contrary to expectation, mitigating noise via i",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-noise-loss-amplitude-damping-variational-circuits/",
+      "isKey": true
+    },
+    {
+      "id": "nebca1d",
+      "title": "Researchers Certify Consistent Quantum Circuit Outputs",
+      "summary": "Previously, certifying sufficient signal propagation in quantum circuits required full computation; now, a classical check, assessing data’s ‘purity’ against a defined threshold, guarantees minimum output variance of order 1/n for off-diagonal circuits before they even run. This preprocessing step u",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-circuits-algebraic-input-purity-certification/",
+      "isKey": true
+    },
+    {
+      "id": "nfcd2e5",
+      "title": "Researchers Build Resilient Oblivious Transfer Protocol",
+      "summary": "Previous methods for dependable oblivious transfer demanded either bounded quantum storage or restrictions on potential attacks. Now, protocols exist constructing this secure communication solely from post-quantum one-way functions, removing those limitations entirely. This advance broadens possibil",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/device-independent-oblivious-transfer-security-protocol/",
+      "isKey": true
+    },
+    {
+      "id": "n52f643",
+      "title": "Researchers Build Efficient Quantum Error Correction Codes",
+      "summary": "Linear-Time Encodable Quantum Codes near the CSS Gilbert, Varshamov Bound After just four rounds of refinement, this new code achieves an error correction distance within 0. 001 of a theoretical optimum for channel capacity. Six rounds bring it even closer, to within 10−4 of that limit, demonstratin",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-css-codes-logarithmic-depth-encoding-construction/",
+      "isKey": true
+    },
+    {
+      "id": "n67a675",
+      "title": "Researchers Bound Spin Chain Mixing Time with Logarithmic Scaling",
+      "summary": "Previously requiring polynomial or even super-polynomial scaling with system size, simulating thermal equilibrium now achieves convergence in just O(log(n/ε)) time for one-dimensional systems. This logarithmic advance offers a new algorithm for generating Gibbs states on quantum computers, vital for",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/spin-chain-mixing-time-logarithmic-scaling-bound/",
+      "isKey": true
+    },
+    {
+      "id": "nfd8b22",
+      "title": "Bob Sutor",
+      "summary": "Bob Sutor spent 39 years at IBM and was a founding executive of IBM Quantum. He wrote Dancing with Qubits and now runs Sutor Group, his quantum consulting firm.",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/bob-sutor/",
+      "isKey": true
+    },
+    {
+      "id": "na23543",
+      "title": "A solvable quantum circuit’s limits define chaos",
+      "summary": "Researchers explore “asymptotically solvable”, finding solvability constraints impact correlations only beyond a tunable threshold.",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/du2-circuits-solvable-quantum-limits/",
+      "isKey": true
+    },
+    {
+      "id": "nd30b21",
+      "title": "New design removes 98.4% of qubit leakage during measurement",
+      "summary": "Researchers achieved 98.4% reduction of unwanted transitions during qubit measurement, improving superconducting circuit fidelity.",
+      "date": "2026-10-04",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/delft-technology-qubit-98-4-percent/",
+      "isKey": true
+    },
     {
       "id": "nd2a128",
       "title": "IBM Expands AI and Quantum Research With IIT Bombay and IISc",
