@@ -1,8 +1,358 @@
 {
-  "lastUpdated": "2026-10-16",
-  "lastScraped": "2026-10-16 02:01:53",
+  "lastUpdated": "2026-10-19",
+  "lastScraped": "2026-10-19 02:12:23",
   "description": "量子行业资讯 — 每3天自动更新（量子计算/通信/精密测量）",
   "items": [
+    {
+      "id": "n02db5f",
+      "title": "Anthropic’s Claude Designs Leaner Quantum Circuits, Reducing Resources Needed for Key Calculations",
+      "summary": "Insider Brief A team of researchers from Anthropic and Harvard used an artificial intelligence (AI) system to design quantum circuits that require fewer operations and qubits, potentially lowering the hardware demands of useful quantum computing. The researchers, who posted their work on the preprin",
+      "date": "2026-10-17",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/17/anthropics-claude-designs-leaner-quantum-circuits-reducing-resources-needed-for-key-calculations/",
+      "isKey": true
+    },
+    {
+      "id": "n13a97e",
+      "title": "Robert Wille (Munich Quantum Software Company): Quantum software needs design automation, not just algorithms",
+      "summary": "Yuval interviews Robert Wille, a computer scientist and co-founder focused on quantum computing software. They discuss the field’s transition from research to practical deployment, the need for heterogeneous and hardware-agnostic software stacks, and the integration of quantum into HPC environments.",
+      "date": "2026-10-17",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/17/robert-wille-munich-quantum-software-company-quantum-software-needs-design-automation-not-just-algorithms/",
+      "isKey": true
+    },
+    {
+      "id": "nc65b33",
+      "title": "Guest Post: AI Infrastructure Investment and the Future of Quantum Computing",
+      "summary": "Guest Post By George Varghese, Head of Investment, 0G Labs We&#8217;re witnessing one of the largest infrastructure investment cycles in modern technology, and I believe we&#8217;re still early in understanding its economic potential. AI has already changed how companies think about computing, with ",
+      "date": "2026-10-17",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/17/ai-infrastructure-investment-future-quantum-computing/",
+      "isKey": true
+    },
+    {
+      "id": "n50aa68",
+      "title": "The New Quantum Era with Sebastian Hassinger",
+      "summary": "THIRD ITERATION OF QUANTUM+AI OFFERS 80 POWERHOUSE SPEAKERS AND GREAT NETWORKING; PQC TRACK INCLUDED Q+AI October 25-27 in New York City is a week from starting. The speaker lineup authored by Bob Sutor and Brian Siegelwax offers over 80 speakers including several exciting “fireside” chats. Canto...",
+      "date": "2026-10-17",
+      "category": "industry",
+      "source": "Inside Quantum Technology",
+      "url": "https://www.insidequantumtechnology.com/news-archive/the-new-quantum-era-with-sebastian-hassinger/",
+      "isKey": true
+    },
+    {
+      "id": "n1cd016",
+      "title": "Reinforcement learning cuts gate count for 4-qubit states",
+      "summary": "Researchers used reinforcement learning to reduce the gate count when preparing 4-qubit states, achieving more efficient.",
+      "date": "2026-10-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/ecole-polytechnique-reinforcement-learning-4-qubit/",
+      "isKey": true
+    },
+    {
+      "id": "naa9872",
+      "title": "Quantum Zeitgeist Weekly Digest October 17th",
+      "summary": "The week's quantum computing news, 10 October to 17 October 2026.",
+      "date": "2026-10-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-zeitgeist-weekly-digest-october-17-2026/",
+      "isKey": true
+    },
+    {
+      "id": "nc87607",
+      "title": "QCentroid shows defence groups how to find quantum’s value",
+      "summary": "QCentroid presented to the QSECDEF community on September 29, 2026, detailing how defence groups can determine when investment in quantum computing is justified, and prove its worth.",
+      "date": "2026-10-17",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantums-value-qcentroid-defence-groups/",
+      "isKey": true
+    },
+    {
+      "id": "n003aa5",
+      "title": "Anthropic’s Claude improves quantum optimization designs",
+      "summary": "Anthropic’s Claude improved designs for eight quantum circuits, achieving up to 10x gains over published results.",
+      "date": "2026-10-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/claude-quantum-optimization-anthropics-improves/",
+      "isKey": true
+    },
+    {
+      "id": "n150c8f",
+      "title": "Quantum Gate Complexity Reduced for Long Distance Computation",
+      "summary": "Scalable long-distance quantum fan-out gates now demand (n − 2) fewer CNOT and Hadamard operations, a direct reduction over existing methods. This protocol achieves improved success rates while requiring less photonic resource overhead for multi-qubit interactions across separated parties. Demonstra",
+      "date": "2026-10-17",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-fanout-gate-long-distance-computation-scheme/",
+      "isKey": true
+    },
+    {
+      "id": "n7f14b1",
+      "title": "Quiz of the week: how many telescopes will eventually form the Cherenkov Telescope Array Observatory",
+      "summary": "Have you been keeping up to date with physics news? Try our short quiz to find out The post Quiz of the week: how many telescopes will eventually form the Cherenkov Telescope Array Observatory appeared first on Physics World.",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Physics World",
+      "url": "https://physicsworld.com/a/quiz-of-the-week-how-many-telescopes-will-eventually-form-the-cherenkov-telescope-array-observatory/",
+      "isKey": true
+    },
+    {
+      "id": "n1ec7b7",
+      "title": "Germany Publishes National Post-Quantum Cryptography Migration Guideline",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Quantum computers pose an increasingly real threat to the security of cryptographic methods and thus to cybersecurity itself. The Federal Ministry of the Interior (BMI), the Federal Ministry for Digital Affairs and State Modernization (BMDS) and the Federal Office",
+      "date": "2026-10-16",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/16/transition-post-quantum-cryptography-national-eu-roadmap-guideline/",
+      "isKey": true
+    },
+    {
+      "id": "n6b00bc",
+      "title": "QuEra Scientists Named Co-Principal Investigators on Three of Nine Teams in DOE’s Quantum Chemistry Program",
+      "summary": "Insider Brief PRESS RELEASE &#8212; QuEra Computing, the leader in quantum computing, today announced that its scientists will work with three of the nine teams selected for the Quantum Computing for Computational Chemistry (QC3) program at the Advanced Research Projects Agency for Energy (ARPA-E) t",
+      "date": "2026-10-16",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/16/quera-three-teams-doe-quantum-chemistry-program/",
+      "isKey": true
+    },
+    {
+      "id": "n020fc2",
+      "title": "In ‘Quantum 101’ Session, WTO Trade Officials Hear Quantum Encryption Window May Close Within Five Years",
+      "summary": "Insider Brief The World Trade Organization&#8217;s (WTO) member delegations were told this week that the encryption underpinning international trade could be broken by quantum computers within roughly five years, and that the trading system has no shared definition yet of what it means to be &#8220;",
+      "date": "2026-10-16",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/16/in-quantum-101-session-wto-trade-officials-hear-quantum-encryption-window-may-close-within-five-years/",
+      "isKey": true
+    },
+    {
+      "id": "n283f41",
+      "title": "Terra Quantum Joins QuEra Quantum Alliance",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Terra Quantum, a global leader in the development of quantum technologies and their industrial application, the leader in neutral-atom quantum computing, today announced that Terra Quantum has joined the QuEra Quantum Alliance, a global partner program dedicated t",
+      "date": "2026-10-16",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/16/terra-quantum-quera-quantum-alliance/",
+      "isKey": true
+    },
+    {
+      "id": "n7a868b",
+      "title": "Google Demonstrates Method to Cut Errors in Quantum Computing’s ‘Magic States’",
+      "summary": "Insider Brief Google researchers reduced errors in a crucial quantum computing resource about 40-fold, demonstrating a method that could lower the hardware demands of useful, error-corrected machines. The experiment, published in Science, showed that a technique called magic-state cultivation works ",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/16/google-demonstrates-method-to-cut-errors-in-quantum-computings-magic-states/",
+      "isKey": true
+    },
+    {
+      "id": "n40dd11",
+      "title": "Studying people is harder than studying electrons.",
+      "summary": "The Quantum Dragon hasn&#8217;t tried studying people before, but after listening to Dr. Gita Gopinath, Founding Director of Global Economics Lab, quote Prof. Richard Feynman, he decided to give it a try. In the short week between last week&#8217;s newsletter and this one, I already heard him say...",
+      "date": "2026-10-16",
+      "category": "industry",
+      "source": "Inside Quantum Technology",
+      "url": "https://www.insidequantumtechnology.com/news-archive/studying-people-is-harder-than-studying-electrons/",
+      "isKey": true
+    },
+    {
+      "id": "n555d32",
+      "title": "Researchers Entangle 13 Photons to Build Larger Quantum Graphs",
+      "summary": "Before now, creating dependable links between more than twelve entangled photons proved exceptionally difficult. This work demonstrates deterministic fusion to generate genuine multipartite entanglement across thirteen photonic qubits, surpassing previous limits on topological complexity. The advanc",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/photonic-graph-states-thirteen-photon-entanglement-generation/",
+      "isKey": true
+    },
+    {
+      "id": "n331535",
+      "title": "Riken Institute’s work scales up silicon-based quantum processors",
+      "summary": "Silicon spin qubits are a promising platform for building scalable quantum computers, but typically lose accuracy when several qubits are under parallel control. Researchers from the RIKEN Center for Emergent Matter Science achieved high-fidelity control of multiple silicon spin qubits operating in ",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/riken-silicon-quantum-processors-institutes-work/",
+      "isKey": true
+    },
+    {
+      "id": "n0dd18d",
+      "title": "Sarawak AI Centre and IBM will build Malaysia’s first quantum-safe hub",
+      "summary": "Sarawak Artificial Intelligence Centre (SAIC) and IBM Malaysia Sdn. are planning to establish Sarawak Quantum Safe Centre, an in-country innovation hub designed to advance quantum-safe readiness and foster research across East Malaysia. The collaboration aims to strengthen cyber resilience, advance ",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-safe-hub-sarawak-centre-ibm/",
+      "isKey": true
+    },
+    {
+      "id": "n0592b5",
+      "title": "FPT and Pasqal Plan Quantum Computing Push in Vietnam",
+      "summary": "FPT and Pasqal propose a partnership to advance quantum computing in Vietnam, presenting plans to Deputy Prime Minister Ho Quoc Dung on October 12, 2026.",
+      "date": "2026-10-16",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-computing-vietnam-fpt-pasqal/",
+      "isKey": true
+    },
+    {
+      "id": "nec2d88",
+      "title": "Yang Ming Chiao Tung Team Proposes Loss-Tolerant QKD Via Time Bins",
+      "summary": "Previously, measurement-device-independent QKD reached approximately 169, 173km without a repeater; this work extends that range to around 324, 331km using time-bin multiplexing and an MI architecture. The new protocol achieves a maximum distance of 217. 8km at a rate of 10⁻⁴, exceeding conventional",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-key-distribution-time-bin-loss-tolerance/",
+      "isKey": true
+    },
+    {
+      "id": "na202d8",
+      "title": "Researchers Optimise Long-Range Entanglement Sharing in Networks",
+      "summary": "Can complex multi-party entanglement reliably extend across vast quantum networks? A new operational framework classifies network actions, inflation, deflation, purification, revealing previously inaccessible combinations for distributing genuine multipartite entanglement. This unlocks optimisation ",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-networks-long-range-entanglement-sharing-optimisation/",
+      "isKey": true
+    },
+    {
+      "id": "n871490",
+      "title": "Quantum key rates improve with squeezed light over fiber",
+      "summary": "Continuous-variable quantum key distribution (CV-QKD) has gathered significant interest for its potential to achieve high secret key rates and seamless integration with existing optical communication infrastructure. Squeezed states of light have been theoretically shown to offer significant advantag",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/nvidia-quantum-key-rates-improve-squeezed/",
+      "isKey": true
+    },
+    {
+      "id": "n62c287",
+      "title": "Sparse Hamiltonians can be learned with slower quantum controls",
+      "summary": "Learning the underlying Hamiltonians of quantum systems, even sparse ones, can achieve Heisenberg-limited accuracy—without requiring arbitrarily short control pulses.",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/korea-advanced-sparse-hamiltonians-learned-slower/",
+      "isKey": true
+    },
+    {
+      "id": "nd56d10",
+      "title": "Researchers Map Full Timing of Four-Photon Interference",
+      "summary": "Until now, characterizing multi-photon entanglement meant sacrificing detailed timing information for simpler measurements, effectively blurring the signal needed for complex quantum networks. By fully capturing each photon’s arrival time, this work reveals hidden temporal relationships within conti",
+      "date": "2026-10-16",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/four-photon-interference-full-timing-mapping/",
+      "isKey": true
+    },
+    {
+      "id": "naff178",
+      "title": "Researchers Generate Remote Entanglement at 95% Fidelity",
+      "summary": "Overcoming qubit decoherence during entanglement distribution has long limited scalable quantum networking. A new protocol achieves over 95% fidelity for remotely generating entangled states between error-corrected qubits using established trapped-ion techniques and photon interactions. This represe",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/gottesman-kitaev-preskill-qubits-remote-entanglement-generation/",
+      "isKey": true
+    },
+    {
+      "id": "nf3a84c",
+      "title": "Room-temperature quantum sensor skips the need for cryogenic cooling",
+      "summary": "Researchers detail a new approach to quantum magnetic sensing using a noble gas, potentially reaching 24 aT/√Hz sensitivity.",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/alberta-noble-gas-sensors-athz-sensitivity/",
+      "isKey": true
+    },
+    {
+      "id": "nbe9b08",
+      "title": "SAXON Q’s three qubits hit a 77% target rate at room temperature",
+      "summary": "SAXON Q’s system achieved a 77.3% success rate with Grover’s search algorithm using three qubits, at room temperature.",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/saxon-q-three-qubits-77-percent/",
+      "isKey": true
+    },
+    {
+      "id": "n44e6e1",
+      "title": "Model-based qubit noise analysis improves accuracy and speed",
+      "summary": "Qubit noise spectroscopy, or QNS, enhances qubit fidelities by characterizing environmental noise, and new model-based approaches offer improved statistical accuracy over traditional methods.",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/johns-hopkins-qubit-noise-analysis-based/",
+      "isKey": true
+    },
+    {
+      "id": "n87bf19",
+      "title": "Researchers from Harvard Quantum, Anthropic and QuEra show new circuits cut qubit counts for quantum calculations",
+      "summary": "Researchers used large language models to design quantum circuits, reducing Toffoli and qubit counts in 7 of 8 tested tasks.",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/llm-circuits-cut-qubit-counts-quantum/",
+      "isKey": true
+    },
+    {
+      "id": "na0575a",
+      "title": "LayerQake at Quantum X Labs cuts qubit errors by up to 21x on IBM chips",
+      "summary": "LayerQake cut cumulative error by up to 21x on three IBM chips—ibmfez, ibmkingston, and ibm_marrakesh—reducing noise that causes qubit inaccuracies.",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-x-qubit-errors-ibm-chips/",
+      "isKey": true
+    },
+    {
+      "id": "ndef7d6",
+      "title": "IBM achieves 52x design speedup with AI agents tackling quantum error correction",
+      "summary": "Using an agent factory to optimize hardware for quantum error correction, IBM Research achieved a 52-times speedup over the baseline design for approximately $26 in inference cost. A configuration using open frontier models cost $26, while a proprietary frontier model configuration cost 11.5 times m",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-error-correction-ibm-52x/",
+      "isKey": true
+    },
+    {
+      "id": "n263414",
+      "title": "Max Planck Institute Develops Tools to Detect Chip Tampering",
+      "summary": "A team at the Max Planck Institute for Security and Privacy is looking for ways to detect tampering in chips, and to develop secure, more transparent chips. They are enhancing open-source chips with quantum-secure circuits, which are encryption methods that protect against attacks by future quantum ",
+      "date": "2026-10-16",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/max-planck-institute-tools-detect/",
+      "isKey": true
+    },
+    {
+      "id": "n31153c",
+      "title": "Strontium links atoms, calcium preserves entanglement for longer",
+      "summary": "Physicists at the University of Oxford have used a quantum network to entangle several atoms, specifically strontium and calcium, across two separate locations. The team used calcium atoms to preserve the entanglement for more than 10 seconds, creating shared quantum states involving up to four atom",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/oxford-strontium-calcium-entanglement-links-atoms/",
+      "isKey": true
+    },
+    {
+      "id": "n28d1ff",
+      "title": "Simulation App Speeds Up Electric Truck Battery Design",
+      "summary": "This article is brought to you by COMSOL.These days, no one blinks an eye at two-day, one-day, and even same-day package deliveries. Despite the plethora of localized fulfillment and distribution centers that have cropped up to meet the demand, delivery trucks still need to make considerably long dr",
+      "date": "2026-10-16",
+      "category": "breakthrough",
+      "source": "IEEE Spectrum",
+      "url": "https://spectrum.ieee.org/electric-truck-battery-design-simulation",
+      "isKey": true
+    },
     {
       "id": "n611d00",
       "title": "Invertible subalgebras for chiral semion topological order",
