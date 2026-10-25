@@ -1,8 +1,648 @@
 {
-  "lastUpdated": "2026-10-22",
-  "lastScraped": "2026-10-22 02:16:13",
+  "lastUpdated": "2026-10-25",
+  "lastScraped": "2026-10-25 02:06:41",
   "description": "量子行业资讯 — 每3天自动更新（量子计算/通信/精密测量）",
   "items": [
+    {
+      "id": "n9c0bb9",
+      "title": "New Mexico Deploys JTIP Workforce Grants to Support Quantum Hardware Hiring at IonQ and Bandelier Technologies",
+      "summary": "New Mexico has allocated over $12 million in Job Training Incentive Program (JTIP) funding for Q1 FY22, with a focus on quantum technology. IonQ Inc. and Bandelier Technologies received grants to support hiring in hardware engineering, quantum system operations, photonic quantum radar, sensing, and ",
+      "date": "2026-10-24",
+      "category": "policy",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/new-mexico-deploys-jtip-workforce-grants-to-support-quantum-hardware-hiring-at-ionq-and-bandelier-technologies/",
+      "isKey": true
+    },
+    {
+      "id": "ned7317",
+      "title": "California Awards $5.7 Million in Workforce Grants to Establish Sub-Doctoral Quantum Hardware and Technician Pipelines",
+      "summary": "The California Workforce Development Board has granted $5.74 million in Workforce Accelerator Fund 14 grants to establish sub-doctoral quantum hardware and technician pipelines. These grants aim to address the talent bottleneck in the quantum industry by funding programs across five educational and ",
+      "date": "2026-10-24",
+      "category": "industry",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/california-awards-5-7-million-in-workforce-grants-to-establish-sub-doctoral-quantum-hardware-and-technician-pipelines/",
+      "isKey": true
+    },
+    {
+      "id": "n1db618",
+      "title": "Who’s News: Strategic Appointments at EY, Zapata Quantum, IQM, Sparrow Quantum, and Symmatrics",
+      "summary": "EY appointed Dr. Philip Intallura as Partner, Global Quantum Leader. Zapata Quantum added Dr. Peter Shor and other experts to its Scientific Advisory Board. IQM Quantum Computers hired Dr. Voica Radescu as Director of Commercial Partnerships, and Sparrow Quantum promoted Professor Peter Lodahl to CE",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/whos-news-strategic-appointments-at-ey-zapata-quantum-iqm-sparrow-quantum-and-symmatrics/",
+      "isKey": true
+    },
+    {
+      "id": "n378367",
+      "title": "BIRD Foundation Backs Qarakal Quantum and Quantum Elements for Quantum-Accelerated Catalysis Modeling",
+      "summary": "The BIRD Foundation has awarded a conditional grant to Qarakal Quantum and Quantum Elements for a joint quantum computational chemistry project. This initiative aims to develop a platform using quantum algorithms to accurately simulate heterogeneous surface catalysis, overcoming limitations of class",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/bird-foundation-backs-qarakal-quantum-and-quantum-elements-for-quantum-accelerated-catalysis-modeling/",
+      "isKey": true
+    },
+    {
+      "id": "n6adfc3",
+      "title": "NowSecure Benchmark Finds 97% of Mobile Applications Lack Post-Quantum Cryptography Ahead of Mandated Timelines",
+      "summary": "A recent study by NowSecure, evaluating over 136,000 mobile apps, reveals that 97% lack Post-Quantum Cryptography (PQC), leaving them vulnerable to future quantum attacks. This \"mobile gap\" is largely due to reliance on third-party SDKs and compiled libraries that traditional security scans miss. Wi",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/nowsecure-benchmark-finds-97-of-mobile-applications-lack-post-quantum-cryptography-ahead-of-mandated-timelines/",
+      "isKey": true
+    },
+    {
+      "id": "n23ca53",
+      "title": "Arqit Invests in Sirius to Scale Tactical Edge Quantum-Safe Networking Following NATO Contract Selection",
+      "summary": "Arqit, a quantum-safe encryption provider, has invested in Sirius Computer, a tactical communications developer, to enhance post-quantum security for defense and intelligence. This partnership follows Arqit's selection for a NATO contract and aims to provide quantum-safe encryption for military comm",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/arqit-invests-in-sirius-to-scale-tactical-edge-quantum-safe-networking-following-nato-contract-selection/",
+      "isKey": true
+    },
+    {
+      "id": "n9390d9",
+      "title": "Monarch Quantum Supplies Integrated Photonics for Next Phase of NASA and Infleqtion’s Space-Based Gravity Gradiometer",
+      "summary": "Monarch Quantum is providing integrated photonics hardware to Infleqtion for NASA's Quantum Gravity Gradiometer Pathfinder (QGGPf) mission. This mission aims to deploy the world's first space-based Earth quantum gravity gradient sensor in low-Earth orbit by 2030, measuring gravitational variations u",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/monarch-quantum-supplies-integrated-photonics-for-next-phase-of-nasa-and-infleqtions-space-based-gravity-gradiometer/",
+      "isKey": true
+    },
+    {
+      "id": "n9c717d",
+      "title": "Project Eleven and Relm Insurance Partner to Introduce Post-Quantum Security Metrics into Digital Asset Underwriting",
+      "summary": "Project Eleven and Relm Insurance are partnering to integrate post-quantum security metrics into digital asset insurance underwriting. This collaboration aims to assess how an institution's post-quantum cryptographic controls can influence insurance policy pricing. The goal is to incentivize early m",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/project-eleven-and-relm-insurance-partner-to-introduce-post-quantum-security-metrics-into-digital-asset-underwriting/",
+      "isKey": true
+    },
+    {
+      "id": "n356986",
+      "title": "Vietnam and Rosatom Finalize Quantum Cooperation Roadmap as Hanoi Shapes 2045 Strategy",
+      "summary": "Vietnam and Russia's Rosatom have established a quantum cooperation roadmap, accelerating Vietnam's quantum information science capabilities. This agreement allows Vietnam to access Russian quantum processors remotely, bypassing significant hardware costs, and includes plans for a joint quantum tech",
+      "date": "2026-10-24",
+      "category": "policy",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/vietnam-and-rosatom-finalize-quantum-cooperation-roadmap-as-hanoi-shapes-2045-strategy/",
+      "isKey": true
+    },
+    {
+      "id": "n93ae88",
+      "title": "Toshiba Launches Modular QSN Platform to Scale Hybrid QKD and PQC Across Lit Fiber Networks",
+      "summary": "Toshiba has launched its new Quantum-Safe Networking (QSN) Platform, a modular hardware and software architecture designed to scale quantum-secured communications across various networks. This platform overcomes the limitations of traditional quantum key deployment by enabling quantum channels to co",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Computing Report",
+      "url": "https://quantumcomputingreport.com/toshiba-launches-modular-qsn-platform-to-scale-hybrid-qkd-and-pqc-across-lit-fiber-networks/",
+      "isKey": true
+    },
+    {
+      "id": "n60f8bc",
+      "title": "New York, New York",
+      "summary": "The time to write about Q+AI 2026 (3.0): Uncovering the Coming Wave of Quantum + AI and PQC+IQT is finally over. It’s almost time to listen, network, and even speak a few words. For those attending, I’ll see you tomorrow on the New York Harbor Dinner Cruise. For everyone else, stay subscribed for...",
+      "date": "2026-10-24",
+      "category": "industry",
+      "source": "Inside Quantum Technology",
+      "url": "https://www.insidequantumtechnology.com/news-archive/new-york-new-york/",
+      "isKey": true
+    },
+    {
+      "id": "n09251c",
+      "title": "IBM supports award-winning projects in NEDO Challenge",
+      "summary": "IBM quantum computers powered all nine prize-winning teams in NEDO Quantum Challenge 2026, with projects spanning disaster prevention to anime.",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/ibm-supports-award-winning-projects-nedo/",
+      "isKey": true
+    },
+    {
+      "id": "n4f42cc",
+      "title": "Supercurrent enables reading qubit states without destruction",
+      "summary": "A new study details how an “Andreev qubit’s” oscillating electric supercurrent can indicate its state, potentially allowing for virtually non-destructive readout.",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/sao-carlos-supercurrent-reads-qubit-states/",
+      "isKey": true
+    },
+    {
+      "id": "ne3663f",
+      "title": "Quantum sensor research earns Oklahoma State University’s Liu a top physics honor",
+      "summary": "OSU’s Dr. Yingmei Liu earned a 2026 American Physical Society Fellowship for her work in atomic, molecular, and optical physics, including advances in quantum sensing and Oklahoma’s only programmable quantum simulator.",
+      "date": "2026-10-24",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/oklahoma-state-quantum-sensor-research-earns/",
+      "isKey": true
+    },
+    {
+      "id": "na6aa41",
+      "title": "Quiz of the week: what happens to the structure and dynamics of the human genome under microgravity conditions?",
+      "summary": "Have you been keeping up to date with physics news? Try our short quiz to find out The post Quiz of the week: what happens to the structure and dynamics of the human genome under microgravity conditions? appeared first on Physics World.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Physics World",
+      "url": "https://physicsworld.com/a/quiz-of-the-week-what-happens-to-the-structure-and-dynamics-of-the-human-genome-under-microgravity-conditions/",
+      "isKey": true
+    },
+    {
+      "id": "n777258",
+      "title": "Guest Post: Quantum Computing’s Next Phase May Be Driven by Compounding Breakthroughs",
+      "summary": "Guest Post by Liam Wang COO, Logical Qubit Technology. The World Economic Forum&#8217;s Quantum Economy Day 2026 was held in Geneva, Switzerland, on October 13–14. Logical Qubit Technology attended as the only quantum computing company representing China. The company&#8217;s Chief Operating Officer,",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/23/quantum-computing-compounding-breakthroughs/",
+      "isKey": true
+    },
+    {
+      "id": "ne9e42b",
+      "title": "IQM and Telefónica Plan Quantum Computer for Madrid University",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Telefónica and IQM Quantum Computers, a global leader in superconducting quantum computing, have joined forces to deploy the first quantum computer in the Community of Madrid. The initiative will strengthen the region’s scientific and technological capabilities, w",
+      "date": "2026-10-23",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/23/madrid-first-quantum-computer-telefonica-iqm/",
+      "isKey": true
+    },
+    {
+      "id": "n17519c",
+      "title": "Quandela And Quanova Partner to Deploy Vietnam’s First Quantum Computer",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Quandela, a European leader in photonic quantum computing, announces a major milestone in its expansion in Southeast Asia. Quanova, a Vietnamese quantum company, has selected Quandela’s MosaiQ solution as the foundation of a new quantum research, innovation, servi",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/23/quandela-and-quanova-partner-to-deploy-vietnams-first-quantum-computer/",
+      "isKey": true
+    },
+    {
+      "id": "ndcbb3e",
+      "title": "Google Launches $150,000 AI Competition to Reduce Quantum Computing Demands",
+      "summary": "Insider Brief Google Quantum AI is launching a competition to use artificial intelligence to shrink the circuits needed for useful quantum computing. The competition offers a total prize pool of $150,000, organizers said. The competition, hosted on Kaggle, challenges participants to reduce the numbe",
+      "date": "2026-10-23",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/23/google-launches-150000-ai-competition-to-reduce-quantum-computing-demands/",
+      "isKey": true
+    },
+    {
+      "id": "n8c4d1a",
+      "title": "Modality Wars",
+      "summary": "Admit it: we&#8217;re all guilty of comparing qubit modalities at some point. I&#8217;ve done it. You&#8217;ve done it. The Quantum Dragon does it at every meal. So, even though Brian Lenahan&#8217;s &#8220;Modality Wars &#8211; Late 2026&#8221; is paywalled, it deserves recognition for having a ...",
+      "date": "2026-10-23",
+      "category": "industry",
+      "source": "Inside Quantum Technology",
+      "url": "https://www.insidequantumtechnology.com/news-archive/modality-wars/",
+      "isKey": true
+    },
+    {
+      "id": "ne9f071",
+      "title": "Who Are the Godfathers of Quantum Cryptography? Wiesner, Bennett, Brassard, Shor and the Code Breakers",
+      "summary": "Stephen Wiesner, Charles Bennett and Gilles Brassard invented quantum cryptography, and Peter Shor showed what a quantum computer would do to today’s encryption. Who did what, and who is still breaking codes.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/godfathers-of-quantum-cryptography/",
+      "isKey": true
+    },
+    {
+      "id": "nf736ec",
+      "title": "University of Waterloo finds a fundamental limit to quantum repeaters",
+      "summary": "Researchers at the Institute for Quantum Computing, University of Waterloo, proved a “no-go” theorem for Gaussian quantum repeaters.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/university-waterloo-fundamental-limit-quantum/",
+      "isKey": true
+    },
+    {
+      "id": "n1b677b",
+      "title": "Control strategy cuts time to precise quantum readings",
+      "summary": "New control strategy cuts time needed for highly accurate quantum metrology, achieving optimal performance in just a few iterations.",
+      "date": "2026-10-23",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/nature-com-precise-quantum-readings-control/",
+      "isKey": true
+    },
+    {
+      "id": "na9c7ba",
+      "title": "Superconducting qubits hit 99.9% accuracy with new control pulses",
+      "summary": "Researchers achieved 99.9% accuracy with single-qubit gates on superconducting qubits, using new energy-optimal control pulses.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/chalmers-technology-superconducting-99-9-percent/",
+      "isKey": true
+    },
+    {
+      "id": "n96c906",
+      "title": "Quantum Design gives UCLA lab access to a ProteoxS fridge",
+      "summary": "Quantum Design is collaborating with UCLA’s Professor Chee Wei Wong on superconducting qubit tech, providing access to a ProteoxS dilution refrigerator at its lab.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/proteoxs-fridge-quantum-design-gives/",
+      "isKey": true
+    },
+    {
+      "id": "nf85e4d",
+      "title": "A new quantum thermometer hits both precision limits at once",
+      "summary": "Researchers achieved Heisenberg-limited precision in equilibrium quantum thermometry, simultaneously saturating the Landau bound at low temperatures.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-thermometer-hits-precision-limits/",
+      "isKey": true
+    },
+    {
+      "id": "n3f1d48",
+      "title": "Quantum algorithm speeds up optimisation at a key transition point",
+      "summary": "This research details how a quantum algorithm can accelerate optimisation, specifically by leveraging many-body localisation transitions during reverse quantum annealing.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/phasecraft-quantum-algorithm-speeds-up-optimisation/",
+      "isKey": true
+    },
+    {
+      "id": "n490f47",
+      "title": "Quantum algorithm finds states of systems driven by periodic forces",
+      "summary": "Researchers developed Floquet-ADAPT-VQE, a hybrid quantum-classical algorithm, to determine Floquet eigenstates—the states of periodically driven quantum systems.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/virginia-tech-quantum-algorithm-states-systems/",
+      "isKey": true
+    },
+    {
+      "id": "n501685",
+      "title": "QuantumGenie links PHP hack to post-quantum readiness",
+      "summary": "The October 2026 PHP vulnerability highlights the need to map dependencies—critical for both urgent fixes and future cryptographic discovery, including migration to post-quantum cryptography.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/post-quantum-readiness-quantumgenie-links/",
+      "isKey": true
+    },
+    {
+      "id": "n67b9e6",
+      "title": "Mitacs funding helps Ericsson and ÉTS build quantum skills",
+      "summary": "Ericsson Canada &#038; ÉTS are advancing quantum computing in Quebec, aided by Mitacs Accelerate.",
+      "date": "2026-10-23",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/mitacs-funding-quantum-helps-ericsson/",
+      "isKey": true
+    },
+    {
+      "id": "n46ddd1",
+      "title": "QKD faces maturity and security hurdles, say France, Germany and Sweden",
+      "summary": "Quantum Key Distribution (QKD) isn’t yet sufficiently mature for most uses, according to a joint report by agencies like ANSSI and BSI.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/bsi-qkd-faces-maturity-security-hurdles/",
+      "isKey": true
+    },
+    {
+      "id": "na6a644",
+      "title": "Google Quantum AI launches contest to shrink quantum circuits with AI",
+      "summary": "Google Quantum AI is hosting a Kaggle competition, challenging participants to use AI to compress quantum circuits—reducing qubit &#038; gate counts.",
+      "date": "2026-10-23",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/google-quantum-contest-shrink-circuits/",
+      "isKey": true
+    },
+    {
+      "id": "n5b4493",
+      "title": "Imperfect detectors still help qubits stay entangled longer",
+      "summary": "The researchers investigate the role of continuous measurement and postselection in the dynamics and entanglement of a transmon-cavity-transmon coupled system, demonstrating that postselection significantly slows down the decay of entanglement compared to the unmonitored case. In the dispersive regi",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/indian-technology-imperfect-detectors-still-help/",
+      "isKey": true
+    },
+    {
+      "id": "n0e464a",
+      "title": "Florida Atlantic University wins $400,000 to build quantum-proof security",
+      "summary": "Florida Atlantic University’s Charles E. Schmidt College of Science secured a $400,000 NSF grant, advancing post-quantum cryptography led by Edoardo Persichetti, Ph.D. The project focuses on securing digital systems against future quantum computing threats.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/fau-florida-atlantic-win-university-400000/",
+      "isKey": true
+    },
+    {
+      "id": "n410269",
+      "title": "A 152-qubit model tested by classical quantum chemistry",
+      "summary": "Classical methods achieved chemical accuracy (~1 kcal/mol) modeling the FeMo cofactor, a system often studied as a challenge for quantum algorithms.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/protein-data-quantum-algorithms-face-bar/",
+      "isKey": true
+    },
+    {
+      "id": "n824519",
+      "title": "Phasecraft asks if AI agents can automate quantum circuit optimization?",
+      "summary": "Phasecraft’s system uses AI agents to tackle hard problems in quantum optimization, achieving up to 23% lower Pauli weight in quantum simulation.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/ai-agents-quantum-optimization-phasecraft/",
+      "isKey": true
+    },
+    {
+      "id": "n526d6e",
+      "title": "Telefónica and IQM bring quantum hardware to Spain’s capital",
+      "summary": "Telefónica and IQM are bringing the IQM Spark quantum computer to Madrid’s Universidad Politécnica, the third such system deployed in Spain.",
+      "date": "2026-10-23",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/telefonica-iqm-quantum-hardware-spains/",
+      "isKey": true
+    },
+    {
+      "id": "n9e8182",
+      "title": "Symmatrics Appoints Andrew Hallman to Strategic Advisory Board",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Symmatrics, the cybersecurity company pioneering one-time pad encryption at internet scale and building the new trust layer for the AI and post-quantum era, today announced the appointment of Andrew Hallman to its Strategic Advisory Board. Hallman joins the compan",
+      "date": "2026-10-22",
+      "category": "policy",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/22/symmatrics-andrew-hallman-advisory-board/",
+      "isKey": true
+    },
+    {
+      "id": "nc31e1a",
+      "title": "ZuriQ and Rhonexum Partner on Cryogenic Electronics for Quantum Computing",
+      "summary": "Insider Brief PRESS RELEASE &#8212; ZuriQ and Rhonexum have announced a multi-year commercial framework agreement. Under the agreement, Rhonexum will supply cryogenic integrated-circuit technologies and customisation services to ZuriQ, which will evaluate the potential of each of these solutions to ",
+      "date": "2026-10-22",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/22/zuriq-rhonexum-cryogenic-electronics-quantum-computing/",
+      "isKey": true
+    },
+    {
+      "id": "n8189c1",
+      "title": "Ericsson Canada and ÉTS Partner on Quantum Computing Research",
+      "summary": "Insider Brief PRESS RELEASE &#8212; Ericsson Canada and École de technologie supérieure (ÉTS) have teamed up to further quantum computing research in Quebec, one of the country’s primary quantum computing centres. With support from the Mitacs Accelerate program, the project aims to develop better qu",
+      "date": "2026-10-22",
+      "category": "industry",
+      "source": "The Quantum Insider",
+      "url": "https://thequantuminsider.com/2026/10/22/ericsson-canada-ets-quantum-computing-research/",
+      "isKey": true
+    },
+    {
+      "id": "n2b096d",
+      "title": "Charlton Aria vote extends Korea Quantum Computing’s deadline",
+      "summary": "Shareholders approved an extension—to October 25, 2027—for the business combination of Charlton Aria and KQC Quantum, Inc., parent company of Korea Quantum Computing.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/korea-quantum-computing-charlton-aria/",
+      "isKey": true
+    },
+    {
+      "id": "n537454",
+      "title": "New quantum key distribution protocol works over 27km of fiber",
+      "summary": "Transmitter-side device dependence is a longstanding problem in quantum key distribution (QKD), and a new transmitter-device-independent (TDI) QKD protocol closes a loophole through photon storage, eliminating transmitter-side device vulnerabilities. In a proof-of-principle experiment, the protocol ",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/beijing-quantum-key-distribution-protocol-works/",
+      "isKey": true
+    },
+    {
+      "id": "nc6cf36",
+      "title": "Qiskit SDK v2.6 streamlines quantum circuit serialization",
+      "summary": "Qiskit SDK v2.6 is a release centered on the C API, exposing its high-performance Rust core and enabling interoperability with nearly every language. The latest version brings the compiler’s pass-manager framework, QPY serialization, and custom operations to the C API, and continues work to allow it",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qiskit-sdk-v2-v26-streamlines/",
+      "isKey": true
+    },
+    {
+      "id": "na4734d",
+      "title": "Entanglement types mirror states, GHZ stronger than W",
+      "summary": "New research defines a polynomial measure of W-entanglement, alongside GHZ-entanglement &#038; bipartite concurrence, revealing that these three kinds of three-qubit entanglement are ordered—and reflect equivalence classes of entangled states.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/entanglement-types-mirror-states-ghz/",
+      "isKey": true
+    },
+    {
+      "id": "n915513",
+      "title": "Quantum protocol measures particle motion without extra qubits",
+      "summary": "A new symmetry-enabled direct quantum protocol computes many-body Green’s functions, key to understanding particle motion in complex quantum systems.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/universite-sherbrooke-quantum-protocol-measures-particle/",
+      "isKey": true
+    },
+    {
+      "id": "n07db11",
+      "title": "Van der Waals stack amplifies weak quantum signals in 2D materials",
+      "summary": "Researchers built a heterostructure using a van der Waals assembly to boost light emission from boron nitride spin defects by up to 45x, improving quantum sensing.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/pbi2-van-der-waals-stack-amplifies/",
+      "isKey": true
+    },
+    {
+      "id": "nbfc547",
+      "title": "Vietnam gets its first quantum computer with Quandela’s MosaiQ",
+      "summary": "Vietnam’s Quang Trung University will deploy Quandela’s MosaiQ, the nation’s first quantum computer, through a France-Vietnam partnership.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quandela-vietnam-gets-first-quantum-computer/",
+      "isKey": true
+    },
+    {
+      "id": "n0e8328",
+      "title": "UNM Experts Present at Quantum Computing Summer School",
+      "summary": "This past summer, 20 students were selected from more than 1,000 applicants to participate in the Quantum Computing Summer School, gaining hands-on experience with Los Alamos National Laboratory’s quantum computing experts. The school combined lectures by distinguished experts, including those from ",
+      "date": "2026-10-22",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/quantum-computing-summer-unm-experts/",
+      "isKey": true
+    },
+    {
+      "id": "n456241",
+      "title": "Aegiq’s quantum computer reduces engineering time with NVIDIA AI",
+      "summary": "Aegiq’s photonic quantum computer, Artemis, cut weekly engineering time by 3x using NVIDIA Ising AI models.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/aegiqs-quantum-computer-reduces-engineering/",
+      "isKey": true
+    },
+    {
+      "id": "n1ac235",
+      "title": "NVIDIA, Aegiq & BAE Systems test quantum boost to engineering workflows",
+      "summary": "Aegiq, BAE Systems, and NVIDIA collaborated with the NQCC to explore quantum computing’s potential to accelerate aerodynamic design, potentially reducing engineering timelines.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/nvidia-aegiq-bae-systems-test/",
+      "isKey": true
+    },
+    {
+      "id": "n397eff",
+      "title": "Multi-mode beams offer a new way to test quantum operations",
+      "summary": "Compound beams, composed of simple experimental blocks detected in simultaneous detection windows, are suggested for simulating quantum operations used for creating multi-mode states needed in quantum communication, metrology, and information protocols. Qualitative and quantitative comparison of mul",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/oslo-multi-mode-beams-offer-way/",
+      "isKey": true
+    },
+    {
+      "id": "n5b09ec",
+      "title": "Qblox Advances Hybrid Quantum Computing with NVIDIA Integration",
+      "summary": "Qblox integrated NVIDIA DGX Spark, achieving under 4.0 µs roundtrip latency with RTX PRO 6000 Blackwell, enabling real-time quantum-classical workflows.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/nvidia-hybrid-quantum-computing-qblox-advances/",
+      "isKey": true
+    },
+    {
+      "id": "n0b035b",
+      "title": "A digital link speeds up quantum error correction, SEEQC shows",
+      "summary": "SEEQC demonstrated quantum error correction performance gains with an industry first digital interface optimized decoder architecture using NVIDIA Ising and NVQLink. Integration of SEEQC’s chip-based pre-decoder with NVIDIA Ising, leveraging SEEQC Digital Link and NVIDIA NVQLink, delivers approximat",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/seeqc-quantum-error-correction-digital-link/",
+      "isKey": true
+    },
+    {
+      "id": "n8ceb37",
+      "title": "Aegiq runs 100-qubit tests on NVIDIA’s DGX Spark server",
+      "summary": "Aegiq is developing quantum algorithms, recently running simulations of up to ~100 qubits on an NVIDIA DGX Spark server.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/qubit-tests-aegiq-runs-100-qubit/",
+      "isKey": true
+    },
+    {
+      "id": "n76c0f7",
+      "title": "NQCC adds Quantum Motion’s silicon spin qubits to UK testbed program",
+      "summary": "The National Quantum Computing Centre (NQCC), in partnership with Innovate UK, has invested £30m to establish seven prototype quantum computers, or “testbeds”, within the UK. These testbeds, including Quantum Motion’s silicon spin qubits, have been deployed at the Harwell Campus for rigorous charact",
+      "date": "2026-10-22",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/silicon-spin-qubits-nqcc-adds/",
+      "isKey": true
+    },
+    {
+      "id": "nfd45b9",
+      "title": "Khalifa University students’ quantum library joins IBM’s Qiskit",
+      "summary": "Khalifa University of Science and Technology’s open-source Python library, quantum-learn, developed by undergraduate students through the Khalifa University Quantum Computing Initiative (QCI), has been accepted into IBM’s Qiskit Ecosystem. This achievement connects student innovation at Khalifa Univ",
+      "date": "2026-10-22",
+      "category": "policy",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/khalifa-university-students-quantum-library/",
+      "isKey": true
+    },
+    {
+      "id": "n3f93b2",
+      "title": "Eclypses and BitRipple team up to shield data from quantum attacks",
+      "summary": "The BitRipple and Eclypses partnership delivers accelerated, post-quantum data protection for networks facing congestion or attack.",
+      "date": "2026-10-22",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/eclypses-bitripple-shield-data-quantum/",
+      "isKey": true
+    },
+    {
+      "id": "n9202c0",
+      "title": "South Korea picks telecoms operator KT to run two of three quantum test hubs",
+      "summary": "South Korea is expanding its testing grounds for quantum communications at home and abroad, with the government and private companies aiming to commercialize domestic quantum communications technology and products through three hubs—commercial, overseas and future—over three years from this year thr",
+      "date": "2026-10-22",
+      "category": "industry",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/kt-quantum-communication-test-science-ministry/",
+      "isKey": true
+    },
+    {
+      "id": "n8219b1",
+      "title": "RhymeQ gets $2.2M to let Python coders program quantum chips",
+      "summary": "RhymeQ secured $2.2M to simplify coding for quantum computers, letting developers use their existing Python skills.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/python-quantum-chips-rhymeq-2-2m/",
+      "isKey": true
+    },
+    {
+      "id": "nf73e2c",
+      "title": "Squeezing quantum states extends qubit coherence 160-fold",
+      "summary": "Squeezing of quantum states redistributes uncertainty to enhance sensitivity, and in bosonic codes, this can reduce the environment’s measurement strength, thereby prolonging coherence. Researchers achieved a 160-fold improvement in bit-flip time with squeezed cat qubits, bringing multi-cat architec",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/squeezing-quantum-states-extends-qubit/",
+      "isKey": true
+    },
+    {
+      "id": "na96516",
+      "title": "Fewer qubits needed for quantum apps thanks to Xanadu’s work",
+      "summary": "Xanadu halved the resource cost of Quantum Read-Only Memory (QROM) again, reducing the quantum computational resources—and qubits—required for key applications.",
+      "date": "2026-10-22",
+      "category": "breakthrough",
+      "source": "Quantum Zeitgeist",
+      "url": "https://quantumzeitgeist.com/xanadu-fewer-qubits-needed-quantum-apps/",
+      "isKey": true
+    },
+    {
+      "id": "ncece91",
+      "title": "Why AI Can’t Replace Engineering Teams",
+      "summary": "This article is crossposted from IEEE Spectrum’s careers newsletter. Sign up now to get insider tips, expert advice, and practical strategies, written in partnership with tech career development company Parsity and delivered to your inbox for free!If you’re an engineer, you may feel like your skills",
+      "date": "2026-10-22",
+      "category": "industry",
+      "source": "IEEE Spectrum",
+      "url": "https://spectrum.ieee.org/engineering-jobs-that-ai-cant-replace",
+      "isKey": true
+    },
+    {
+      "id": "na078ab",
+      "title": "Why Engineers Should Brave Capitol Hill",
+      "summary": "When San Antonio–based software engineer Nikhil Jathar first went to Washington, D.C., to advocate for federal support for technology education and research funding, he was in awe of the opportunity. It was spring of 2025, not long after Jathar settled in the United States from India, when he got an",
+      "date": "2026-10-22",
+      "category": "policy",
+      "source": "IEEE Spectrum",
+      "url": "https://spectrum.ieee.org/engineers-lobbying-congress",
+      "isKey": true
+    },
+    {
+      "id": "n76a7f4",
+      "title": "Using AI agents to run quantum simulations",
+      "summary": "Researchers have developed a multi-agent AI system that converts plain-language research questions into executed, checked and reproducible quantum simulations using several specialist software packages The post Using AI agents to run quantum simulations appeared first on Physics World.",
+      "date": "2026-10-21",
+      "category": "breakthrough",
+      "source": "Physics World",
+      "url": "https://physicsworld.com/a/using-ai-agents-to-run-quantum-simulations/",
+      "isKey": true
+    },
     {
       "id": "n0d930a",
       "title": "Concurrent Entanglement Purification Scheduling in Dynamic Quantum Networks",
